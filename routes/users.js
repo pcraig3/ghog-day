@@ -4,7 +4,7 @@ const DB = require('better-sqlite3-helper')
 
 /* GET users listing. */
 router.get('/', function (req, res) {
-  let rows = DB().query('SELECT * FROM users')
+  let rows = DB().query('SELECT * FROM predictions')
   console.log(rows)
 
   res.send(rows)
