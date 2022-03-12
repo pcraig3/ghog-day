@@ -4,6 +4,21 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var nunjucks = require('nunjucks')
+const DB = require('better-sqlite3-helper')
+
+// The first call creates the global instance with your settings
+DB({
+  path: './data/sqlite3.db', // this is the default
+  readonly: false, // read only
+  fileMustExist: false, // throw error if database not exists
+  WAL: false, // automatically enable 'PRAGMA journal_mode = WAL'
+  migrate: {
+    // disable completely by setting `migrate: false`
+    force: 'last', // set to 'last' to automatically reapply the last migration-file
+    table: 'migration', // name of the database table that is used to keep track
+    migrationsPath: './migrations', // path of the migration-files
+  },
+})
 
 var app = express()
 

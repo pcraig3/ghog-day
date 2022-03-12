@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "DEBUG=ghog-day:* nodemon ./bin/www",
-    "lint": "eslint \"./**/*.js\"", 
+    "lint": "eslint \"./**/*.js\"",
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "better-sqlite3-helper": "^3.1.6",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
