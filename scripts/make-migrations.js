@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS predictions;
 
 stream.write(migrationsStart)
 
-fs.createReadStream(path.resolve(__dirname, '../csv', '1_phil.csv'))
+fs.createReadStream(path.resolve(__dirname, '../csv', '2_willie.csv'))
   .pipe(csv.parse({ headers: true }))
   .on('error', (error) => console.error(error))
   .on('data', (row) => {
-    const insert = `INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, ${parseInt(
+    const insert = `INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, ${parseInt(
       row.year,
-    )}, ${hasShadow(row.shadow)}, '${escape(row.description)}');\n`
+    )}, ${hasShadow(row.shadow)}, '${escape(row.details)}');\n`
 
     stream.write(insert)
   })
