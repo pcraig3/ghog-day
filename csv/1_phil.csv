@@ -1,6 +1,6 @@
 year,shadow,description
 1886,null,Groundhog Day first recognized in Punxsutawney by Weathers Wags.
-1887,TRUE,First Official trek to Gobbler's Knob. Saw Shadow.
+1887,TRUE,First Official trek to Gobbler’s Knob. Saw Shadow.
 1888,TRUE,Saw Shadow.
 1889,null,No Record.
 1890,FALSE,No Shadow.
@@ -24,9 +24,9 @@ year,shadow,description
 1908,TRUE,Saw Shadow; First front page coverage
 1909,TRUE,Saw Shadow.
 1910,TRUE,Saw Shadow.
-1911,TRUE,"Saw Shadow; ""55 couples at Groundhog Day Dance."""
+1911,TRUE,Saw Shadow; “55 couples at Groundhog Day Dance.”
 1912,TRUE,Saw Shadow.
-1913,TRUE,"Saw Shadow at 8:80 am. First newspaper photo of Groundhog by John Frampton. A new dance ""The Groundhog Roll"" was demonstrated by Joe Winslow."
+1913,TRUE,Saw Shadow at 8:80 am. First newspaper photo of Groundhog by John Frampton. A new dance “The Groundhog Roll” was demonstrated by Joe Winslow.
 1914,TRUE,"Saw Shadow at 9:34 AM, Groundhog demonstrated “The Groundhog Flop”"
 1915,TRUE,Saw Shadow at 11:45 AM
 1916,TRUE,Saw Shadow at 9:07; First films of the event. 
@@ -41,7 +41,7 @@ year,shadow,description
 1925,TRUE,Saw Shadow 8:13 AM; CJ Margiotti gave groundhog tradition to the Pittsburgh Travel Club.
 1926,TRUE,Saw Shadow at 9:17 AM.
 1927,TRUE,Saw Shadow at 8:35 AM.
-1928,TRUE,Saw Shadow at 10 AM; Program with Punx'y Rotary Club was on KDKA Radio.
+1928,TRUE,Saw Shadow at 10 AM; Program with Punx’y Rotary Club was on KDKA Radio.
 1929,TRUE,Predicted six more weeks of winter before sunrise.
 1930,TRUE,Saw Shadow at 7:11 AM.
 1931,TRUE,Saw Shadow at 12:27 AM.
@@ -55,25 +55,25 @@ year,shadow,description
 1939,TRUE,Saw Shadow at 9:10 AM.
 1940,TRUE,"Saw Shadow at 9 AM; Pictured with first Groundhog Day Queen, Miss Margaret Hunam."
 1941,TRUE,Saw Shadow at 4:25 PM; Six Groundhog Girls.
-1942,TRUE,"Partial Shadow at 7:40 AM; ""War clouds have blacked out parts of the shadow."" (""The Spirit,"" Feb. 2, 1942)."
-1943,FALSE,Groundhog didn't make an appearance; relied on Quarryville's prediction - NO Shadow
+1942,TRUE,"Partial Shadow at 7:40 AM; “War clouds have blacked out parts of the shadow.” (“The Spirit,” Feb. 2, 1942)."
+1943,FALSE,Groundhog didn’t make an appearance; relied on Quarryville’s prediction - NO Shadow
 1944,TRUE,Saw Shadow at 9:10 AM.
 1945,TRUE,Saw Shadow at 9 AM.
 1946,TRUE,Saw Shadow at 7:52 AM.
-1947,TRUE,Saw Shadow at 7:37 AM; First newspaper photo of Groundhog Club members at Gobbler's Knob.
-1948,TRUE,"Saw Shadow at 8:46 AM; Dr. Frank Lorenzo was interviewed on KDKA Radio's ""Brunch With Bill"" program."
+1947,TRUE,Saw Shadow at 7:37 AM; First newspaper photo of Groundhog Club members at Gobbler’s Knob.
+1948,TRUE,Saw Shadow at 8:46 AM; Dr. Frank Lorenzo was interviewed on KDKA Radio’s “Brunch With Bill” program.
 1949,TRUE,Saw Shadow at 7:32 AM.
-1950,FALSE,"No Shadow; Colleen Townsend, actress, was in town to promote the film, ""When Willie Comes Marching Home."""
+1950,FALSE,"No Shadow; Colleen Townsend, actress, was in town to promote the film, “When Willie Comes Marching Home.”"
 1951,TRUE,"Saw Shadow at 8:41 AM; Pictured with cheerleaders from PHS and SSCD. Betty Byers, Joan Wadding, Dorothy Armstrong and Kathleen Spinelli."
-1952,TRUE,"Saw Shadow at 7:52 AM; First appearance of Frau Gourndhog, Groundhog procession and shadow. Casting was on Dave Garroway's TV Show on NBC on Monday, February 4."
+1952,TRUE,"Saw Shadow at 7:52 AM; First appearance of Frau Gourndhog, Groundhog procession and shadow. Casting was on Dave Garroway’s TV Show on NBC on Monday, February 4."
 1953,TRUE,Saw Shadow at 7:38 AM; First year with Sam Light as Groundhog Club president; First Man-of-the-Year Award goes to Ben Levy.
 1954,TRUE,Saw Shadow at 8:03 AM; The groundhog was turned completely white from worry.
 1955,TRUE,Saw Shadow at 8:51 AM; 4-inch snowfall on Groundhog Day; Coverage on three TV stations.
 1956,TRUE,Saw Shadow 8:33 AM.
 1957,TRUE,Saw Shadow 7:47 AM.
-1958,TRUE,"Saw Shadow at 8:27 AM; Prepared for blast-off in his ""Chucknik"" spacecraft; First Woman-of-the-Year Award was given to Mrs. Louis (Olive) Woodring."
+1958,TRUE,Saw Shadow at 8:27 AM; Prepared for blast-off in his “Chucknik” spacecraft; First Woman-of-the-Year Award was given to Mrs. Louis (Olive) Woodring.
 1959,TRUE,Saw Shadow at 8:23 AM; Announces that he has returned from a successful trip to the moon.
-1960,TRUE,"Saw Shadow at 7:33 AM, forecasts extremely bad weather; appearance on the ""Today"" show."
+1960,TRUE,"Saw Shadow at 7:33 AM, forecasts extremely bad weather; appearance on the “Today” show."
 1961,TRUE,Saw Shadow at 7:41 AM; 25 below zero.
 1962,TRUE,Saw Shadow at 7:29 AM; Just returned from second trip to the moon.
 1963,TRUE,Saw Shadow at 7:41 AM; Unusually dark shadow
@@ -134,5 +134,5 @@ year,shadow,description
 2018,TRUE,"At 7:25 a.m. with 18,000 Phil Phans present, Phil saw his shadow! Six More Weeks of Winter!"
 2019,FALSE,NO Shadow at 7:28 AM; 14º fog & mist with -1º Wind Chill.
 2020,FALSE,NO Shadow at 7:26 AM; 30º with light snow falling.
-2021,TRUE,Shadow at 7:25 AM; 19º with light snow. Coronavirus fear prohibits crowds on Gobbler's Knob.
-2022,TRUE,Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler's Knob.
+2021,TRUE,Shadow at 7:25 AM; 19º with light snow. Coronavirus fear prohibits crowds on Gobbler’s Knob.
+2022,TRUE,Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.
