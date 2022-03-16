@@ -1,11 +1,12 @@
 -- Up
 CREATE TABLE groundhogs (
   id INTEGER PRIMARY KEY,
+  shortname TEXT,
   name TEXT,
-  fullname TEXT,
   city TEXT,
   country TEXT,
-  source TEXT
+  source TEXT,
+  currentPrediction TEXT
 );
 
 CREATE TABLE predictions (
@@ -19,10 +20,50 @@ CREATE TABLE predictions (
 );
 
 /* Insert Groundhogs */
-INSERT INTO groundhogs (id, name, fullname, city, country, source) VALUES (1, 'Phil', 'Punxatawney Phil', 'Punxatawney', 'USA', 'https://www.groundhog.org/history-past-predictions');
-INSERT INTO groundhogs (id, name, fullname, city, country, source) VALUES (2, 'Willie', 'Wiarton Willie', 'Wiarton', 'Canada', 'https://www.southbrucepeninsula.com/en/explore-and-play/wiarton-willie.aspx#Past-predictions');
+INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (1, 'Phil', 'Punxatawney Phil', 'Punxatawney', 'USA', 'https://www.groundhog.org/history-past-predictions', 'https://www.groundhog.org/prognostication');
+INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (2, 'Willie', 'Wiarton Willie', 'Wiarton', 'Canada', 'https://www.southbrucepeninsula.com/en/explore-and-play/wiarton-willie.aspx#Past-predictions', 'https://www.southbrucepeninsula.com/en/explore-and-play/wiarton-willie.aspx#Prediction-morning-February-2nd');
+INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (3, 'Sam', 'Shubenacadie Sam', 'Shubenacadie', 'Canada', 'https://data.novascotia.ca/Lands-Forests-and-Wildlife/Shubenacadie-Wildlife-Park-Groundhog-Day-Predictio/4y37-h2yu', 'https://twitter.com/ShubenacadieSam/status/1488845184418959360');
+INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (4, 'Chuck', 'Staten Island Chuck', 'New York City', 'USA', 'https://en.wikipedia.org/wiki/Staten_Island_Chuck#Past_predictions', 'http://www.statenislandzoo.org/groundhog-day/');
+INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (5, 'Chuck', 'Buckeye Chuck', 'Marion', 'USA', 'https://en.wikipedia.org/wiki/Buckeye_Chuck#Past_predictions', 'https://twitter.com/OHBuckeyeChuck/status/1488861276780392452');
 
 /* Insert Predictions */
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 1999, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2000, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2001, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2002, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2003, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2004, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2005, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2006, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2007, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2008, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2009, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2010, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2011, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2012, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2013, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2014, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2015, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2016, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2017, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2018, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2019, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2020, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2021, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (3, 2022, 1, 'Shadow (Long Winter)');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2008, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2009, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2010, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2011, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2012, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2013, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2014, 1, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2015, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2016, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2017, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2019, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2020, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2021, 0, '');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1886, null, 'Groundhog Day first recognized in Punxsutawney by Weathers Wags.');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1887, 1, 'First Official trek to Gobbler’s Knob. Saw Shadow.');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1888, 1, 'Saw Shadow.');
@@ -123,43 +164,6 @@ INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1982, 1, 'Saw
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1983, 0, 'No Shadow; Peered over at 7:29 AM, but saw no shadow; predicted an early spring after a mild winter.');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1984, 1, 'Saw Shadow shortly after 7 AM.');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1985, 1, 'Saw Shadow at 7:28 AM.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1986, 0, 'No Shadow! Visited President Reagan at the White House in March.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1987, 1, 'Saw Shadow 7:29 AM.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1988, 0, 'No Shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1989, 1, 'Saw Shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1990, 0, 'No Shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1991, 1, 'Saw Shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1992, 1, 'Saw Shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1993, 1, 'Saw Shadow. “Groundhog Day” The movie with Bill Murray was released in time for PHIL’S Predition.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1994, 1, 'Saw Shadow 7:28 AM.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1995, 0, 'No Shadow; Guested on the Oprah Winfrey TV Show and made new fans.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1996, 1, 'Saw Shadow 7:21; So cold he dug deep to make his prediction.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1997, 0, 'No Shadow 7:25AM. Made his 110th prediction. Largest crowd the Knob has seen 35,000 people');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1998, 1, 'Saw Shadow 7:20AM; Six more weeks of “El Nino” Winter.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1999, 0, 'Over 15,000 people celebrated as Phil saw no shadow at 7:23 AM and predicted and early spring');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2000, 1, 'It was the dawn of a new “Phillenium” and 12-degrees at Gobbler’s Knob when Phil saw his shadow at 7:28 AM.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2001, 1, 'Phil’s prediction of 6 more weeks of winter weather was displayed on the Astrovision in New York’s Time Square.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2002, 1, 'Phil saw his shadow at the largest event in 116 year history with estimated 30,000 people celebrating 02/02/02');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2003, 1, 'Phil saw his shadow at 7:25 AM as Pennsylvania’s newly elected Governor Ed Rendell looked on from Gobbler’s Knob.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2004, 1, 'Phil saw his shadow at 7:27 in 8 degree weather. Event was webcast live on www.groundhog.org');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2005, 1, 'The sky was clear as Phil saw his shadow before an enthusiastic crowd of 10-18,000. The time was 7:31 a.m. It was Phil’s 119th prediction.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2006, 1, 'Phil saw his shadow while wearing his Steeler “Terrible Towel” at 7:25 a.m. The temperature was a balmy 38 degrees.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2007, 0, 'No Shadow- Early Spring It was a cloudy morning with light snow flurries when Phil emerged from his burrow at about 7:26 a.m. and did not see his shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2008, 1, 'At 7:28 a.m., 29°, Phil Saw his Shadow.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2009, 1, 'At 7:26 a.m. Phil saw his shadow and Inner Circle President Bill Cooper completed his final interpretation and retired at Gobbler’s Knob.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2010, 1, 'The temperature was 12°. Saw Shadow- Six More Weeks of Winter');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2011, 0, 'No Shadow- Early Spring With rain over head, Phil made his prediction.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2012, 1, 'Six More Weeks of Winter The skies slightly overcast and a temperate of 30°. Phil saw his shadow!');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2013, 0, 'No Shadow- Early Spring A Balmy 7° Phil made his prediction at 7:25 a.m.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2014, 1, 'Six More Weeks of Winter With fog in site, Phil made his prediction at 7:26 a.m.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2015, 1, 'Six More Weeks of Winter Was the prediction of Phil. The morning was filled with freezing rain. Phil emerged from his burrow at 7:26 a.m.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2016, 0, 'No Shadow- Early Spring It was 28° at Gobbler’s Knob. Phil made his perdition of an Early Spring at 7:25 a.m.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2017, 1, '7:25 a.m. Saw His Shadow, Six More Weeks of Winter! There were a few snow flurries during the prognostication.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2018, 1, 'At 7:25 a.m. with 18,000 Phil Phans present, Phil saw his shadow! Six More Weeks of Winter!');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2019, 0, 'NO Shadow at 7:28 AM; 14º fog & mist with -1º Wind Chill.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2020, 0, 'NO Shadow at 7:26 AM; 30º with light snow falling.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2021, 1, 'Shadow at 7:25 AM; 19º with light snow. Coronavirus fear prohibits crowds on Gobbler’s Knob.');
-INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2022, 1, 'Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 1955, 0, 'No Shadow, Early Spring!');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 1956, 0, 'No Shadow, Early Spring!');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 1957, null, 'No record');
@@ -227,7 +231,62 @@ INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 2018, 1, 'Sha
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 2019, 0, 'No Shadow, Early Spring!');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 2020, 1, 'Shadow, Six More Weeks of Winter!');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 2021, 0, 'No Shadow, Early Spring!');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2006, 1, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2007, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2008, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2009, 1, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2010, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2011, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2012, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2013, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2014, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2015, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2016, 1, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2017, 1, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2018, 1, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2019, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2020, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2021, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (4, 2022, 0, '');
 INSERT INTO predictions (ghogId, year, shadow, details) VALUES (2, 2022, 0, 'No Shadow, Early Spring!');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (5, 2022, 0, '');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1986, 0, 'No Shadow! Visited President Reagan at the White House in March.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1987, 1, 'Saw Shadow 7:29 AM.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1988, 0, 'No Shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1989, 1, 'Saw Shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1990, 0, 'No Shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1991, 1, 'Saw Shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1992, 1, 'Saw Shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1993, 1, 'Saw Shadow. “Groundhog Day” The movie with Bill Murray was released in time for PHIL’S Predition.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1994, 1, 'Saw Shadow 7:28 AM.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1995, 0, 'No Shadow; Guested on the Oprah Winfrey TV Show and made new fans.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1996, 1, 'Saw Shadow 7:21; So cold he dug deep to make his prediction.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1997, 0, 'No Shadow 7:25AM. Made his 110th prediction. Largest crowd the Knob has seen 35,000 people');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1998, 1, 'Saw Shadow 7:20AM; Six more weeks of “El Nino” Winter.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 1999, 0, 'Over 15,000 people celebrated as Phil saw no shadow at 7:23 AM and predicted and early spring');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2000, 1, 'It was the dawn of a new “Phillenium” and 12-degrees at Gobbler’s Knob when Phil saw his shadow at 7:28 AM.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2001, 1, 'Phil’s prediction of 6 more weeks of winter weather was displayed on the Astrovision in New York’s Time Square.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2002, 1, 'Phil saw his shadow at the largest event in 116 year history with estimated 30,000 people celebrating 02/02/02');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2003, 1, 'Phil saw his shadow at 7:25 AM as Pennsylvania’s newly elected Governor Ed Rendell looked on from Gobbler’s Knob.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2004, 1, 'Phil saw his shadow at 7:27 in 8 degree weather. Event was webcast live on www.groundhog.org');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2005, 1, 'The sky was clear as Phil saw his shadow before an enthusiastic crowd of 10-18,000. The time was 7:31 a.m. It was Phil’s 119th prediction.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2006, 1, 'Phil saw his shadow while wearing his Steeler “Terrible Towel” at 7:25 a.m. The temperature was a balmy 38 degrees.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2007, 0, 'No Shadow- Early Spring It was a cloudy morning with light snow flurries when Phil emerged from his burrow at about 7:26 a.m. and did not see his shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2008, 1, 'At 7:28 a.m., 29°, Phil Saw his Shadow.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2009, 1, 'At 7:26 a.m. Phil saw his shadow and Inner Circle President Bill Cooper completed his final interpretation and retired at Gobbler’s Knob.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2010, 1, 'The temperature was 12°. Saw Shadow- Six More Weeks of Winter');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2011, 0, 'No Shadow- Early Spring With rain over head, Phil made his prediction.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2012, 1, 'Six More Weeks of Winter The skies slightly overcast and a temperate of 30°. Phil saw his shadow!');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2013, 0, 'No Shadow- Early Spring A Balmy 7° Phil made his prediction at 7:25 a.m.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2014, 1, 'Six More Weeks of Winter With fog in site, Phil made his prediction at 7:26 a.m.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2015, 1, 'Six More Weeks of Winter Was the prediction of Phil. The morning was filled with freezing rain. Phil emerged from his burrow at 7:26 a.m.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2016, 0, 'No Shadow- Early Spring It was 28° at Gobbler’s Knob. Phil made his perdition of an Early Spring at 7:25 a.m.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2017, 1, '7:25 a.m. Saw His Shadow, Six More Weeks of Winter! There were a few snow flurries during the prognostication.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2018, 1, 'At 7:25 a.m. with 18,000 Phil Phans present, Phil saw his shadow! Six More Weeks of Winter!');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2019, 0, 'NO Shadow at 7:28 AM; 14º fog & mist with -1º Wind Chill.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2020, 0, 'NO Shadow at 7:26 AM; 30º with light snow falling.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2021, 1, 'Shadow at 7:25 AM; 19º with light snow. Coronavirus fear prohibits crowds on Gobbler’s Knob.');
+INSERT INTO predictions (ghogId, year, shadow, details) VALUES (1, 2022, 1, 'Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.');
 
 -- Down
 DROP TABLE IF EXISTS predictions;

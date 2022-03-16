@@ -6,11 +6,12 @@ const { escape, hasShadow } = require('./utils')
 const migrationsStart = `-- Up
 CREATE TABLE groundhogs (
   id INTEGER PRIMARY KEY,
+  shortname TEXT,
   name TEXT,
-  fullname TEXT,
   city TEXT,
   country TEXT,
-  source TEXT
+  source TEXT,
+  currentPrediction TEXT
 );
 
 CREATE TABLE predictions (
@@ -56,11 +57,11 @@ const insertGroundhogs = () => {
         reject(error)
       })
       .on('data', (row) => {
-        const insert = `INSERT INTO groundhogs (id, name, fullname, city, country, source) VALUES (${parseInt(
+        const insert = `INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (${parseInt(
           row.id,
-        )}, '${escape(row.name)}', '${escape(row.fullname)}', '${escape(row.city)}', '${escape(
+        )}, '${escape(row.shortname)}', '${escape(row.name)}', '${escape(row.city)}', '${escape(
           row.country,
-        )}', '${escape(row.source)}');\n`
+        )}', '${escape(row.source)}', '${escape(row.currentPrediction)}');\n`
 
         stream.write(insert)
       })

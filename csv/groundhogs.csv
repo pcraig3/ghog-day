@@ -1,3 +1,6 @@
-id,name,fullname,city,country,source
-1,Phil,Punxatawney Phil,Punxatawney,USA,https://www.groundhog.org/history-past-predictions
-2,Willie,Wiarton Willie,Wiarton,Canada,https://www.southbrucepeninsula.com/en/explore-and-play/wiarton-willie.aspx#Past-predictions
+id,shortname,name,city,country,source,currentPrediction
+1,Phil,Punxatawney Phil,Punxatawney,USA,https://www.groundhog.org/history-past-predictions,https://www.groundhog.org/prognostication
+2,Willie,Wiarton Willie,Wiarton,Canada,https://www.southbrucepeninsula.com/en/explore-and-play/wiarton-willie.aspx#Past-predictions,https://www.southbrucepeninsula.com/en/explore-and-play/wiarton-willie.aspx#Prediction-morning-February-2nd
+3,Sam,Shubenacadie Sam,Shubenacadie,Canada,https://data.novascotia.ca/Lands-Forests-and-Wildlife/Shubenacadie-Wildlife-Park-Groundhog-Day-Predictio/4y37-h2yu,https://twitter.com/ShubenacadieSam/status/1488845184418959360
+4,Chuck,Staten Island Chuck,New York City,USA,https://en.wikipedia.org/wiki/Staten_Island_Chuck#Past_predictions,http://www.statenislandzoo.org/groundhog-day/
+5,Chuck,Buckeye Chuck,Marion,USA,https://en.wikipedia.org/wiki/Buckeye_Chuck#Past_predictions,https://twitter.com/OHBuckeyeChuck/status/1488861276780392452
