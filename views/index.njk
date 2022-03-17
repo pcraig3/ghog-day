@@ -1,5 +1,25 @@
 {% extends "layout.njk" %}
 {% block content %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+  <h1>Groundhog Day Data</h1>
+  <p>Learn about Groundhog Day: a Real Holiday™ about stuff that isn’t made up.</p>
+
+  <h2>Groundhogs</h2>
+  <p>Each of these gorundhogs is like an elite athlete.</p>
+  <ul>
+  {% for groundhog in groundhogs %}
+    {% set url = ["/groundhogs/", groundhog.id] | join %}
+    <li>
+      <a href={{ url }}>{{ groundhog.name }}</a> ( {{groundhog.country}} )
+    </li>
+  {% endfor %}
+  </ul>
+
+  <h2>Predictions by year</h2>
+  <p>Only using the last 5 years because that’s as far back as the canada-holidays.ca API goes.
+  <ul>
+  {% for year in years %}
+    <li>
+      {{ year }}
+    </li>
+  {% endfor %}
 {% endblock %}

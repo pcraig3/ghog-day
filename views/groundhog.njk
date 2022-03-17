@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+{% block content %}
+  <h1>{{ groundhog.name }}</h1>
+  <p>Yep, he’s a groundhog alright.</p>
+
+  <div class="specs">
+    <p><strong>Name:</strong> {{ groundhog.shortname }}</p>
+    <p><strong>City:</strong> {{ groundhog.city }}</p>
+    <p><strong>Country:</strong> {{ groundhog.country }}</p>
+    <p><strong>Earliest prognostication:</strong> {{ groundhog.predictions[0].year }}</p>
+  </div>
+
+  <h2>Predictions</h2>
+  <p>(only the last 5 years)</p>
+  <ul>
+    {% for prediction in groundhog.predictions %}
+      {% if prediction.year >= 2018 %}
+        <li>
+          <strong>{{ prediction.year}}</strong>:
+          {% if prediction.shadow %}
+            ☃️ More winter! (Saw shadow) 
+          {% else %}
+            🌷 Early spring! (No shadow)
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <p><a href="/">← Back</a></p>
+{% endblock %}
