@@ -6,7 +6,7 @@ const DB = require('better-sqlite3-helper')
 router.get('/', function (req, res) {
   const groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
   const years = [2022, 2021, 2020, 2019, 2018]
-  res.render('index', { groundhogs, years })
+  res.render('index', { title: 'Groundhog Day', groundhogs, years })
 })
 
 /* GET groundhogs listing. */
@@ -33,7 +33,7 @@ router.get('/groundhogs/:gId', (req, res) => {
 
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
 
-  res.render('groundhog', { groundhog })
+  res.render('groundhog', { title: groundhog.name, groundhog })
 })
 
 /* GET predictions listing. */

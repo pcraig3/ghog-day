@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "DEBUG=ghog-day:* nodemon ./bin/www",
     "lint": "eslint \"./**/*.js\"",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "jest --testPathIgnorePatterns='skip*'"
   },
   "dependencies": {
     "better-sqlite3-helper": "^3.1.6",
@@ -19,6 +20,9 @@
   },
   "devDependencies": {
     "eslint": "^8.11.0",
-    "nodemon": "^2.0.15"
+    "eslint-plugin-jest": "^26.1.1",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }
