@@ -22,15 +22,15 @@ DB({
 
 var app = express()
 
-nunjucks.configure('views', {
+nunjucks.configure(path.join(__dirname, './src/views'), {
   autoescape: true,
   express: app,
 })
 
-var indexRouter = require('./routes/index')
+var indexRouter = require('./src/routes/index')
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, './src/views'))
 app.set('view engine', 'njk')
 
 app.use(logger('dev'))

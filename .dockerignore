@@ -1,0 +1,21 @@
+
+# git stuff
+.git
+.gitignore
+.github
+
+# project stuff
+node_modules/
+data/
+npm-debug.log
+.DS_Store
+*.env
+coverage/
+.vscode/
+
+# things we don't want in the container
+Dockerfile
+*.md
+
+# mostly ignore or config files
+.*
