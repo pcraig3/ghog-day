@@ -31,9 +31,11 @@ DROP TABLE IF EXISTS predictions;
 DROP TABLE IF EXISTS groundhogs;
 `
 
+/* eslint-disable no-console */
+
 const insertMigrationsStart = () => {
-  return new Promise(function (resolve, reject) {
-    stream = fs.createWriteStream('./migrations/001-init.sql')
+  return new Promise(function (resolve) {
+    const stream = fs.createWriteStream('./migrations/001-init.sql')
     stream.write(migrationsStart)
 
     // end stream
@@ -47,7 +49,7 @@ const insertMigrationsStart = () => {
 
 const insertGroundhogs = () => {
   return new Promise(function (resolve, reject) {
-    stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
+    const stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
     stream.write('\n/* Insert Groundhogs */\n')
 
     fs.createReadStream(path.resolve(__dirname, '../csv', 'groundhogs.csv'))
@@ -74,16 +76,16 @@ const insertGroundhogs = () => {
 }
 
 const insertPredictions = () => {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve) {
     const filenames = fs.readdirSync(path.resolve(__dirname, '../csv'))
     const predictions = filenames.filter((filename) => filename.startsWith('prediction'))
 
-    stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
+    const stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
     stream.write('\n/* Insert Predictions */\n')
 
     /* Insert predictions */
     predictions.map((file) => {
-      const [suffix, id, name] = file.split('_')
+      const [suffix, id, name] = file.split('_') // eslint-disable-line no-unused-vars
       fs.createReadStream(path.resolve(__dirname, '../csv', file))
         .pipe(csv.parse({ headers: true }))
         .on('error', (error) => console.error(error))
@@ -108,8 +110,8 @@ const insertPredictions = () => {
 }
 
 const insertMigrationsEnd = () => {
-  return new Promise(function (resolve, reject) {
-    stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
+  return new Promise(function (resolve) {
+    const stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
     stream.write(migrationsEnd)
 
     // end stream
@@ -118,6 +120,8 @@ const insertMigrationsEnd = () => {
     resolve()
   })
 }
+
+/* eslint-enable no-console */
 
 insertMigrationsStart()
   .then(() => insertGroundhogs())

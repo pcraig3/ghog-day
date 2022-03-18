@@ -18,6 +18,7 @@ const hasShadow = (shadow = '') => {
 const escape = (str) => {
   if (typeof str != 'string') return str
 
+  // eslint-disable-next-line no-control-regex, no-useless-escape
   return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
     switch (char) {
       case '\0':
@@ -33,7 +34,7 @@ const escape = (str) => {
       case '\r':
         return '\\r'
       case '"':
-      case "'":
+      case "'": // eslint-disable-line quotes
       case '\\':
       case '%':
         return '\\' + char // prepends a backslash to backslash, percent,

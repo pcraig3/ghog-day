@@ -14,11 +14,11 @@ router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
 
   groundhogs.map((ghog) => {
-    predictions = DB()
+    const predictions = DB()
       .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
       .all(ghog['id'])
 
-    ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs)
+    ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
   })
 
   res.send(groundhogs)
@@ -27,11 +27,11 @@ router.get('/groundhogs', function (req, res) {
 router.get('/groundhogs/:gId', (req, res) => {
   let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
 
-  predictions = DB()
+  const predictions = DB()
     .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
     .all(req.params.gId)
 
-  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs)
+  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
 
   res.render('groundhog', { groundhog })
 })
