@@ -1,0 +1,17 @@
+/* CSS reset */
+@use './reset/normalize';
+
+/* Sass stuff */
+@use './_typography';
+
+body {
+  margin: 2em;
+}
+
+a {
+  color: #00b7ff;
+}
+
+li {
+  margin-bottom: 5px;
+}

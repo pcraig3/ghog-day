@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "DEBUG=ghog-day:* nodemon ./bin/www",
+    "dev": "DEBUG=ghog-day:* nodemon ./bin/www & npm run scss",
     "lint": "eslint \"./**/*.js\"",
+    "scss": "sass --watch src/scss/main.scss public/stylesheets/main.css",
     "start": "node ./bin/www",
     "test": "jest --testPathIgnorePatterns='skip*'"
   },
@@ -16,7 +17,8 @@
     "fast-csv": "^4.3.6",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "eslint": "^8.11.0",
