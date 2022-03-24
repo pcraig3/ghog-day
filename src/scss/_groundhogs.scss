@@ -1,63 +1,21 @@
-aside {
-  margin-bottom: 100px;
-}
-
-h1,
-h2 {
-  text-transform: uppercase;
-}
-
-table.specs {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-
-  /* TODO: remove this */
-  outline: 0;
-
-  * {
-    outline: 0;
-  }
-
-  thead {
-    visibility: hidden;
-
-    th:first-of-type {
-      width: 75%;
-    }
-  }
-
-  th {
-    text-align: left;
-    border-bottom: 2px solid black;
-  }
-
-  td {
-    text-align: left;
-    padding-left: 0;
-    border-bottom: 2px solid black;
-  }
-}
+@use 'vars';
+@use 'mixins';
 
 .inner-content__header {
   display: flex;
+  border-bottom: 2px solid black;
+  margin-bottom: vars.$space-xl;
 
   h1 {
     flex: 3;
+    margin-bottom: 0;
   }
 
-  span {
+  div {
     flex: 1;
+    align-self: end;
+    text-align: right;
   }
-}
-
-figure {
-  margin: 0;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 .inner-content {
@@ -68,9 +26,86 @@ img {
 
   .inner-content__main {
     flex: 2 1 0;
+    margin-right: vars.$space-xl;
   }
 
   .inner-content__side {
     flex: 1 1 0;
+  }
+}
+
+.data-table {
+  margin-bottom: vars.$space-xxl;
+
+  .data-table__title {
+    margin: 0;
+    font-size: 1.953rem;
+  }
+
+  .data-table__table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    /* TODO: remove this */
+    outline: 0;
+
+    * {
+      outline: 0;
+    }
+
+    thead {
+      @include mixins.visually-hidden;
+
+      th:first-of-type {
+        width: 75%;
+      }
+    }
+
+    th {
+      text-align: left;
+      border-bottom: 2px solid black;
+
+      &:first-of-type {
+        border-top: 2px solid black;
+      }
+    }
+
+    td {
+      text-align: left;
+      padding-left: 0;
+      border-bottom: 2px solid black;
+
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        border-top: 2px solid black;
+      }
+    }
+  }
+}
+
+.other-formats {
+  h3 {
+    font-size: 1.563rem;
+    letter-spacing: -0.03rem;
+    margin-bottom: vars.$space-md;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: vars.$space-lg;
+  }
+}
+
+figure {
+  margin: 0;
+
+  img {
+    padding: 2px;
+    border: 2px solid black;
+  }
+
+  figcaption {
+    border-bottom: 2px solid black;
   }
 }

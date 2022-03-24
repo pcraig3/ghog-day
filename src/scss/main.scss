@@ -1,5 +1,6 @@
 /* CSS reset */
 @use './reset/normalize';
+@use './reset/reset.local';
 
 /* Sass stuff */
 @use './_typography';
@@ -14,6 +15,19 @@
 /* pages */
 @use './_groundhogs';
 
+// * {
+//   outline: 1px solid red;
+// }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 a {
-  color: #00b7ff;
+  color: currentColor;
+
+  &:hover {
+    color: #00b7ff;
+  }
 }

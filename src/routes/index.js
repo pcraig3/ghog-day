@@ -32,6 +32,7 @@ router.get('/groundhogs/:gId', (req, res) => {
     .all(req.params.gId)
 
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
+  groundhog['predictions'].reverse()
 
   res.render('groundhog', { title: groundhog.name, groundhog })
 })

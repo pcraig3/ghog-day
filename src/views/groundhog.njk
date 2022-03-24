@@ -2,66 +2,94 @@
 {% block content %}
   <div class="inner-content__header">
     <h1>{{ groundhog.name }}</h1>
-    <span><a href="/">← Back</a></span>
+    <div><a href="/">← All groundhogs</a></div>
   </div>
   <div class="inner-content">
     <div class="inner-content__main">
 
-    <p>Punxsutawney Phil is a groundhog in Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his astonishingly long life to the miraculous “groundhog punch” administered at the annual Groundhog Picnic.</p>
+      <p>Punxsutawney Phil is a groundhog in Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog punch” administered at the annual Groundhog Picnic.</p>
 
-    <h4>Specs</h4>
-    <table class="specs">
-        <thead>
+      <div class="specs data-table">
+        <h2 class="data-table__title">Specs</h2>
+        <table class="data-table__table">
+          <thead>
             <tr>
-                <th>Key</th>
-                <th>Value</th>
+              <th>Key</th>
+              <th>Value</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr>
-                <th>Name</th>
-                <td>{{ groundhog.shortname }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ groundhog.city }}</td>
+              <th>Name</th>
+              <td>{{ groundhog.shortname }}</td>
             </tr>
             <tr>
-                <th>Country</th>
-                <td>{{ groundhog.country }}</td>
+              <th>City</th>
+              <td>{{ groundhog.city }}</td>
             </tr>
             <tr>
-                <th>Earliest prognostication</th>
-                <td>{{ groundhog.predictions[0].year }}</td>
+              <th>Country</th>
+              <td>{{ groundhog.country }}</td>
             </tr>
-        </tbody>
-    </table>
+            <tr>
+              <th>Earliest prognostication</th>
+              <td>{{ groundhog.predictions[0].year }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <div class="predictions data-table">
+        <h2 class="data-table__title">Predictions</h2>
+        <p>(only the last 5 years)</p>
+        <table class="data-table__table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Shadow</th>
+              <th>Prediction</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prediction in groundhog.predictions %}
+              {% if prediction.year >= 2018 %}
+                <tr>
+                  <th>{{ prediction.year}}</th>
+                  <td>
+                    {% if prediction.shadow %}
+                      Yes, saw shadow.
+                    {% else %}
+                      Nope, no shadow.
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if prediction.shadow %}
+                      <span aria-hidden="true">☃️</span> More winter! 
+                    {% else %}
+                      <span aria-hidden="true">🌷</span> Early spring!
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
-    <h2>Predictions</h2>
-    <p>(only the last 5 years)</p>
-    <ul>
-      {% for prediction in groundhog.predictions %}
-        {% if prediction.year >= 2018 %}
-          <li>
-            <strong>{{ prediction.year}}</strong>:
-            {% if prediction.shadow %}
-              ☃️ More winter! (Saw shadow) 
-            {% else %}
-              🌷 Early spring! (No shadow)
-            {% endif %}
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+      <div class="other-formats">
+        <h3>Other formats</h3>
+        <ul>
+          <li>As a CSV</li>
+          <li>API</li>
+        </ul>
+      </div>
+
     </div>
         <div class="inner-content__side">
           <figure class="image">
             <img src="/images/phil.jpg" />
             <figcaption>Punxsutawney Phil</figcaption>
           </figure>
-
-          <p>I am on the side. I am on the side. I am on the side. I am on the side. I am on the side. I am on the side. </p>
         </div>
   </div>
 

@@ -20,7 +20,7 @@ a.logo {
 
   .logo--img {
     width: 40px;
-    margin-right: 15px;
+    margin-right: vars.$space-md;
   }
 
   span {
@@ -34,4 +34,8 @@ a.logo {
   border-bottom: 2px solid black;
   align-self: end;
   text-align: end;
+
+  a {
+    text-decoration: none;
+  }
 }
