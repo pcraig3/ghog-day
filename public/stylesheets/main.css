@@ -337,7 +337,7 @@ template {
   display: none;
 }
 
-/* Maybe readex pro, poppins, and syne, archivo, ibm plex mono */
+/* Maybe readex pro, poppins, and syne, archivo, ibm plex mono, inter?? */
 html {
   font-size: 112.5%;
 }
@@ -396,18 +396,127 @@ small,
   font-size: 0.8rem;
 }
 
-/* CSS reset */
-/* Sass stuff */
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   margin: 2em;
+  display: grid;
+  grid: auto-flow min-content/1fr;
+  grid-gap: 1em;
+  grid-template-areas: "header " "nav    " "aside  " "main   " "footer ";
+}
+
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: aside;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+@media screen and (min-width: 650px) {
+  body {
+    grid: auto-flow min-content/1fr 4fr;
+    grid-template-areas: "header header" "nav    aside " "...    main  " "footer main  ";
+  }
+}
+.logo {
+  text-transform: uppercase;
+}
+
+aside {
+  margin-bottom: 100px;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+table.specs {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  /* TODO: remove this */
+  outline: 0;
+}
+table.specs * {
+  outline: 0;
+}
+table.specs thead {
+  visibility: hidden;
+}
+table.specs thead th:first-of-type {
+  width: 75%;
+}
+table.specs th {
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+table.specs td {
+  text-align: left;
+  padding-left: 0;
+  border-bottom: 2px solid black;
+}
+
+.inner-content__header {
+  display: flex;
+}
+.inner-content__header h1 {
+  flex: 3;
+}
+.inner-content__header span {
+  flex: 1;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.inner-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.inner-content .inner-content__main {
+  flex: 2 1 0;
+}
+.inner-content .inner-content__side {
+  flex: 1 1 0;
+}
+
+/* CSS reset */
+/* Sass stuff */
+/* Base CSS */
+/* Sections */
+/* pages */
+* {
+  outline: 1px solid red;
 }
 
 a {
   color: #00b7ff;
-}
-
-li {
-  margin-bottom: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -12,7 +12,14 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
   </head>
   <body>
-    {% block  content %}
-    {% endblock %}
+    <header>
+      <div class="logo">Groundhog Day</div>
+    </header>
+    <nav>Nav</nav>
+    <aside>Aside</aside>
+    <main>
+    {% block content %}{% endblock %}
+    </main>
+    <footer>Footer</footer>
   </body>
 </html>

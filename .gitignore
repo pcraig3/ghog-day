@@ -65,3 +65,7 @@ typings/
 
 # database
 data/sqlite3.db
+
+# generated CSS
+public/stylesheets/main.css
+public/stylesheets/main.css.map

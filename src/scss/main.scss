@@ -4,9 +4,11 @@
 /* Sass stuff */
 @use './_typography';
 
-body {
-  margin: 2em;
-}
+/* Base CSS */
+@use './_base';
+
+/* Sections */
+@use './_header';
 
 a {
   color: #00b7ff;
