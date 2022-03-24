@@ -1,0 +1,9 @@
+/* Spacing */
+$space-base-size: 1rem;
+$space-xs: calc(0.25 * #{$space-base-size});
+$space-sm: calc(0.5 * #{$space-base-size});
+$space-md: calc(0.75 * #{$space-base-size});
+$space-lg: #{$space-base-size};
+$space-xl: calc(1.5 * #{$space-base-size});
+$space-xxl: calc(2.5 * #{$space-base-size});
+$space-xxxl: calc(3.5 * #{$space-base-size});

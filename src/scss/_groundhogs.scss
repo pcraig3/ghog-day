@@ -1,0 +1,79 @@
+aside {
+  margin-bottom: 100px;
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+table.specs {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  /* TODO: remove this */
+  outline: 0;
+
+  * {
+    outline: 0;
+  }
+
+  thead {
+    visibility: hidden;
+
+    th:first-of-type {
+      width: 75%;
+    }
+  }
+
+  th {
+    text-align: left;
+    border-bottom: 2px solid black;
+  }
+
+  td {
+    text-align: left;
+    padding-left: 0;
+    border-bottom: 2px solid black;
+  }
+}
+
+.inner-content__header {
+  display: flex;
+
+  h1 {
+    flex: 3;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.inner-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  > [class^='inner-content__'] {
+  }
+
+  .inner-content__main {
+    flex: 2 1 0;
+  }
+
+  .inner-content__side {
+    flex: 1 1 0;
+  }
+}

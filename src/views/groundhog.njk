@@ -1,31 +1,68 @@
 {% extends "layout.njk" %}
 {% block content %}
-  <h1>{{ groundhog.name }}</h1>
-  <p>Yep, he’s a groundhog alright.</p>
+  <div class="inner-content__header">
+    <h1>{{ groundhog.name }}</h1>
+    <span><a href="/">← Back</a></span>
+  </div>
+  <div class="inner-content">
+    <div class="inner-content__main">
 
-  <div class="specs">
-    <p><strong>Name:</strong> {{ groundhog.shortname }}</p>
-    <p><strong>City:</strong> {{ groundhog.city }}</p>
-    <p><strong>Country:</strong> {{ groundhog.country }}</p>
-    <p><strong>Earliest prognostication:</strong> {{ groundhog.predictions[0].year }}</p>
+    <p>Punxsutawney Phil is a groundhog in Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his astonishingly long life to the miraculous “groundhog punch” administered at the annual Groundhog Picnic.</p>
+
+    <h4>Specs</h4>
+    <table class="specs">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ groundhog.shortname }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ groundhog.city }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ groundhog.country }}</td>
+            </tr>
+            <tr>
+                <th>Earliest prognostication</th>
+                <td>{{ groundhog.predictions[0].year }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h2>Predictions</h2>
+    <p>(only the last 5 years)</p>
+    <ul>
+      {% for prediction in groundhog.predictions %}
+        {% if prediction.year >= 2018 %}
+          <li>
+            <strong>{{ prediction.year}}</strong>:
+            {% if prediction.shadow %}
+              ☃️ More winter! (Saw shadow) 
+            {% else %}
+              🌷 Early spring! (No shadow)
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    </div>
+        <div class="inner-content__side">
+          <figure class="image">
+            <img src="/images/phil.jpg" />
+            <figcaption>Punxsutawney Phil</figcaption>
+          </figure>
+
+          <p>I am on the side. I am on the side. I am on the side. I am on the side. I am on the side. I am on the side. </p>
+        </div>
   </div>
 
-  <h2>Predictions</h2>
-  <p>(only the last 5 years)</p>
-  <ul>
-    {% for prediction in groundhog.predictions %}
-      {% if prediction.year >= 2018 %}
-        <li>
-          <strong>{{ prediction.year}}</strong>:
-          {% if prediction.shadow %}
-            ☃️ More winter! (Saw shadow) 
-          {% else %}
-            🌷 Early spring! (No shadow)
-          {% endif %}
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-
-  <p><a href="/">← Back</a></p>
 {% endblock %}

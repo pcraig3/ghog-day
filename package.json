@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "DEBUG=ghog-day:* nodemon ./bin/www & npm run scss",
+    "dev": "DEBUG=ghog-day:* nodemon -e js,njk ./bin/www & npm run scss",
     "lint": "eslint \"./**/*.js\"",
     "scss": "sass --watch src/scss/main.scss public/stylesheets/main.css",
     "start": "node ./bin/www",

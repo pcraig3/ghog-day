@@ -10,10 +10,13 @@
 /* Sections */
 @use './_header';
 
-a {
-  color: #00b7ff;
+/* pages */
+@use './_groundhogs';
+
+* {
+  outline: 1px solid red;
 }
 
-li {
-  margin-bottom: 5px;
+a {
+  color: #00b7ff;
 }
