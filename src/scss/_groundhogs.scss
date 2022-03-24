@@ -56,10 +56,18 @@
 
     thead:not(.visible) {
       @include mixins.visually-hidden;
+
+      + tbody th {
+        font-weight: 600;
+      }
     }
 
     th {
       text-align: left;
+    }
+
+    thead.visible + tbody th {
+      font-weight: 400;
     }
 
     tbody {

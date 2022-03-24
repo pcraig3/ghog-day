@@ -4,9 +4,7 @@ const DB = require('better-sqlite3-helper')
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  const groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
-  const years = [2022, 2021, 2020, 2019, 2018]
-  res.render('index', { title: 'Groundhog Day', groundhogs, years })
+  res.render('index', { title: 'Groundhog Day.com' })
 })
 
 /* GET groundhogs listing. */
@@ -40,6 +38,22 @@ router.get('/groundhogs/:gId', (req, res) => {
 router.get('/predictions', function (req, res) {
   let rows = DB().query('SELECT * FROM predictions')
   res.send(rows)
+})
+
+/* get groundhogs */
+router.get('/api', function (req, res) {
+  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+
+  groundhogs.map((ghog) => {
+    const predictions = DB()
+      .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
+      .all(ghog['id'])
+    // add predictions to groundhogs
+
+    ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
+  })
+
+  res.send(groundhogs)
 })
 
 module.exports = router

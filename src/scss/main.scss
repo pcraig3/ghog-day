@@ -27,6 +27,10 @@ img {
 a {
   color: currentColor;
 
+  &.underline {
+    text-decoration: underline;
+  }
+
   &:hover {
     color: #00b7ff;
     text-decoration: underline;
