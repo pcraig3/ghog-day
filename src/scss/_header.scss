@@ -1,3 +1,37 @@
-.logo {
-  text-transform: uppercase;
+@use 'vars';
+
+header {
+  display: flex;
+  align-items: center;
+  padding-bottom: vars.$space-xs;
+}
+
+a.logo {
+  display: inline-flex;
+  align-items: center;
+  font-size: 2.441rem;
+  margin: 0;
+  line-height: 1;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .logo--img {
+    width: 40px;
+    margin-right: 15px;
+  }
+
+  span {
+    text-transform: uppercase;
+    color: black;
+  }
+}
+
+.header--right {
+  flex: 1;
+  border-bottom: 2px solid black;
+  align-self: end;
+  text-align: end;
 }

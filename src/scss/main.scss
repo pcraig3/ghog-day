@@ -9,13 +9,10 @@
 
 /* Sections */
 @use './_header';
+@use './_nav';
 
 /* pages */
 @use './_groundhogs';
-
-* {
-  outline: 1px solid red;
-}
 
 a {
   color: #00b7ff;
