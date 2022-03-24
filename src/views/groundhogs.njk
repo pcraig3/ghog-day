@@ -1,0 +1,45 @@
+{% extends "layout.njk" %}
+{% block content %}
+  <div class="inner-content__header">
+    <h1>{{ title }}</h1>
+    <div><a href="/">← Home</a></div>
+  </div>
+  <div class="inner-content">
+    <div class="inner-content__main">
+
+      <p>Most of these groundhogs are groundhogs.</p>
+
+      <div class="specs data-table">
+        <table class="data-table__table data-table__table">
+          <thead class="visible">
+            <tr>
+              <th>Name</th>
+              <th>Country</th>
+              <th>Predictions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for groundhog in groundhogs %}
+              <tr>
+                <th><a href="/groundhogs/{{groundhog.id}}/">{{ groundhog.name }}</a></th>
+                <td>{{ groundhog.country }}</td>
+                <td>{{ groundhog.predictionsCount }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="other-formats">
+        <h3>Other formats</h3>
+        <ul>
+          <li>As a CSV</li>
+          <li>API</li>
+        </ul>
+      </div>
+
+    </div>
+        
+  </div>
+
+{% endblock %}

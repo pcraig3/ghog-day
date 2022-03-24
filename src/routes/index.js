@@ -12,16 +12,15 @@ router.get('/', function (req, res) {
 /* GET groundhogs listing. */
 router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  const predictions = DB().prepare('SELECT * FROM predictions ORDER BY ghogId ASC;').all()
+  const predictionsCount = {}
 
-  groundhogs.map((ghog) => {
-    const predictions = DB()
-      .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
-      .all(ghog['id'])
+  // add predictions to groundhogs
+  groundhogs.map((g) => (predictionsCount[g.id] = 0))
+  predictions.map((p) => predictionsCount[p.ghogId]++)
+  groundhogs.forEach((g) => (g['predictionsCount'] = predictionsCount[g.id]))
 
-    ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
-  })
-
-  res.send(groundhogs)
+  res.render('groundhogs', { title: 'Groundhogs', groundhogs })
 })
 
 router.get('/groundhogs/:gId', (req, res) => {

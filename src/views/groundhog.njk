@@ -2,7 +2,7 @@
 {% block content %}
   <div class="inner-content__header">
     <h1>{{ groundhog.name }}</h1>
-    <div><a href="/">← All groundhogs</a></div>
+    <div><a href="/groundhogs">← All groundhogs</a></div>
   </div>
   <div class="inner-content">
     <div class="inner-content__main">
@@ -34,6 +34,10 @@
             <tr>
               <th>Earliest prognostication</th>
               <td>{{ groundhog.predictions[0].year }}</td>
+            </tr>
+            <tr>
+              <th>Source</th>
+              <td>{{ groundhog.source }}</td>
             </tr>
           </tbody>
         </table>
