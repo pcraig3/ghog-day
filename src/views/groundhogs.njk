@@ -9,7 +9,7 @@
 
       <p>Most of these groundhogs are groundhogs.</p>
 
-      <div class="specs data-table">
+      <div class="groundhogs data-table">
         <table class="data-table__table data-table__table">
           <thead class="visible">
             <tr>
@@ -20,7 +20,7 @@
           </thead>
           <tbody>
             {% for groundhog in groundhogs %}
-              <tr>
+              <tr onclick="window.location='/groundhogs/{{groundhog.id}}/';">
                 <th><a href="/groundhogs/{{groundhog.id}}/">{{ groundhog.name }}</a></th>
                 <td>{{ groundhog.country }}</td>
                 <td>{{ groundhog.predictionsCount }}</td>

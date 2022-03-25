@@ -60,34 +60,53 @@
       + tbody th {
         font-weight: 600;
       }
+
+      + tbody tr:first-of-type {
+        th,
+        td {
+          border-top: 2px solid black;
+        }
+      }
     }
 
     th {
       text-align: left;
     }
 
-    thead.visible + tbody th {
-      font-weight: 400;
+    thead.visible {
+      th {
+        border-bottom: 2px solid black;
+      }
+
+      + tbody th {
+        font-weight: 400;
+      }
     }
 
     tbody {
-      th {
-        border-bottom: 2px solid black;
+      tr:hover {
+        background: #f5f5f5;
+      }
 
-        &:first-of-type {
-          border-top: 2px solid black;
+      tr[onclick]:hover {
+        cursor: pointer;
+
+        a {
+          color: #00b7ff;
+          text-decoration: underline;
+        }
+      }
+
+      tr:last-of-type {
+        th,
+        td {
+          border-bottom: 2px solid black;
         }
       }
 
       td {
         text-align: left;
         padding-left: 0;
-        border-bottom: 2px solid black;
-
-        &:nth-of-type(1),
-        &:nth-of-type(2) {
-          border-top: 2px solid black;
-        }
       }
     }
   }
