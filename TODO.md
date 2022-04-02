@@ -18,6 +18,7 @@ TODO
 - "current" in the nav
 - mobile page
 - Do a smartbear API schema
+- Focus styles
 
 DONE
 

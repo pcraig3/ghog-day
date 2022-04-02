@@ -1,0 +1,42 @@
+@use '../vars';
+
+.current-prediction {
+  background: #fff1c6;
+  border-left: 3px #ffc000 solid;
+  padding-left: vars.$space-md;
+  padding-right: vars.$space-lg;
+  display: inline-block;
+
+  margin-bottom: vars.$space-md;
+  font-size: 115%;
+  border-radius: 1px;
+  position: relative;
+
+  > .icon {
+    font-size: 125%;
+    line-height: 0;
+    display: inline-block;
+    top: 2px;
+    position: relative;
+  }
+}
+
+.inner-content__side--container {
+  border-bottom: 2px solid black;
+}
+
+figure {
+  margin: 0;
+  padding-bottom: vars.$space-sm;
+  border-bottom: 2px solid black;
+
+  img {
+    border: 2px solid black;
+    border-radius: 2px;
+  }
+
+  figcaption {
+    font-size: 85%;
+    line-height: 0.85;
+  }
+}

@@ -14,9 +14,10 @@
 @use './_nav';
 
 /* pages */
-@use './_groundhogs';
+@use './pages/_groundhogs'; /* list of all groundhogs */
+@use './pages/_groundhog'; /* single groundhog */
 
-/* components */
+/* elements */
 @use './elements/_description-list';
 @use './elements/_tables';
 

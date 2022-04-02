@@ -1,4 +1,4 @@
-@use 'vars';
+@use '../vars';
 
 .inner-content__header {
   display: flex;
@@ -10,7 +10,7 @@
     margin-bottom: 0;
   }
 
-  div {
+  > div {
     flex: 1;
     align-self: end;
     text-align: right;
@@ -43,25 +43,5 @@
   ul {
     list-style-type: disc;
     padding-left: vars.$space-lg;
-  }
-}
-
-.inner-content__side--container {
-  border-bottom: 2px solid black;
-}
-
-figure {
-  margin: 0;
-  padding-bottom: vars.$space-sm;
-  border-bottom: 2px solid black;
-
-  img {
-    border: 2px solid black;
-    border-radius: 2px;
-  }
-
-  figcaption {
-    font-size: 85%;
-    line-height: 0.85;
   }
 }

@@ -7,6 +7,16 @@
   <div class="inner-content">
     <div class="inner-content__main">
 
+      <aside class="current-prediction">
+        {% if groundhog.predictions[0].shadow %}
+          <span class="icon" aria-hidden="true">☃️</span>
+          <span>This year, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span>
+        {% else %}
+          <span class="icon" aria-hidden="true">🌷</span>
+          <span>This year, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span>
+        {% endif %}
+      </aside>
+
       <p>{{ groundhog.description }}</p>
 
       <div class="predictions data-table">
@@ -26,7 +36,7 @@
             {% for prediction in groundhog.predictions %}
               {% if prediction.year >= 2018 %}
                 <tr>
-                  <th>{{ prediction.year}}</th>
+                  <th>{{ prediction.year }}</th>
                   <td>
                     {% if prediction.shadow %}
                       Yes, saw shadow.
