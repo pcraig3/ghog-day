@@ -1,0 +1,32 @@
+@use '../vars';
+
+dl {
+  margin: vars.$space-sm 0;
+
+  > div {
+    padding-bottom: 5px;
+
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+dt,
+dd {
+  display: inline-block;
+}
+
+dt {
+  min-width: 25%;
+  float: left;
+  font-weight: 600;
+}
+
+dd {
+  width: 60%;
+  float: right;
+  word-break: break-all;
+}

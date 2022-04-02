@@ -9,42 +9,6 @@
 
       <p>{{ groundhog.description }}</p>
 
-      <div class="specs data-table">
-        <table class="data-table__table">
-          <caption>
-            <h2 class="data-table__title">About</h2>
-          </caption>
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <td>{{ groundhog.shortname }}</td>
-            </tr>
-            <tr>
-              <th>City</th>
-              <td>{{ groundhog.city }}</td>
-            </tr>
-            <tr>
-              <th>Country</th>
-              <td>{{ groundhog.country }}</td>
-            </tr>
-            <tr>
-              <th>Earliest prognostication</th>
-              <td>{{ groundhog.earliestPrediction }}</td>
-            </tr>
-            <tr>
-              <th>Source</th>
-              <td>{{ groundhog.source }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
       <div class="predictions data-table">
         <table class="data-table__table">
           <caption>
@@ -93,12 +57,28 @@
       </div>
 
     </div>
-        <div class="inner-content__side">
-          <figure class="image">
-            <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" />
-            <figcaption>{{ groundhog.name }}</figcaption>
-          </figure>
-        </div>
+    <div class="inner-content__side">
+      <div class="inner-content__side--container">
+        <figure class="image">
+          <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" alt="{{ groundhog.name }}" />
+          <figcaption>{{ groundhog.name }}</figcaption>
+        </figure>
+
+        {% set safelist = ['city', 'region', 'country', 'source', 'currentPrediction'] %}
+
+        <!-- see if you can set a caption -->
+        <dl>
+          {% for key, val in groundhog %}
+            {% if key in safelist%}
+              <div>
+                <dt>{{ key | title }}</dt>
+                <dd>{{ val }}</dd>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
   </div>
 
 {% endblock %}

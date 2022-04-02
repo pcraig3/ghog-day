@@ -46,15 +46,22 @@
   }
 }
 
+.inner-content__side--container {
+  border-bottom: 2px solid black;
+}
+
 figure {
   margin: 0;
+  padding-bottom: vars.$space-sm;
+  border-bottom: 2px solid black;
 
   img {
-    padding: 2px;
     border: 2px solid black;
+    border-radius: 2px;
   }
 
   figcaption {
-    border-bottom: 2px solid black;
+    font-size: 85%;
+    line-height: 0.85;
   }
 }

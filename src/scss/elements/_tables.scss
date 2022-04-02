@@ -1,5 +1,5 @@
-@use 'vars';
-@use 'mixins';
+@use '../vars';
+@use '../mixins';
 
 .data-table {
   margin-bottom: vars.$space-xxl;

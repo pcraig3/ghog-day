@@ -17,7 +17,8 @@
 @use './_groundhogs';
 
 /* components */
-@use './_tables';
+@use './elements/_description-list';
+@use './elements/_tables';
 
 // * {
 //   outline: 1px solid grey;
