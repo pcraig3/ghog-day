@@ -29,6 +29,11 @@ router.get('/groundhogs/:gId', (req, res) => {
     .all(req.params.gId)
 
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
+
+  // assign earliest prediction year as separate attribute
+  groundhog['earliestPrediction'] = groundhog['predictions'][0]['year']
+
+  // reverse predictions order
   groundhog['predictions'].reverse()
 
   res.render('groundhog', { title: groundhog.name, groundhog })

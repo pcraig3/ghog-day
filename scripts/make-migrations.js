@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const csv = require('fast-csv')
-const { escape, hasShadow } = require('./utils')
+const { escape, isBoolean } = require('./utils')
 
 const migrationsStart = `-- Up
 CREATE TABLE groundhogs (
@@ -9,9 +9,13 @@ CREATE TABLE groundhogs (
   shortname TEXT,
   name TEXT,
   city TEXT,
+  region TEXT,
   country TEXT,
   source TEXT,
-  currentPrediction TEXT
+  currentPrediction TEXT,
+  isGroundhog BOOLEAN,
+  type TEXT,
+  description TEXT
 );
 
 CREATE TABLE predictions (
@@ -59,11 +63,13 @@ const insertGroundhogs = () => {
         reject(error)
       })
       .on('data', (row) => {
-        const insert = `INSERT INTO groundhogs (id, shortname, name, city, country, source, currentPrediction) VALUES (${parseInt(
+        const insert = `INSERT INTO groundhogs (id, shortname, name, city, region, country, source, currentPrediction, isGroundhog, type, description) VALUES (${parseInt(
           row.id,
         )}, '${escape(row.shortname)}', '${escape(row.name)}', '${escape(row.city)}', '${escape(
-          row.country,
-        )}', '${escape(row.source)}', '${escape(row.currentPrediction)}');\n`
+          row.region,
+        )}', '${escape(row.country)}', '${escape(row.source)}', '${escape(
+          row.currentPrediction,
+        )}', ${isBoolean(row.isGroundhog)}, '${escape(row.type)}', '${escape(row.description)}');\n`
 
         stream.write(insert)
       })
@@ -92,7 +98,7 @@ const insertPredictions = () => {
         .on('data', (row) => {
           const insert = `INSERT INTO predictions (ghogId, year, shadow, details) VALUES (${parseInt(
             id,
-          )}, ${parseInt(row.year)}, ${hasShadow(row.shadow)}, '${escape(row.details)}');\n`
+          )}, ${parseInt(row.year)}, ${isBoolean(row.shadow)}, '${escape(row.details)}');\n`
 
           stream.write(insert)
         })

@@ -4,6 +4,7 @@
 
 /* Sass stuff */
 @use './_typography';
+@use './mixins';
 
 /* Base CSS */
 @use './_base';
@@ -15,9 +16,20 @@
 /* pages */
 @use './_groundhogs';
 
+/* components */
+@use './_tables';
+
 // * {
-//   outline: 1px solid red;
+//   outline: 1px solid grey;
 // }
+
+.visually-hidden {
+  @include mixins.visually-hidden;
+}
+
+.letter-spacing--less {
+  letter-spacing: -3px;
+}
 
 img {
   max-width: 100%;

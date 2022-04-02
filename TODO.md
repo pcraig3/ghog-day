@@ -15,6 +15,9 @@ TODO
 - Images for groundhogs
 - About page
 - "data" seo
+- "current" in the nav
+- mobile page
+- Do a smartbear API schema
 
 DONE
 

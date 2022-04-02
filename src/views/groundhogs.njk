@@ -14,14 +14,16 @@
           <thead class="visible">
             <tr>
               <th>Name</th>
+              <th>Province/State</th>
               <th>Country</th>
-              <th>Predictions</th>
+              <th>Total predictions</th>
             </tr>
           </thead>
           <tbody>
             {% for groundhog in groundhogs %}
               <tr onclick="window.location='/groundhogs/{{groundhog.id}}/';">
                 <th><a href="/groundhogs/{{groundhog.id}}/">{{ groundhog.name }}</a></th>
+                <td>{{ groundhog.region }}</td>
                 <td>{{ groundhog.country }}</td>
                 <td>{{ groundhog.predictionsCount }}</td>
               </tr>

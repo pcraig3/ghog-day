@@ -7,11 +7,13 @@
   <div class="inner-content">
     <div class="inner-content__main">
 
-      <p>Punxsutawney Phil is a groundhog in Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog punch” administered at the annual Groundhog Picnic.</p>
+      <p>{{ groundhog.description }}</p>
 
       <div class="specs data-table">
-        <h2 class="data-table__title">About</h2>
         <table class="data-table__table">
+          <caption>
+            <h2 class="data-table__title">About</h2>
+          </caption>
           <thead>
             <tr>
               <th>Key</th>
@@ -33,7 +35,7 @@
             </tr>
             <tr>
               <th>Earliest prognostication</th>
-              <td>{{ groundhog.predictions[0].year }}</td>
+              <td>{{ groundhog.earliestPrediction }}</td>
             </tr>
             <tr>
               <th>Source</th>
@@ -44,9 +46,11 @@
       </div>
 
       <div class="predictions data-table">
-        <h2 class="data-table__title">Predictions</h2>
-        <p>(only the last 5 years)</p>
         <table class="data-table__table">
+          <caption>
+            <h2 class="data-table__title">Predictions</h2>
+            <p>(Last 5 years)</p>
+          </caption>
           <thead>
             <tr>
               <th>Year</th>
@@ -91,8 +95,8 @@
     </div>
         <div class="inner-content__side">
           <figure class="image">
-            <img src="/images/phil.jpg" />
-            <figcaption>Punxsutawney Phil</figcaption>
+            <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" />
+            <figcaption>{{ groundhog.name }}</figcaption>
           </figure>
         </div>
   </div>

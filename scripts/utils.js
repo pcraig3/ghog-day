@@ -1,5 +1,5 @@
-const hasShadow = (shadow = '') => {
-  switch (shadow.toUpperCase()) {
+const isBoolean = (booleanValue = '') => {
+  switch (booleanValue.toUpperCase()) {
     case 'TRUE':
       return 1
     case 'FALSE':
@@ -44,6 +44,6 @@ const escape = (str) => {
 }
 
 module.exports = {
-  hasShadow,
+  isBoolean,
   escape,
 }
