@@ -10,13 +10,20 @@ router.get('/', function (req, res) {
 /* GET groundhogs listing. */
 router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
-  const predictions = DB().prepare('SELECT * FROM predictions ORDER BY ghogId ASC;').all()
+  let predictions = []
   const predictionsCount = {}
 
   // add predictions to groundhogs
-  groundhogs.map((g) => (predictionsCount[g.id] = 0))
-  predictions.map((p) => predictionsCount[p.ghogId]++)
-  groundhogs.forEach((g) => (g['predictionsCount'] = predictionsCount[g.id]))
+  groundhogs.forEach((g) => {
+    predictions = DB()
+      .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
+      .all(g.id)
+
+    console.log(predictions)
+
+    g['predictionsCount'] = predictions.length
+    g['latestPrediction'] = predictions[predictions.length - 1]
+  })
 
   res.render('groundhogs', { title: 'Groundhogs', groundhogs })
 })

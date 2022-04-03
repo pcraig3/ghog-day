@@ -7,7 +7,12 @@
   <div class="inner-content">
     <div class="inner-content__main">
 
-      <p>Most of these groundhogs are groundhogs.</p>
+      <p>Yearly predictions for <strong>5</strong> weather-predicting animals, <strong>5</strong> of which are groundhogs.</p>
+      <p>In 2022:</p>
+      <ul>
+        <li><strong>2</strong> groundhogs (40%) predict six more weeks of winter: ☃️</li>
+        <li><strong>3</strong> groundhogs (60%) predict an early spring: 🌷</li>
+      </ul>
 
       <div class="groundhogs data-table">
         <table class="data-table__table data-table__table">
@@ -16,6 +21,7 @@
               <th>Name</th>
               <th>Province/State</th>
               <th>Country</th>
+              <th>Current prediction</th>
               <th>Total predictions</th>
             </tr>
           </thead>
@@ -25,6 +31,13 @@
                 <th><a href="/groundhogs/{{groundhog.id}}/">{{ groundhog.name }}</a></th>
                 <td>{{ groundhog.region }}</td>
                 <td>{{ groundhog.country }}</td>
+                <td>
+                  {% if groundhog.latestPrediction.shadow %}
+                    <span aria-label="Longer winter">☃️</span>
+                  {% else %}
+                    <span aria-label="Early spring">🌷</span>
+                  {% endif %}
+                </td>
                 <td>{{ groundhog.predictionsCount }}</td>
               </tr>
             {% endfor %}
