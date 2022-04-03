@@ -6,16 +6,17 @@
   </div>
   <div class="inner-content">
     <div class="inner-content__main">
-
-      <p>Yearly predictions for <strong>5</strong> weather-predicting animals, <strong>5</strong> of which are groundhogs.</p>
       <p>In 2022:</p>
-      <ul>
-        <li><strong>2</strong> groundhogs (40%) predict six more weeks of winter: ☃️</li>
-        <li><strong>3</strong> groundhogs (60%) predict an early spring: 🌷</li>
+      <ul class="with-bullets">
+        <li><strong>{{ recentPredictions.winter }}</strong> groundhogs ({{ recentPredictions.winterPercent }}%) predicted six more weeks of winter: ☃️</li>
+        <li><strong>{{ recentPredictions.spring }}</strong> groundhogs ({{ recentPredictions.springPercent }}%) predicted an early spring: 🌷</li>
       </ul>
 
       <div class="groundhogs data-table">
         <table class="data-table__table data-table__table">
+          <caption class="visually-hidden">
+              <h2>All groundhogs</h2>
+          </captions>
           <thead class="visible">
             <tr>
               <th>Name</th>
@@ -47,7 +48,7 @@
 
       <div class="other-formats">
         <h3>Other formats</h3>
-        <ul>
+        <ul class="with-bullets">
           <li>As a CSV</li>
           <li>API</li>
         </ul>

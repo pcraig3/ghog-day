@@ -2,16 +2,21 @@ var express = require('express')
 var router = express.Router()
 const DB = require('better-sqlite3-helper')
 
+/* Utils */
+function _getPercent(percent, total) {
+  return Math.round((percent / total) * 100)
+}
+
 /* GET home page. */
 router.get('/', function (req, res) {
   res.render('index', { title: 'Groundhog Day.com' })
 })
 
-/* GET groundhogs listing. */
+/* GET all groundhogs */
 router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
   let predictions = []
-  const predictionsCount = {}
+  const recentPredictions = { total: 0, winter: 0, spring: 0, winterPercent: 0, springPercent: 0 }
 
   // add predictions to groundhogs
   groundhogs.forEach((g) => {
@@ -19,15 +24,27 @@ router.get('/groundhogs', function (req, res) {
       .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
       .all(g.id)
 
-    console.log(predictions)
-
     g['predictionsCount'] = predictions.length
     g['latestPrediction'] = predictions[predictions.length - 1]
+
+    ++recentPredictions['total']
+    g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
 
-  res.render('groundhogs', { title: 'Groundhogs', groundhogs })
+  // calculate percentages for spring vs. winter predictions
+  recentPredictions['winterPercent'] = _getPercent(
+    recentPredictions['winter'],
+    recentPredictions['total'],
+  )
+  recentPredictions['springPercent'] = _getPercent(
+    recentPredictions['spring'],
+    recentPredictions['total'],
+  )
+
+  res.render('groundhogs', { title: 'Groundhogs', groundhogs, recentPredictions })
 })
 
+/* GET single groundhog */
 router.get('/groundhogs/:gId', (req, res) => {
   let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
 
@@ -46,13 +63,13 @@ router.get('/groundhogs/:gId', (req, res) => {
   res.render('groundhog', { title: groundhog.name, groundhog })
 })
 
-/* GET predictions listing. */
+/* GET predictions as json */
 router.get('/predictions', function (req, res) {
   let rows = DB().query('SELECT * FROM predictions')
   res.send(rows)
 })
 
-/* get groundhogs */
+/* get groundhogs as JSON */
 router.get('/api', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
 

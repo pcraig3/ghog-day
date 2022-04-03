@@ -1,0 +1,17 @@
+@use '../vars';
+
+ul,
+ol {
+  &.with-bullets {
+    list-style-type: disc;
+    padding-left: vars.$space-lg;
+  }
+}
+
+p {
+  + ul,
+  + ol {
+    margin-top: calc(-1 * vars.$space-md);
+    margin-bottom: vars.$space-lg;
+  }
+}

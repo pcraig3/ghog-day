@@ -1,3 +1,5 @@
+@use 'vars';
+
 /* Maybe readex pro, poppins, and syne, archivo, ibm plex mono, inter?? */
 html {
   font-size: 112.5%;
@@ -14,6 +16,7 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 1.45;
+  margin-bottom: vars.$space-lg;
 }
 
 strong {
