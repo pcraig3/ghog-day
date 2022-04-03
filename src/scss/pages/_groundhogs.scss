@@ -22,10 +22,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  gap: vars.$space-xl;
 
   .inner-content__main {
     flex: 2 1 0;
-    margin-right: vars.$space-xl;
   }
 
   .inner-content__side {
