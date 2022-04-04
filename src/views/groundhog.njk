@@ -69,7 +69,7 @@
     </div>
     <div class="inner-content__side">
       <div class="inner-content__side--container">
-        <figure class="image">
+        <figure class="groundhog--image image">
           <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" alt="{{ groundhog.name }}" />
           <figcaption>{{ groundhog.name }}</figcaption>
         </figure>
@@ -77,11 +77,11 @@
         {% set safelist = ['city', 'region', 'country', 'source', 'currentPrediction'] %}
 
         <!-- see if you can set a caption -->
-        <dl>
+        <dl class="groundhog--facts">
           {% for key, val in groundhog %}
             {% if key in safelist%}
               <div>
-                <dt>{{ key | title }}</dt>
+                <dt>{{ key | title }}:</dt>
                 <dd>{{ val }}</dd>
               </div>
             {% endif %}

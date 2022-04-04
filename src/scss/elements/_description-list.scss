@@ -1,10 +1,10 @@
 @use '../vars';
 
 dl {
-  margin: vars.$space-sm 0;
-
   > div {
-    padding-bottom: 5px;
+    &:not(:last-of-type) {
+      margin-bottom: vars.$space-sm;
+    }
 
     &::after {
       content: '';
@@ -20,13 +20,11 @@ dd {
 }
 
 dt {
-  min-width: 25%;
-  float: left;
   font-weight: 600;
 }
 
 dd {
-  width: 60%;
-  float: right;
-  word-break: break-all;
+  line-height: 1.5;
+  margin-top: calc(-0.5 * vars.$space-xs);
+  word-break: break-word;
 }

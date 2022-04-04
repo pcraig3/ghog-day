@@ -21,14 +21,9 @@
   }
 }
 
-.inner-content__side--container {
-  border-bottom: 2px solid black;
-}
-
-figure {
+.groundhog--image {
   margin: 0;
-  padding-bottom: vars.$space-sm;
-  border-bottom: 2px solid black;
+  padding: 0;
 
   img {
     border: 2px solid black;
@@ -36,7 +31,12 @@ figure {
   }
 
   figcaption {
-    font-size: 85%;
-    line-height: 0.85;
+    display: none;
   }
+}
+
+.groundhog--facts {
+  border: 2px solid black;
+  margin-top: calc(-1 * vars.$space-md);
+  padding: vars.$space-md vars.$space-sm vars.$space-md vars.$space-md;
 }
