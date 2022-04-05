@@ -22,10 +22,12 @@ DB({
 
 var app = express()
 
-nunjucks.configure(path.join(__dirname, './src/views'), {
+var nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views'), {
   autoescape: true,
   express: app,
 })
+
+nunjucksEnvironment.addFilter('cleanUrl', require('./src/filters/cleanUrl'))
 
 var indexRouter = require('./src/routes/index')
 

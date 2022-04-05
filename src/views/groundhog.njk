@@ -74,18 +74,32 @@
           <figcaption>{{ groundhog.name }}</figcaption>
         </figure>
 
-        {% set safelist = ['city', 'region', 'country', 'source', 'currentPrediction'] %}
-
         <!-- see if you can set a caption -->
         <dl class="groundhog--facts">
-          {% for key, val in groundhog %}
-            {% if key in safelist%}
-              <div>
-                <dt>{{ key | title }}:</dt>
-                <dd>{{ val }}</dd>
-              </div>
+          <div>
+            <dt>City:</dt>
+            <dd>{{ groundhog.city }}</dd>
+          </div>
+          <div>
+            {% if groundhog.country === 'USA' %}
+              <dt>State:</dt>
+            {% else %}
+              <dt>Province:</dt>
             {% endif %}
-          {% endfor %}
+            <dd>{{ groundhog.region }}</dd>
+          </div>
+          <div>
+            <dt>Country:</dt>
+            <dd>{{ groundhog.country }}</dd>
+          </div>
+          <div>
+            <dt>Source:</dt>
+            <dd>{{ groundhog.source | cleanUrl | safe  }}</dd>
+          </div>
+          <div>
+            <dt>This year’s prediction:</dt>
+            <dd>{{ groundhog.currentPrediction | cleanUrl | safe  }}</dd>
+          </div>
         </dl>
       </div>
     </div>
