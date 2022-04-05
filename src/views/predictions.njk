@@ -1,0 +1,76 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  predictions
+{%- endblock %}
+
+{% block content %}
+  <div class="inner-content__header">
+    <h1>{{ title }}</h1>
+    <div><a href="/groundhogs/{{ groundhog.id }}/">← {{ groundhog.name }}</a></div>
+  </div>
+  <div class="inner-content">
+    <div class="inner-content__main">
+
+      <p>{{ groundhog.name }} has made <strong>{{ groundhog.predictions | length }}</strong> predictions since {{ groundhog.predictions[0].year }}.</p>
+
+      <p>At a glance, Phil has made:</p>
+      <ul class="with-bullets">
+        <li><strong>{{ allPredictions.shadow }}</strong> prediction{% if allPredictions.shadow != 1 %}s{% endif %} ({{  allPredictions.percent.shadow }}%) of six more weeks of winter</li>
+        <li><strong>{{ allPredictions.noShadow }}</strong> prediction{% if allPredictions.noShadow != 1 %}s{% endif %} ({{  allPredictions.percent.noShadow }}%) of early spring</li>
+        {% if allPredictions['null'] > 0 %}
+          <li><strong>{{ allPredictions['null'] }}</strong> time{% if allPredictions['null'] != 1 %}s{% endif %} ({{  allPredictions.percent['null'] }}%), {{ groundhog.shortname }}’s prediction{% if allPredictions['null'] != 1 %}s{% endif %} went unrecorded</li>
+        {% endif %}
+      </ul>
+
+      <p>This data can be exported as a CSV file or via the Groundhog Day API.</p>
+
+      {% set hasDetails = groundhog.predictions[0].details %}
+      <div class="data-table predictions {% if hasDetails%}predictions--has-details{% endif %}">
+        <table class="data-table__table">
+          <caption>
+            <h2 class="data-table__title">All predictions</h2>
+          </caption>
+          <thead class="visible">
+            <tr>
+              <th>Year</th>
+              <th>Saw shadow?</th>
+              {% if hasDetails %}
+                <th>Details</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for prediction in groundhog.predictions %}
+                <tr>
+                  <th>{{ prediction.year }}</th>
+                  <td>
+                    {% if prediction.shadow == true %}
+                      Yes, saw shadow.
+                    {% elseif prediction.shadow == false %}
+                      Nope, no shadow.
+                    {% else %}
+                      <span aria-hidden="true">—</span>
+                      <span class="visually-hidden">Unknown.</span>
+                    {% endif %}
+                  </td>
+                  {% if hasDetails %}
+                      <td>{{ prediction.details }}</td>
+                  {% endif %}
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="other-formats">
+        <h3>Other formats</h3>
+        <ul class="with-bullets">
+          <li>As a CSV</li>
+          <li>API</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

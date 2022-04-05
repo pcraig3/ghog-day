@@ -1,4 +1,9 @@
 {% extends "layout.njk" %}
+
+{% block body_classes -%}
+  groundhog
+{%- endblock %}
+
 {% block content %}
   <div class="inner-content__header">
     <h1>{{ groundhog.name }}</h1>
@@ -19,7 +24,7 @@
 
       <p>{{ groundhog.description }}</p>
 
-      <div class="predictions data-table">
+      <div class="recent-predictions data-table">
         <table class="data-table__table">
           <caption>
             <h2 class="data-table__title">Recent predictions</h2>
@@ -27,7 +32,7 @@
           <thead>
             <tr>
               <th>Year</th>
-              <th>Shadow</th>
+              <th>Saw shadow?</th>
               <th>Prediction</th>
             </tr>
           </thead>
@@ -55,7 +60,7 @@
             {% endfor %}
           </tbody>
         </table>
-        <p class="all-predictions"><a href="#">All {{ groundhog.predictions | length }} predictions →</a></p>
+        <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions">All {{ groundhog.predictions | length }} predictions →</a></p>
       </div>
 
       <div class="other-formats">

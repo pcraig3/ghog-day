@@ -1,4 +1,9 @@
 {% extends "layout.njk" %}
+
+{% block body_classes -%}
+  groundhogs
+{%- endblock %}
+
 {% block content %}
   <div class="inner-content__header">
     <h1>{{ title }}</h1>
@@ -8,8 +13,8 @@
     <div class="inner-content__main">
       <p>In 2022:</p>
       <ul class="with-bullets">
-        <li><strong>{{ recentPredictions.winter }}</strong> groundhogs ({{ recentPredictions.winterPercent }}%) predicted six more weeks of winter: ☃️</li>
-        <li><strong>{{ recentPredictions.spring }}</strong> groundhogs ({{ recentPredictions.springPercent }}%) predicted an early spring: 🌷</li>
+        <li><strong>{{ recentPredictions.winter }}</strong> groundhogs ({{ recentPredictions.percent.winter }}%) predicted six more weeks of winter: ☃️</li>
+        <li><strong>{{ recentPredictions.spring }}</strong> groundhogs ({{ recentPredictions.percent.spring }}%) predicted an early spring: 🌷</li>
       </ul>
 
       <div class="groundhogs data-table">

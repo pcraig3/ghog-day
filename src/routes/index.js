@@ -7,6 +7,26 @@ function _getPercent(percent, total) {
   return Math.round((percent / total) * 100)
 }
 
+function _calcPercentages(obj = {}) {
+  const { total } = obj
+  if (!total) {
+    return obj
+  }
+
+  const newObj = { ...obj }
+  const percent = {}
+
+  for (const property in newObj) {
+    if (property !== 'total') {
+      percent[property] = _getPercent(newObj[property], total)
+    }
+  }
+
+  newObj['percent'] = percent
+
+  return newObj
+}
+
 /* GET home page. */
 router.get('/', function (req, res) {
   res.render('index', { title: 'Groundhog Day.com' })
@@ -16,7 +36,7 @@ router.get('/', function (req, res) {
 router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
   let predictions = []
-  const recentPredictions = { total: 0, winter: 0, spring: 0, winterPercent: 0, springPercent: 0 }
+  const recentPredictions = { total: 0, winter: 0, spring: 0 }
 
   // add predictions to groundhogs
   groundhogs.forEach((g) => {
@@ -31,17 +51,11 @@ router.get('/groundhogs', function (req, res) {
     g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
 
-  // calculate percentages for spring vs. winter predictions
-  recentPredictions['winterPercent'] = _getPercent(
-    recentPredictions['winter'],
-    recentPredictions['total'],
-  )
-  recentPredictions['springPercent'] = _getPercent(
-    recentPredictions['spring'],
-    recentPredictions['total'],
-  )
-
-  res.render('groundhogs', { title: 'Groundhogs', groundhogs, recentPredictions })
+  res.render('groundhogs', {
+    title: 'Groundhogs',
+    groundhogs,
+    recentPredictions: _calcPercentages(recentPredictions),
+  })
 })
 
 /* GET single groundhog */
@@ -61,6 +75,37 @@ router.get('/groundhogs/:gId', (req, res) => {
   groundhog['predictions'].reverse()
 
   res.render('groundhog', { title: groundhog.name, groundhog })
+})
+
+/* GET single groundhog */
+router.get('/groundhogs/:gId/predictions', (req, res) => {
+  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
+  let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
+
+  const predictions = DB()
+    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
+    .all(req.params.gId)
+
+  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
+
+  groundhog['predictions'].forEach((p) => {
+    ++allPredictions['total']
+
+    p.shadow === 1
+      ? ++allPredictions['shadow']
+      : p.shadow === 0
+      ? ++allPredictions['noShadow']
+      : ++allPredictions['null']
+  })
+
+  // reverse predictions order
+  // groundhog['predictions'].reverse()
+
+  res.render('predictions', {
+    title: `${groundhog.shortname}’s Predictions`,
+    groundhog,
+    allPredictions: _calcPercentages(allPredictions),
+  })
 })
 
 /* GET predictions as json */

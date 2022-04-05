@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
   </head>
-  <body>
+  <body class="{% block body_classes %}{% endblock %}">
     <header>
       <a class="logo" href="/">
         <img src="/images/logo.png" class="logo--img" />

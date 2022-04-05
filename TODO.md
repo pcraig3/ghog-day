@@ -1,5 +1,6 @@
 TODO
 
+- Buttons for CSV and API
 - Separate API from UI
 - Create an actual API
 - Github actions autodeploy
