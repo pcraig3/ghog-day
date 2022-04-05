@@ -36,7 +36,7 @@
       + tbody tr:first-of-type {
         th,
         td {
-          border-top: 2px solid black;
+          border-top: 1.5px solid black;
         }
       }
     }
@@ -47,7 +47,7 @@
 
     thead.visible {
       th {
-        border-bottom: 2px solid black;
+        border-bottom: 1.5px solid black;
       }
 
       + tbody th {
@@ -86,7 +86,7 @@
       tr:last-of-type {
         th,
         td {
-          border-bottom: 2px solid black;
+          border-bottom: 1.5px solid black;
         }
       }
 

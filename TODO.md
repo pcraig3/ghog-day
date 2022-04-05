@@ -21,6 +21,7 @@ TODO
 - Nunjucks filter to clean up urls
 - Data as CSV
 - Show/hide all predictions
+- Make the arrows into icons
 
 DONE
 

@@ -22,8 +22,7 @@
       <div class="predictions data-table">
         <table class="data-table__table">
           <caption>
-            <h2 class="data-table__title">Predictions</h2>
-            <p>(Last 5 years)</p>
+            <h2 class="data-table__title">Recent predictions</h2>
           </caption>
           <thead>
             <tr>
@@ -56,6 +55,7 @@
             {% endfor %}
           </tbody>
         </table>
+        <p class="all-predictions"><a href="#">All {{ groundhog.predictions | length }} predictions →</a></p>
       </div>
 
       <div class="other-formats">
