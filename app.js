@@ -35,6 +35,12 @@ var indexRouter = require('./src/routes/index')
 app.set('views', path.join(__dirname, './src/views'))
 app.set('view engine', 'njk')
 
+app.use((req, res, next) => {
+  // add current route to templates
+  app.locals.path = req.path
+  next()
+})
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

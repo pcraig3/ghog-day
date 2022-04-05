@@ -8,13 +8,10 @@ TODO
 - Generic 404 page
 - Analytics
 - page title and meta tag
-- Page for current predictions
-- Sort out the product page
 - "final" groundhog page
 - "final" grounhogs page
 - About page
 - "data" seo
-- "current" in the nav
 - mobile layout
 - Do a smartbear API schema
 - Data as CSV
@@ -24,6 +21,8 @@ TODO
 
 DONE
 
+- "current" in the nav
+- Sort out the product page
 - Focus styles
 - Nunjucks filter to clean up urls
 - Create the homepage
