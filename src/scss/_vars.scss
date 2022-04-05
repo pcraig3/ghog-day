@@ -5,8 +5,8 @@ $space-sm: calc(0.5 * #{$space-base-size});
 $space-md: calc(0.75 * #{$space-base-size});
 $space-lg: #{$space-base-size};
 $space-xl: calc(1.5 * #{$space-base-size});
-$space-xxl: calc(2.5 * #{$space-base-size});
-$space-xxxl: calc(3.5 * #{$space-base-size});
+$space-xxl: calc(2 * #{$space-base-size});
+$space-xxxl: calc(3 * #{$space-base-size});
 
 /* Colours */
 $color-focus: #00b7ff;
