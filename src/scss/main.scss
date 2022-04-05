@@ -4,7 +4,8 @@
 
 /* Sass stuff */
 @use './_typography';
-@use './mixins';
+@use './_mixins';
+@use './_vars';
 
 /* Base CSS */
 @use './_base';
@@ -46,8 +47,14 @@ a {
     text-decoration: underline;
   }
 
-  &:hover {
-    color: #00b7ff;
+  &:hover,
+  &:focus {
+    color: vars.$color-focus;
     text-decoration: underline;
+  }
+
+  &:focus {
+    outline: black 2px dotted;
+    outline-offset: 2px;
   }
 }

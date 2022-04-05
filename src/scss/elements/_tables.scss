@@ -78,9 +78,15 @@
         cursor: pointer;
 
         a {
-          color: #00b7ff;
+          color: vars.$color-focus;
           text-decoration: underline;
         }
+      }
+
+      tr[onclick]:focus-within {
+        outline: 2px dotted black;
+        outline-offset: 2px;
+        background: #fbfbfb;
       }
 
       tr:last-of-type {

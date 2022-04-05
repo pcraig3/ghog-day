@@ -17,14 +17,15 @@ TODO
 - "current" in the nav
 - mobile layout
 - Do a smartbear API schema
-- Focus styles
-- Nunjucks filter to clean up urls
 - Data as CSV
 - Show/hide all predictions
-- Make the arrows into icons
+- Arrows in links, hide them
+- Arrows in links, use icons?
 
 DONE
 
+- Focus styles
+- Nunjucks filter to clean up urls
 - Create the homepage
 - Images for groundhogs
 - Favicon
