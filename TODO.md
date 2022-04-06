@@ -13,7 +13,6 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Buttons for CSV and API
 - Create an actual API
 - Security headers
 - Find a litte more data
@@ -26,6 +25,7 @@ FOR AN EVENTUAL LAUNCH
 
 DONE
 
+- Buttons for CSV and API
 - Arrows in links, hide them
 - "current" in the nav
 - Sort out the product page
