@@ -7,7 +7,8 @@
     "lint": "eslint \"./**/*.js\"",
     "scss:watch": "sass --watch src/scss/main.scss public/stylesheets/main.css",
     "scss": "sass src/scss/main.scss public/stylesheets/main.css",
-    "start": "npm run scss & node ./bin/www",
+    "start": "npm run scss & npm run start:prod",
+    "start:prod": "node ./bin/www",
     "test": "jest --testPathIgnorePatterns='skip*'"
   },
   "dependencies": {

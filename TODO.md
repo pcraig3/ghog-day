@@ -4,7 +4,7 @@ TODO
 - Github actions autodeploy
 - Find more data
 - "final" groundhog page
-- "final" grounhogs page
+- "final" groundhogs page
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
@@ -12,6 +12,7 @@ TODO
 - Arrows in links, use icons?
 - Add a "back" option at the bottom? Or in the footer?
 - reverse the data for the predictions?
+- Add Github hash as part of auto deploy
 
 FOR AN EVENTUAL LAUNCH
 
