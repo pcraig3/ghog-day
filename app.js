@@ -38,6 +38,10 @@ app.set('view engine', 'njk')
 app.use((req, res, next) => {
   // add current route to templates
   app.locals.path = req.path
+
+  // add (optional) github sha to templates
+  app.locals.GITHUB_SHA = process.env.GITHUB_SHA
+
   next()
 })
 
