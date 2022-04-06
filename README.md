@@ -1,4 +1,4 @@
-# Groundhog day dot com
+# Groundhog Day dot com
 
 It's a real holiday.
 
@@ -6,7 +6,7 @@ It's a real holiday.
 
 ```sh
 # build an image locally
-docker build -t pcraig3/ghog:<tag> .
+docker build -t pcraig3/ghog:<tag> --build-arg GITHUB_SHA_ARG=<tag> .
 
 # run the container
 docker run -it -p 3000:3000 pcraig3/ghog:<tag>
