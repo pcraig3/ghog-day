@@ -12,8 +12,22 @@ describe('Test server responses', () => {
     expect(response.statusCode).toBe(404)
   })
 
-  test('it should NOT return security-focused headers in reponses', async () => {
+  test('it should return security-focused headers in reponses', async () => {
     const response = await request(app).get('/')
-    expect(response.headers['x-powered-by']).toEqual('Express')
+
+    /*
+      More documentaion on each of these can be found here:
+      - https://helmetjs.github.io/docs/
+    */
+    expect(response.headers['x-dns-prefetch-control']).toEqual('off')
+    expect(response.headers['x-frame-options']).toEqual('SAMEORIGIN')
+    expect(response.headers['strict-transport-security']).toEqual(
+      'max-age=15552000; includeSubDomains',
+    )
+    expect(response.headers['x-download-options']).toEqual('noopen')
+    expect(response.headers['x-content-type-options']).toEqual('nosniff')
+    expect(response.headers['x-xss-protection']).toEqual('0')
+
+    expect(response.headers['x-powered-by']).toBeUndefined()
   })
 })

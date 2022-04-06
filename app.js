@@ -1,9 +1,10 @@
-var createError = require('http-errors')
-var express = require('express')
-var path = require('path')
-var cookieParser = require('cookie-parser')
-var logger = require('morgan')
-var nunjucks = require('nunjucks')
+const createError = require('http-errors')
+const express = require('express')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const nunjucks = require('nunjucks')
+const helmet = require('helmet')
 const DB = require('better-sqlite3-helper')
 
 // The first call creates the global instance with your settings
@@ -20,16 +21,16 @@ DB({
   },
 })
 
-var app = express()
+const app = express()
 
-var nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views'), {
+const nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views'), {
   autoescape: true,
   express: app,
 })
 
 nunjucksEnvironment.addFilter('cleanUrl', require('./src/filters/cleanUrl'))
 
-var indexRouter = require('./src/routes/index')
+const indexRouter = require('./src/routes/index')
 
 // view engine setup
 app.set('views', path.join(__dirname, './src/views'))
@@ -50,6 +51,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(helmet({ contentSecurityPolicy: false }))
 
 app.use('/', indexRouter)
 

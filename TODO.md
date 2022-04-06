@@ -1,7 +1,6 @@
 TODO
 
 - Separate API from UI
-- Github actions autodeploy
 - Find more data
 - "final" groundhog page
 - "final" groundhogs page
@@ -16,7 +15,6 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Security headers
 - Find a litte more data
 - Generic 404 page
 - Analytics
@@ -30,6 +28,8 @@ FOR AN EVENTUAL LAUNCH
 
 DONE
 
+- Security headers
+- Github actions autodeploy
 - Create an actual API
 - Buttons for CSV and API
 - Arrows in links, hide them
