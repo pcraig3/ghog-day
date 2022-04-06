@@ -13,18 +13,21 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Create an actual API
 - Security headers
 - Find a litte more data
 - Generic 404 page
 - Analytics
 - Get it deployed with the URL
 - page title and meta tag
-- About page
+- Page: About
+- Page: API
+- Page: This year's prediction
+- Add a Groundhog (basically, an email)
 - mobile layout
 
 DONE
 
+- Create an actual API
 - Buttons for CSV and API
 - Arrows in links, hide them
 - "current" in the nav

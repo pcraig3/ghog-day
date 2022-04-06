@@ -14,7 +14,11 @@
       margin-right: vars.$space-sm;
     }
   
+    a.link-button,
     button {
+      display: inherit;
+      line-height: 1.2;
+      font-weight: 400;
       position: relative;
       padding: vars.$space-xs vars.$space-sm;
       border: 2px solid black;

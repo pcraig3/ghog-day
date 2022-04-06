@@ -115,19 +115,32 @@ router.get('/predictions', function (req, res) {
 })
 
 /* get groundhogs as JSON */
-router.get('/api', function (req, res) {
+router.get('/api/v1/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
 
   groundhogs.map((ghog) => {
     const predictions = DB()
       .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
       .all(ghog['id'])
-    // add predictions to groundhogs
 
+    // add predictions to groundhogs
     ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
   })
 
   res.send(groundhogs)
+})
+
+/* get a single groundhog as JSON */
+router.get('/api/v1/groundhogs/:gId', function (req, res) {
+  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
+
+  const predictions = DB()
+    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
+    .all(req.params.gId)
+
+  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
+
+  res.send(groundhog)
 })
 
 module.exports = router
