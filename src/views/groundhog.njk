@@ -7,7 +7,7 @@
 {% block content %}
   <div class="inner-content__header">
     <h1>{{ groundhog.name }}</h1>
-    <div><a href="/groundhogs">← All groundhogs</a></div>
+    <div><a href="/groundhogs"><span aria-hidden="true">←</span> All groundhogs</a></div>
   </div>
   <div class="inner-content">
     <div class="inner-content__main">
@@ -60,7 +60,7 @@
             {% endfor %}
           </tbody>
         </table>
-        <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions">All {{ groundhog.predictions | length }} predictions →</a></p>
+        <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions">All {{ groundhog.predictions | length }} predictions <span aria-hidden="true">→</span></a></p>
       </div>
 
       <div class="other-formats">

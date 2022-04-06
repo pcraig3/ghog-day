@@ -23,16 +23,16 @@
         <span aria-hidden="true">Groundhog<span class="letter-spacing--less">-</span>D<span class="letter-spacing--less">a</span>y.com</span>
         <span class="visually-hidden">Groundhog-Day.com</span>
       </a>
-      <div class="header--right"><a href="#">This year’s prediction →</a></div>
+      <div class="header--right"><a href="#">This year’s prediction <span aria-hidden="true">→</span></a></div>
     </header>
     <nav>
       <ul>
         <li><a href="/groundhogs/" {%- if path == "/groundhogs/" -%}aria-current="page"{% endif %}>Groundhogs</a></li>
         <ul>
         {% if groundhog and groundhog.name %}
-          <li><a href="/groundhogs/{{ groundhog.id }}/" aria-current="page">↪ {{ groundhog.name }}</a></li>
+          <li><a href="/groundhogs/{{ groundhog.id }}/" aria-current="page"><span aria-hidden="true">↪</span> {{ groundhog.name }}</a></li>
         {% endif %}
-          <li><a href="#">↪ Add a groundhog</a></li>
+          <li><a href="#"><span aria-hidden="true">↪</span> Add a groundhog</a></li>
         </ul>
         <li><a href="#">API</a></li>
         <li><a href="#">About</a></li>

@@ -1,27 +1,32 @@
 TODO
 
-- Buttons for CSV and API
 - Separate API from UI
-- Create an actual API
 - Github actions autodeploy
-- Security headers
 - Find more data
-- Generic 404 page
-- Analytics
-- page title and meta tag
 - "final" groundhog page
 - "final" grounhogs page
-- About page
 - "data" seo
-- mobile layout
 - Do a smartbear API schema
 - Data as CSV
 - Show/hide all predictions
-- Arrows in links, hide them
 - Arrows in links, use icons?
+
+FOR AN EVENTUAL LAUNCH
+
+- Buttons for CSV and API
+- Create an actual API
+- Security headers
+- Find a litte more data
+- Generic 404 page
+- Analytics
+- Get it deployed with the URL
+- page title and meta tag
+- About page
+- mobile layout
 
 DONE
 
+- Arrows in links, hide them
 - "current" in the nav
 - Sort out the product page
 - Focus styles
