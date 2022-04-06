@@ -13,8 +13,6 @@
     <div class="inner-content__main">
 
       <p>{{ groundhog.name }} has made <strong>{{ groundhog.predictions | length }}</strong> predictions since {{ groundhog.predictions[0].year }}.</p>
-
-      <p>At a glance, Phil has made:</p>
       <ul class="with-bullets">
         <li><strong>{{ allPredictions.shadow }}</strong> prediction{% if allPredictions.shadow != 1 %}s{% endif %} ({{  allPredictions.percent.shadow }}%) of six more weeks of winter</li>
         <li><strong>{{ allPredictions.noShadow }}</strong> prediction{% if allPredictions.noShadow != 1 %}s{% endif %} ({{  allPredictions.percent.noShadow }}%) of early spring</li>
@@ -23,7 +21,7 @@
         {% endif %}
       </ul>
 
-      <p>This data can be exported as a CSV file or via the Groundhog Day API.</p>
+      <p>This data <a href="#get-the-data" class="underline">can also be returned</a> as formatted JSON or as a CSV file.</p>
 
       {% set hasDetails = groundhog.predictions[0].details %}
       <div class="data-table predictions {% if hasDetails%}predictions--has-details{% endif %}">
@@ -64,7 +62,7 @@
       </div>
 
       <div class="get-the-data">
-        <h3>Get the data</h3>
+        <h3 id="get-the-data">Get the data</h3>
         <ul class="button-list">
           <li><a href="/api/v1/groundhogs/" class="link-button" target="_blank">As JSON</a></li>
           <li><button disabled>As a CSV (soon)</button></li>

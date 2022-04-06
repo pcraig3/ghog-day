@@ -10,6 +10,8 @@ TODO
 - Data as CSV
 - Show/hide all predictions
 - Arrows in links, use icons?
+- Add a "back" option at the bottom? Or in the footer?
+- reverse the data for the predictions?
 
 FOR AN EVENTUAL LAUNCH
 
