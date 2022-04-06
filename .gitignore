@@ -63,6 +63,9 @@ typings/
 # Mac artefacts
 .DS_Store
 
+# VSCode
+.vscode
+
 # database
 data/sqlite3.db
 

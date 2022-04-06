@@ -94,8 +94,8 @@ router.get('/groundhogs/:gId/predictions', (req, res) => {
     p.shadow === 1
       ? ++allPredictions['shadow']
       : p.shadow === 0
-      ? ++allPredictions['noShadow']
-      : ++allPredictions['null']
+      ? ++allPredictions['noShadow'] // eslint-disable-line indent
+      : ++allPredictions['null'] // eslint-disable-line indent
   })
 
   // reverse predictions order
