@@ -34,7 +34,7 @@
           <tbody>
             {% for groundhog in groundhogs %}
               <tr onclick="window.location='/groundhogs/{{groundhog.id}}/';">
-                <th><a href="/groundhogs/{{groundhog.id}}/">{{ groundhog.name }}</a></th>
+                <th><a href="/groundhogs/{{groundhog.id}}/" class="underline">{{ groundhog.name }}</a></th>
                 <td>{{ groundhog.region }}</td>
                 <td>{{ groundhog.country }}</td>
                 <td>

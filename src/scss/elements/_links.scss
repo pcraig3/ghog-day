@@ -1,0 +1,21 @@
+@use '../vars';
+
+a {
+  color: currentColor;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:focus {
+    color: vars.$color-focus;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: black 2px dotted;
+    outline-offset: 2px;
+  }
+}
+  

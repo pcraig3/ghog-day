@@ -20,6 +20,7 @@
 
 /* elements */
 @use './elements/_description-list';
+@use './elements/_links';
 @use './elements/_lists';
 @use './elements/_tables';
 
@@ -38,23 +39,4 @@
 img {
   max-width: 100%;
   height: auto;
-}
-
-a {
-  color: currentColor;
-
-  &.underline {
-    text-decoration: underline;
-  }
-
-  &:hover,
-  &:focus {
-    color: vars.$color-focus;
-    text-decoration: underline;
-  }
-
-  &:focus {
-    outline: black 2px dotted;
-    outline-offset: 2px;
-  }
 }
