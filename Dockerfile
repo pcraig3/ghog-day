@@ -8,4 +8,4 @@ RUN npm install --production --silent
 RUN npm run scss
 
 EXPOSE 3000
-CMD ["npm", "start:prod"]
+CMD ["npm", "run", "start:prod"]
