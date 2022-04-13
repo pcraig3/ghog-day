@@ -37,27 +37,27 @@
             </tr>
           </thead>
           <tbody>
-            {% for prediction in groundhog.predictions %}
+            {%- for prediction in groundhog.predictions -%}
               {% if prediction.year >= 2018 %}
                 <tr>
                   <th>{{ prediction.year }}</th>
                   <td>
-                    {% if prediction.shadow %}
+                    {% if prediction.shadow -%}
                       Yes, saw shadow.
-                    {% else %}
+                    {%- else -%}
                       Nope, no shadow.
-                    {% endif %}
+                    {%- endif %}
                   </td>
                   <td>
-                    {% if prediction.shadow %}
+                    {%- if prediction.shadow %}
                       <span aria-hidden="true">☃️</span> More winter! 
                     {% else %}
                       <span aria-hidden="true">🌷</span> Early spring!
-                    {% endif %}
+                    {% endif -%}
                   </td>
                 </tr>
               {% endif %}
-            {% endfor %}
+            {%- endfor -%}
           </tbody>
         </table>
         <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions">All {{ groundhog.predictions | length }} predictions <span aria-hidden="true">→</span></a></p>

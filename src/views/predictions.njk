@@ -43,18 +43,18 @@
                 <tr>
                   <th>{{ prediction.year }}</th>
                   <td>
-                    {% if prediction.shadow == true %}
+                    {% if prediction.shadow == true -%}
                       Yes, saw shadow.
-                    {% elseif prediction.shadow == false %}
+                    {%- elseif prediction.shadow == false -%}
                       Nope, no shadow.
-                    {% else %}
+                    {%- else -%}
                       <span aria-hidden="true">—</span>
                       <span class="visually-hidden">Unknown.</span>
-                    {% endif %}
+                    {%- endif %}
                   </td>
-                  {% if hasDetails %}
+                  {% if hasDetails -%}
                       <td>{{ prediction.details }}</td>
-                  {% endif %}
+                  {%- endif %}
                 </tr>
             {% endfor %}
           </tbody>

@@ -21,7 +21,7 @@
         <table class="data-table__table data-table__table">
           <caption class="visually-hidden">
               <h2>All groundhogs</h2>
-          </captions>
+          </caption>
           <thead class="visible">
             <tr>
               <th>Name</th>
@@ -39,9 +39,9 @@
                 <td>{{ groundhog.country }}</td>
                 <td>
                   {% if groundhog.latestPrediction.shadow %}
-                    <span aria-label="Longer winter">☃️</span>
+                    <span role="img" aria-label="Longer winter">☃️</span>
                   {% else %}
-                    <span aria-label="Early spring">🌷</span>
+                    <span role="img" aria-label="Early spring">🌷</span>
                   {% endif %}
                 </td>
                 <td>{{ groundhog.predictionsCount }}</td>

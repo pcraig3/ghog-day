@@ -30,13 +30,15 @@
     </header>
     <nav>
       <ul>
-        <li><a href="/groundhogs/" {%- if path == "/groundhogs/" -%}aria-current="page"{% endif %}>Groundhogs</a></li>
-        <ul>
-        {% if groundhog and groundhog.name %}
-          <li><a href="/groundhogs/{{ groundhog.id }}/" aria-current="page"><span aria-hidden="true">↪</span> {{ groundhog.name }}</a></li>
-        {% endif %}
-          <li><a href="#"><span aria-hidden="true">↪</span> Add a groundhog</a></li>
-        </ul>
+        <li><a href="/groundhogs/" {% if path == "/groundhogs/" -%}aria-current="page"{% endif %}>Groundhogs</a></li>
+        <li>
+          <ul>
+          {% if groundhog and groundhog.name %}
+            <li><a href="/groundhogs/{{ groundhog.id }}/" aria-current="page"><span aria-hidden="true">↪</span> {{ groundhog.name }}</a></li>
+          {% endif %}
+            <li><a href="#"><span aria-hidden="true">↪</span> Add a groundhog</a></li>
+          </ul>
+        </li>
         <li><a href="#">API</a></li>
         <li><a href="#">About</a></li>
       </ul>
