@@ -1,3 +1,47 @@
+/* Mixins are compiled ahead of time, so we can't use CSS vars in our mq mixins */
+$desktop-screen: 1200px;
+$desktop-container: 1170px;
+$tablet-screen: 992px;
+$tablet-container: 970px;
+$mobile-screen: 768px;
+$mobile-container: 750px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-screen}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile-screen}) {
+    @content;
+  }
+}
+
+@mixin tablet-mobile {
+  @media (max-width: #{$tablet-screen}) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{$mobile-screen}) and (max-width: #{$tablet-screen - 1}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet-screen}) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media (min-width: #{$desktop-screen}) {
+    @content;
+  }
+}
+
 @mixin visually-hidden {
   position: absolute !important;
   width: 1px !important;

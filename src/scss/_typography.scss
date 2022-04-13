@@ -1,8 +1,13 @@
 @use 'vars';
+@use 'mixins';
 
 /* Maybe readex pro, poppins, and syne, archivo, ibm plex mono, inter?? */
 html {
   font-size: 112.5%;
+
+  @include mixins.mobile {
+    font-size: 100%;
+  }
 } /*18px*/
 
 body {
