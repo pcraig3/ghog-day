@@ -32,6 +32,11 @@ router.get('/', function (req, res) {
   res.render('index', { title: 'Groundhog Day.com' })
 })
 
+/* GET about page. */
+router.get('/about', function (req, res) {
+  res.render('about', { title: 'About – Groundhog Day.com' })
+})
+
 /* GET all groundhogs */
 router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
