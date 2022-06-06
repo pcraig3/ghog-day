@@ -1,5 +1,7 @@
 TODO
 
+- Add 404 page
+  - Get rid of 404 errors
 - Separate API from UI
 - Find more data
 - "final" groundhog page
