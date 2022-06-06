@@ -1,7 +1,5 @@
 TODO
 
-- Add 404 page
-  - Get rid of 404 errors
 - Separate API from UI
 - Find more data
 - "final" groundhog page
@@ -17,19 +15,20 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Find a litte more data
-- Generic 404 page
+- Find a little more data
 - Analytics
 - Get it deployed with the URL
 - page title and meta tag
 - Page: About
 - Page: API
 - Page: This year's prediction
-- Add a Groundhog (basically, an email)
+- Add a Groundhog (basically, a google form)
 - mobile layout
 
 DONE
 
+- Generic 404 page
+  - Get rid of 404 errors
 - Security headers
 - Github actions autodeploy
 - Create an actual API

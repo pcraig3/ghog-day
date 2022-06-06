@@ -10,3 +10,8 @@ nav {
     text-decoration: none;
   }
 }
+
+/* Hide nav on error */
+.error nav {
+  visibility: hidden;
+}

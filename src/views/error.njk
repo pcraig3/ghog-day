@@ -1,6 +1,15 @@
 {% extends "layout.njk" %}
+
+{% block body_classes -%}
+  error
+{%- endblock %}
+
 {% block content %}
-  <h1>{{message}}</h1>
-  <h2>{{error.status}}</h2>
-  <pre>{{error.stack}}</pre>
+  <h1>{{ status }}: {{ h1 }}</h1>
+  <p>{{ message | safe }}</p>
+  <p><a href="/" class="underline">Back home</a>, I guess.</p>
+  {% if stack %}
+    <hr />
+    <code>{{ stack }}</code>
+  {% endif %}
 {% endblock %}

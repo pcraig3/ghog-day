@@ -61,14 +61,21 @@ app.use(function (req, res, next) {
 })
 
 // error handler
-app.use(function (err, req, res) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
+app.use(function (err, req, res, next) {
+  let h1 = 'Server error'
+  let message = err.message || 'Something went wrong. No cause for alarm.'
+  // only provide error stack in development
+  let stack = req.app.get('env') === 'development' ? err.stack : ''
+
+  if (err.status === 404) {
+    h1 = 'Not ‘found’hog'
+    message =
+      'Do you get it? It is a marmot-themed pun. (Very lol. <span aria-hidden="true">🤓</span>)'
+  }
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+  res.render('error', { h1, message, status: err.status, stack })
 })
 
 module.exports = app
