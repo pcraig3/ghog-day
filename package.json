@@ -15,19 +15,19 @@
     "better-sqlite3-helper": "^3.1.6",
     "cookie-parser": "~1.4.4",
     "debug": "~4.3.4",
-    "express": "~4.16.1",
+    "express": "~4.18.1",
     "fast-csv": "^4.3.6",
-    "helmet": "^5.0.2",
+    "helmet": "^5.1.0",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
+    "morgan": "~1.10.0",
     "nunjucks": "^3.2.3",
-    "sass": "^1.49.9"
+    "sass": "^1.52.2"
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
-    "eslint-plugin-jest": "^26.1.1",
-    "jest": "^27.5.1",
-    "nodemon": "^2.0.15",
-    "supertest": "^6.2.2"
+    "eslint": "^8.17.0",
+    "eslint-plugin-jest": "^26.5.3",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   }
 }
