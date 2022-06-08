@@ -19,14 +19,17 @@ FOR AN EVENTUAL LAUNCH
 - Analytics
 - Get it deployed with the URL
 - page title and meta tag
-- Page: About
 - Page: API
 - Page: This year's prediction
 - Add a Groundhog (basically, a google form)
 - mobile layout
+  - tables
+  - menu
+  - fonts
 
 DONE
 
+- Page: About
 - Generic 404 page
   - Get rid of 404 errors
 - Security headers
