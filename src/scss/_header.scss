@@ -14,9 +14,12 @@ a.logo {
   margin: 0;
   line-height: 1;
   text-decoration: none;
+  border-bottom: 2px solid black;
 
-  &:hover {
-    text-decoration: underline;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border-bottom: 2px solid vars.$color-focus;
   }
 
   .logo--img {
@@ -29,8 +32,16 @@ a.logo {
     color: black;
   }
 
+  @include mixins.tablet-mobile {
+    padding-bottom: vars.$space-xs;
+  }
+
   @include mixins.mobile {
     font-size: 1.953rem;
+  }
+
+  @include mixins.mobile-xs {
+    font-size: 1.6rem;
   }
 }
 
@@ -39,7 +50,6 @@ a.logo {
   border-bottom: 2px solid black;
   align-self: end;
   text-align: end; /* offset for the header link underline */
-  margin-bottom: 2px;
 
   a {
     text-decoration: none;

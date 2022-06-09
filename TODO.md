@@ -12,7 +12,6 @@ TODO
 - Add a "back" option at the bottom? Or in the footer?
 - footer always on the bottom?
 - reverse the data for the predictions?
-- Add Github hash as part of auto deploy
 - Revisit menu?
 
 FOR AN EVENTUAL LAUNCH
@@ -32,9 +31,11 @@ DONE
 
 - Mobile layout
   - Menu
+  - Header
 - Page: About
 - Generic 404 page
   - Get rid of 404 errors
+- Add Github hash as part of auto deploy
 - Security headers
 - Github actions autodeploy
 - Create an actual API

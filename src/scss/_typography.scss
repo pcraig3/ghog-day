@@ -5,8 +5,16 @@
 html {
   font-size: 112.5%;
 
+  @include mixins.tablet-only {
+    font-size: 105%;
+  }
+
   @include mixins.mobile {
-    font-size: 100%;
+    font-size: 95%;
+  }
+
+  @include mixins.mobile-xs {
+    font-size: 90%;
   }
 } /*18px*/
 
@@ -49,26 +57,46 @@ h1, .h1 {
   margin-top: 0;
   font-size: 3.052rem;
   letter-spacing: -0.07rem;
+
+  @include mixins.mobile-xs {
+    font-size: 2.441rem;
+  }
 }
 
 h2, .h2 {
   font-size: 2.441rem;
   letter-spacing: -0.05rem;
+
+  @include mixins.mobile-xs {
+    font-size: 1.953rem;
+  }
 }
 
 h3, .h3 {
   font-size: 1.953rem;
   letter-spacing: -0.04rem;
+
+  @include mixins.mobile-xs {
+    font-size: 1.563rem;
+  }
 }
 
 h4, .h4 {
   font-size: 1.563rem;
   letter-spacing: -0.03rem;
+
+  @include mixins.mobile-xs {
+    font-size: 1.25rem;
+  }
 }
 
 h5, .h5 {
   font-size: 1.25rem;
   letter-spacing: -0.025rem;
+
+  @include mixins.mobile-xs {
+    font-size: 1.125rem;
+  }
 }
 
 small,
