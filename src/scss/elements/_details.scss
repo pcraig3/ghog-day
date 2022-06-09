@@ -1,0 +1,32 @@
+@use '../mixins';
+@use '../vars';
+
+details {
+  &.nav--sm {
+  @include mixins.mobile {
+      display: inline-block !important;
+    }
+  }
+
+  > summary {
+    @include mixins.button;
+    display: inline flow-root list-item;   
+
+    &:hover,
+    &:focus {
+      color: vars.$color-focus !important;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline: black 2px dotted;
+    }
+  }
+
+  > ul {
+    margin: vars.$space-md 0;
+    border-left: 2px solid black;
+    padding-left: vars.$space-sm;
+    padding-bottom: vars.$space-xs;
+  }
+}

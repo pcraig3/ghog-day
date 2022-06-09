@@ -1,3 +1,5 @@
+{%- from "_nav.njk" import nav -%}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,20 +30,15 @@
       </a>
       <div class="header--right"><a href="#">This year’s prediction <span aria-hidden="true">→</span></a></div>
     </header>
+
     <nav>
-      <ul>
-        <li><a href="/groundhogs/" {% if path == "/groundhogs/" -%}aria-current="page"{% endif %}>Groundhogs</a></li>
-        <li>
-          <ul>
-          {% if groundhog and groundhog.name %}
-            <li><a href="/groundhogs/{{ groundhog.id }}/" aria-current="page"><span aria-hidden="true">↪</span> {{ groundhog.name }}</a></li>
-          {% endif %}
-            <li><a href="#"><span aria-hidden="true">↪</span> Add a groundhog</a></li>
-          </ul>
-        </li>
-        <li><a href="#">API</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
+      <details class="nav--sm">
+        <summary>Menu</summary>
+        {{ nav({ path: path, groundhog: groundhog }) }}
+      </details>
+      <div class="nav--md">
+        {{ nav({ path: path, groundhog: groundhog }) }}
+      </div>
     </nav>
     {# <aside>Aside</aside> #}
     <main>

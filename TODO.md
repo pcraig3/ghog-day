@@ -10,8 +10,10 @@ TODO
 - Show/hide all predictions
 - Arrows in links, use icons?
 - Add a "back" option at the bottom? Or in the footer?
+- footer always on the bottom?
 - reverse the data for the predictions?
 - Add Github hash as part of auto deploy
+- Revisit menu?
 
 FOR AN EVENTUAL LAUNCH
 
@@ -24,11 +26,12 @@ FOR AN EVENTUAL LAUNCH
 - Add a Groundhog (basically, a google form)
 - mobile layout
   - tables
-  - menu
   - fonts
 
 DONE
 
+- Mobile layout
+  - Menu
 - Page: About
 - Generic 404 page
   - Get rid of 404 errors
