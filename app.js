@@ -61,6 +61,7 @@ app.use(function (req, res, next) {
 })
 
 // error handler
+// eslint-disable-next-line no-unused-vars
 app.use(function (err, req, res, next) {
   let h1 = 'Server error'
   let message = err.message || 'Something went wrong. No cause for alarm.'
