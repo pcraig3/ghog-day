@@ -29,19 +29,3 @@
     }
   }
 }
-
-.inner-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: vars.$space-xxl;
-
-  .inner-content__main {
-    flex: 2 1 0;
-  }
-
-  .inner-content__side {
-    flex: 1 1 0;
-  }
-}

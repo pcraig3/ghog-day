@@ -9,9 +9,9 @@
     <h1>{{ groundhog.name }}</h1>
     <div><a href="/groundhogs"><span aria-hidden="true">←</span> All groundhogs</a></div>
   </div>
-  <div class="inner-content">
-    <div class="inner-content__main">
 
+  <div class="inner-content inner-content--with-summary">
+    <div class="description">
       <aside class="current-prediction">
         {% if groundhog.predictions[0].shadow %}
           <span class="icon" aria-hidden="true">☃️</span>
@@ -23,7 +23,46 @@
       </aside>
 
       <p>{{ groundhog.description }}</p>
+    </div>
 
+    <div class="summary">
+      <div class="inner-content__side--container">
+        <figure class="groundhog--image image">
+          <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" alt="{{ groundhog.name }}" />
+          <figcaption>{{ groundhog.name }}</figcaption>
+        </figure>
+
+        <!-- see if you can set a caption -->
+        <dl class="groundhog--facts">
+          <div>
+            <dt>City:</dt>
+            <dd>{{ groundhog.city }}</dd>
+          </div>
+          <div>
+            {% if groundhog.country === 'USA' %}
+              <dt>State:</dt>
+            {% else %}
+              <dt>Province:</dt>
+            {% endif %}
+            <dd>{{ groundhog.region }}</dd>
+          </div>
+          <div>
+            <dt>Country:</dt>
+            <dd>{{ groundhog.country }}</dd>
+          </div>
+          <div>
+            <dt>Source:</dt>
+            <dd>{{ groundhog.source | cleanUrl | safe  }}</dd>
+          </div>
+          <div>
+            <dt>This year’s prediction:</dt>
+            <dd>{{ groundhog.currentPrediction | cleanUrl | safe  }}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="predictions">
       <div class="recent-predictions data-table">
         <table class="data-table__table">
           <caption>
@@ -62,7 +101,9 @@
         </table>
         <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions">All {{ groundhog.predictions | length }} predictions <span aria-hidden="true">→</span></a></p>
       </div>
+    </div>
 
+    <div class="data">
       <div class="get-the-data">
         <h3 id="get-the-data">Get the data</h3>
         <ul class="button-list">
@@ -70,44 +111,8 @@
           <li><button disabled>As a CSV (soon)</button></li>
         </ul>
       </div>
-
     </div>
-    <div class="inner-content__side">
-      <div class="inner-content__side--container">
-        <figure class="groundhog--image image">
-          <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" alt="{{ groundhog.name }}" />
-          <figcaption>{{ groundhog.name }}</figcaption>
-        </figure>
 
-        <!-- see if you can set a caption -->
-        <dl class="groundhog--facts">
-          <div>
-            <dt>City:</dt>
-            <dd>{{ groundhog.city }}</dd>
-          </div>
-          <div>
-            {% if groundhog.country === 'USA' %}
-              <dt>State:</dt>
-            {% else %}
-              <dt>Province:</dt>
-            {% endif %}
-            <dd>{{ groundhog.region }}</dd>
-          </div>
-          <div>
-            <dt>Country:</dt>
-            <dd>{{ groundhog.country }}</dd>
-          </div>
-          <div>
-            <dt>Source:</dt>
-            <dd>{{ groundhog.source | cleanUrl | safe  }}</dd>
-          </div>
-          <div>
-            <dt>This year’s prediction:</dt>
-            <dd>{{ groundhog.currentPrediction | cleanUrl | safe  }}</dd>
-          </div>
-        </dl>
-      </div>
-    </div>
   </div>
 
 {% endblock %}

@@ -1,5 +1,7 @@
 @use 'mixins';
 
+/* Grid for main page layout */
+
 html,
 body {
   min-height: 100%;
@@ -16,7 +18,6 @@ body {
     'aside  '
     'main   '
     'footer ';
-
 
   @include mixins.mobile {
     margin: 1.2em;
@@ -43,7 +44,7 @@ footer {
   grid-area: footer;
 }
 
-@media screen and (min-width: 768px) {
+@include mixins.tablet {
   body {
     grid: auto-flow min-content / 1fr 4fr;
     grid-template-areas:
@@ -51,5 +52,46 @@ footer {
       'nav    ...'
       '...    main  '
       'footer main  ';
+  }
+}
+
+/* Inner grid for product page layout */
+
+.inner-content.inner-content--with-summary {
+  max-width: 500px;
+  display: grid;
+  grid: auto-flow min-content / 1fr;
+  grid-gap: 1em;
+  grid-template-areas:
+    'description'
+    'summary    '
+    'predictions'
+    'data       ';
+
+  .description {
+    grid-area: description;
+  }
+
+  .summary {
+    grid-area: summary;
+  }
+
+  .predictions {
+    grid-area: predictions;
+  }
+
+  .data {
+    grid-area: data;
+  }
+
+  @include mixins.tablet {
+      max-width: none;
+      grid: auto-flow min-content / 2fr 1fr;
+      grid-gap: 0 2em;
+
+      grid-template-areas:
+          'description summary'
+          'predictions summary'
+          'data        summary'
   }
 }
