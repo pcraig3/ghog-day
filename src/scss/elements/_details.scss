@@ -10,7 +10,8 @@ details {
 
   > summary {
     @include mixins.button;
-    display: inline flow-root list-item;   
+    display: list-item;
+    width: fit-content;
 
     &:hover,
     &:focus {

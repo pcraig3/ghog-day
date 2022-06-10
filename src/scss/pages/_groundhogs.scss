@@ -1,3 +1,4 @@
+@use '../mixins';
 @use '../vars';
 
 .inner-content__header {
@@ -14,6 +15,18 @@
     flex: 1;
     align-self: end;
     text-align: right;
+  }
+
+  @include mixins.mobile {
+    flex-direction: column-reverse;
+
+    > div {
+      align-self: flex-start;
+      
+      > a {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
