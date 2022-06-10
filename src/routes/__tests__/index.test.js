@@ -29,7 +29,7 @@ describe('Test ui responses', () => {
 
     test('it should return the h1, title, meta tag, and canonical link', async () => {
       const response = await request(app).get('/groundhogs/1')
-      expect(response.text).toContain('<title>Punxatawney Phil</title>')
+      expect(response.text).toContain('<title>Punxsutawney Phil</title>')
     })
   })
 })
