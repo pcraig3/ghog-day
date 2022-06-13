@@ -5,10 +5,9 @@
 {%- endblock %}
 
 {% block content %}
-  <div class="inner-content__header">
-    <h1>{{ title }}</h1>
-    <div><a href="/groundhogs/{{ groundhog.id }}/"><span aria-hidden="true">←</span> {{ groundhog.name }}</a></div>
-  </div>
+  {% set backUrl = ['/groundhogs/', groundhog.id, '/'] | join %}
+  {{ page_header({ h1: title, backUrl: backUrl, backText: groundhog.name }) }}
+
   <div class="inner-content">
     <div class="inner-content__main">
 

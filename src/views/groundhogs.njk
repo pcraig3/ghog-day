@@ -5,10 +5,8 @@
 {%- endblock %}
 
 {% block content %}
-  <div class="inner-content__header">
-    <h1>{{ title }}</h1>
-    <div><a href="/"><span aria-hidden="true">←</span> Home</a></div>
-  </div>
+  {{ page_header({ h1: title, backUrl: '/', backText: 'Home' }) }}
+
   <div class="inner-content">
     <div class="inner-content__main">
       <p>In 2022:</p>

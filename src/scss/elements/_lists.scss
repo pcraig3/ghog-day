@@ -1,3 +1,4 @@
+@use '../mixins';
 @use '../vars';
 
 ul,
@@ -5,6 +6,10 @@ ol {
   &.with-bullets {
     list-style-type: disc;
     padding-left: vars.$space-lg;
+
+    @include mixins.mobile {
+      padding-left: vars.$space-md;
+    }
   }
 }
 

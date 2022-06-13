@@ -1,3 +1,4 @@
+@use '../mixins';
 @use '../vars';
 
 a {
@@ -5,6 +6,12 @@ a {
 
   &.underline {
     text-decoration: underline;
+  }
+
+  @include mixins.mobile {
+    &.underline-mobile {
+      text-decoration: underline;
+    }
   }
 
   &:hover,
@@ -18,4 +25,3 @@ a {
     outline-offset: 2px;
   }
 }
-  

@@ -5,11 +5,7 @@
 {%- endblock %}
 
 {% block content %}
-  <div class="inner-content__header">
-    <h1>About</h1>
-    <div><a href="/"><span aria-hidden="true">←</span> Home</a></div>
-  </div>
-  <h1 class="visually-hidden">About</h1>
+  {{ page_header({ h1: 'About', backUrl: '/', backText: 'Home' }) }}
 
   <p class="h3 not-caps">For centuries, humankind has relied on the prophecies of clairvoyant woodchucks, long may it continue.</p>
 
