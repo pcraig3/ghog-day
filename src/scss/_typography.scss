@@ -15,6 +15,16 @@ html {
 
   @include mixins.mobile-xs {
     font-size: 90%;
+
+    p,
+    dt,
+    dd,
+    th,
+    td,
+    nav li > a,
+    .with-bullets > li {
+      font-size: 105%;
+    }
   }
 } /*18px*/
 
@@ -37,11 +47,16 @@ strong {
   font-weight: 600;
 }
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
 .logo {
   margin: 1.38rem 0;
   font-family: 'Poppins', sans-serif;
@@ -53,7 +68,8 @@ h5, .h5,
   }
 }
 
-h1, .h1 {
+h1,
+.h1 {
   margin-top: 0;
   font-size: 3.052rem;
   letter-spacing: -0.07rem;
@@ -63,7 +79,8 @@ h1, .h1 {
   }
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: 2.441rem;
   letter-spacing: -0.05rem;
 
@@ -72,7 +89,8 @@ h2, .h2 {
   }
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: 1.953rem;
   letter-spacing: -0.04rem;
 
@@ -81,7 +99,8 @@ h3, .h3 {
   }
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-size: 1.563rem;
   letter-spacing: -0.03rem;
 
@@ -90,7 +109,8 @@ h4, .h4 {
   }
 }
 
-h5, .h5 {
+h5,
+.h5 {
   font-size: 1.25rem;
   letter-spacing: -0.025rem;
 
