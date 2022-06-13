@@ -101,7 +101,11 @@
     .data-table__table {
       display: block;
 
-      caption, tr, tbody, th, td {
+      caption,
+      tr,
+      tbody,
+      th,
+      td {
         display: block;
       }
 
@@ -139,7 +143,6 @@
   }
 
   @include mixins.tablet {
-
     .data-table__table tbody tr:last-of-type {
       th,
       td {
