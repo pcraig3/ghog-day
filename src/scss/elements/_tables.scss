@@ -1,7 +1,11 @@
 @use '../vars';
 @use '../mixins';
 
-.data-table {
+main {
+  overflow-x: auto;
+}
+
+.zzz-data-table {
   margin-bottom: vars.$space-xxl;
 
   .data-table__title {
@@ -156,7 +160,7 @@
   }
 }
 
-.data-table.predictions:not(.predictions--has-details) {
+.table.predictions:not(.predictions--has-details) {
   width: 65%;
 
   thead > tr > th {
@@ -175,5 +179,124 @@
     &:nth-of-type(2) {
       width: 30%;
     }
+  }
+}
+
+/* Standard Tables */
+.data-table {
+  margin-bottom: vars.$space-xxl;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    white-space: nowrap;
+
+    td,
+    th {
+      border-bottom: transparent solid 1px;
+      text-align: left;
+      padding: vars.$space-sm vars.$space-sm vars.$space-sm vars.$space-lg;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      @include mixins.mobile {
+        border-bottom: #eee solid 1px;
+      }
+    }
+
+    tr {
+      &:hover {
+        background: rgba(180, 180, 180, 0.15);
+      }
+
+      &[onclick]:hover {
+        cursor: pointer;
+
+        a {
+          color: vars.$color-focus;
+          text-decoration: underline;
+        }
+      }
+
+      &[onclick]:focus-within {
+        outline: 1.5px dotted black;
+        outline-offset: 2px;
+        background: rgba(180, 180, 180, 0.1);
+      }
+
+      &[onclick] > th > a:focus {
+        outline: none;
+      }
+    }
+
+    thead.visible {
+      tr:hover {
+        background-color: transparent;
+      }
+
+      th {
+        border-bottom: 1.5px solid black;
+      }
+
+      th:nth-of-type(2) {
+        padding-left: 0;
+      }
+
+      + tbody th {
+        font-weight: 400;
+      }
+
+      @include mixins.mobile {
+        th {
+          border-top: 1.5px solid black;
+        }
+      }
+    }
+
+    tbody {
+      &:hover {
+        td,
+        th {
+          border-bottom: #eee solid 1px;
+        }
+      }
+
+      tr:last-of-type {
+        th,
+        td {
+          border-bottom: 1.5px solid black;
+        }
+      }
+    }
+  }
+
+  caption {
+    text-align: left;
+    font-style: italic;
+    padding: 0.25em 0.5em 0.5em 0.5em;
+  }
+
+  &[role='region'][aria-labelledby][tabindex] {
+    overflow: auto;
+  }
+
+  &[role='region'][aria-labelledby][tabindex]:focus {
+    outline: 2px dotted black;
+    outline-offset: -2px;
+  }
+
+  /* shadow */
+  &[role='region'][aria-labelledby][tabindex] {
+    background: linear-gradient(to right, #fff 30%, rgba(255, 255, 255, 0)),
+      linear-gradient(to right, rgba(255, 255, 255, 0), #fff 70%) 0 100%,
+      radial-gradient(farthest-side at 0% 50%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)),
+      radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)) 0 100%;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-position: 0 0, 100%, 0 0, 100%;
+    background-attachment: local, local, scroll, scroll;
   }
 }

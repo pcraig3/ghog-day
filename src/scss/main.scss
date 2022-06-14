@@ -27,10 +27,6 @@
 @use './elements/_lists';
 @use './elements/_tables';
 
-// * {
-//   outline: 1px solid grey;
-// }
-
 .visually-hidden {
   @include mixins.visually-hidden;
 }
