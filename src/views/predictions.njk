@@ -23,9 +23,10 @@
       <p>This data <a href="#get-the-data" class="underline">can also be returned</a> as formatted JSON or as a CSV file.</p>
 
       {% set hasDetails = groundhog.predictions[0].details %}
-      <div class="data-table predictions {% if hasDetails%}predictions--has-details{% endif %}">
-        <table class="data-table__table">
-          <caption>
+      <div class="data-table predictions {% if hasDetails%}predictions--has-details{% endif %}" role="region" aria-labelledby="data-table--predictions" tabindex="0">
+
+        <table class="data-table__table data-table__table--with-line-breaks">
+          <caption id="data-table--predictions">
             <h2 class="data-table__title">All predictions</h2>
           </caption>
           <thead class="visible">
@@ -33,7 +34,7 @@
               <th>Year</th>
               <th>Saw shadow?</th>
               {% if hasDetails %}
-                <th>Details</th>
+                <th class="hidden--mobile-xs">Details</th>
               {% endif %}
             </tr>
           </thead>
@@ -52,7 +53,7 @@
                     {%- endif %}
                   </td>
                   {% if hasDetails -%}
-                      <td>{{ prediction.details }}</td>
+                      <td class="hidden--mobile-xs">{{ prediction.details }}</td>
                   {%- endif %}
                 </tr>
             {% endfor %}

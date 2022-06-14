@@ -1,7 +1,7 @@
 @use '../vars';
 @use '../mixins';
 
-main {
+.overflow-x {
   overflow-x: auto;
 }
 
@@ -186,10 +186,28 @@ main {
 .data-table {
   margin-bottom: vars.$space-xxl;
 
+  .data-table__title {
+    margin: 0;
+    font-size: 1.953rem;
+  }
+
+  caption {
+    text-align: left;
+    margin-bottom: vars.$space-xs;
+
+    // p {
+    //   margin-bottom: vars.$space-xs;
+    // }
+  }
+
   table {
     border-collapse: collapse;
     width: 100%;
     white-space: nowrap;
+
+    &.data-table__table--with-line-breaks {
+      white-space: initial;
+    }
 
     td,
     th {
@@ -197,12 +215,12 @@ main {
       text-align: left;
       padding: vars.$space-sm vars.$space-sm vars.$space-sm vars.$space-lg;
 
-      &:first-of-type {
-        padding-left: 0;
-      }
-
       @include mixins.mobile {
         border-bottom: #eee solid 1px;
+
+        &:first-of-type {
+          padding-left: vars.$space-xs;
+        }
       }
     }
 
@@ -240,16 +258,27 @@ main {
         border-bottom: 1.5px solid black;
       }
 
-      th:nth-of-type(2) {
-        padding-left: 0;
-      }
-
       + tbody th {
         font-weight: 400;
       }
 
       @include mixins.mobile {
         th {
+          border-top: 1.5px solid black;
+        }
+      }
+    }
+
+    thead:not(.visible) {
+      @include mixins.visually-hidden;
+
+      + tbody th {
+        font-weight: 600;
+      }
+
+      + tbody tr:first-of-type {
+        th,
+        td {
           border-top: 1.5px solid black;
         }
       }
@@ -270,12 +299,6 @@ main {
         }
       }
     }
-  }
-
-  caption {
-    text-align: left;
-    font-style: italic;
-    padding: 0.25em 0.5em 0.5em 0.5em;
   }
 
   &[role='region'][aria-labelledby][tabindex] {
