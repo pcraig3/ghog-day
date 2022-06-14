@@ -1,4 +1,4 @@
-{%- from "_nav.njk" import nav -%}
+{%- from "macros/_nav.njk" import nav -%}
 {%- from "macros/_page_header.njk" import page_header -%}
 
 <!doctype html>
@@ -42,8 +42,8 @@
       </div>
     </nav>
     {# <aside>Aside</aside> #}
-    <main class="overflow-x">
-    {% block content %}{% endblock %}
+    <main>
+      {% block content %}{% endblock %}
     </main>
     <footer>
       <div class="body-text"><a href="https://pcraig3.ca" target="_blank">@pcraig3</a></div>

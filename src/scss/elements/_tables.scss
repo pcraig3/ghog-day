@@ -1,7 +1,8 @@
 @use '../vars';
 @use '../mixins';
 
-.overflow-x {
+.overflow-x,
+.groundhogs main {
   overflow-x: auto;
 }
 

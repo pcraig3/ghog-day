@@ -113,12 +113,6 @@ router.get('/groundhogs/:gId/predictions', (req, res) => {
   })
 })
 
-/* GET predictions as json */
-router.get('/predictions', function (req, res) {
-  let rows = DB().query('SELECT * FROM predictions')
-  res.send(rows)
-})
-
 /* get groundhogs as JSON */
 router.get('/api/v1/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()

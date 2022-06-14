@@ -23,15 +23,14 @@ FOR AN EVENTUAL LAUNCH
 - Page: API
 - Page: This year's prediction
 - Add a Groundhog (basically, a google form)
-- mobile layout
-  - tables
-  - fonts
 
 DONE
 
 - Mobile layout
   - Menu
   - Header
+  - Tables
+  - Fonts
 - Page: About
 - Generic 404 page
   - Get rid of 404 errors
