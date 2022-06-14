@@ -29,12 +29,17 @@ function _calcPercentages(obj = {}) {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index', { title: 'Groundhog Day.com' })
+  res.render('index', { title: 'GROUNDHOG-DAY.com' })
 })
 
 /* GET about page. */
 router.get('/about', function (req, res) {
-  res.render('about', { title: 'About – Groundhog Day.com' })
+  res.render('about', { title: 'About – GROUNDHOG-DAY.com' })
+})
+
+/* GET api page. */
+router.get('/api', function (req, res) {
+  res.render('api', { title: 'API – GROUNDHOG-DAY.com' })
 })
 
 /* GET all groundhogs */
@@ -140,6 +145,36 @@ router.get('/api/v1/groundhogs/:gId', function (req, res) {
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
 
   res.send(groundhog)
+})
+
+/* get predictions for a single year as JSON */
+router.get('/api/v1/predictions', function (req, res) {
+  if (!req.query.year) {
+    return res.redirect('/api/v1/predictions?year=2022')
+  }
+
+  if (req.query.year < 1886 || req.query.year > 2022) {
+    throw new Error('Year must be between 1886 and 2022.')
+  }
+
+  let predictions = DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(req.query.year)
+
+  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  let groundhogsArr = []
+
+  // create array where groundhog ids are also the index
+  groundhogs.forEach((ghog) => {
+    groundhogsArr[ghog.id] = ghog
+  })
+
+  // add groundhog to each prediction
+  predictions.forEach((prediction) => {
+    prediction.groundhog = groundhogsArr[prediction.ghogId]
+    delete prediction.ghogId
+    delete prediction.id
+  })
+
+  res.send(predictions)
 })
 
 module.exports = router

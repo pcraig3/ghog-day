@@ -45,3 +45,12 @@ img {
     display: none;
   }
 }
+
+.flip-x {
+  display: inline-block;
+  transform: scale(-1, 1);
+}
+
+.large-font {
+  font-size: 115%;
+}

@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  api
+{%- endblock %}
+
+{% block content %}
+  {{ page_header({ h1: 'API', backUrl: '/', backText: 'Home' }) }}
+
+  <p>The GROUNDHOG-DAY.com API is free, fast, and simple. It’s the critical infrastructure you need for your next multi-billion dollar business venture.</p>
+
+  <p>
+    <span aria-hidden="true" class="flip-x large-font">🦫</span>
+    <a href="/api/v1/" class="underline">https://groundhog-day.com/api/v1/</a>
+    <span aria-hidden="true" class="large-font">🦫</span>
+  </p>
+
+  <p>Use the API to:</p>
+  <ul class="with-bullets">
+    <li>Get all groundhogs (and predictions)</li>
+    <li>Get 1 groundhog (and predictions)</li>
+    <li>Get all predictions for a given year</li>
+  </ul>
+
+  <h2>Getting data</h2>
+
+  <p>There are 3 endpoints. All are <code>GET</code> requests.
+
+  <ul class="with-bullets">
+    <li><code><a href="/api/v1/groundhogs">/api/v1/groundhogs</a></code></li>
+    <li><code><a href="/api/v1/groundhogs/1">/api/v1/groundhog/{groundhogId}</a></code></li>
+    <li><code><a href="/api/v1/predictions">/api/v1/predictions/{year}</a></code></li>
+  </ul> 
+
+  <h2>Adding/modifying data</h2>
+
+  <p>Updating the data is possible, but not through the API.</p>
+  <p>If you want to add a new weather-predicting animal, or update the predictions for an existing one, please get in touch: <a class="underline" href="mailto:paul@pcraig3.ca">paul@pcraig3.ca</a></p>
+{% endblock %}
