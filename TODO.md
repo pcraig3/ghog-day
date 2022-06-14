@@ -13,6 +13,7 @@ TODO
 - footer always on the bottom?
 - reverse the data for the predictions?
 - Revisit menu?
+- Stretch goal: was that an accurate prediction for that year?
 
 FOR AN EVENTUAL LAUNCH
 
@@ -20,12 +21,13 @@ FOR AN EVENTUAL LAUNCH
 - Analytics
 - Get it deployed with the URL
 - page title and meta tag
-- Page: API
 - Page: This year's prediction
 - Add a Groundhog (basically, a google form)
 
 DONE
 
+- Page: API
+- API route to get predictions by year
 - Mobile layout
   - Menu
   - Header

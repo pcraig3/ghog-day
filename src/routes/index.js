@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const DB = require('better-sqlite3-helper')
+const createError = require('http-errors')
 
 /* Utils */
 function _getPercent(percent, total) {
@@ -149,12 +150,17 @@ router.get('/api/v1/groundhogs/:gId', function (req, res) {
 
 /* get predictions for a single year as JSON */
 router.get('/api/v1/predictions', function (req, res) {
+  const currentYear = new Date().getFullYear()
+
   if (!req.query.year) {
-    return res.redirect('/api/v1/predictions?year=2022')
+    return res.redirect(`/api/v1/predictions?year=${currentYear}`)
   }
 
-  if (req.query.year < 1886 || req.query.year > 2022) {
-    throw new Error('Year must be between 1886 and 2022.')
+  if (req.query.year < 1886 || req.query.year > currentYear) {
+    throw new createError(
+      400,
+      `The <code>year</code> must be between 1886 and ${currentYear} (inclusive).`,
+    )
   }
 
   let predictions = DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(req.query.year)
