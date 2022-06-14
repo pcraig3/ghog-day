@@ -59,16 +59,16 @@
       </div>
     </div>
 
-    <div class="predictions">
-      <div class="recent-predictions data-table">
+    <div class="predictions overflow-x">
+      <div class="recent-predictions data-table" role="region" aria-labelledby="data-table--recent-predictions">
         <table class="data-table__table">
-          <caption>
+          <caption id="data-table--recent-predictions">
             <h2 class="data-table__title">Recent predictions</h2>
           </caption>
           <thead>
             <tr>
               <th>Year</th>
-              <th>Saw shadow?</th>
+              <th class="hidden--mobile-xs">Saw shadow?</th>
               <th>Prediction</th>
             </tr>
           </thead>
@@ -77,7 +77,7 @@
               {% if prediction.year >= 2018 %}
                 <tr>
                   <th>{{ prediction.year }}</th>
-                  <td>
+                  <td class="hidden--mobile-xs">
                     {% if prediction.shadow -%}
                       Yes, saw shadow.
                     {%- else -%}
