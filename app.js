@@ -77,8 +77,9 @@ app.use(function (err, req, res, next) {
   }
 
   // render the error page
-  res.status(err.status || 500)
-  res.render('error', { h1, message, status: err.status, stack })
+  const status = err.status || 500
+  res.status(status)
+  res.render('error', { h1, message, status, stack })
 })
 
 module.exports = app

@@ -30,17 +30,17 @@ function _calcPercentages(obj = {}) {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index', { title: 'GROUNDHOG-DAY.com' })
+  res.render('pages/index', { title: 'GROUNDHOG-DAY.com' })
 })
 
 /* GET about page. */
 router.get('/about', function (req, res) {
-  res.render('about', { title: 'About – GROUNDHOG-DAY.com' })
+  res.render('pages/about', { title: 'About – GROUNDHOG-DAY.com' })
 })
 
 /* GET api page. */
 router.get('/api', function (req, res) {
-  res.render('api', { title: 'API – GROUNDHOG-DAY.com' })
+  res.render('pages/api', { title: 'API – GROUNDHOG-DAY.com' })
 })
 
 /* GET all groundhogs */
@@ -62,7 +62,7 @@ router.get('/groundhogs', function (req, res) {
     g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
 
-  res.render('groundhogs', {
+  res.render('pages/groundhogs', {
     title: 'Groundhogs',
     groundhogs,
     recentPredictions: _calcPercentages(recentPredictions),
@@ -85,7 +85,7 @@ router.get('/groundhogs/:gId', (req, res) => {
   // reverse predictions order
   groundhog['predictions'].reverse()
 
-  res.render('groundhog', { title: groundhog.name, groundhog })
+  res.render('pages/groundhog', { title: groundhog.name, groundhog })
 })
 
 /* GET single groundhog */
@@ -112,7 +112,7 @@ router.get('/groundhogs/:gId/predictions', (req, res) => {
   // reverse predictions order
   // groundhog['predictions'].reverse()
 
-  res.render('predictions', {
+  res.render('pages/groundhog_predictions', {
     title: `${groundhog.shortname}’s Predictions`,
     groundhog,
     allPredictions: _calcPercentages(allPredictions),
