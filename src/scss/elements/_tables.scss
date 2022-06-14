@@ -7,8 +7,6 @@
 }
 
 .data-table.predictions:not(.predictions--has-details) {
-  max-width: 850px;
-
   thead > tr > th {
     &:nth-of-type(1) {
       width: 45%;

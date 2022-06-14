@@ -14,6 +14,7 @@ TODO
 - reverse the data for the predictions?
 - Revisit menu?
 - Stretch goal: was that an accurate prediction for that year?
+- More tests
 
 FOR AN EVENTUAL LAUNCH
 
