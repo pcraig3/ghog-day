@@ -23,7 +23,7 @@
       <p>This data <a href="#get-the-data" class="underline">can also be returned</a> as formatted JSON or as a CSV file.</p>
 
       {% set hasDetails = groundhog.predictions[0].details %}
-      <div class="data-table predictions {% if hasDetails%}predictions--has-details{% endif %}" role="region" aria-labelledby="data-table--predictions" tabindex="0">
+      <div class="data-table predictions {% if hasDetails%}predictions--has-details{% endif %}" role="region" aria-labelledby="data-table--predictions">
 
         <table class="data-table__table data-table__table--with-line-breaks">
           <caption id="data-table--predictions">

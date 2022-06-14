@@ -34,15 +34,12 @@
               <tr role="row" onclick="window.location='/groundhogs/{{groundhog.id}}/';">
                 <th role="columnheader"><a href="/groundhogs/{{groundhog.id}}/" class="underline">{{ groundhog.name }}</a></th>
                 <td role="gridcell">
-                  {# <span aria-hidden="true" class="narrow-th">Region: </span> #}
                   {{ groundhog.region }}
                 </td>
                 <td role="gridcell">
-                  {# <span aria-hidden="true" class="narrow-th">Country: </span> #}
                   {{ groundhog.country }}
                 </td>
                 <td role="gridcell">
-                  {# <span aria-hidden="true" class="narrow-th">Current prediction: </span> #}
                   {% if groundhog.latestPrediction.shadow %}
                     <span role="img" aria-label="Longer winter">☃️</span>
                   {% else %}
@@ -50,7 +47,6 @@
                   {% endif %}
                 </td>
                 <td role="gridcell">
-                  {# <span aria-hidden="true" class="narrow-th">Total predictions: </span> #}
                   {{ groundhog.predictionsCount }}
                 </td>
               </tr>
