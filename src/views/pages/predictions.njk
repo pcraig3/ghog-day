@@ -1,0 +1,38 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  predictions
+{%- endblock %}
+
+{% block content %}
+  {{ page_header({ h1: '2022 predictions', backUrl: '/', backText: 'Home' }) }}
+
+  <p class="h4 not-caps">🌷 In 2022, spring will come early! 🌷</p>
+
+  <p>Most groundhogs in 2022 (60%) predicted an early spring. 40% predicted a longer winter, but they are probably wrong because there are less of them.</p>
+
+  <p>“Early spring” Groundhogs:</p>
+  <ul class="with-bullets">
+    <li>Punxsutawney Phil, USA</li>
+    <li>Wiarton Willie, Canada</li>
+    <li>Good luck Chuck, USA</li>
+  </ul>
+
+  <p>“Longer winter” Groundhogs:</p>
+  <ul class="with-bullets">
+    <li>Subaru Sam, Canada</li>
+    <li>Jersey ‘the Chainsaw Murderer’ Jim, USA</li>
+  </ul>
+
+  <h2>More years</h2>
+  <ul>
+    <li>2021</li>
+    <li>2020</li>
+    <li>2019</li>
+    <li>2018</li>
+    <li>2017</li>
+  </ul>
+
+
+
+{% endblock %}

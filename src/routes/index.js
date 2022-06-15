@@ -43,6 +43,11 @@ router.get('/api', function (req, res) {
   res.render('pages/api', { title: 'API – GROUNDHOG-DAY.com' })
 })
 
+/* GET predictions page. */
+router.get('/predictions', function (req, res) {
+  res.render('pages/predictions', { title: '2022 predictions – GROUNDHOG-DAY.com' })
+})
+
 /* GET all groundhogs */
 router.get('/groundhogs', function (req, res) {
   let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
