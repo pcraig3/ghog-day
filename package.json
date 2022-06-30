@@ -21,13 +21,13 @@
     "http-errors": "~2.0.0",
     "morgan": "~1.10.0",
     "nunjucks": "^3.2.3",
-    "sass": "^1.52.2"
+    "sass": "^1.53.0"
   },
   "devDependencies": {
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "eslint-plugin-jest": "^26.5.3",
-    "jest": "^28.1.0",
-    "nodemon": "^2.0.16",
+    "jest": "^28.1.2",
+    "nodemon": "^2.0.18",
     "supertest": "^6.2.3"
   }
 }
