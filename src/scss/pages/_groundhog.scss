@@ -19,8 +19,27 @@
   }
 }
 
-.groundhog--facts {
+.groundhog--residence {
   border: 2px solid black;
   margin-top: calc(-1 * vars.$space-md);
-  padding: vars.$space-md vars.$space-sm vars.$space-md vars.$space-md;
+  // padding: vars.$space-md vars.$space-sm vars.$space-md vars.$space-md;
+  padding: vars.$space-md vars.$space-sm vars.$space-sm vars.$space-md;
+
+  .subhead {
+    font-weight: 400;
+    font-size: 130%;
+    line-height: 1.45;
+  }
+}
+
+.groundhog--source {
+  background: black;
+  color: white;
+  padding: vars.$space-xs vars.$space-md vars.$space-xs vars.$space-md;
+  font-size: 80%;
+
+  > a {
+    margin-right: vars.$space-sm;
+    display: inline-block;
+  }
 }

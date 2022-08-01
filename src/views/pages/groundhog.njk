@@ -29,33 +29,16 @@
           <figcaption>{{ groundhog.name }}</figcaption>
         </figure>
 
-        <!-- see if you can set a caption -->
-        <dl class="groundhog--facts">
-          <div>
-            <dt>City:</dt>
-            <dd>{{ groundhog.city }}</dd>
+        <div class="groundhog--residence">
+          <div class="subhead">Resides in</div>
+          <div class="text">
+            {{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}
           </div>
-          <div>
-            {% if groundhog.country === 'USA' %}
-              <dt>State:</dt>
-            {% else %}
-              <dt>Province:</dt>
-            {% endif %}
-            <dd>{{ groundhog.region }}</dd>
-          </div>
-          <div>
-            <dt>Country:</dt>
-            <dd>{{ groundhog.country }}</dd>
-          </div>
-          <div>
-            <dt>Source:</dt>
-            <dd>{{ groundhog.source | cleanUrl | safe  }}</dd>
-          </div>
-          <div>
-            <dt>This year’s prediction:</dt>
-            <dd>{{ groundhog.currentPrediction | cleanUrl | safe  }}</dd>
-          </div>
-        </dl>
+        </div>
+        <div class="groundhog--source">
+          <a href="{{ groundhog.source }}" target="_blank" class="underline">Source</a>
+          <a href="{{ groundhog.currentPrediction }}" target="_blank" class="underline">Latest prediction</a>
+        </div>
       </div>
     </div>
 
