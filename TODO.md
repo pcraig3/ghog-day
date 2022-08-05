@@ -25,11 +25,18 @@ FOR AN EVENTUAL LAUNCH
 - Analytics
 - Get it deployed with the URL
 - page title and meta tag
+- Home page:
+  - Countdown timer (with stock ticker?)
+  - This year's prediction
+  - "Cards" for groundhogs
+- Figure out if we need headings on the summary pages
 - Page: This year's prediction
 - Add a Groundhog (basically, a google form)
+- The stupid menu, move it down ?
 
 DONE
 
+- Get the data, simpler
 - Page: API
 - API route to get predictions by year
 - Mobile layout

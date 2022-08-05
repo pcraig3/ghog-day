@@ -2,24 +2,62 @@
 @use '../vars';
 
 .inner-content__header {
-  display: flex;
-  border-bottom: 2px solid black;
   margin-bottom: vars.$space-xl;
-  flex-direction: column-reverse;
 
-  h1 {
-    margin-bottom: 0;
+  display: grid;
+  grid: auto-flow min-content / 1fr;
+  grid-gap: 0em;
+  grid-template-areas:
+    'back    download'
+    'heading heading';
+
+  /* Grid positioning */
+  .page_header--back {
+    grid-area: back;
   }
 
-  > div {
-    align-self: flex-start;
-    text-align: right;
-    margin-bottom: vars.$space-sm;
+  .page_header--heading {
+    grid-area: heading;
+  }
+
+  .page_header--download {
+    grid-area: download;
+  }
+
+  /* CSS styling */
+  .page_header--back,
+  .page_header--download {
+    margin-bottom: vars.$space-xs;
+  }
+
+  .page_header--heading {
+    margin-bottom: 0;
+    border-bottom: 2px solid black;
   }
 
   @include mixins.tablet {
-    h1 {
-      margin-right: 35%;
+    border-bottom: 2px solid black;
+    grid: auto-flow min-content / 3.25fr 1fr;
+
+    grid-template-areas:
+      'back back'
+      'heading download';
+
+    .page_header--heading {
+      border-bottom: none;
+    }
+
+    .page_header--download {
+      align-self: end;
+      justify-self: end;
+      margin-bottom: 0;
+
+      > a {
+        padding: vars.$space-xs;
+        border: 2px solid black;
+        border-bottom: none;
+        border-radius: 2px 2px 0 0;
+      }
     }
   }
 }

@@ -6,7 +6,8 @@
 
 {% block content %}
   {% set backUrl = ['/groundhogs/', groundhog.id, '/'] | join %}
-  {{ page_header({ h1: title, backUrl: backUrl, backText: groundhog.name }) }}
+  {% set dataUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
+  {{ page_header({ h1: title, backUrl: backUrl, backText: groundhog.name, dataUrl: dataUrl }) }}
 
   <div class="inner-content">
     <div class="inner-content__main">
@@ -19,8 +20,6 @@
           <li><strong>{{ allPredictions['null'] }}</strong> time{% if allPredictions['null'] != 1 %}s{% endif %} ({{  allPredictions.percent['null'] }}%), {{ groundhog.shortname }}’s prediction{% if allPredictions['null'] != 1 %}s{% endif %} went unrecorded</li>
         {% endif %}
       </ul>
-
-      <p>This data <a href="#get-the-data" class="underline">can also be returned</a> as formatted JSON or as a CSV file.</p>
 
       {% set hasDetails = groundhog.predictions[0].details %}
       <div class="data-table predictions {% if hasDetails%}predictions--has-details{% else %}max-width{% endif %}" role="region" aria-labelledby="data-table--predictions">
@@ -60,10 +59,6 @@
           </tbody>
         </table>
       </div>
-
-      {% set apiUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
-      {{ get_the_data({ url: apiUrl }) }}
     </div>
   </div>
-
 {% endblock %}

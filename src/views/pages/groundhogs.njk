@@ -5,7 +5,7 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: title, backUrl: '/', backText: 'Home' }) }}
+  {{ page_header({ h1: title, backUrl: '/', backText: 'Home', dataUrl: '/api/v1/groundhogs/' }) }}
 
   <div class="inner-content">
     <div class="inner-content__main">
@@ -54,10 +54,6 @@
           </tbody>
         </table>
       </div>
-
-      {{ get_the_data({ url: '/api/v1/groundhogs/' }) }}
     </div>
-        
   </div>
-
 {% endblock %}

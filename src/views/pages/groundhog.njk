@@ -5,7 +5,8 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: groundhog.name, backUrl: '/groundhogs', backText: 'All groundhogs' }) }}
+  {% set dataUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
+  {{ page_header({ h1: groundhog.name, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: dataUrl }) }}
 
   <div class="inner-content inner-content--with-summary">
     <div class="description">
@@ -83,12 +84,5 @@
         <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions" class="underline-mobile">All {{ groundhog.predictions | length }} predictions <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
-
-    <div class="data">
-      {% set apiUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
-      {{ get_the_data({ url: apiUrl }) }}
-    </div>
-
   </div>
-
 {% endblock %}
