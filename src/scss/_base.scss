@@ -85,13 +85,16 @@ footer {
   }
 
   @include mixins.tablet {
-      max-width: none;
-      grid: auto-flow min-content / 2fr 1fr;
-      grid-gap: 0 2em;
+    max-width: none;
+    grid: auto-flow min-content / 2fr 1fr;
+    grid-gap: 0 2em;
 
-      grid-template-areas:
-          'description summary'
-          'predictions summary'
-          'data        summary'
+    grid-template-areas:
+      'description summary'
+      'predictions data';
+
+    .summary {
+      margin-top: -100px;
+    }
   }
 }

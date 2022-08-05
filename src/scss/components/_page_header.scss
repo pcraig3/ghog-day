@@ -5,23 +5,21 @@
   display: flex;
   border-bottom: 2px solid black;
   margin-bottom: vars.$space-xl;
+  flex-direction: column-reverse;
 
   h1 {
-    flex: 3;
     margin-bottom: 0;
   }
 
   > div {
-    flex: 1;
-    align-self: end;
+    align-self: flex-start;
     text-align: right;
+    margin-bottom: vars.$space-sm;
   }
 
-  @include mixins.mobile {
-    flex-direction: column-reverse;
-
-    > div {
-      align-self: flex-start;
+  @include mixins.tablet {
+    h1 {
+      margin-right: 35%;
     }
   }
 }

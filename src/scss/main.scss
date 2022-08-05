@@ -17,7 +17,6 @@
 @use './_footer';
 
 /* pages */
-@use './pages/_groundhogs'; /* list of all groundhogs */
 @use './pages/_groundhog'; /* single groundhog */
 
 /* elements */
@@ -26,6 +25,9 @@
 @use './elements/_links';
 @use './elements/_lists';
 @use './elements/_tables';
+
+/* components */
+@use './components/_page_header';
 
 .visually-hidden {
   @include mixins.visually-hidden;
