@@ -53,9 +53,5 @@ a.logo {
 
   a {
     text-decoration: none;
-
-    @include mixins.mobile {
-      display: none;
-    }
   }
 }

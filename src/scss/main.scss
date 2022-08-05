@@ -42,12 +42,27 @@ img {
   height: auto;
 }
 
+@include mixins.mobile {
+  .hidden--mobile {
+    display: none;
+  }
+}
+
 @include mixins.mobile-xs {
   .hidden--mobile-xs {
     display: none;
   }
 }
 
+.max-width--850 {
+  max-width: 850px;
+}
+
+#back-to-top {
+  margin-top: 10px;
+}
+
+// Both of these are used for the groundhog emoji on the API page
 .flip-x {
   display: inline-block;
   transform: scale(-1, 1);
@@ -55,8 +70,4 @@ img {
 
 .large-font {
   font-size: 115%;
-}
-
-.max-width {
-  max-width: 850px;
 }

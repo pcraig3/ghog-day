@@ -1,7 +1,8 @@
 @use '../vars';
 
 .all-predictions {
-  padding: vars.$space-sm 0;
+  padding: vars.$space-sm 0 0 0;
+  margin: 0;
   text-align: left;
 }
 

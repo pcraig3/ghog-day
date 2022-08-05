@@ -3,7 +3,7 @@
     <div class="page_header--back"><a href="{{ params.backUrl }}" class="underline"><span aria-hidden="true">←</span> {{ params.backText }}</a></div>
     <h1 class="page_header--heading">{{ params.h1 }}</h1>
     {% if params.dataUrl %}
-      <div class="page_header--download"><a href="{{ params.dataUrl }}" class="underline-mobile" target="_blank"><span aria-hidden="true">↓</span> Get the data</a></div>
+      <div class="page_header--download hidden--mobile"><a href="{{ params.dataUrl }}" class="underline-mobile" target="_blank"><span aria-hidden="true">↓</span> Get the data</a></div>
     {% endif %}
   </div>
 {% endmacro %}

@@ -3,7 +3,7 @@
 {%- from "macros/_page_header.njk" import page_header -%}
 
 <!doctype html>
-<html lang="en">
+<html lang="en" id="html">
   <head>
     <title>{{ title }}</title>
     {% if GITHUB_SHA -%}
@@ -30,7 +30,7 @@
         <img src="/images/logo.png" class="logo--img" alt="" />
         <span aria-hidden="true">Groundhog<span class="letter-spacing--less">-</span>D<span class="letter-spacing--less">a</span>y.com</span>
       </a>
-      <div class="header--right"><a href="#">2022 predictions <span aria-hidden="true">→</span></a></div>
+      <div class="header--right"><a class="hidden--mobile" href="#">2022 predictions <span aria-hidden="true">→</span></a></div>
     </header>
 
     <nav>
@@ -49,6 +49,10 @@
     <footer>
       <div class="body-text">
         <a href="https://pcraig3.ca" target="_blank">@pcraig3</a>
+
+        <div id="back-to-top">
+          <a href="#html" class="underline"><span aria-hidden="true">↑</span> Back to top</a>
+        </div>
       </div>
     </footer>
   </body>

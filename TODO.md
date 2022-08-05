@@ -33,6 +33,7 @@ FOR AN EVENTUAL LAUNCH
 - Page: This year's prediction
 - Add a Groundhog (basically, a google form)
 - The stupid menu, move it down ?
+- Download icon for the button
 
 DONE
 
