@@ -31,14 +31,12 @@
   margin-bottom: vars.$space-xxl;
 
   .data-table__title {
-    margin: 0;
-    padding: 0;
+    margin-bottom: 0;
     border: none;
   }
 
   caption {
     text-align: left;
-    margin-bottom: vars.$space-xs;
   }
 
   table {
@@ -96,17 +94,12 @@
       }
 
       th {
+        border-top: 1.5px solid black;
         border-bottom: 1.5px solid black;
       }
 
       + tbody th {
         font-weight: 400;
-      }
-
-      @include mixins.mobile {
-        th {
-          border-top: 1.5px solid black;
-        }
       }
     }
 
