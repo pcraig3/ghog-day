@@ -61,13 +61,8 @@
         </table>
       </div>
 
-      <div class="get-the-data">
-        <h3 id="get-the-data">Get the data</h3>
-        <ul class="button-list">
-          <li><a href="/api/v1/groundhogs/" class="link-button" target="_blank">As JSON</a></li>
-          <li><button disabled>As a CSV (soon)</button></li>
-        </ul>
-      </div>
+      {% set apiUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
+      {{ get_the_data({ url: apiUrl }) }}
     </div>
   </div>
 

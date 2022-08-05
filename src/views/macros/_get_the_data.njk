@@ -1,0 +1,10 @@
+{% macro get_the_data(params) %}
+<div class="get-the-data">
+    <h3 id="get-the-data" class="get-the-data--header">Get the data</h3>
+    <ul class="get-the-data--button-list">
+        <li><a href="{{ params.url }}" class="link-button" target="_blank">As JSON</a></li>
+        <li><button disabled>As a CSV (soon)</button></li>
+    </ul>
+</div>
+{% endmacro %}
+

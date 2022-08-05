@@ -11,7 +11,6 @@
 @use './_base';
 
 /* Sections */
-@use './_get_the_data';
 @use './_header';
 @use './_nav';
 @use './_footer';
@@ -28,6 +27,7 @@
 
 /* components */
 @use './components/_page_header';
+@use './components/_get_the_data';
 
 .visually-hidden {
   @include mixins.visually-hidden;
