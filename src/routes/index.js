@@ -99,7 +99,7 @@ router.get('/groundhogs/:gId/predictions', (req, res) => {
   let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
 
   const predictions = DB()
-    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
+    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year DESC;')
     .all(req.params.gId)
 
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
