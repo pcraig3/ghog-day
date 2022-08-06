@@ -1,0 +1,9 @@
+
+{% macro site_title(params) %}
+    {% if params.url %}
+        <a href="/" class="underline">GROUNDHOG-DAY.com</a>
+    {% else %}
+        GROUNDHOG-DAY.com
+    {% endif %}
+{% endmacro %}
+

@@ -1,11 +1,18 @@
 {%- from "macros/_get_the_data.njk" import get_the_data -%}
 {%- from "macros/_nav.njk" import nav -%}
 {%- from "macros/_page_header.njk" import page_header -%}
+{%- from "macros/_groundhog_day_dot_com.njk" import site_title -%}
 
 <!doctype html>
 <html lang="en" id="html">
   <head>
-    <title>{{ title }}</title>
+    <title>
+      {% if title == 'GROUNDHOG-DAY.com' %}
+        {{ site_title() }}
+      {% else %}
+        {{ title }} — {{ site_title() }}
+      {% endif %}
+    </title>
     {% if GITHUB_SHA -%}
       <meta name="keywords" content="GITHUB_SHA={{ GITHUB_SHA }}" />
     {%- endif %}

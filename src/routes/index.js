@@ -35,12 +35,12 @@ router.get('/', function (req, res) {
 
 /* GET about page. */
 router.get('/about', function (req, res) {
-  res.render('pages/about', { title: 'About – GROUNDHOG-DAY.com' })
+  res.render('pages/about', { title: 'About' })
 })
 
 /* GET api page. */
 router.get('/api', function (req, res) {
-  res.render('pages/api', { title: 'API – GROUNDHOG-DAY.com' })
+  res.render('pages/api', { title: 'API' })
 })
 
 /* GET predictions page. */
