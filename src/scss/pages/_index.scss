@@ -1,0 +1,60 @@
+@use '../vars';
+
+.index {
+  h1 {
+    margin-top: vars.$space-md;
+    margin-bottom: 60px;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 2px solid black;
+  }
+}
+
+.predictions--heading {
+  padding-bottom: vars.$space-xs;
+  margin-bottom: 0;
+  margin-top: 60px;
+  border-bottom: 1.5px solid black;
+}
+
+.predictions--summary {
+  border-bottom: 1.5px solid black;
+
+  ul {
+    padding: vars.$space-lg 0 0 vars.$space-sm;
+  }
+
+  li {
+    display: inline-block;
+    border: 2px solid black;
+    margin-bottom: vars.$space-lg;
+    margin-right: vars.$space-md;
+  }
+
+  .predictions--prediction {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding-right: vars.$space-md;
+
+    &.predictions--winter {
+      background: black;
+      color: white;
+    }
+
+    .icon {
+      padding: vars.$space-md;
+      font-size: 190%;
+      line-height: 1;
+      background: white;
+      border-right: 2px solid black;
+    }
+
+    strong {
+      margin: 0 vars.$space-sm;
+      line-height: 0.1;
+    }
+  }
+}

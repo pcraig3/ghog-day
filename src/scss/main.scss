@@ -15,7 +15,8 @@
 @use './_footer';
 
 /* pages */
-@use './pages/_groundhog'; /* single groundhog */
+@use './pages/_groundhog';
+@use './pages/_index';
 
 /* elements */
 @use './elements/_details';
