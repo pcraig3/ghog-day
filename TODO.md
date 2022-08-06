@@ -24,19 +24,25 @@ FOR AN EVENTUAL LAUNCH
 - Find a little more data
 - Analytics
 - Get it deployed with the URL
-- page title and meta tag
+- Page titles and meta tags
 - Home page:
   - Countdown timer (with stock ticker?)
   - This year's prediction
   - "Cards" for groundhogs
-- Figure out if we need headings on the summary pages
 - Page: This year's prediction
 - Add a Groundhog (basically, a google form)
-- The stupid menu, move it down ?
 - Download icon for the button
+- Social share images
+- Sitemap
+- Mobile menu
+- Better footer, Paul and Tyler
 
 DONE
 
+- Smaller headings for less abrupt font changes
+  - All tables have headings now
+- Clean up API and About pages
+- Back to top link
 - Get the data, simpler
 - Page: API
 - API route to get predictions by year
