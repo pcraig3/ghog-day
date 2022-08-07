@@ -3,46 +3,35 @@
 .index {
   h1 {
     margin-top: vars.$space-md;
-    margin-bottom: 60px;
   }
 
   hr {
     border: none;
-    border-bottom: 2px solid black;
   }
 }
 
 .predictions--heading {
   padding-bottom: vars.$space-xs;
   margin-bottom: 0;
-  margin-top: 60px;
   border-bottom: 1.5px solid black;
 }
 
 .predictions--summary {
-  border-bottom: 1.5px solid black;
-
   ul {
-    padding: vars.$space-lg 0 0 vars.$space-sm;
+    padding: vars.$space-lg 0 vars.$space-xs 0;
   }
 
   li {
     display: inline-block;
-    border: 2px solid black;
-    margin-bottom: vars.$space-lg;
-    margin-right: vars.$space-md;
+    margin-bottom: vars.$space-md;
+    margin-right: vars.$space-lg;
   }
 
-  .predictions--prediction {
+  &--item {
     display: flex;
     justify-items: center;
     align-items: center;
     padding-right: vars.$space-md;
-
-    &.predictions--winter {
-      background: black;
-      color: white;
-    }
 
     .icon {
       padding: vars.$space-md;
@@ -50,11 +39,90 @@
       line-height: 1;
       background: white;
       border-right: 2px solid black;
+      display: none;
     }
 
     strong {
       margin: 0 vars.$space-sm;
       line-height: 0.1;
+    }
+  }
+
+  &--highlight {
+    padding: 0 vars.$space-xs;
+    background: linear-gradient(140deg, transparent, vars.$color-spring);
+  }
+
+  &--winter {
+    .predictions--summary--highlight {
+      background: linear-gradient(140deg, transparent, vars.$color-winter);
+    }
+  }
+}
+
+.predictions > h2 {
+  padding-bottom: vars.$space-xs;
+  margin-top: 30px;
+  border-bottom: 1.5px solid black;
+}
+
+.predictions--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 0.8fr));
+  grid-gap: vars.$space-lg;
+}
+
+.predictions--card {
+  border: 2px solid black;
+  display: inline-block;
+  position: relative;
+
+  &--triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 25px solid vars.$color-spring;
+    position: absolute;
+    right: 0;
+  }
+
+  &--heading {
+    text-transform: uppercase;
+    margin: vars.$space-lg vars.$space-lg vars.$space-sm vars.$space-md;
+    white-space: nowrap;
+  }
+
+  &--location {
+    margin-left: vars.$space-md;
+    margin-bottom: vars.$space-md;
+  }
+
+  &--prediction {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding-right: vars.$space-md;
+    border-top: 2px solid black;
+
+    .icon {
+      padding: vars.$space-md;
+      margin-right: vars.$space-md;
+      font-size: 150%;
+      line-height: 1;
+      background: white;
+      border-right: 2px solid black;
+    }
+  }
+
+  &.predictions--card--winter {
+    .predictions--card--prediction {
+      background: black;
+      color: white;
+    }
+
+    .predictions--card--triangle {
+      border-right-color: vars.$color-winter;
     }
   }
 }

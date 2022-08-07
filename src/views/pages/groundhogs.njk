@@ -10,10 +10,6 @@
   <div class="inner-content">
     <div class="inner-content__main">
       <p>There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs who made predictions in 2022.</p>
-      <ul class="with-bullets">
-        <li><strong>{{ recentPredictions.winter }}</strong> groundhogs ({{ recentPredictions.percent.winter }}%) predicted six more weeks of winter: ☃️</li>
-        <li><strong>{{ recentPredictions.spring }}</strong> groundhogs ({{ recentPredictions.percent.spring }}%) predicted an early spring: 🌷</li>
-      </ul>
 
       <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
         <table role="grid" class="data-table__table">

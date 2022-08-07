@@ -5,32 +5,73 @@
 {%- endblock %}
 
 {% block content %}
-  <h1 class="not-caps">180 days until Groundhog Day 2023.</h1>
-  <hr />
-  <h2 class="h4 predictions--heading">2022 Groundhog Day predictions</h2>
+  {{ page_header({ h1: 'Groundhog Roundup', dataUrl: '/api/v1/predictions/' }) }}
+
   <div class="predictions--summary">
     <ul>
       <li>
-        <div class="predictions--prediction predictions--spring">
+        <div class="predictions--summary--item predictions--summary--spring">
           <div class="icon"><span aria-hidden="true">🌼</span></div>
-          <strong class="h1">2</strong> predict early spring
+          <strong class="h1">2</strong> predicted <span class="predictions--summary--highlight">early spring</span>
         </div>
-      </li>
-      <li>
-        <div class="predictions--prediction predictions--winter">
+      </li><!--
+      --><li>
+        <div class="predictions--summary--item predictions--summary--winter">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <strong class="h1">3</strong> predict longer winter
+          <strong class="h1">3</strong> predicted <span class="predictions--summary--highlight">longer winter</span>
         </div>
       </li>
     </ul>
   </div>
-  <div class="predictions--grid">
-    <h2 class="h4">5 predictions in 2022</h3>
-    <div class="predictions--container">
-      <div class="predictions--card">
-        <div>Punxsutawney Phil</div>
-        <div>Pensylvania, USA</div>
-        <div class="predictions--prediction">
+  <div class="predictions">
+    <h2 class="h5">5 predictions in 2022</h3>
+    <div class="predictions--grid"> 
+      <div class="predictions--card predictions--card--winter">
+        <span class="predictions--card--triangle"></span>
+        <div class="predictions--card--heading h4">Punxsutawney Phil</div>
+        <div class="predictions--card--location">Pensylvania, USA</div>
+        <div class="predictions--card--prediction">
+          <div class="icon"><span aria-hidden="true">❄️</span></div>
+          <div>Longer winter</div>
+        </div>
+      </div>
+
+      <div class="predictions--card predictions--card--spring">
+        <span class="predictions--card--triangle"></span>
+        <div class="predictions--card--heading h4">Wiarton Willie</div>
+        <div class="predictions--card--location">Ontario, Canada</div>
+        <div class="predictions--card--prediction">
+          <div class="icon"><span aria-hidden="true">🌼</span></div>
+          <div>Early spring</div>
+        </div>
+      </div>
+
+       <div class="predictions--card predictions--card--winter">
+        <span class="predictions--card--triangle"></span>
+        <div class="predictions--card--heading h4">Punxsutawney Phil</div>
+        <div class="predictions--card--location">Pensylvania, USA</div>
+        <div class="predictions--card--prediction">
+          <div class="icon"><span aria-hidden="true">❄️</span></div>
+          <div>Longer winter</div>
+        </div>
+      </div>
+
+      <div class="predictions--card predictions--card--spring">
+        <span class="predictions--card--triangle"></span>
+        <div class="predictions--card--heading h4">Wiarton Willie</div>
+        <div class="predictions--card--location">Ontario, Canada</div>
+        <div class="predictions--card--prediction">
+          <div class="icon"><span aria-hidden="true">🌼</span></div>
+          <div>Early spring</div>
+        </div>
+      </div>
+
+       <div class="predictions--card predictions--card--winter">
+        <span class="predictions--card--triangle"></span>
+        <div class="predictions--card--heading h4">Punxsutawney Phil</div>
+        <div class="predictions--card--location">Pensylvania, USA</div>
+        <div class="predictions--card--prediction">
+          <div class="icon"><span aria-hidden="true">❄️</span></div>
           <div>Longer winter</div>
         </div>
       </div>
