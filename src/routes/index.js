@@ -43,9 +43,51 @@ router.get('/api', function (req, res) {
   res.render('pages/api', { title: 'API' })
 })
 
-/* GET predictions page. */
+/* 301 REDIRECT to a predictions page with a year. */
 router.get('/predictions', function (req, res) {
-  res.render('pages/predictions', { title: '2022 predictions – GROUNDHOG-DAY.com' })
+  const currentYear = new Date().getFullYear()
+  return res.redirect(`/predictions/${currentYear}`)
+})
+
+/* GET predictions page for a year. */
+router.get('/predictions/:year', function (req, res) {
+  const year = req.params.year
+  const currentYear = new Date().getFullYear()
+  const predictionTotals = { total: 0, winter: 0, spring: 0 }
+
+  if (year < 1886 || year > currentYear) {
+    throw new createError(
+      400,
+      `The <code>year</code> must be between 1886 and ${currentYear} (inclusive).`,
+    )
+  }
+
+  let predictions = DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(year)
+
+  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  let groundhogsArr = []
+
+  // create array where groundhog ids are also the index
+  groundhogs.forEach((ghog) => {
+    groundhogsArr[ghog.id] = ghog
+  })
+
+  // add groundhog to each prediction
+  predictions.forEach((prediction) => {
+    prediction.groundhog = groundhogsArr[prediction.ghogId]
+    delete prediction.ghogId
+    delete prediction.id
+
+    ++predictionTotals['total']
+    prediction['shadow'] ? ++predictionTotals['winter'] : ++predictionTotals['spring']
+  })
+
+  res.render('pages/predictions', {
+    title: `${year} predictions`,
+    year,
+    predictions,
+    predictionTotals,
+  })
 })
 
 /* GET all groundhogs */

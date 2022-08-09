@@ -70,12 +70,48 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 0.8fr));
   grid-gap: vars.$space-lg;
+
+  > a {
+    display: inline-grid;
+
+    &:focus,
+    &:hover {
+      color: black;
+      text-decoration: none;
+    }
+
+    &:focus {
+      .predictions--card--heading {
+        color: vars.$color-focus;
+      }
+    }
+  }
 }
 
 .predictions--card {
   border: 2px solid black;
   display: inline-block;
   position: relative;
+
+  &:hover {
+    background: #f9f9f9;
+
+    .predictions--card--prediction {
+      background: vars.$color-spring;
+    }
+
+    .predictions--card--heading {
+      color: vars.$color-focus;
+      text-decoration: underline;
+    }
+  }
+
+  &.predictions--card--winter:hover {
+    .predictions--card--prediction {
+      background: vars.$color-winter;
+      color: black;
+    }
+  }
 
   &--triangle {
     width: 0;
@@ -91,6 +127,7 @@
     text-transform: uppercase;
     margin: vars.$space-lg vars.$space-lg vars.$space-sm vars.$space-md;
     white-space: nowrap;
+    text-decoration: underline;
   }
 
   &--location {

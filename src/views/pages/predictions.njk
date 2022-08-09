@@ -5,34 +5,47 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: '2022 predictions', backUrl: '/', backText: 'Home' }) }}
+  {% set h1 = [year, ' predictions'] | join %}
+  {% set dataUrl = ['/api/v1/predictions/?year=', year] | join %}
+  {{ page_header({ h1: h1, backUrl: '/', backText: 'Home', dataUrl: dataUrl }) }}
 
-  <p class="h4 not-caps">🌷 In 2022, spring will come early! 🌷</p>
-
-  <p>Most groundhogs in 2022 (60%) predicted an early spring. 40% predicted a longer winter, but they are probably wrong because there are less of them.</p>
-
-  <p>“Early spring” Groundhogs:</p>
-  <ul class="with-bullets">
-    <li>Punxsutawney Phil, USA</li>
-    <li>Wiarton Willie, Canada</li>
-    <li>Good luck Chuck, USA</li>
-  </ul>
-
-  <p>“Longer winter” Groundhogs:</p>
-  <ul class="with-bullets">
-    <li>Subaru Sam, Canada</li>
-    <li>Jersey ‘the Chainsaw Murderer’ Jim, USA</li>
-  </ul>
-
-  <h2>More years</h2>
-  <ul>
-    <li>2021</li>
-    <li>2020</li>
-    <li>2019</li>
-    <li>2018</li>
-    <li>2017</li>
-  </ul>
-
-
-
+  <div class="predictions--summary">
+    <ul>
+      <li>
+        <div class="predictions--summary--item predictions--summary--spring">
+          <div class="icon"><span aria-hidden="true">🌼</span></div>
+          <strong class="h1">{{ predictionTotals.spring }}</strong> predicted <span class="predictions--summary--highlight">early spring</span>
+        </div>
+      </li><!--
+      --><li>
+        <div class="predictions--summary--item predictions--summary--winter">
+          <div class="icon"><span aria-hidden="true">❄️</span></div>
+          <strong class="h1">{{ predictionTotals.winter }}</strong> predicted <span class="predictions--summary--highlight">longer winter</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="predictions">
+    <h2 class="h5">5 predictions in 2022</h3>
+    <div class="predictions--grid">
+      {% for prediction in predictions %}
+        <a href="/groundhogs/{{ prediction.groundhog.id }}">
+          <div class="predictions--card predictions--card--{{ 'winter' if prediction.shadow else 'spring' }}">
+              <span class="predictions--card--triangle"></span>
+              <div class="predictions--card--heading h4">{{ prediction.groundhog.name }}</div>
+              <div class="predictions--card--location">{{ prediction.groundhog.region }}, {{ prediction.groundhog.country }}</div>
+              <div class="predictions--card--prediction">
+                {% if prediction.shadow %}
+                  <div class="icon"><span aria-hidden="true">❄️</span></div>
+                  <div>Longer winter</div>
+                {% else %}
+                  <div class="icon"><span aria-hidden="true">🌼</span></div>
+                  <div>Early spring</div>
+                {% endif %}
+              </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}
