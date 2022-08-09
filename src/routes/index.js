@@ -51,15 +51,21 @@ router.get('/predictions', function (req, res) {
 
 /* GET predictions page for a year. */
 router.get('/predictions/:year', function (req, res) {
-  const year = req.params.year
+  const year = parseInt(req.params.year)
   const currentYear = new Date().getFullYear()
   const predictionTotals = { total: 0, winter: 0, spring: 0 }
 
-  if (year < 1886 || year > currentYear) {
+  if (isNaN(year) || year < 1886 || year > currentYear) {
     throw new createError(
       400,
       `The <code>year</code> must be between 1886 and ${currentYear} (inclusive).`,
     )
+  }
+
+  const years = {
+    year,
+    next: year === currentYear ? undefined : year + 1,
+    prev: year === 1886 ? undefined : year - 1,
   }
 
   let predictions = DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(year)
@@ -84,7 +90,7 @@ router.get('/predictions/:year', function (req, res) {
 
   res.render('pages/predictions', {
     title: `${year} predictions`,
-    year,
+    years,
     predictions,
     predictionTotals,
   })

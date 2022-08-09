@@ -5,8 +5,8 @@
 {%- endblock %}
 
 {% block content %}
-  {% set h1 = [year, ' predictions'] | join %}
-  {% set dataUrl = ['/api/v1/predictions/?year=', year] | join %}
+  {% set h1 = [years.year, ' predictions'] | join %}
+  {% set dataUrl = ['/api/v1/predictions/?year=', years.year] | join %}
   {{ page_header({ h1: h1, backUrl: '/', backText: 'Home', dataUrl: dataUrl }) }}
 
   <div class="predictions--summary">
@@ -26,7 +26,7 @@
     </ul>
   </div>
   <div class="predictions">
-    <h2 class="h5">5 predictions in 2022</h3>
+    <h2 class="h5">{{ predictions | length }} predictions in {{ years.year }}</h3>
     <div class="predictions--grid">
       {% for prediction in predictions %}
         <a href="/groundhogs/{{ prediction.groundhog.id }}">
@@ -47,5 +47,16 @@
         </a>
       {% endfor %}
     </div>
+  </div>
+  <div class="predictions--navigation">
+    {% if years.next %}
+      <a class="predictions--navigation--next-year underline" href="/predictions/{{ years.next }}"><span aria-hidden="true">←</span> {{years.next }} predictions</a>
+    {% else %}
+      {# otherwise the "prev" link is on the left hand side #}
+      <span></span>
+    {% endif %}
+    {% if years.prev %}
+      <a class="predictions--navigation--prev-year underline" href="/predictions/{{ years.prev }}">{{ years.prev }} predictions <span aria-hidden="true">→</span></a>
+    {% endif %}
   </div>
 {% endblock %}
