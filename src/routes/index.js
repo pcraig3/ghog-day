@@ -3,6 +3,14 @@ var router = express.Router()
 const DB = require('better-sqlite3-helper')
 const createError = require('http-errors')
 
+/* Constants */
+const EARLIEST_RECORDED_PREDICTION = DB()
+  .prepare('SELECT MIN(year) as year FROM predictions;')
+  .get().year
+
+// TODO: This should actually be 2022 until Feb 2nd
+const CURRENT_YEAR = new Date().getFullYear()
+
 /* Utils */
 function _getPercent(percent, total) {
   return Math.round((percent / total) * 100)
@@ -28,6 +36,94 @@ function _calcPercentages(obj = {}) {
   return newObj
 }
 
+/* Queries */
+const getPredictionsByYear = (year) =>
+  DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(year)
+
+const getPredictionsByGroundhog = (id) =>
+  DB().prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;').all(id)
+
+const getGroundhogs = () =>
+  DB()
+    .prepare(
+      `
+    SELECT groundhogs.*, COUNT(ghogId) AS ghogCount 
+    FROM groundhogs LEFT JOIN predictions
+    ON groundhogs.id = predictions.ghogId
+    GROUP BY groundhogs.id
+    ORDER BY ghogCount DESC;
+  `,
+    )
+    .all()
+
+const getGroundhogById = (id) => DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(id)
+
+const getGroundhogById2 = (id) => {
+  let { groundhog } = DB()
+    .prepare(
+      `
+    SELECT json_object(
+      'id', g.id,
+      'shortname', g.shortname,
+      'name', g.name,
+      'city', g.city,
+      'region', g.region,
+      'country', g.country,
+      'source', g.source,
+      'currentPrediction', g.currentPrediction,
+      'isGroundhog', g.isGroundhog,
+      'type', g.type,
+      'description', g.description,
+      'predictions', (
+        SELECT json_group_array(
+          json_object(
+            'year', p.year,
+            'shadow', p.shadow,
+            'details', p.details
+          )
+        )
+        FROM predictions AS p
+        WHERE p.ghogId = g.id
+      )
+    ) AS groundhog
+    FROM groundhogs AS g
+    WHERE id = ?;`,
+    )
+    .get(id)
+
+  return JSON.parse(groundhog)
+}
+
+/* Middleware */
+const validYear = (req, res, next) => {
+  const year = parseInt(req.params.year)
+
+  if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
+    throw new createError(
+      400,
+      `The <code>year</code> must be between ${EARLIEST_RECORDED_PREDICTION} and ${CURRENT_YEAR} (inclusive).`,
+    )
+  }
+
+  next()
+}
+
+const validId = (req, res, next) => {
+  const id = parseInt(req.params.gId)
+  let groundhog
+
+  if (!isNaN(id)) {
+    groundhog = getGroundhogById(id)
+  }
+
+  // TODO: better message
+  if (!groundhog) {
+    throw new createError(400, `Bad groundhog (${id}), pick a real one.`)
+  }
+
+  next()
+}
+
 /* GET home page. */
 router.get('/', function (req, res) {
   res.render('pages/index', { title: 'GROUNDHOG-DAY.com' })
@@ -50,27 +146,19 @@ router.get('/predictions', function (req, res) {
 })
 
 /* GET predictions page for a year. */
-router.get('/predictions/:year', function (req, res) {
+router.get('/predictions/:year', validYear, function (req, res) {
   const year = parseInt(req.params.year)
-  const currentYear = new Date().getFullYear()
   const predictionTotals = { total: 0, winter: 0, spring: 0 }
-
-  if (isNaN(year) || year < 1886 || year > currentYear) {
-    throw new createError(
-      400,
-      `The <code>year</code> must be between 1886 and ${currentYear} (inclusive).`,
-    )
-  }
 
   const years = {
     year,
-    next: year === currentYear ? undefined : year + 1,
-    prev: year === 1886 ? undefined : year - 1,
+    next: year === CURRENT_YEAR ? undefined : year + 1,
+    prev: year === EARLIEST_RECORDED_PREDICTION ? undefined : year - 1,
   }
 
-  let predictions = DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(year)
+  let predictions = getPredictionsByYear(year)
 
-  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  let groundhogs = getGroundhogs()
   let groundhogsArr = []
 
   // create array where groundhog ids are also the index
@@ -98,15 +186,13 @@ router.get('/predictions/:year', function (req, res) {
 
 /* GET all groundhogs */
 router.get('/groundhogs', function (req, res) {
-  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  let groundhogs = getGroundhogs()
   let predictions = []
   const recentPredictions = { total: 0, winter: 0, spring: 0 }
 
   // add predictions to groundhogs
   groundhogs.forEach((g) => {
-    predictions = DB()
-      .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
-      .all(g.id)
+    predictions = getPredictionsByGroundhog(g.id)
 
     g['predictionsCount'] = predictions.length
     g['latestPrediction'] = predictions[predictions.length - 1]
@@ -123,15 +209,8 @@ router.get('/groundhogs', function (req, res) {
 })
 
 /* GET single groundhog */
-router.get('/groundhogs/:gId', (req, res) => {
-  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
-
-  const predictions = DB()
-    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
-    .all(req.params.gId)
-
-  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
-
+router.get('/groundhogs/:gId', validId, (req, res) => {
+  let groundhog = getGroundhogById2(req.params.gId)
   // assign earliest prediction year as separate attribute
   groundhog['earliestPrediction'] = groundhog['predictions'][0]['year']
 
@@ -142,13 +221,11 @@ router.get('/groundhogs/:gId', (req, res) => {
 })
 
 /* GET single groundhog */
-router.get('/groundhogs/:gId/predictions', (req, res) => {
-  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
+router.get('/groundhogs/:gId/predictions', validId, (req, res) => {
   let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
 
-  const predictions = DB()
-    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year DESC;')
-    .all(req.params.gId)
+  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
+  const predictions = getPredictionsByGroundhog(req.params.gId)
 
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
 
@@ -174,12 +251,10 @@ router.get('/groundhogs/:gId/predictions', (req, res) => {
 
 /* get groundhogs as JSON */
 router.get('/api/v1/groundhogs', function (req, res) {
-  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  let groundhogs = getGroundhogs()
 
   groundhogs.map((ghog) => {
-    const predictions = DB()
-      .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
-      .all(ghog['id'])
+    const predictions = getPredictionsByGroundhog(ghog['id'])
 
     // add predictions to groundhogs
     ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
@@ -189,12 +264,9 @@ router.get('/api/v1/groundhogs', function (req, res) {
 })
 
 /* get a single groundhog as JSON */
-router.get('/api/v1/groundhogs/:gId', function (req, res) {
+router.get('/api/v1/groundhogs/:gId', validId, function (req, res) {
   let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
-
-  const predictions = DB()
-    .prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;')
-    .all(req.params.gId)
+  const predictions = getPredictionsByGroundhog(req.params.gId)
 
   groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
 
@@ -216,9 +288,9 @@ router.get('/api/v1/predictions', function (req, res) {
     )
   }
 
-  let predictions = DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(req.query.year)
+  let predictions = getPredictionsByYear(req.query.year)
 
-  let groundhogs = DB().prepare('SELECT * FROM groundhogs ORDER BY id ASC;').all()
+  let groundhogs = getAllGroundhogs()
   let groundhogsArr = []
 
   // create array where groundhog ids are also the index
