@@ -12,7 +12,8 @@
   <div class="inner-content">
     <div class="inner-content__main">
 
-      <p>{{ groundhog.name }} has made <strong>{{ groundhog.predictions | length }}</strong> predictions since {{ groundhog.predictions[0].year }}.</p>
+      {% set oldestPrediction = groundhog.predictions | last %}
+      <p>{{ groundhog.name }} has made <strong>{{ groundhog.predictions | length }}</strong> predictions since {{ oldestPrediction.year }}.</p>
       <ul class="with-bullets">
         <li><strong>{{ allPredictions.shadow }}</strong> prediction{% if allPredictions.shadow != 1 %}s{% endif %} ({{  allPredictions.percent.shadow }}%) of six more weeks of winter</li>
         <li><strong>{{ allPredictions.noShadow }}</strong> prediction{% if allPredictions.noShadow != 1 %}s{% endif %} ({{  allPredictions.percent.noShadow }}%) of early spring</li>

@@ -56,8 +56,6 @@ const getGroundhogs = () =>
     )
     .all()
 
-const getGroundhogById = (id) => DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(id)
-
 const getGroundhogById2 = (id) => {
   let { groundhog } = DB()
     .prepare(
@@ -75,15 +73,16 @@ const getGroundhogById2 = (id) => {
       'type', g.type,
       'description', g.description,
       'predictions', (
-        SELECT json_group_array(
-          json_object(
-            'year', p.year,
-            'shadow', p.shadow,
-            'details', p.details
-          )
+        SELECT json_group_array(o)
+        FROM (SELECT json_object(
+              'year', p.year,
+              'shadow', p.shadow,
+              'details', p.details
+            ) AS o
+            FROM predictions AS p
+            WHERE p.ghogId = g.id
+            ORDER BY p.year DESC
         )
-        FROM predictions AS p
-        WHERE p.ghogId = g.id
       )
     ) AS groundhog
     FROM groundhogs AS g
@@ -92,6 +91,44 @@ const getGroundhogById2 = (id) => {
     .get(id)
 
   return JSON.parse(groundhog)
+}
+
+const getGroundhogs2 = () => {
+  let [{ groundhogs }] = DB()
+    .prepare(
+      `
+      SELECT json_group_array(
+        json_object(
+        'id', g.id,
+        'shortname', g.shortname,
+        'name', g.name,
+        'city', g.city,
+        'region', g.region,
+        'country', g.country,
+        'source', g.source,
+        'currentPrediction', g.currentPrediction,
+        'isGroundhog', g.isGroundhog,
+        'type', g.type,
+        'description', g.description,
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE ghogId=g.id),
+        'predictions', (
+          SELECT json_group_array(o)
+          FROM (SELECT json_object(
+                'year', p.year,
+                'shadow', p.shadow,
+                'details', p.details
+              ) AS o
+              FROM predictions AS p
+              WHERE p.ghogId = g.id
+              ORDER BY p.year DESC
+          )
+        ))
+      ) as groundhogs
+      FROM groundhogs AS g;`,
+    )
+    .all()
+
+  return JSON.parse(groundhogs)
 }
 
 /* Middleware */
@@ -113,7 +150,7 @@ const validId = (req, res, next) => {
   let groundhog
 
   if (!isNaN(id)) {
-    groundhog = getGroundhogById(id)
+    groundhog = getGroundhogById2(id)
   }
 
   // TODO: better message
@@ -211,8 +248,6 @@ router.get('/groundhogs', function (req, res) {
 /* GET single groundhog */
 router.get('/groundhogs/:gId', validId, (req, res) => {
   let groundhog = getGroundhogById2(req.params.gId)
-  // assign earliest prediction year as separate attribute
-  groundhog['earliestPrediction'] = groundhog['predictions'][0]['year']
 
   // reverse predictions order
   groundhog['predictions'].reverse()
@@ -224,10 +259,10 @@ router.get('/groundhogs/:gId', validId, (req, res) => {
 router.get('/groundhogs/:gId/predictions', validId, (req, res) => {
   let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
 
-  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
-  const predictions = getPredictionsByGroundhog(req.params.gId)
+  let groundhog = getGroundhogById2(req.params.gId)
 
-  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
+  // reverse predictions order
+  groundhog['predictions'].reverse()
 
   groundhog['predictions'].forEach((p) => {
     ++allPredictions['total']
@@ -238,9 +273,6 @@ router.get('/groundhogs/:gId/predictions', validId, (req, res) => {
       ? ++allPredictions['noShadow'] // eslint-disable-line indent
       : ++allPredictions['null'] // eslint-disable-line indent
   })
-
-  // reverse predictions order
-  // groundhog['predictions'].reverse()
 
   res.render('pages/groundhog_predictions', {
     title: `${groundhog.shortname}’s Predictions`,
@@ -265,11 +297,7 @@ router.get('/api/v1/groundhogs', function (req, res) {
 
 /* get a single groundhog as JSON */
 router.get('/api/v1/groundhogs/:gId', validId, function (req, res) {
-  let groundhog = DB().prepare('SELECT * FROM groundhogs WHERE id = ?;').get(req.params.gId)
-  const predictions = getPredictionsByGroundhog(req.params.gId)
-
-  groundhog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
-
+  let groundhog = getGroundhogById2(req.params.gId)
   res.send(groundhog)
 })
 
