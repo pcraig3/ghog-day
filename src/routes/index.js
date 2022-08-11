@@ -37,26 +37,46 @@ function _calcPercentages(obj = {}) {
 }
 
 /* Queries */
-const getPredictionsByYear = (year) =>
-  DB().prepare('SELECT * FROM predictions WHERE year = ?;').all(year)
-
-const getPredictionsByGroundhog = (id) =>
-  DB().prepare('SELECT * FROM predictions WHERE ghogId = ? ORDER BY year ASC;').all(id)
-
-const getGroundhogs = () =>
-  DB()
+const getPredictionsByYear = (year) => {
+  let predictions = DB()
     .prepare(
       `
-    SELECT groundhogs.*, COUNT(ghogId) AS ghogCount 
-    FROM groundhogs LEFT JOIN predictions
-    ON groundhogs.id = predictions.ghogId
-    GROUP BY groundhogs.id
-    ORDER BY ghogCount DESC;
+    SELECT json_object(
+      'year', p.year,
+      'shadow', p.shadow,
+      'details', p.details,
+      'groundhog', (SELECT json_object(
+        'id', g.id,
+        'shortname', g.shortname,
+        'name', g.name,
+        'city', g.city,
+        'region', g.region,
+        'country', g.country,
+        'source', g.source,
+        'currentPrediction', g.currentPrediction,
+        'isGroundhog', g.isGroundhog,
+        'type', g.type,
+        'description', g.description
+      ) AS gh
+      FROM groundhogs AS g
+      WHERE g.id = p.ghogId
+    )) AS predictions
+    FROM predictions AS p
+    WHERE year = ?
+    ORDER BY (SELECT Count(*) FROM predictions WHERE ghogId = p.ghogId) DESC;
   `,
     )
-    .all()
+    .all(year)
 
-const getGroundhogById2 = (id) => {
+  const formattedPredictions = []
+  predictions.forEach((p) => formattedPredictions.push(JSON.parse(p.predictions)))
+
+  return formattedPredictions
+}
+
+const getGroundhogById = (id, { oldestFirst = false } = {}) => {
+  const orderBy = oldestFirst ? 'ASC' : 'DESC'
+
   let { groundhog } = DB()
     .prepare(
       `
@@ -81,7 +101,7 @@ const getGroundhogById2 = (id) => {
             ) AS o
             FROM predictions AS p
             WHERE p.ghogId = g.id
-            ORDER BY p.year DESC
+            ORDER BY p.year ${orderBy}
         )
       )
     ) AS groundhog
@@ -93,7 +113,11 @@ const getGroundhogById2 = (id) => {
   return JSON.parse(groundhog)
 }
 
-const getGroundhogs2 = () => {
+const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
+  const orderBy = oldestFirst ? 'ASC' : 'DESC'
+  const predictionKey = year ? 'latestPrediction' : 'predictions'
+  const yearClause = year ? 'AND p.year = 2022' : ''
+
   let [{ groundhogs }] = DB()
     .prepare(
       `
@@ -111,18 +135,19 @@ const getGroundhogs2 = () => {
         'type', g.type,
         'description', g.description,
         'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE ghogId=g.id),
-        'predictions', (
-          SELECT json_group_array(o)
-          FROM (SELECT json_object(
+        '${predictionKey}', (
+          ${year ? '' : 'SELECT json_group_array(o) FROM ('}
+          SELECT json_object(
                 'year', p.year,
                 'shadow', p.shadow,
                 'details', p.details
               ) AS o
               FROM predictions AS p
-              WHERE p.ghogId = g.id
-              ORDER BY p.year DESC
+              WHERE p.ghogId = g.id ${yearClause}
+              ORDER BY p.year ${orderBy}
           )
-        ))
+        )
+        ${year ? '' : ')'}
       ) as groundhogs
       FROM groundhogs AS g;`,
     )
@@ -133,7 +158,8 @@ const getGroundhogs2 = () => {
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const year = parseInt(req.params.year)
+  let year = req.params.year || req.query.year
+  year = parseInt(year)
 
   if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
     throw new createError(
@@ -150,7 +176,7 @@ const validId = (req, res, next) => {
   let groundhog
 
   if (!isNaN(id)) {
-    groundhog = getGroundhogById2(id)
+    groundhog = getGroundhogById(id)
   }
 
   // TODO: better message
@@ -195,20 +221,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
 
   let predictions = getPredictionsByYear(year)
 
-  let groundhogs = getGroundhogs()
-  let groundhogsArr = []
-
-  // create array where groundhog ids are also the index
-  groundhogs.forEach((ghog) => {
-    groundhogsArr[ghog.id] = ghog
-  })
-
-  // add groundhog to each prediction
   predictions.forEach((prediction) => {
-    prediction.groundhog = groundhogsArr[prediction.ghogId]
-    delete prediction.ghogId
-    delete prediction.id
-
     ++predictionTotals['total']
     prediction['shadow'] ? ++predictionTotals['winter'] : ++predictionTotals['spring']
   })
@@ -223,17 +236,12 @@ router.get('/predictions/:year', validYear, function (req, res) {
 
 /* GET all groundhogs */
 router.get('/groundhogs', function (req, res) {
-  let groundhogs = getGroundhogs()
-  let predictions = []
+  let groundhogs = getGroundhogs({ year: CURRENT_YEAR })
+  // sort groundhogs by "predictionsCount". This is an aggregate field so better do it here
+  groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
+
   const recentPredictions = { total: 0, winter: 0, spring: 0 }
-
-  // add predictions to groundhogs
   groundhogs.forEach((g) => {
-    predictions = getPredictionsByGroundhog(g.id)
-
-    g['predictionsCount'] = predictions.length
-    g['latestPrediction'] = predictions[predictions.length - 1]
-
     ++recentPredictions['total']
     g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
@@ -247,11 +255,7 @@ router.get('/groundhogs', function (req, res) {
 
 /* GET single groundhog */
 router.get('/groundhogs/:gId', validId, (req, res) => {
-  let groundhog = getGroundhogById2(req.params.gId)
-
-  // reverse predictions order
-  groundhog['predictions'].reverse()
-
+  let groundhog = getGroundhogById(req.params.gId)
   res.render('pages/groundhog', { title: groundhog.name, groundhog })
 })
 
@@ -259,11 +263,7 @@ router.get('/groundhogs/:gId', validId, (req, res) => {
 router.get('/groundhogs/:gId/predictions', validId, (req, res) => {
   let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
 
-  let groundhog = getGroundhogById2(req.params.gId)
-
-  // reverse predictions order
-  groundhog['predictions'].reverse()
-
+  let groundhog = getGroundhogById(req.params.gId)
   groundhog['predictions'].forEach((p) => {
     ++allPredictions['total']
 
@@ -283,21 +283,13 @@ router.get('/groundhogs/:gId/predictions', validId, (req, res) => {
 
 /* get groundhogs as JSON */
 router.get('/api/v1/groundhogs', function (req, res) {
-  let groundhogs = getGroundhogs()
-
-  groundhogs.map((ghog) => {
-    const predictions = getPredictionsByGroundhog(ghog['id'])
-
-    // add predictions to groundhogs
-    ghog['predictions'] = predictions.map(({ ghogId, id, ...keepAttrs }) => keepAttrs) // eslint-disable-line no-unused-vars
-  })
-
+  const groundhogs = getGroundhogs({ oldestFirst: true })
   res.send(groundhogs)
 })
 
 /* get a single groundhog as JSON */
 router.get('/api/v1/groundhogs/:gId', validId, function (req, res) {
-  let groundhog = getGroundhogById2(req.params.gId)
+  const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
   res.send(groundhog)
 })
 
@@ -309,29 +301,7 @@ router.get('/api/v1/predictions', function (req, res) {
     return res.redirect(`/api/v1/predictions?year=${currentYear}`)
   }
 
-  if (req.query.year < 1886 || req.query.year > currentYear) {
-    throw new createError(
-      400,
-      `The <code>year</code> must be between 1886 and ${currentYear} (inclusive).`,
-    )
-  }
-
   let predictions = getPredictionsByYear(req.query.year)
-
-  let groundhogs = getAllGroundhogs()
-  let groundhogsArr = []
-
-  // create array where groundhog ids are also the index
-  groundhogs.forEach((ghog) => {
-    groundhogsArr[ghog.id] = ghog
-  })
-
-  // add groundhog to each prediction
-  predictions.forEach((prediction) => {
-    prediction.groundhog = groundhogsArr[prediction.ghogId]
-    delete prediction.ghogId
-    delete prediction.id
-  })
 
   res.send(predictions)
 })
