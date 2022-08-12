@@ -1,9 +1,30 @@
+@use '../vars';
+
 .index {
   hr {
     border: none;
   }
+}
 
-  h2 {
-    border-bottom: 1.5px black solid;
+.heading-with-right-link {
+  margin-top: vars.$space-xl;
+  display: flex;
+  align-items: center;
+  padding-bottom: vars.$space-lg;
+
+  .heading {
+    margin: 0;
+    border-bottom: 1.5px solid black;
+  }
+
+  .right-link {
+    flex: 1;
+    border-bottom: 1.5px solid black;
+    align-self: end;
+    text-align: end; /* offset for the header link underline */
+
+    a {
+      text-decoration: none;
+    }
   }
 }

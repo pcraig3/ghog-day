@@ -9,8 +9,11 @@
 
   <br />
 
-  <h2 class="h3">Past predictions</h2>
-  <a href="#">All years →</a>
+  <div class="heading-with-right-link">
+    <h2 class="heading h3">Predictions by year</h2>
+    <div class="right-link"><a href="/predictions">All years <span aria-hidden="true">→</span></a></div>
+  </div>
+  <p>The yearly result is what the majority of groundhogs predicted.</p>
   <div class="card--grid">
     <a href="/predictions/2022">
       <div class="card card--winter">
@@ -39,30 +42,44 @@
   </div>
 
   <br />
-
-  <h2 class="h3">Top groundhogs</h2>
-  <a href="#">All groundhogs →</a>
-  <div>
-    <div>
-      Phil
-      138 predictions
-    </div>
-    <div>
-      Willie
-      67 predictions
-    </div>
-    <div>
-      Chuck
-      25 predictions
-    </div>
+<div class="heading-with-right-link">
+    <h2 class="heading h3">Featured groundhogs</h2>
+    <div class="right-link"><a href="/groundhogs">All groundhogs <span aria-hidden="true">→</span></a></div>
   </div>
+  <p>This is a ‘box-of-chocolates’ assortment from <strong>11</strong> total groundhogs.</p>
 
-  <p><a href="#">Add a groundhog</a></p>
+<div class="card--grid">
+    <a href="/predictions/2022">
+      <div class="card card--winter">
+        <span class="card--triangle"></span>
+        <div class="card--heading h4">Punxsutawney Phil</div>
+        <div class="card--subhead">Pennsylvania, USA</div>
+        <div class="card--details card--bg-change">Latest prediction: longer winter</div>
+      </div>
+    </a>
+    <a href="/predictions/2021">
+      <div class="card card--spring">
+        <span class="card--triangle"></span>
+        <div class="card--heading h4">Wiarton Willie</div>
+        <div class="card--subhead">Ontario, Canada</div>
+        <div class="card--details card--bg-change">Latest prediction: early spring</div>
+      </div>
+    </a>
+    <a href="/predictions/2020">
+      <div class="card card--winter">
+        <span class="card--triangle"></span>
+        <div class="card--heading h4">Shubenacadie Sam</div>
+        <div class="card--subhead">Nova Scotia, Canada</div>
+        <div class="card--details card--bg-change">Latest prediction: longer winter</div>
+      </div>
+    </a>
+  </div>
+  <p style="margin-top: 20px;"><a class="underline" href="#"><span aria-hidden="true">+</span> Add a groundhog</a></p>
 
   <br />
 
   <h2 class="h3">About</h2>
-  <p>Groundhog day.com is a vital public good serving groundhog wisdom to the public.
-  Use it for your PhD or use it in place of your weather app.</p>
+  <p>Groundhog day.com is a vital public good serving groundhog wisdom to an adoring public.
+  Use it for your master’s thesis or instead of your weather app.</p>
 
 {% endblock %}
