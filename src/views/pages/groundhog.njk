@@ -10,15 +10,17 @@
 
   <div class="inner-content inner-content--with-summary">
     <div class="description">
-      <aside class="highlight">
-        {% if groundhog.predictions[0].shadow %}
-          <div class="icon"><span aria-hidden="true">☃️</span></div>
+      {% if groundhog.predictions[0].shadow %}
+        <aside class="highlight highlight--winter">
+          <div class="icon"><span aria-hidden="true">❄️</span></div>
           <div class="message"><span>This year, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
-        {% else %}
-          <div class="icon"><span aria-hidden="true">🌷</span></div>
+        </aside>
+      {% else %}
+        <aside class="highlight highlight--spring">
+          <div class="icon"><span aria-hidden="true">🌼</span></div>
           <div class="message"><span>This year, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
-        {% endif %}
-      </aside>
+        </aside>
+      {% endif %}
 
       <h2 class="h4">About</h2>
       <p>{{ groundhog.description }}</p>
@@ -64,16 +66,16 @@
                   <th>{{ prediction.year }}</th>
                   <td class="hidden--mobile-xs">
                     {% if prediction.shadow -%}
-                      Yes, saw shadow.
+                      Yes, saw shadow
                     {%- else -%}
-                      Nope, no shadow.
+                      Nope, no shadow
                     {%- endif %}
                   </td>
                   <td>
                     {%- if prediction.shadow %}
-                      <span aria-hidden="true">☃️</span> More winter! 
+                      <span aria-hidden="true">❄️</span> More winter
                     {% else %}
-                      <span aria-hidden="true">🌷</span> Early spring!
+                      <span aria-hidden="true">🌼</span> Early spring
                     {% endif -%}
                   </td>
                 </tr>

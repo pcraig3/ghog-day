@@ -1,13 +1,21 @@
 @use '../vars';
 
 .highlight {
-  background: black;
-  color: white;
+  color: black;
+  border: 2px solid black;
   padding-right: vars.$space-lg;
   margin-bottom: vars.$space-md;
   line-height: 1.45;
   display: flex;
   align-items: stretch;
+
+  &.highlight--winter {
+    background: vars.$color-winter-faded;
+  }
+
+  &.highlight--spring {
+    background: vars.$color-spring-faded;
+  }
 
   > div {
     display: flex;
@@ -22,7 +30,7 @@
   .icon {
     font-size: 125%;
     background: white;
-    border: 2px solid black;
+    border-right: 2px solid black;
     width: 50px;
     margin-right: vars.$space-sm;
   }

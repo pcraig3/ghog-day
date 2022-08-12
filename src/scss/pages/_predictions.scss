@@ -87,7 +87,7 @@
     background: #f9f9f9;
 
     .predictions--card--prediction {
-      background: vars.$color-spring;
+      background: vars.$color-spring-faded;
     }
 
     .predictions--card--heading {
@@ -98,7 +98,7 @@
 
   &.predictions--card--winter:hover {
     .predictions--card--prediction {
-      background: vars.$color-winter;
+      background: vars.$color-winter-faded;
       color: black;
     }
   }
