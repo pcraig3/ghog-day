@@ -2,34 +2,29 @@ TODO
 
 - Separate API from UI
 - Find more data
-- "final" groundhog page
-  - new callout
-  - new media object
-  - new layout
 - "final" groundhogs page
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
 - Show/hide all predictions
 - Arrows in links, use icons?
-- Add a "back" option at the bottom? Or in the footer?
 - footer always on the bottom?
-- reverse the data for the predictions?
+- reverse the data for the predictions? (using query parameter)
 - Revisit menu?
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
+- Predictions homepage
 
 FOR AN EVENTUAL LAUNCH
 
 - Find a little more data
 - Analytics
 - Get it deployed with the URL
-- Page titles and meta tags
+- Meta tags
 - Home page:
   - Countdown timer (with stock ticker?)
   - This year's prediction
   - "Cards" for groundhogs
-- Page: This year's prediction
 - Add a Groundhog (basically, a google form)
 - Download icon for the button
 - Social share images
@@ -39,6 +34,15 @@ FOR AN EVENTUAL LAUNCH
 
 DONE
 
+- Refactor Database calls: less in-app stuff, more complete queries
+- Page: This year's prediction
+  - MVP navigation between pages
+  - New element, the groundhog box
+- Page titles
+- "final" groundhog page
+  - new callout
+  - new media object
+  - new layout
 - Smaller headings for less abrupt font changes
   - All tables have headings now
 - Clean up API and About pages
