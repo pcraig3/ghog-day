@@ -64,7 +64,10 @@ app.use(function (req, res, next) {
 // eslint-disable-next-line no-unused-vars
 app.use(function (err, req, res, next) {
   let h1 = 'Server error'
-  let message = err.message || 'Something went wrong. No cause for alarm.'
+  let message =
+    err.message ||
+    'Something went wrong. No cause for alarm. Contact paul@pcraig3 if you think you found a bug.'
+
   // only provide error stack in development
   let stack = req.app.get('env') === 'development' ? err.stack : ''
 
@@ -73,13 +76,13 @@ app.use(function (err, req, res, next) {
     message =
       'Do you get it? It is a marmot-themed pun. (Very lol. <span aria-hidden="true">🤓</span>)'
   } else if (err.status >= 400 && err.status < 500) {
-    h1 = 'Client error'
+    h1 = 'Prognosis impossible'
   }
 
   // render the error page
   const status = err.status || 500
   res.status(status)
-  res.render('error', { h1, message, status, stack })
+  res.render('error', { title: `${status}: ${h1}`, h1, message, status, stack })
 })
 
 module.exports = app

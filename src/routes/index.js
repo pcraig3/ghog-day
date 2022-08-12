@@ -77,7 +77,7 @@ const getPredictionsByYear = (year) => {
 const getGroundhogById = (id, { oldestFirst = false } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
 
-  let { groundhog } = DB()
+  let groundhogObj = DB()
     .prepare(
       `
     SELECT json_object(
@@ -110,7 +110,7 @@ const getGroundhogById = (id, { oldestFirst = false } = {}) => {
     )
     .get(id)
 
-  return JSON.parse(groundhog)
+  return groundhogObj ? JSON.parse(groundhogObj.groundhog) : groundhogObj
 }
 
 const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
@@ -179,9 +179,17 @@ const validId = (req, res, next) => {
     groundhog = getGroundhogById(id)
   }
 
-  // TODO: better message
   if (!groundhog) {
-    throw new createError(400, `Bad groundhog (${id}), pick a real one.`)
+    throw new createError(400, `Bad groundhog identifier (<code>${id}</code>), pick a real one.`)
+  }
+
+  next()
+}
+
+const redirectYear = (req, res, next) => {
+  if (!req.query.year) {
+    const currentYear = new Date().getFullYear()
+    return res.redirect(`/api/v1/predictions?year=${currentYear}`)
   }
 
   next()
@@ -294,13 +302,7 @@ router.get('/api/v1/groundhogs/:gId', validId, function (req, res) {
 })
 
 /* get predictions for a single year as JSON */
-router.get('/api/v1/predictions', function (req, res) {
-  const currentYear = new Date().getFullYear()
-
-  if (!req.query.year) {
-    return res.redirect(`/api/v1/predictions?year=${currentYear}`)
-  }
-
+router.get('/api/v1/predictions', redirectYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
 
   res.send(predictions)
