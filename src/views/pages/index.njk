@@ -5,76 +5,64 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: 'Groundhog Roundup', dataUrl: '/api/v1/predictions/' }) }}
+  <h1>Only 165 days until Groundhog Day 2023.</h1>
 
-  <div class="predictions--summary">
-    <ul>
-      <li>
-        <div class="predictions--summary--item predictions--summary--spring">
-          <div class="icon"><span aria-hidden="true">🌼</span></div>
-          <strong class="h1">2</strong> predicted <span class="predictions--summary--highlight">early spring</span>
-        </div>
-      </li><!--
-      --><li>
-        <div class="predictions--summary--item predictions--summary--winter">
-          <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <strong class="h1">3</strong> predicted <span class="predictions--summary--highlight">longer winter</span>
-        </div>
-      </li>
-    </ul>
+  <br />
+
+  <h2 class="h3">Past predictions</h2>
+  <a href="#">All years →</a>
+  <div class="card--grid">
+    <a href="/predictions/2022">
+      <div class="card card--winter">
+        <span class="card--triangle"></span>
+        <div class="card--heading h2">2022</div>
+        <div class="card--subhead"><span aria-hidden="true">❄️</span> Longer winter</div>
+        <div class="card--details card--bg-change">7 groundhogs saw their shadows</div>
+      </div>
+    </a>
+    <a href="/predictions/2021">
+      <div class="card card--spring">
+        <span class="card--triangle"></span>
+        <div class="card--heading h2">2021</div>
+        <div class="card--subhead"><span aria-hidden="true">🌼</span> Early spring</div>
+        <div class="card--details card--bg-change">6 groundhogs had cloudy weather</div>
+      </div>
+    </a>
+    <a href="/predictions/2020">
+      <div class="card card--spring">
+        <span class="card--triangle"></span>
+        <div class="card--heading h2">2020</div>
+        <div class="card--subhead"><span aria-hidden="true">🌼</span> Early spring</div>
+        <div class="card--details card--bg-change">8 groundhogs had cloudy weather</div>
+      </div>
+    </a>
   </div>
-  <div class="predictions">
-    <h2 class="h5">5 predictions in 2022</h3>
-    <div class="predictions--grid"> 
-      <div class="predictions--card predictions--card--winter">
-        <span class="predictions--card--triangle"></span>
-        <div class="predictions--card--heading h4">Punxsutawney Phil</div>
-        <div class="predictions--card--location">Pensylvania, USA</div>
-        <div class="predictions--card--prediction">
-          <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <div>Longer winter</div>
-        </div>
-      </div>
 
-      <div class="predictions--card predictions--card--spring">
-        <span class="predictions--card--triangle"></span>
-        <div class="predictions--card--heading h4">Wiarton Willie</div>
-        <div class="predictions--card--location">Ontario, Canada</div>
-        <div class="predictions--card--prediction">
-          <div class="icon"><span aria-hidden="true">🌼</span></div>
-          <div>Early spring</div>
-        </div>
-      </div>
+  <br />
 
-       <div class="predictions--card predictions--card--winter">
-        <span class="predictions--card--triangle"></span>
-        <div class="predictions--card--heading h4">Punxsutawney Phil</div>
-        <div class="predictions--card--location">Pensylvania, USA</div>
-        <div class="predictions--card--prediction">
-          <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <div>Longer winter</div>
-        </div>
-      </div>
-
-      <div class="predictions--card predictions--card--spring">
-        <span class="predictions--card--triangle"></span>
-        <div class="predictions--card--heading h4">Wiarton Willie</div>
-        <div class="predictions--card--location">Ontario, Canada</div>
-        <div class="predictions--card--prediction">
-          <div class="icon"><span aria-hidden="true">🌼</span></div>
-          <div>Early spring</div>
-        </div>
-      </div>
-
-       <div class="predictions--card predictions--card--winter">
-        <span class="predictions--card--triangle"></span>
-        <div class="predictions--card--heading h4">Punxsutawney Phil</div>
-        <div class="predictions--card--location">Pensylvania, USA</div>
-        <div class="predictions--card--prediction">
-          <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <div>Longer winter</div>
-        </div>
-      </div>
+  <h2 class="h3">Top groundhogs</h2>
+  <a href="#">All groundhogs →</a>
+  <div>
+    <div>
+      Phil
+      138 predictions
+    </div>
+    <div>
+      Willie
+      67 predictions
+    </div>
+    <div>
+      Chuck
+      25 predictions
     </div>
   </div>
+
+  <p><a href="#">Add a groundhog</a></p>
+
+  <br />
+
+  <h2 class="h3">About</h2>
+  <p>Groundhog day.com is a vital public good serving groundhog wisdom to the public.
+  Use it for your PhD or use it in place of your weather app.</p>
+
 {% endblock %}

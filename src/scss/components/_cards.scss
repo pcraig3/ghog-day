@@ -1,0 +1,109 @@
+@use '../vars';
+
+.card--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 0.75fr));
+  grid-gap: vars.$space-lg;
+
+  > a {
+    display: inline-grid;
+
+    &:focus,
+    &:hover {
+      color: black;
+      text-decoration: none;
+    }
+
+    &:focus {
+      .card--heading {
+        color: vars.$color-focus;
+      }
+    }
+  }
+}
+
+.card {
+  border: 2px solid black;
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    background: #f9f9f9;
+
+    .card--bg-change {
+      background: vars.$color-spring-faded;
+    }
+
+    .card--heading {
+      color: vars.$color-focus;
+      text-decoration: underline;
+    }
+  }
+
+  &.card--winter:hover {
+    .card--bg-change {
+      background: vars.$color-winter-faded;
+      color: black;
+    }
+  }
+
+  &--triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 25px solid vars.$color-spring;
+    position: absolute;
+    right: 0;
+  }
+
+  &--heading {
+    text-transform: uppercase;
+    margin: vars.$space-lg vars.$space-lg vars.$space-sm vars.$space-md;
+    white-space: nowrap;
+    text-decoration: underline;
+  }
+
+  &--subhead {
+    margin-left: vars.$space-md;
+    margin-bottom: vars.$space-md;
+  }
+
+  &--details {
+    border-top: 2px solid black;
+  }
+
+  &.card--winter {
+    .card--bg-change {
+      background: black;
+      color: white;
+    }
+
+    .card--triangle {
+      border-right-color: vars.$color-winter;
+    }
+  }
+}
+
+.index .card--details {
+  font-size: 80%;
+  padding-left: vars.$space-md;
+  padding-bottom: vars.$space-xs;
+  padding-top: vars.$space-xs;
+}
+
+.predictions .card--details {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding-right: vars.$space-md;
+
+  .icon {
+    padding: vars.$space-md;
+    margin-right: vars.$space-md;
+    font-size: 150%;
+    line-height: 1;
+    background: white;
+    border-right: 2px solid black;
+  }
+}

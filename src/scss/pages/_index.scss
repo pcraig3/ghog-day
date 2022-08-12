@@ -1,7 +1,9 @@
-@use '../vars';
-
 .index {
   hr {
     border: none;
+  }
+
+  h2 {
+    border-bottom: 1.5px black solid;
   }
 }

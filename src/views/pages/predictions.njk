@@ -27,14 +27,14 @@
   </div>
   <div class="predictions">
     <h2 class="h5">{{ predictions | length }} predictions in {{ years.year }}</h3>
-    <div class="predictions--grid">
+    <div class="card--grid">
       {% for prediction in predictions %}
         <a href="/groundhogs/{{ prediction.groundhog.id }}">
-          <div class="predictions--card predictions--card--{{ 'winter' if prediction.shadow else 'spring' }}">
-              <span class="predictions--card--triangle"></span>
-              <div class="predictions--card--heading h4">{{ prediction.groundhog.name }}</div>
-              <div class="predictions--card--location">{{ prediction.groundhog.region }}, {{ prediction.groundhog.country }}</div>
-              <div class="predictions--card--prediction">
+          <div class="card card--{{ 'winter' if prediction.shadow else 'spring' }}">
+              <span class="card--triangle"></span>
+              <div class="card--heading h4">{{ prediction.groundhog.name }}</div>
+              <div class="card--subhead">{{ prediction.groundhog.region }}, {{ prediction.groundhog.country }}</div>
+              <div class="card--details card--bg-change">
                 {% if prediction.shadow %}
                   <div class="icon"><span aria-hidden="true">❄️</span></div>
                   <div>Longer winter</div>
