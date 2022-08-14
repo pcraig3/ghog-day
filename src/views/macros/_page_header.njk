@@ -1,3 +1,4 @@
+{%- from "macros/_icon.njk" import icon -%}
 {% macro page_header(params) %}
   <div class="inner-content__header">
     {% if params.backUrl %}
@@ -5,7 +6,12 @@
     {% endif %}
     <h1 class="page_header--heading">{{ params.h1 }}</h1>
     {% if params.dataUrl %}
-      <div class="page_header--download hidden--mobile"><a href="{{ params.dataUrl }}" class="underline-mobile" target="_blank"><span aria-hidden="true">↓</span> Get the data</a></div>
+      <div class="page_header--download hidden--mobile">
+        <a href="{{ params.dataUrl }}" class="underline-mobile" target="_blank">
+          <span class="icon" aria-hidden="true">{{ icon({ download: true }) }}</span>
+          <span>Get the data</span>
+        </a>
+      </div>
     {% endif %}
   </div>
 {% endmacro %}

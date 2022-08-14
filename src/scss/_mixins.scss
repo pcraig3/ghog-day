@@ -19,7 +19,7 @@ $mobile-xs-screen: 440px;
 }
 
 @mixin tablet {
-  @media (min-width: #{$mobile-screen}) {
+  @media (min-width: #{$mobile-screen + 1}) {
     @content;
   }
 }
@@ -31,13 +31,13 @@ $mobile-xs-screen: 440px;
 }
 
 @mixin tablet-only {
-  @media (min-width: #{$mobile-screen}) and (max-width: #{$tablet-screen - 1}) {
+  @media (min-width: #{$mobile-screen + 1}) and (max-width: #{$tablet-screen - 1}) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$tablet-screen}) {
+  @media (min-width: #{$tablet-screen + 1}) {
     @content;
   }
 }

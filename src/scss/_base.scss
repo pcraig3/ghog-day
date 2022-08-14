@@ -46,6 +46,17 @@ footer {
 
 @include mixins.tablet {
   body {
+    grid: auto-flow min-content / 1fr 5fr;
+    grid-template-areas:
+      'header header'
+      'nav    ...   '
+      '...    main  '
+      'footer main  ';
+  }
+}
+
+@include mixins.desktop {
+  body {
     grid: auto-flow min-content / 1fr 4fr;
     grid-template-areas:
       'header header'
