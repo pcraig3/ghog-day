@@ -25,3 +25,32 @@ a {
     outline-offset: 2px;
   }
 }
+
+.link--icon {
+  display: inline-flex;
+  align-items: center;
+
+  > .icon {
+    margin-right: vars.$space-xs;
+    height: 20px;
+    width: 20px;
+    margin-top: -2px;
+
+    &.icon--right {
+      margin-right: 0;
+      margin-left: vars.$space-xs;
+      margin-top: -3px;
+    }
+
+    &.icon--up {
+      margin-top: -4px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    svg {
+      fill: vars.$color-focus;
+    }
+  }
+}

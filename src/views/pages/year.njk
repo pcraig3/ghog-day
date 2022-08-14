@@ -50,13 +50,17 @@
   </div>
   <div class="predictions--navigation">
     {% if years.next %}
-      <a class="predictions--navigation--next-year underline" href="/predictions/{{ years.next }}"><span aria-hidden="true">←</span> {{years.next }} predictions</a>
+      <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
+        {{ icon({ left: true }) }} <span>{{ years.next }} predictions</span>
+      </a>
     {% else %}
       {# otherwise the "prev" link is on the left hand side #}
       <span></span>
     {% endif %}
     {% if years.prev %}
-      <a class="predictions--navigation--prev-year underline" href="/predictions/{{ years.prev }}">{{ years.prev }} predictions <span aria-hidden="true">→</span></a>
+      <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
+        <span>{{ years.prev }} predictions</span> {{ icon({ right: true }) }}
+      </a>
     {% endif %}
   </div>
 {% endblock %}

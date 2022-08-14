@@ -83,7 +83,11 @@
             {%- endfor -%}
           </tbody>
         </table>
-        <p class="all-predictions"><a href="/groundhogs/{{ groundhog.id }}/predictions" class="underline">All {{ groundhog.predictions | length }} predictions <span aria-hidden="true">→</span></a></p>
+        <p class="all-predictions">
+          <a href="/groundhogs/{{ groundhog.id }}/predictions" class="underline link--icon">
+            All {{ groundhog.predictions | length }} predictions {{ icon({ right: true }) }}
+          </a>
+        </p>
       </div>
     </div>
   </div>

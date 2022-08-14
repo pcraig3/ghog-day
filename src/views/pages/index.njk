@@ -11,7 +11,9 @@
 
   <div class="heading-with-right-link">
     <h2 class="heading h3">Predictions by year</h2>
-    <div class="right-link"><a href="/predictions">All years <span aria-hidden="true">→</span></a></div>
+    <div class="right-link"><a href="/predictions" class="link--icon link--icon--right underline">
+      <span>All years</span> {{ icon({ right: true }) }}</a>
+    </div>
   </div>
   <p>The prognostication given by the majority of groundhogs.</p>
   <div class="card--grid">
@@ -35,7 +37,9 @@
   <br />
   <div class="heading-with-right-link">
     <h2 class="heading h3">Featured groundhogs</h2>
-    <div class="right-link"><a href="/groundhogs">All groundhogs <span aria-hidden="true">→</span></a></div>
+    <div class="right-link"><a href="/groundhogs" class="link--icon underline">
+      <span>All groundhogs</span> {{ icon({ right: true }) }}</a>
+    </div>
   </div>
   <p>This is a ‘box-of-chocolates’ assortment from <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
 
