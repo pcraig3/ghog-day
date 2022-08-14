@@ -56,14 +56,14 @@
             <tr>
               <th>Year</th>
               <th class="hidden--mobile-xs">Saw shadow?</th>
-              <th>Prediction</th>
+              <th class="center--mobile">Prediction</th>
             </tr>
           </thead>
           <tbody>
             {%- for prediction in groundhog.predictions -%}
               {% if prediction.year >= 2018 %}
                 <tr>
-                  <th>{{ prediction.year }}</th>
+                  <th role="columnheader"><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
                   <td class="hidden--mobile-xs">
                     {% if prediction.shadow -%}
                       Yes, saw shadow
@@ -71,7 +71,7 @@
                       Nope, no shadow
                     {%- endif %}
                   </td>
-                  <td>
+                  <td class="center--mobile">
                     {%- if prediction.shadow %}
                       <span aria-hidden="true">❄️</span> More winter
                     {% else %}

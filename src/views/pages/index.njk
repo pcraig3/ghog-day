@@ -33,13 +33,13 @@
   </div>
 
   <br />
-<div class="heading-with-right-link">
+  <div class="heading-with-right-link">
     <h2 class="heading h3">Featured groundhogs</h2>
     <div class="right-link"><a href="/groundhogs">All groundhogs <span aria-hidden="true">→</span></a></div>
   </div>
   <p>This is a ‘box-of-chocolates’ assortment from <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
 
-<div class="card--grid">
+  <div class="card--grid">
     {% for groundhog in randomGroundhogs %}
       <a href="/groundhogs/{{ groundhog.id }}">
         {% set class = 'card--winter' if groundhog.shadow else 'card--spring' %}

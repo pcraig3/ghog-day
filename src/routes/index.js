@@ -37,7 +37,7 @@ function _calcPercentages(obj = {}) {
 }
 
 // https://bobbyhadz.com/blog/javascript-get-multiple-random-elements-from-array
-function _getRandomItems(arr, { length = 3 } = {}) {
+const _getRandomItems = (arr, { length = 3 } = {}) => {
   const shuffled = [...arr].sort(() => 0.5 - Math.random())
   return shuffled.slice(0, length)
 }

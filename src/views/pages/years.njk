@@ -11,34 +11,34 @@
     <div class="inner-content__main">
       <p>Recorded predictions start all the way back in <strong>1899</strong>.</p>
 
-      <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
+      <div class="years data-table" role="region" aria-labelledby="data-table--years" tabindex="0">
         <table role="grid" class="data-table__table">
-          <caption id="data-table--groundhogs">
+          <caption id="data-table--years">
             <h2 class="data-table__title h4">All predictions</h2>
           </caption>
           <thead role="presentation" class="visible">
             <tr role="row">
               <th role="rowheader">Year</th>
-              <th role="rowheader">Prediction</th>
-              <th role="rowheader">Early Spring / Longer Winter</th>
-              <th role="rowheader">Total predictions</th>
+              <th role="rowheader" class="center--mobile">Prediction</th>
+              <th role="rowheader" class="center--mobile">Spring : Winter</th>
+              <th role="rowheader" class="hidden--mobile-xs">Total predictions</th>
             </tr>
           </thead>
           <tbody role="presentation">
             {% for prediction in predictions %}
               <tr role="row" onclick="window.location='/predictions/{{ prediction.year }}';">
-                <th role="columnheader"><a href="/predictions/{{predictions.year}}" class="underline">{{ prediction.year }}</a></th>
-                <td role="gridcell">
+                <th role="columnheader"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
+                <td role="gridcell" class="center--mobile">
                   {% if prediction.prediction == 'winter' %}
-                    <span role="img" aria-label="Longer winter">❄️</span> Longer winter
+                    <span role="img" aria-label="Longer winter">❄️</span> <span class="hidden--mobile-xs">Longer winter</span>
                   {% else %}
-                    <span role="img" aria-label="Early spring">🌼</span> Early spring
+                    <span role="img" aria-label="Early spring">🌼</span> <span class="hidden--mobile-xs">Early spring</span>
                   {% endif %}
                 </td>
-                <td role="gridcell">
-                  {{ prediction.groundhogs.spring }} / {{ prediction.groundhogs.winter }}
+                <td role="gridcell" class="center--mobile">
+                  {{ prediction.groundhogs.spring }} : {{ prediction.groundhogs.winter }}
                 </td>
-                <td role="gridcell">
+                <td role="gridcell" class="hidden--mobile-xs">
                   {% set totalPredictions = prediction.groundhogs.winter + prediction.groundhogs.spring %}
                   {{ totalPredictions }}
                 </td>

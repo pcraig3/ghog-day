@@ -49,6 +49,10 @@ img {
   .hidden--mobile {
     display: none;
   }
+
+  .center--mobile {
+    text-align: center !important;
+  }
 }
 
 @include mixins.mobile-xs {
