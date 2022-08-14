@@ -74,6 +74,50 @@ const getPredictionsByYear = (year) => {
   return formattedPredictions
 }
 
+// TODO: due to the subquery, this call might be inefficient
+// Could fix this with 2 calls (all predictions + all groundhogs) and then loop through in code
+const _getPredictions = ({ since = 2018 } = {}) => {
+  let predictions = DB()
+    .prepare(
+      `
+    SELECT json_group_array(json_object(
+      'year', p.year,
+      'shadow', p.shadow,
+      'details', p.details,
+      'groundhog', (SELECT json_object(
+        'id', g.id,
+        'shortname', g.shortname,
+        'name', g.name,
+        'city', g.city,
+        'region', g.region,
+        'country', g.country,
+        'source', g.source,
+        'currentPrediction', g.currentPrediction,
+        'isGroundhog', g.isGroundhog,
+        'type', g.type,
+        'description', g.description
+      ) AS gh
+      FROM groundhogs AS g
+      WHERE g.id = p.ghogId
+    ))) AS predictions
+    FROM predictions AS p
+    WHERE p.year >= ?;
+  `,
+    )
+    .all(since)
+
+  const formattedPredictions = {}
+  let parsed = JSON.parse(predictions[0].predictions)
+
+  parsed.forEach((p) => {
+    if (!formattedPredictions[p.year]) formattedPredictions[p.year] = []
+    formattedPredictions[p.year].push(p)
+  })
+
+  // return obj like {2020: [...], 2021: [...], 2022: [...]}
+  return formattedPredictions
+}
+
 const getGroundhogById = (id, { oldestFirst = false } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
 
@@ -197,7 +241,26 @@ const redirectYear = (req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('pages/index', { title: 'GROUNDHOG-DAY.com' })
+  const _predictions = _getPredictions({ since: 2020 })
+  const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
+  const predictionResults = []
+
+  _years.forEach((year) => {
+    const yearPredictions = { year, prediction: '', groundhogs: { winter: 0, spring: 0 } }
+
+    _predictions[year].forEach((prediction) => {
+      const season = prediction.shadow ? 'winter' : 'spring'
+      yearPredictions['groundhogs'][season]++
+    })
+
+    // TODO: if they are equal, this breaks
+    yearPredictions.prediction =
+      yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
+
+    predictionResults.push(yearPredictions)
+  })
+
+  res.render('pages/index', { title: 'GROUNDHOG-DAY.com', predictionResults })
 })
 
 /* GET about page. */
