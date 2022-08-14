@@ -42,6 +42,12 @@ const _getRandomItems = (arr, { length = 3 } = {}) => {
   return shuffled.slice(0, length)
 }
 
+// not that good, but fast
+const _getDaysToGroundhogDay = () => {
+  const diffInMs = new Date('2023-02-02Z05:00:00') - new Date()
+  return Math.ceil(diffInMs / (1000 * 60 * 60 * 24))
+}
+
 /* Queries */
 const getPredictionsByYear = (year) => {
   let predictions = DB()
@@ -281,6 +287,7 @@ router.get('/', function (req, res) {
 
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
+    daysLeft: _getDaysToGroundhogDay(),
     predictionResults,
     randomGroundhogs,
     totalGroundhogs,

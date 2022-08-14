@@ -6,14 +6,13 @@ TODO
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
-- Show/hide all predictions
 - Arrows in links, use icons?
 - footer always on the bottom?
 - reverse the data for the predictions? (using query parameter)
 - Revisit menu?
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
-- Predictions homepage
+- Groundhog day dountdown timer better + with marquee
 
 FOR AN EVENTUAL LAUNCH
 
@@ -21,10 +20,6 @@ FOR AN EVENTUAL LAUNCH
 - Analytics
 - Get it deployed with the URL
 - Meta tags
-- Home page:
-  - Countdown timer (with stock ticker?)
-  - This year's prediction
-  - "Cards" for groundhogs
 - Add a Groundhog (basically, a google form)
 - Download icon for the button
 - Social share images
@@ -34,6 +29,12 @@ FOR AN EVENTUAL LAUNCH
 
 DONE
 
+- Page: All predictions by year
+- Home page:
+  - Days left
+  - This year's prediction
+  - "Cards" for years
+  - "Cards" for groundhogs
 - Refactor Database calls: less in-app stuff, more complete queries
 - Page: This year's prediction
   - MVP navigation between pages
