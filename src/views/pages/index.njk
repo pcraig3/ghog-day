@@ -37,33 +37,21 @@
     <h2 class="heading h3">Featured groundhogs</h2>
     <div class="right-link"><a href="/groundhogs">All groundhogs <span aria-hidden="true">→</span></a></div>
   </div>
-  <p>This is a ‘box-of-chocolates’ assortment from <strong>11</strong> total groundhogs.</p>
+  <p>This is a ‘box-of-chocolates’ assortment from <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
 
 <div class="card--grid">
-    <a href="/predictions/2022">
-      <div class="card card--winter">
-        <span class="card--triangle"></span>
-        <div class="card--heading h4">Punxsutawney Phil</div>
-        <div class="card--subhead">Pennsylvania, USA</div>
-        <div class="card--details card--bg-change">Latest prediction: longer winter</div>
-      </div>
-    </a>
-    <a href="/predictions/2021">
-      <div class="card card--spring">
-        <span class="card--triangle"></span>
-        <div class="card--heading h4">Wiarton Willie</div>
-        <div class="card--subhead">Ontario, Canada</div>
-        <div class="card--details card--bg-change">Latest prediction: early spring</div>
-      </div>
-    </a>
-    <a href="/predictions/2020">
-      <div class="card card--winter">
-        <span class="card--triangle"></span>
-        <div class="card--heading h4">Shubenacadie Sam</div>
-        <div class="card--subhead">Nova Scotia, Canada</div>
-        <div class="card--details card--bg-change">Latest prediction: longer winter</div>
-      </div>
-    </a>
+    {% for groundhog in randomGroundhogs %}
+      <a href="/groundhogs/{{ groundhog.id }}">
+        {% set class = 'card--winter' if groundhog.shadow else 'card--spring' %}
+        {% set latestPrediction = 'longer winter' if groundhog.shadow else 'early spring' %}
+        <div class="card {{ class }}">
+          <span class="card--triangle"></span>
+          <div class="card--heading h4">{{ groundhog.name }}</div>
+          <div class="card--subhead">{{ groundhog.location }}</div>
+          <div class="card--details card--bg-change">Latest prediction: {{ latestPrediction }}</div>
+        </div>
+      </a>
+    {% endfor %}
   </div>
   <p style="margin-top: 20px;"><a class="underline" href="#"><span aria-hidden="true">+</span> Add a groundhog</a></p>
 

@@ -36,6 +36,12 @@ function _calcPercentages(obj = {}) {
   return newObj
 }
 
+// https://bobbyhadz.com/blog/javascript-get-multiple-random-elements-from-array
+function _getRandomItems(arr, { length = 3 } = {}) {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, length)
+}
+
 /* Queries */
 const getPredictionsByYear = (year) => {
   let predictions = DB()
@@ -260,7 +266,25 @@ router.get('/', function (req, res) {
     predictionResults.push(yearPredictions)
   })
 
-  res.render('pages/index', { title: 'GROUNDHOG-DAY.com', predictionResults })
+  // get groundhogs data
+  const totalGroundhogs = _predictions[CURRENT_YEAR].length
+  let _currentYearPredictions = _getRandomItems(_predictions[CURRENT_YEAR])
+  const randomGroundhogs = _currentYearPredictions.map((p) => {
+    const { shadow, groundhog: { id, name, region, country } = {} } = p
+    return {
+      id,
+      name,
+      shadow,
+      location: `${region}, ${country}`,
+    }
+  })
+
+  res.render('pages/index', {
+    title: 'GROUNDHOG-DAY.com',
+    predictionResults,
+    randomGroundhogs,
+    totalGroundhogs,
+  })
 })
 
 /* GET about page. */
