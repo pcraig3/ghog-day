@@ -7,7 +7,7 @@
 {% block content %}
   {% set h1 = [years.year, ' predictions'] | join %}
   {% set dataUrl = ['/api/v1/predictions/?year=', years.year] | join %}
-  {{ page_header({ h1: h1, backUrl: '/', backText: 'Home', dataUrl: dataUrl }) }}
+  {{ page_header({ h1: h1, backUrl: '/predictions', backText: 'Predictions', dataUrl: dataUrl }) }}
 
   <div class="predictions--summary">
     <ul>

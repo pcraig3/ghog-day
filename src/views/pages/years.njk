@@ -1,0 +1,52 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  years
+{%- endblock %}
+
+{% block content %}
+  {{ page_header({ h1: title, backUrl: '/', backText: 'Home', dataUrl: '/api/v1/predictions?currentYear=2022' }) }}
+
+  <div class="inner-content">
+    <div class="inner-content__main">
+      <p>Recorded predictions start all the way back in <strong>1899</strong>.</p>
+
+      <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
+        <table role="grid" class="data-table__table">
+          <caption id="data-table--groundhogs">
+            <h2 class="data-table__title h4">All predictions</h2>
+          </caption>
+          <thead role="presentation" class="visible">
+            <tr role="row">
+              <th role="rowheader">Year</th>
+              <th role="rowheader">Prediction</th>
+              <th role="rowheader">Early Spring / Longer Winter</th>
+              <th role="rowheader">Total predictions</th>
+            </tr>
+          </thead>
+          <tbody role="presentation">
+            {% for prediction in predictions %}
+              <tr role="row" onclick="window.location='/predictions/{{ prediction.year }}';">
+                <th role="columnheader"><a href="/predictions/{{predictions.year}}" class="underline">{{ prediction.year }}</a></th>
+                <td role="gridcell">
+                  {% if prediction.prediction == 'winter' %}
+                    <span role="img" aria-label="Longer winter">❄️</span> Longer winter
+                  {% else %}
+                    <span role="img" aria-label="Early spring">🌼</span> Early spring
+                  {% endif %}
+                </td>
+                <td role="gridcell">
+                  {{ prediction.groundhogs.spring }} / {{ prediction.groundhogs.winter }}
+                </td>
+                <td role="gridcell">
+                  {% set totalPredictions = prediction.groundhogs.winter + prediction.groundhogs.spring %}
+                  {{ totalPredictions }}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -28,8 +28,8 @@
           </thead>
           <tbody role="presentation">
             {% for groundhog in groundhogs %}
-              <tr role="row" onclick="window.location='/groundhogs/{{groundhog.id}}/';">
-                <th role="columnheader"><a href="/groundhogs/{{groundhog.id}}/" class="underline">{{ groundhog.name }}</a></th>
+              <tr role="row" onclick="window.location='/groundhogs/{{groundhog.id}}';">
+                <th role="columnheader"><a href="/groundhogs/{{groundhog.id}}" class="underline">{{ groundhog.name }}</a></th>
                 <td role="gridcell">
                   {{ groundhog.region }}
                 </td>

@@ -13,7 +13,7 @@
     <h2 class="heading h3">Predictions by year</h2>
     <div class="right-link"><a href="/predictions">All years <span aria-hidden="true">→</span></a></div>
   </div>
-  <p>The yearly result is what the majority of groundhogs predicted.</p>
+  <p>The prognostication given by the majority of groundhogs.</p>
   <div class="card--grid">
     {% for result in predictionResults %}
       <a href="/predictions/{{ result.year }}">
@@ -70,7 +70,6 @@
   <br />
 
   <h2 class="h3">About</h2>
-  <p>Groundhog day.com is a vital public good serving groundhog wisdom to an adoring public.
-  Use it for your master’s thesis or instead of your weather app.</p>
+  <p>{{ site_title({ url: true }) }} is a vital public resource serving groundhog wisdom to an adoring public. Use it for your master’s thesis or instead of your weather app.</p>
 
 {% endblock %}

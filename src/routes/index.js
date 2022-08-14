@@ -273,10 +273,30 @@ router.get('/api', function (req, res) {
   res.render('pages/api', { title: 'API' })
 })
 
-/* 301 REDIRECT to a predictions page with a year. */
 router.get('/predictions', function (req, res) {
-  const currentYear = new Date().getFullYear()
-  return res.redirect(`/predictions/${currentYear}`)
+  const _predictions = _getPredictions({ since: 1886 })
+  const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
+  const predictionResults = []
+
+  _years.forEach((year) => {
+    const yearPredictions = { year, prediction: '', groundhogs: { winter: 0, spring: 0 } }
+
+    _predictions[year].forEach((prediction) => {
+      const season = prediction.shadow ? 'winter' : 'spring'
+      yearPredictions['groundhogs'][season]++
+    })
+
+    // TODO: if they are equal, this breaks
+    yearPredictions.prediction =
+      yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
+
+    predictionResults.push(yearPredictions)
+  })
+
+  res.render('pages/years', {
+    title: 'Predictions by year',
+    predictions: predictionResults,
+  })
 })
 
 /* GET predictions page for a year. */
@@ -297,7 +317,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
     prediction['shadow'] ? ++predictionTotals['winter'] : ++predictionTotals['spring']
   })
 
-  res.render('pages/predictions', {
+  res.render('pages/year', {
     title: `${year} predictions`,
     years,
     predictions,
