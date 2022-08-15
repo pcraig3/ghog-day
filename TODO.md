@@ -15,6 +15,7 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
+- Highlight menu items when selected
 - Find a little more data
 - Analytics
 - Get it deployed with the URL

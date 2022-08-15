@@ -22,6 +22,7 @@
     border-bottom: 1.5px solid black;
     align-self: end;
     text-align: end; /* offset for the header link underline */
+    white-space: nowrap;
 
     a {
       text-decoration: none;
