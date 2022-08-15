@@ -41,7 +41,7 @@
       <span>All groundhogs</span> {{ icon({ right: true }) }}</a>
     </div>
   </div>
-  <p>This is a ‘box-of-chocolates’ assortment from <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
+  <p>This is a ‘box-of-chocolates’ assortment out of <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
 
   <div class="card--grid">
     {% for groundhog in randomGroundhogs %}
@@ -65,7 +65,9 @@
 
   <br />
 
-  <h2 class="h3">About</h2>
-  <p>{{ site_title({ url: true }) }} is a vital public resource serving groundhog wisdom to an adoring public. Use it for your master’s thesis or instead of your weather app.</p>
+  <h2 class="h4">What is this site?</h2>
+  <div class="max-width--850">
+    <p class="mb--0">{{ site_title({ url: true }) }} is a vital public resource serving groundhog wisdom to an adoring public. Use it for your master’s thesis or instead of your weather app.</p>
+  </div>
 
 {% endblock %}

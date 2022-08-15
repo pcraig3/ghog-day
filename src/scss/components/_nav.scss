@@ -1,4 +1,5 @@
 @use '../mixins';
+@use '../vars';
 
 nav {
   ul {
@@ -15,6 +16,17 @@ nav {
   @include mixins.mobile {
     .nav--sm {
       display: block;
+      position: fixed;
+
+      width: 100%;
+      min-height: 30px;
+      background: white;
+      border-top: 2px solid black;
+      position: fixed;
+      bottom: 0px;
+      z-index: 1;
+      padding: 0.6em 1.2em 0.6em 1.2em;
+      margin-left: -1.2em;
     }
 
     .nav--md {

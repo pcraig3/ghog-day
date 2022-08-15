@@ -2,12 +2,6 @@
 @use '../vars';
 
 details {
-  &.nav--sm {
-  @include mixins.mobile {
-      display: inline-block !important;
-    }
-  }
-
   > summary {
     @include mixins.button;
     display: list-item;
@@ -26,8 +20,27 @@ details {
 
   > ul {
     margin: vars.$space-md 0;
-    border-left: 2px solid black;
     padding-left: vars.$space-sm;
     padding-bottom: vars.$space-xs;
+  }
+
+  &.nav--sm {
+    @include mixins.mobile {
+      display: inline-block !important;
+
+      &[open] > summary {
+        position: absolute;
+        right: 1.2em;
+        bottom: 0.6em;
+      }
+
+      > summary {
+        float: right;
+
+        &:active:not(:disabled) {
+          top: unset;
+        }
+      }
+    }
   }
 }

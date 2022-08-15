@@ -38,9 +38,12 @@ body {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
-  line-height: 1.45;
+  line-height: 1.55;
   margin-bottom: vars.$space-lg;
+
+  &.mb--0 {
+    margin-bottom: 0;
+  }
 }
 
 strong {

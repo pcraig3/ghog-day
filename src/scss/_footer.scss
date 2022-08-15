@@ -1,4 +1,29 @@
+@use 'mixins';
+
 /* Hide footer on error */
 .error footer {
   visibility: hidden;
+}
+
+footer {
+  line-height: 1.55;
+}
+
+@include mixins.mobile {
+  footer {
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 45px;
+  }
+}
+
+@include mixins.mobile-xs {
+  footer {
+    border-top: 2px dotted black;
+  }
+
+  .groundhogs footer,
+  .years footer {
+    border-top: none;
+  }
 }
