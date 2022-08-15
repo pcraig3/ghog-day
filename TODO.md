@@ -6,7 +6,6 @@ TODO
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
-- Arrows in links, use icons?
 - footer always on the bottom?
 - reverse the data for the predictions? (using query parameter)
 - Revisit menu?
@@ -21,7 +20,6 @@ FOR AN EVENTUAL LAUNCH
 - Get it deployed with the URL
 - Meta tags
 - Add a Groundhog (basically, a google form)
-- Download icon for the button
 - Social share images
 - Sitemap
 - Mobile menu
@@ -29,6 +27,8 @@ FOR AN EVENTUAL LAUNCH
 
 DONE
 
+- Arrows in links, use icons
+  - Download icon for the button
 - Page: All predictions by year
 - Home page:
   - Days left

@@ -42,7 +42,9 @@ a {
       margin-top: -3px;
     }
 
-    &.icon--up {
+    &.icon--up,
+    &.icon--plus,
+    &.icon--add {
       margin-top: -4px;
     }
   }
