@@ -29,7 +29,7 @@
     <h2 class="h5">{{ predictions | length }} predictions in {{ years.year }}</h3>
     <div class="card--grid">
       {% for prediction in predictions %}
-        <a href="/groundhogs/{{ prediction.groundhog.id }}">
+        <a href="/groundhogs/{{ prediction.groundhog.slug }}">
           <div class="card card--{{ 'winter' if prediction.shadow else 'spring' }}">
               <span class="card--triangle"></span>
               <div class="card--heading h4">{{ prediction.groundhog.name }}</div>

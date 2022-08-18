@@ -45,7 +45,7 @@
 
   <div class="card--grid">
     {% for groundhog in randomGroundhogs %}
-      <a href="/groundhogs/{{ groundhog.id }}">
+      <a href="/groundhogs/{{ groundhog.slug }}">
         {% set class = 'card--winter' if groundhog.shadow else 'card--spring' %}
         {% set latestPrediction = 'longer winter' if groundhog.shadow else 'early spring' %}
         <div class="card {{ class }}">

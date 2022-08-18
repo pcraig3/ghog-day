@@ -5,8 +5,8 @@
 {%- endblock %}
 
 {% block content %}
-  {% set backUrl = ['/groundhogs/', groundhog.id, '/'] | join %}
-  {% set dataUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
+  {% set backUrl = ['/groundhogs/', groundhog.slug, '/'] | join %}
+  {% set dataUrl = ['/api/v1/groundhogs/', groundhog.slug] | join %}
   {{ page_header({ h1: title, backUrl: backUrl, backText: groundhog.name, dataUrl: dataUrl }) }}
 
   <div class="inner-content">

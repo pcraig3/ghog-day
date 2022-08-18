@@ -6,6 +6,7 @@ const { escape, isBoolean } = require('./utils')
 const migrationsStart = `-- Up
 CREATE TABLE groundhogs (
   id INTEGER PRIMARY KEY,
+  slug TEXT NOT NULL UNIQUE,
   shortname TEXT,
   name TEXT,
   city TEXT,
@@ -15,17 +16,18 @@ CREATE TABLE groundhogs (
   currentPrediction TEXT,
   isGroundhog BOOLEAN,
   type TEXT,
+  active BOOLEAN,
   description TEXT
 );
 
 CREATE TABLE predictions (
   id INTEGER PRIMARY KEY,
-  ghogId INTEGER,
+  slug TEXT,
   year INTEGER,
   shadow BOOLEAN,
   details TEXT,
-  FOREIGN KEY(ghogId) REFERENCES groundhogs(id),
-  UNIQUE (ghogId, year)
+  FOREIGN KEY(slug) REFERENCES groundhogs(slug),
+  UNIQUE (slug, year)
 );
 `
 
@@ -63,13 +65,15 @@ const insertGroundhogs = () => {
         reject(error)
       })
       .on('data', (row) => {
-        const insert = `INSERT INTO groundhogs (id, shortname, name, city, region, country, source, currentPrediction, isGroundhog, type, description) VALUES (${parseInt(
+        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, source, currentPrediction, isGroundhog, type, active, description) VALUES (${parseInt(
           row.id,
-        )}, '${escape(row.shortname)}', '${escape(row.name)}', '${escape(row.city)}', '${escape(
-          row.region,
-        )}', '${escape(row.country)}', '${escape(row.source)}', '${escape(
+        )}, '${escape(row.slug)}', '${escape(row.shortname)}', '${escape(row.name)}', '${escape(
+          row.city,
+        )}', '${escape(row.region)}', '${escape(row.country)}', '${escape(row.source)}', '${escape(
           row.currentPrediction,
-        )}', ${isBoolean(row.isGroundhog)}, '${escape(row.type)}', '${escape(row.description)}');\n`
+        )}', ${isBoolean(row.isGroundhog)}, '${escape(row.type)}', '${isBoolean(
+          row.active,
+        )}', '${escape(row.description)}');\n`
 
         stream.write(insert)
       })
@@ -83,35 +87,36 @@ const insertGroundhogs = () => {
 
 const insertPredictions = () => {
   return new Promise(function (resolve) {
-    const filenames = fs.readdirSync(path.resolve(__dirname, '../csv'))
-    const predictions = filenames.filter((filename) => filename.startsWith('prediction'))
+    const filenames = fs
+      .readdirSync(path.resolve(__dirname, '../csv/predictions'))
+      .filter((f) => f.endsWith('.csv'))
 
     const stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
     stream.write('\n/* Insert Predictions */\n')
 
     /* Insert predictions */
-    predictions.map((file) => {
-      const [suffix, id, name] = file.split('_') // eslint-disable-line no-unused-vars
-      fs.createReadStream(path.resolve(__dirname, '../csv', file))
+    filenames.map((filename) => {
+      const [slug] = filename.split('.')
+      fs.createReadStream(path.resolve(__dirname, '../csv/predictions', filename))
         .pipe(csv.parse({ headers: true }))
         .on('error', (error) => console.error(error))
         .on('data', (row) => {
-          const insert = `INSERT INTO predictions (ghogId, year, shadow, details) VALUES (${parseInt(
-            id,
-          )}, ${parseInt(row.year)}, ${isBoolean(row.shadow)}, '${escape(row.details)}');\n`
+          const insert = `INSERT INTO predictions (slug, year, shadow, details) VALUES ('${escape(
+            slug,
+          )}', ${parseInt(row.year)}, ${isBoolean(row.shadow)}, '${escape(row.details)}');\n`
 
           stream.write(insert)
         })
         .on('end', (rowCount) => {
           console.log(`Parsed ${rowCount} rows`)
 
-          if (file === predictions[predictions.length - 1]) {
+          if (filename === filenames[filenames.length - 1]) {
             stream.end()
             resolve()
           }
         })
     })
-    console.log(predictions)
+    console.log(filenames)
   })
 }
 

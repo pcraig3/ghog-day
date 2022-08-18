@@ -48,7 +48,30 @@ const _getDaysToGroundhogDay = () => {
   return Math.ceil(diffInMs / (1000 * 60 * 60 * 24))
 }
 
+const _escapeHtml = (unsafe) => {
+  if (typeof unsafe !== 'string') return unsafe
+
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 /* Queries */
+const getGroundhogSlugs = () =>
+  DB()
+    .prepare('SELECT slug FROM groundhogs;')
+    .all()
+    .map((row) => row.slug)
+
+const getGroundhogIDs = () =>
+  DB()
+    .prepare('SELECT id FROM groundhogs;')
+    .all()
+    .map((row) => row.id)
+
 const getPredictionsByYear = (year) => {
   let predictions = DB()
     .prepare(
@@ -59,6 +82,7 @@ const getPredictionsByYear = (year) => {
       'details', p.details,
       'groundhog', (SELECT json_object(
         'id', g.id,
+        'slug', g.slug,
         'shortname', g.shortname,
         'name', g.name,
         'city', g.city,
@@ -68,15 +92,15 @@ const getPredictionsByYear = (year) => {
         'currentPrediction', g.currentPrediction,
         'isGroundhog', g.isGroundhog,
         'type', g.type,
+        'active', g.active,
         'description', g.description
       ) AS gh
       FROM groundhogs AS g
-      WHERE g.id = p.ghogId
+      WHERE g.slug = p.slug
     )) AS predictions
     FROM predictions AS p
     WHERE year = ?
-    ORDER BY (SELECT Count(*) FROM predictions WHERE ghogId = p.ghogId) DESC;
-  `,
+    ORDER BY (SELECT Count(*) FROM predictions WHERE slug = p.slug) DESC;`,
     )
     .all(year)
 
@@ -98,6 +122,7 @@ const _getPredictions = ({ since = 2018 } = {}) => {
       'details', p.details,
       'groundhog', (SELECT json_object(
         'id', g.id,
+        'slug', g.slug,
         'shortname', g.shortname,
         'name', g.name,
         'city', g.city,
@@ -107,10 +132,11 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'currentPrediction', g.currentPrediction,
         'isGroundhog', g.isGroundhog,
         'type', g.type,
+        'active', g.active,
         'description', g.description
       ) AS gh
       FROM groundhogs AS g
-      WHERE g.id = p.ghogId
+      WHERE g.slug = p.slug
     ))) AS predictions
     FROM predictions AS p
     WHERE p.year >= ?;
@@ -130,14 +156,16 @@ const _getPredictions = ({ since = 2018 } = {}) => {
   return formattedPredictions
 }
 
-const getGroundhogById = (id, { oldestFirst = false } = {}) => {
+const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
+  const by = identifier === 'slug' ? 'slug' : 'id'
 
   let groundhogObj = DB()
     .prepare(
       `
     SELECT json_object(
       'id', g.id,
+      'slug', g.slug,
       'shortname', g.shortname,
       'name', g.name,
       'city', g.city,
@@ -147,6 +175,7 @@ const getGroundhogById = (id, { oldestFirst = false } = {}) => {
       'currentPrediction', g.currentPrediction,
       'isGroundhog', g.isGroundhog,
       'type', g.type,
+      'active', g.active,
       'description', g.description,
       'predictions', (
         SELECT json_group_array(o)
@@ -156,17 +185,25 @@ const getGroundhogById = (id, { oldestFirst = false } = {}) => {
               'details', p.details
             ) AS o
             FROM predictions AS p
-            WHERE p.ghogId = g.id
+            WHERE p.slug = g.slug
             ORDER BY p.year ${orderBy}
         )
       )
     ) AS groundhog
     FROM groundhogs AS g
-    WHERE id = ?;`,
+    WHERE ${by} = ?;`,
     )
-    .get(id)
+    .get(value)
 
   return groundhogObj ? JSON.parse(groundhogObj.groundhog) : groundhogObj
+}
+
+const getGroundhogById = (id, { oldestFirst = false } = {}) => {
+  return _getGroundhog(id, { identifier: 'id', oldestFirst })
+}
+
+const getGroundhogBySlug = (slug, { oldestFirst = false } = {}) => {
+  return _getGroundhog(slug, { identifier: 'slug', oldestFirst })
 }
 
 const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
@@ -180,6 +217,7 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
       SELECT json_group_array(
         json_object(
         'id', g.id,
+        'slug', g.slug,
         'shortname', g.shortname,
         'name', g.name,
         'city', g.city,
@@ -189,8 +227,9 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
         'currentPrediction', g.currentPrediction,
         'isGroundhog', g.isGroundhog,
         'type', g.type,
+        'active', g.active,
         'description', g.description,
-        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE ghogId=g.id),
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug),
         '${predictionKey}', (
           ${year ? '' : 'SELECT json_group_array(o) FROM ('}
           SELECT json_object(
@@ -199,7 +238,7 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
                 'details', p.details
               ) AS o
               FROM predictions AS p
-              WHERE p.ghogId = g.id ${yearClause}
+              WHERE p.slug = g.slug ${yearClause}
               ORDER BY p.year ${orderBy}
           )
         )
@@ -220,7 +259,9 @@ const validYear = (req, res, next) => {
   if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
     throw new createError(
       400,
-      `The <code>year</code> must be between ${EARLIEST_RECORDED_PREDICTION} and ${CURRENT_YEAR} (inclusive).`,
+      `The <code>year</code> must be between ${_escapeHtml(
+        EARLIEST_RECORDED_PREDICTION,
+      )} and ${_escapeHtml(CURRENT_YEAR)} (inclusive).`,
     )
   }
 
@@ -229,14 +270,37 @@ const validYear = (req, res, next) => {
 
 const validId = (req, res, next) => {
   const id = parseInt(req.params.gId)
-  let groundhog
+  const ids = getGroundhogIDs()
 
-  if (!isNaN(id)) {
-    groundhog = getGroundhogById(id)
+  if (isNaN(id) || !ids.includes(id)) {
+    throw new createError(
+      400,
+      `Bad groundhog identifier (<code>${_escapeHtml(id)}</code>), pick a real one.`,
+    )
   }
 
-  if (!groundhog) {
-    throw new createError(400, `Bad groundhog identifier (<code>${id}</code>), pick a real one.`)
+  next()
+}
+
+const validSlug = (req, res, next) => {
+  const slug = req.params.slug
+  const slugs = getGroundhogSlugs()
+
+  if (!slug) {
+    var randomSlug = slugs[Math.floor(Math.random() * slugs.length)]
+    throw new createError(
+      400,
+      `You didn’t pick a groundhog. Here’s a random one: <code><a href="/groundhogs/${_escapeHtml(
+        randomSlug,
+      )}">${_escapeHtml(randomSlug)}</a></code>`,
+    )
+  }
+
+  if (!slugs.includes(slug)) {
+    throw new createError(
+      400,
+      `Bad groundhog identifier  (<code>${_escapeHtml(slug)}</code>), maybe you spelled it wrong?`,
+    )
   }
 
   next()
@@ -276,14 +340,16 @@ router.get('/', function (req, res) {
   const totalGroundhogs = _predictions[CURRENT_YEAR].length
   let _currentYearPredictions = _getRandomItems(_predictions[CURRENT_YEAR])
   const randomGroundhogs = _currentYearPredictions.map((p) => {
-    const { shadow, groundhog: { id, name, region, country } = {} } = p
+    const { shadow, groundhog: { slug, name, region, country } = {} } = p
     return {
-      id,
       name,
+      slug,
       shadow,
       location: `${region}, ${country}`,
     }
   })
+
+  console.log(randomGroundhogs)
 
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
@@ -376,16 +442,16 @@ router.get('/groundhogs', function (req, res) {
 })
 
 /* GET single groundhog */
-router.get('/groundhogs/:gId', validId, (req, res) => {
-  let groundhog = getGroundhogById(req.params.gId)
+router.get('/groundhogs/:slug', validSlug, (req, res) => {
+  let groundhog = getGroundhogBySlug(req.params.slug)
   res.render('pages/groundhog', { title: groundhog.name, groundhog })
 })
 
 /* GET single groundhog */
-router.get('/groundhogs/:gId/predictions', validId, (req, res) => {
+router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
 
-  let groundhog = getGroundhogById(req.params.gId)
+  let groundhog = getGroundhogBySlug(req.params.slug)
   groundhog['predictions'].forEach((p) => {
     ++allPredictions['total']
 
@@ -409,9 +475,15 @@ router.get('/api/v1/groundhogs', function (req, res) {
   res.send(groundhogs)
 })
 
-/* get a single groundhog as JSON */
-router.get('/api/v1/groundhogs/:gId', validId, function (req, res) {
+/* get a single groundhog as JSON by id */
+router.get('/api/v1/groundhogs/:gId([0-9]{0,3})', validId, function (req, res) {
   const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
+  res.send(groundhog)
+})
+
+/* get a single groundhog as JSON by slug */
+router.get('/api/v1/groundhogs/:slug', validSlug, function (req, res) {
+  const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: true })
   res.send(groundhog)
 })
 

@@ -23,11 +23,16 @@ FOR AN EVENTUAL LAUNCH
 - Add a Groundhog (basically, a google form)
 - Social share images
 - Sitemap
-- Mobile menu
 - Better footer, Paul and Tyler
 
 DONE
 
+- New rule, groundhog identifiers are slugs
+  - Switch this in API
+  - Switch in URLs
+  - Rewrite importer
+  - Expect images to be the same
+- Mobile menu
 - Arrows in links, use icons
   - Download icon for the button
 - Page: All predictions by year

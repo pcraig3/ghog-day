@@ -5,7 +5,7 @@
 {%- endblock %}
 
 {% block content %}
-  {% set dataUrl = ['/api/v1/groundhogs/', groundhog.id] | join %}
+  {% set dataUrl = ['/api/v1/groundhogs/', groundhog.slug] | join %}
   {{ page_header({ h1: groundhog.name, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: dataUrl }) }}
 
   <div class="inner-content inner-content--with-summary">
@@ -29,7 +29,7 @@
     <div class="summary">
       <div class="inner-content__side--container">
         <figure class="groundhog--image image">
-          <img src="/images/ghogs/{{ groundhog.id }}-{{ groundhog.shortname | lower }}.png" alt="{{ groundhog.name }}" />
+          <img src="/images/ghogs/{{ groundhog.slug }}.png" alt="{{ groundhog.name }}" />
           <figcaption>{{ groundhog.name }}</figcaption>
         </figure>
 
@@ -84,7 +84,7 @@
           </tbody>
         </table>
         <p class="all-predictions">
-          <a href="/groundhogs/{{ groundhog.id }}/predictions" class="underline link--icon">
+          <a href="/groundhogs/{{ groundhog.slug }}/predictions" class="underline link--icon">
             All {{ groundhog.predictions | length }} predictions {{ icon({ right: true }) }}
           </a>
         </p>
