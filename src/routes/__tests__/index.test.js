@@ -21,14 +21,14 @@ describe('Test ui responses', () => {
     })
   })
 
-  describe('Test /groundhogs/1 response', () => {
+  describe('Test /groundhogs/punxsutawney-phil response', () => {
     test('it should return 200', async () => {
-      const response = await request(app).get('/groundhogs/1')
+      const response = await request(app).get('/groundhogs/punxsutawney-phil')
       expect(response.statusCode).toBe(200)
     })
 
     test('it should return the h1, title, meta tag, and canonical link', async () => {
-      const response = await request(app).get('/groundhogs/1')
+      const response = await request(app).get('/groundhogs/punxsutawney-phil')
       expect(response.text.replace(/\s+/g, '')).toContain(
         '<title>PunxsutawneyPhil—GROUNDHOG-DAY.com</title>',
       )
