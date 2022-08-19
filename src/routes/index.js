@@ -369,6 +369,8 @@ router.get('/api', function (req, res) {
 })
 
 router.get('/predictions', function (req, res) {
+  /* ~TODO: Handle no prediction */
+
   const _predictions = _getPredictions({ since: 1886 })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
@@ -381,7 +383,7 @@ router.get('/predictions', function (req, res) {
       yearPredictions['groundhogs'][season]++
     })
 
-    // TODO: if they are equal, this breaks
+    /* ~TODO: This breaks if they are equal */
     yearPredictions.prediction =
       yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
 
@@ -391,11 +393,13 @@ router.get('/predictions', function (req, res) {
   res.render('pages/years', {
     title: 'Predictions by year',
     predictions: predictionResults,
+    oldestPrediction: predictionResults[predictionResults.length - 1].year,
   })
 })
 
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, function (req, res) {
+  /* ~TODO: Handle no prediction */
   const year = parseInt(req.params.year)
   const predictionTotals = { total: 0, winter: 0, spring: 0 }
 

@@ -65,17 +65,23 @@
                 <tr>
                   <th role="columnheader"><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
                   <td class="hidden--mobile-xs">
-                    {% if prediction.shadow -%}
+                    {% if prediction.shadow == true -%}
                       Yes, saw shadow
-                    {%- else -%}
+                    {%- elseif prediction.shadow == false -%}
                       Nope, no shadow
+                    {%- else -%}
+                      <span aria-hidden="true">—</span>
+                      <span class="visually-hidden">No prediction.</span>
                     {%- endif %}
                   </td>
                   <td class="center--mobile">
-                    {%- if prediction.shadow %}
+                    {%- if prediction.shadow == true %}
                       <span aria-hidden="true">❄️</span> More winter
-                    {% else %}
+                    {%- elseif prediction.shadow == false -%}
                       <span aria-hidden="true">🌼</span> Early spring
+                    {%- else -%}
+                      <span aria-hidden="true">—</span>
+                      <span class="visually-hidden">No prediction.</span>
                     {% endif -%}
                   </td>
                 </tr>
