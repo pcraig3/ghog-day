@@ -11,6 +11,10 @@ nav {
   a {
     color: black;
     text-decoration: none;
+
+    &[aria-current] {
+      font-weight: bold;
+    }
   }
 
   @include mixins.mobile {
