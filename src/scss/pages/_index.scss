@@ -1,3 +1,4 @@
+@use '../mixins';
 @use '../vars';
 
 .index {
@@ -15,6 +16,10 @@
   .heading {
     margin: 0;
     border-bottom: 1.5px solid black;
+
+    @include mixins.mobile {
+      padding-right: vars.$space-lg;
+    }
   }
 
   .right-link {

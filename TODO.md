@@ -15,6 +15,7 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
+- Credit Tyler Benning
 - Highlight menu items when selected
 - Find a little more data
 - Analytics
