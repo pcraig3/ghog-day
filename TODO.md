@@ -15,8 +15,6 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Credit Tyler Benning
-- Highlight menu items when selected
 - Find a little more data
 - Analytics
 - Get it deployed with the URL
@@ -24,10 +22,13 @@ FOR AN EVENTUAL LAUNCH
 - Add a Groundhog (basically, a google form)
 - Social share images
 - Sitemap
-- Better footer, Paul and Tyler
+- Better footer?
+- Credit Tyler Benning
 
 DONE
 
+- Add identifier for non-groundhogs
+- Highlight menu items when selected
 - New rule, groundhog identifiers are slugs
   - Switch this in API
   - Switch in URLs

@@ -445,7 +445,7 @@ router.get('/groundhogs', function (req, res) {
 
 /* GET single groundhog */
 router.get('/groundhogs/:slug', validSlug, (req, res) => {
-  let groundhog = getGroundhogBySlug(req.params.slug)
+  const groundhog = getGroundhogBySlug(req.params.slug)
   res.render('pages/groundhog', { title: groundhog.name, groundhog })
 })
 

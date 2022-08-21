@@ -33,10 +33,17 @@
   }
 }
 
+.groundhog--type {
+  font-size: 80%;
+  background: #eee;
+  text-align: center;
+
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
 .groundhog--residence {
   border: 2px solid black;
-  margin-top: calc(-1 * vars.$space-md);
-  // padding: vars.$space-md vars.$space-sm vars.$space-md vars.$space-md;
   padding: vars.$space-md vars.$space-sm vars.$space-sm vars.$space-md;
 
   .subhead {

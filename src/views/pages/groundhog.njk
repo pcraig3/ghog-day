@@ -33,6 +33,11 @@
           <figcaption>{{ groundhog.name }}</figcaption>
         </figure>
 
+        {% if not groundhog.isGroundhog %}
+          <div class="groundhog--type">
+            <div class="subhead">{{ groundhog.name }} is a <strong>{{ groundhog.type }}</strong></div>
+          </div>
+        {% endif %}
         <div class="groundhog--residence">
           <div class="subhead">Resides in</div>
           <div class="text">
