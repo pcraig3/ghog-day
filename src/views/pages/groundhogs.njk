@@ -9,13 +9,15 @@
 
   <div class="inner-content">
     <div class="inner-content__main">
-      <p>There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs who made predictions in 2022.</p>
+      <div class="max-width--850">
+        <p>There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs who made predictions in 2022. By default, groundhogs are sorted by number of predictions.</p>
 
-      <p>If you don’t see your favourite prognosticator, feel free to
-        <a class="link--icon underline" href="#">
-          {{ icon({ add: true }) }} <span>add a groundhog</span>
-        </a>.
-      </p>
+        <p>If you don’t see your favourite prognosticator, feel free to
+          <a class="link--icon underline" href="#">
+            {{ icon({ add: true }) }} <span>add a groundhog</span>
+          </a>.
+        </p>
+      </div>
       <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
         <table role="grid" class="data-table__table">
           <caption id="data-table--groundhogs">
