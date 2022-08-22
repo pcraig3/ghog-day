@@ -368,6 +368,11 @@ router.get('/api', function (req, res) {
   res.render('pages/api', { title: 'API' })
 })
 
+/* GET "add groundhog" page. */
+router.get('/add-groundhog', function (req, res) {
+  res.render('pages/add-groundhog', { title: 'Add a groundhog' })
+})
+
 router.get('/predictions', function (req, res) {
   /* ~TODO: Handle no prediction */
 

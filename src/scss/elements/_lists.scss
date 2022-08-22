@@ -1,10 +1,16 @@
 @use '../mixins';
 @use '../vars';
 
-ul,
-ol {
+ul {
   &.with-bullets {
     list-style-type: disc;
+    padding-left: vars.$space-lg;
+  }
+}
+
+ol {
+  &.with-decimals {
+    list-style-type: decimal;
     padding-left: vars.$space-lg;
   }
 }

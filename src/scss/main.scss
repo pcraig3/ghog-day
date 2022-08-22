@@ -62,8 +62,13 @@ img {
   }
 }
 
+/* These are basically our "content" pages */
 .max-width--850 {
   max-width: 850px;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 #back-to-top {

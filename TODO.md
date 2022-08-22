@@ -19,14 +19,16 @@ FOR AN EVENTUAL LAUNCH
 - Analytics
 - Get it deployed with the URL
 - Meta tags
-- Add a Groundhog (basically, a google form)
 - Social share images
 - Sitemap
 - Better footer?
 - Credit Tyler Benning
+- Don't total predictions minus the nulls
+- Fill the nulls in the prediction years
 
 DONE
 
+- Add a Groundhog (basically, a google form)
 - Add identifier for non-groundhogs
 - Highlight menu items when selected
 - New rule, groundhog identifiers are slugs
