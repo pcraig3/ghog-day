@@ -32,7 +32,7 @@
         <a href="/groundhogs/{{ prediction.groundhog.slug }}">
           <div class="card card--{{ 'winter' if prediction.shadow == true else 'spring' }}">
               <span class="card--triangle"></span>
-              <div class="card--heading h4">{{ prediction.groundhog.name }}</div>
+              <div class="card--heading h5">{{ prediction.groundhog.name }}</div>
               <div class="card--subhead">{{ prediction.groundhog.region }}, {{ prediction.groundhog.country }}</div>
               <div class="card--details card--bg-change">
                 {% if prediction.shadow == true -%}

@@ -25,6 +25,7 @@ FOR AN EVENTUAL LAUNCH
 - Credit Tyler Benning
 - Don't total predictions minus the nulls
 - Fill the nulls in the prediction years
+- Compress images: try to get below 3 MB
 
 DONE
 
