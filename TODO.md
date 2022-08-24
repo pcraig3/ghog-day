@@ -12,6 +12,11 @@ TODO
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
 - Groundhog day dountdown timer better + with marquee
+- Ideas from Julia
+  - Countdownp page
+  - Groundhog nearest to you
+  - Page of the most out-there facts
+  - Closest groundhog to you
 
 FOR AN EVENTUAL LAUNCH
 
