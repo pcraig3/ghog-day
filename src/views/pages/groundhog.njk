@@ -35,11 +35,12 @@
 
         {% if not groundhog.isGroundhog %}
           <div class="groundhog--type">
-            <div class="subhead">{{ groundhog.name }} is {{ groundhog.type | aOrAn }} <strong>{{ groundhog.type }}</strong></div>
+            <div class="subhead">{{ groundhog.name }} {{ groundhog.type | aAnAre }} <strong>{{ groundhog.type }}</strong></div>
           </div>
         {% endif %}
         <div class="groundhog--residence">
-          <div class="subhead">Resides in</div>
+          {% set resides = 'Reside in' if 'hogs' in groundhog.type else 'Resides in' %}
+          <div class="subhead">{{ resides }}</div>
           <div class="text">
             {{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}
           </div>

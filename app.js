@@ -30,7 +30,7 @@ const nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views
 
 // TODO: remove this if it's not being used
 nunjucksEnvironment.addFilter('cleanUrl', require('./src/filters/cleanUrl'))
-nunjucksEnvironment.addFilter('aOrAn', require('./src/filters/aOrAn'))
+nunjucksEnvironment.addFilter('aAnAre', require('./src/filters/aAnAre'))
 
 const indexRouter = require('./src/routes/index')
 
