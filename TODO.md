@@ -13,14 +13,13 @@ TODO
 - More tests
 - Groundhog day dountdown timer better + with marquee
 - Ideas from Julia
-  - Countdownp page
+  - Countdown page
   - Groundhog nearest to you
   - Page of the most out-there facts
-  - Closest groundhog to you
 
 FOR AN EVENTUAL LAUNCH
 
-- Find a little more data
+- Actual explanation of groundhog day
 - Analytics
 - Get it deployed with the URL
 - Meta tags
@@ -29,11 +28,12 @@ FOR AN EVENTUAL LAUNCH
 - Better footer?
 - Credit Tyler Benning
 - Don't total predictions minus the nulls
-- Fill the nulls in the prediction years
 - Compress images: try to get below 3 MB
 
 DONE
 
+- Fill the nulls in the prediction years
+- Find a little more data
 - Add a Groundhog (basically, a google form)
 - Add identifier for non-groundhogs
 - Highlight menu items when selected

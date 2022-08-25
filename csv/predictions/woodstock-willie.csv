@@ -1,5 +1,6 @@
 year,shadow,details
 1999,FALSE,
+2000,null,
 2001,TRUE,
 2002,TRUE,
 2003,FALSE,
@@ -10,6 +11,7 @@ year,shadow,details
 2008,FALSE,
 2009,TRUE,
 2010,FALSE,
+2011,null,
 2012,FALSE,
 2013,FALSE,
 2014,TRUE,
