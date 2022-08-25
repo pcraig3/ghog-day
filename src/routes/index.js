@@ -195,7 +195,15 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
     )
     .get(value)
 
-  return groundhogObj ? JSON.parse(groundhogObj.groundhog) : groundhogObj
+  if (groundhogObj) {
+    groundhogObj = JSON.parse(groundhogObj.groundhog)
+    // predictions come back as an array of strings, not an array of objects
+    groundhogObj.predictions = groundhogObj.predictions.map((p) =>
+      typeof p === 'string' ? JSON.parse(p) : p,
+    )
+  }
+
+  return groundhogObj
 }
 
 const getGroundhogById = (id, { oldestFirst = false } = {}) => {
