@@ -16,26 +16,6 @@ function _getPercent(percent, total) {
   return Math.round((percent / total) * 100)
 }
 
-function _calcPercentages(obj = {}) {
-  const { total } = obj
-  if (!total) {
-    return obj
-  }
-
-  const newObj = { ...obj }
-  const percent = {}
-
-  for (const property in newObj) {
-    if (property !== 'total') {
-      percent[property] = _getPercent(newObj[property], total)
-    }
-  }
-
-  newObj['percent'] = percent
-
-  return newObj
-}
-
 // https://bobbyhadz.com/blog/javascript-get-multiple-random-elements-from-array
 const _getRandomItems = (arr, { length = 3 } = {}) => {
   const shuffled = [...arr].sort(() => 0.5 - Math.random())
@@ -452,35 +432,51 @@ router.get('/groundhogs', function (req, res) {
   res.render('pages/groundhogs', {
     title: 'Groundhogs',
     groundhogs,
-    recentPredictions: _calcPercentages(recentPredictions),
+    recentPredictions: recentPredictions,
   })
 })
 
 /* GET single groundhog */
 router.get('/groundhogs/:slug', validSlug, (req, res) => {
   const groundhog = getGroundhogBySlug(req.params.slug)
-  res.render('pages/groundhog', { title: groundhog.name, groundhog })
+  let nullPredictions = 0
+  groundhog.predictions.forEach((p) => p.shadow === null && ++nullPredictions)
+
+  res.render('pages/groundhog', {
+    title: groundhog.name,
+    groundhog,
+    allPredictions: groundhog.predictions.length - nullPredictions,
+  })
 })
 
 /* GET single groundhog */
 router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
-  let allPredictions = { total: 0, shadow: 0, noShadow: 0, null: 0 }
+  // years == all years (including nulls), total == all predictions (nulls are not included)
+  let allPredictions = { years: 0, total: 0, shadow: 0, noShadow: 0, null: 0 }
 
   let groundhog = getGroundhogBySlug(req.params.slug)
   groundhog['predictions'].forEach((p) => {
-    ++allPredictions['total']
+    ++allPredictions['years']
 
     p.shadow === 1
-      ? ++allPredictions['shadow']
+      ? ++allPredictions['shadow'] && ++allPredictions['total']
       : p.shadow === 0
-      ? ++allPredictions['noShadow'] // eslint-disable-line indent
+      ? ++allPredictions['noShadow'] && ++allPredictions['total'] // eslint-disable-line indent
       : ++allPredictions['null'] // eslint-disable-line indent
   })
+
+  allPredictions = {
+    ...allPredictions,
+    percent: {
+      shadow: _getPercent(allPredictions.shadow, allPredictions.total),
+      noShadow: _getPercent(allPredictions.noShadow, allPredictions.total),
+    },
+  }
 
   res.render('pages/groundhog_predictions', {
     title: `${groundhog.shortname}’s Predictions`,
     groundhog,
-    allPredictions: _calcPercentages(allPredictions),
+    allPredictions,
   })
 })
 

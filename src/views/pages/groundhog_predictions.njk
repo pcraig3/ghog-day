@@ -14,12 +14,13 @@
 
       {% set oldestPrediction = groundhog.predictions | last %}
       {% set have = 'have' if 'hogs' in groundhog.type else 'has' %}
-      <p>{{ groundhog.name }} {{ have }} made <strong>{{ groundhog.predictions | length }}</strong> predictions since {{ oldestPrediction.year }}.</p>
+      {% set actualPredictions = allPredictions.shadow + allPredictions.noShadow %}
+      <p>{{ groundhog.name }} {{ have }} made <strong>{{ actualPredictions }}</strong> predictions since {{ oldestPrediction.year }}.</p>
       <ul class="with-bullets">
         <li><strong>{{ allPredictions.shadow }}</strong> prediction{% if allPredictions.shadow != 1 %}s{% endif %} ({{  allPredictions.percent.shadow }}%) of six more weeks of winter</li>
         <li><strong>{{ allPredictions.noShadow }}</strong> prediction{% if allPredictions.noShadow != 1 %}s{% endif %} ({{  allPredictions.percent.noShadow }}%) of early spring</li>
         {% if allPredictions['null'] > 0 %}
-          <li><strong>{{ allPredictions['null'] }}</strong> time{% if allPredictions['null'] != 1 %}s{% endif %} ({{  allPredictions.percent['null'] }}%), {{ groundhog.shortname }}’s prediction{% if allPredictions['null'] != 1 %}s{% endif %} went unrecorded</li>
+          <li><strong>{{ allPredictions['null'] }}</strong> time{% if allPredictions['null'] != 1 %}s{% endif %}, {{ groundhog.shortname }}’s prediction{% if allPredictions['null'] != 1 %}s{% endif %} went unrecorded</li>
         {% endif %}
       </ul>
 

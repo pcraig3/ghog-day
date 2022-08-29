@@ -21,7 +21,6 @@ FOR AN EVENTUAL LAUNCH
 
 - Actual explanation of groundhog day
 - Analytics
-- Get it deployed with the URL
 - Meta tags
 - Social share images
 - Sitemap
@@ -29,9 +28,15 @@ FOR AN EVENTUAL LAUNCH
 - Credit Tyler Benning
 - Don't total predictions minus the nulls
 - Compress images: try to get below 3 MB
+- Rearrange data
+  - Predictions years
+  - Groundhogs on years page
+  - Groundhogs on groundhogs page
 
 DONE
 
+- Fix "no prediction" count in the individual year page
+- Get it deployed with the URL
 - Fill the nulls in the prediction years
 - Find a little more data
 - Add a Groundhog (basically, a google form)
