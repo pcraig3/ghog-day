@@ -465,7 +465,7 @@ router.get('/groundhogs', function (req, res) {
 
 /* GET single groundhog */
 router.get('/groundhogs/:slug', validSlug, (req, res) => {
-  const groundhog = getGroundhogBySlug(req.params.slug)
+  const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
   let nullPredictions = 0
   groundhog.predictions.forEach((p) => p.shadow === null && ++nullPredictions)
 

@@ -21,15 +21,23 @@ FOR AN EVENTUAL LAUNCH
 
 - Actual explanation of groundhog day
 - Analytics
-- Meta tags
-- Social share images
 - Sitemap
 - Better footer?
 - Credit Tyler Benning
-- Compress images: try to get below 3 MB
+- Pictures
+- Images & <meta> stuff
+  - Add generic meta image for non-groundhog pages
+  - Add description
+  - Add title, sitemap, author, link
+- How to update just the data for 1 year
 
 DONE
 
+- Images
+  - Fix layout glitch
+  - Check all images show up
+  - Compress images
+  - Social share images
 - Don't total predictions minus the nulls
 - Rearrange data
   - Predictions years
