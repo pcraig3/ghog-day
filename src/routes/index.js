@@ -362,23 +362,25 @@ router.get('/add-groundhog', function (req, res) {
 })
 
 router.get('/predictions', function (req, res) {
-  /* ~TODO: Handle no prediction */
-
   const _predictions = _getPredictions({ since: 1886 })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
 
   _years.forEach((year) => {
-    const yearPredictions = { year, prediction: '', groundhogs: { winter: 0, spring: 0 } }
+    const yearPredictions = { year, prediction: '', groundhogs: { winter: 0, spring: 0, null: 0 } }
 
     _predictions[year].forEach((prediction) => {
-      const season = prediction.shadow ? 'winter' : 'spring'
+      const season =
+        prediction.shadow === 1 ? 'winter' : prediction.shadow === 0 ? 'spring' : 'null'
       yearPredictions['groundhogs'][season]++
     })
 
-    /* ~TODO: This breaks if they are equal */
     yearPredictions.prediction =
-      yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
+      yearPredictions.groundhogs.winter === yearPredictions.groundhogs.spring
+        ? 'tied'
+        : yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring
+        ? 'winter'
+        : 'spring'
 
     predictionResults.push(yearPredictions)
   })

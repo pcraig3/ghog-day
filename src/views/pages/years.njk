@@ -31,8 +31,12 @@
                 <td role="gridcell" class="center--mobile">
                   {% if prediction.prediction == 'winter' %}
                     <span role="img" aria-label="Longer winter">❄️</span> <span class="hidden--mobile-xs">Longer winter</span>
-                  {% else %}
+                  {% elif prediction.prediction == 'spring' %}
                     <span role="img" aria-label="Early spring">🌼</span> <span class="hidden--mobile-xs">Early spring</span>
+                  {% elif prediction.groundhogs.winter == '0' and prediction.groundhogs.spring == '0' %}
+                    <span aria-hidden="true">—</span> <span class="visually-hidden">No prediction</span>
+                  {% else %}
+                    <span role="img" aria-label="Unclear">❓</span> <span class="hidden--mobile-xs">Unclear</span>
                   {% endif %}
                 </td>
                 <td role="gridcell" class="center--mobile">

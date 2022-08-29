@@ -30,12 +30,12 @@ FOR AN EVENTUAL LAUNCH
 - Compress images: try to get below 3 MB
 - Rearrange data
   - Groundhogs on years page
-  - Groundhogs on groundhogs page
 
 DONE
 
 - Rearrange data
   - Predictions years
+  - Groundhogs on groundhogs page
 - Fix "no prediction" count in the individual year page
 - Get it deployed with the URL
 - Fill the nulls in the prediction years
