@@ -24,13 +24,37 @@
         </div>
       </li>
     </ul>
+    <div class="predictions--navigation">
+      {% if years.next %}
+        <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
+          {{ icon({ left: true }) }} <span>{{ years.next }} predictions</span>
+        </a>
+      {% else %}
+        {# otherwise the "prev" link is on the left hand side #}
+        <span></span>
+      {% endif %}
+      {% if years.prev %}
+        <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
+          <span>{{ years.prev }} predictions</span> {{ icon({ right: true }) }}
+        </a>
+      {% endif %}
+    </div>
+  
   </div>
   <div class="predictions">
-    <h2 class="h5">{{ predictions | length }} predictions in {{ years.year }}</h3>
+    <h2 class="h5">{{ predictionTotals.total }} predictions in {{ years.year }}</h3>
+    {% if nameFirst %}
+      {% set predictionsUrl = ['/predictions/', years.year] | join %}
+      <p class="predictions--sort"><a href="{{ predictionsUrl }}" class="underline">Sort groundhogs by prediction</a></p>
+    {% else %}
+      {% set nameUrl = ['/predictions/', years.year, '?nameFirst=true'] | join %}
+      <p class="predictions--sort"><a href="{{ nameUrl }}" class="underline">Sort groundhogs by name</a></p>
+    {% endif %}
     <div class="card--grid">
       {% for prediction in predictions %}
         <a href="/groundhogs/{{ prediction.groundhog.slug }}">
-          <div class="card card--{{ 'winter' if prediction.shadow == true else 'spring' }}">
+          {% set classname = 'card--winter' if prediction.shadow == true else ('card--spring' if prediction.shadow == false else 'card--no-prediction') %}
+          <div class="card {{ classname }}">
               <span class="card--triangle"></span>
               <div class="card--heading h5">{{ prediction.groundhog.name }}</div>
               <div class="card--subhead">{{ prediction.groundhog.region }}, {{ prediction.groundhog.country }}</div>
@@ -42,6 +66,7 @@
                   <div class="icon"><span aria-hidden="true">🌼</span></div>
                   <div>Early spring</div>
                 {% else %}
+                  <div class="icon"><span aria-hidden="true">⤫</span></div>
                   <div>No prediction</div>
                 {% endif %}
               </div>
@@ -49,20 +74,5 @@
         </a>
       {% endfor %}
     </div>
-  </div>
-  <div class="predictions--navigation">
-    {% if years.next %}
-      <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
-        {{ icon({ left: true }) }} <span>{{ years.next }} predictions</span>
-      </a>
-    {% else %}
-      {# otherwise the "prev" link is on the left hand side #}
-      <span></span>
-    {% endif %}
-    {% if years.prev %}
-      <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
-        <span>{{ years.prev }} predictions</span> {{ icon({ right: true }) }}
-      </a>
-    {% endif %}
   </div>
 {% endblock %}

@@ -379,8 +379,8 @@ router.get('/predictions', function (req, res) {
       yearPredictions.groundhogs.winter === yearPredictions.groundhogs.spring
         ? 'tied'
         : yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring
-        ? 'winter'
-        : 'spring'
+        ? 'winter' // eslint-disable-line indent
+        : 'spring' // eslint-disable-line indent
 
     predictionResults.push(yearPredictions)
   })
@@ -396,7 +396,8 @@ router.get('/predictions', function (req, res) {
 router.get('/predictions/:year', validYear, function (req, res) {
   /* ~TODO: Handle no prediction */
   const year = parseInt(req.params.year)
-  const predictionTotals = { total: 0, winter: 0, spring: 0 }
+  const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
+  const nameFirst = req.query.nameFirst === 'true'
 
   const years = {
     year,
@@ -407,15 +408,31 @@ router.get('/predictions/:year', validYear, function (req, res) {
   let predictions = getPredictionsByYear(year)
 
   predictions.forEach((prediction) => {
-    ++predictionTotals['total']
-    prediction['shadow'] ? ++predictionTotals['winter'] : ++predictionTotals['spring']
+    ++predictionTotals['years']
+
+    prediction['shadow'] === 1
+      ? ++predictionTotals['winter'] && ++predictionTotals['total']
+      : prediction['shadow'] === 0
+      ? ++predictionTotals['spring'] && ++predictionTotals['total'] // eslint-disable-line indent
+      : ++predictionTotals['null'] // eslint-disable-line indent
   })
+
+  if (nameFirst) {
+    // sort by name
+    predictions.sort((a, b) => (a.groundhog.name > b.groundhog.name ? 1 : -1))
+  } else {
+    // sort by most predictions to least predictions
+    predictions.sort((a, b) => {
+      return a.shadow === null ? 1 : b.shadow === null ? -1 : a.shadow - b.shadow
+    })
+  }
 
   res.render('pages/year', {
     title: `${year} predictions`,
     years,
     predictions,
     predictionTotals,
+    nameFirst,
   })
 })
 

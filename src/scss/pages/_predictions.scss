@@ -1,3 +1,4 @@
+@use '../mixins';
 @use '../vars';
 
 .predictions--heading {
@@ -15,6 +16,12 @@
     display: inline-block;
     margin-bottom: vars.$space-md;
     margin-right: vars.$space-lg;
+
+    @include mixins.mobile {
+      &:first-of-type .predictions--summary--item {
+        margin-bottom: vars.$space-lg;
+      }
+    }
   }
 
   &--item {
@@ -57,7 +64,7 @@
 }
 
 .predictions--navigation {
-  margin-top: vars.$space-xl;
+  margin: vars.$space-xl 0 vars.$space-xxl 0;
   display: flex;
   justify-content: space-between;
 }

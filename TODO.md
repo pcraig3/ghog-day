@@ -26,16 +26,15 @@ FOR AN EVENTUAL LAUNCH
 - Sitemap
 - Better footer?
 - Credit Tyler Benning
-- Don't total predictions minus the nulls
 - Compress images: try to get below 3 MB
-- Rearrange data
-  - Groundhogs on years page
 
 DONE
 
+- Don't total predictions minus the nulls
 - Rearrange data
   - Predictions years
   - Groundhogs on groundhogs page
+  - Groundhogs on years page
 - Fix "no prediction" count in the individual year page
 - Get it deployed with the URL
 - Fill the nulls in the prediction years
