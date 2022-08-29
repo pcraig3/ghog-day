@@ -190,7 +190,7 @@ const getGroundhogById = (id, { oldestFirst = false } = {}) => {
   return _getGroundhog(id, { identifier: 'id', oldestFirst })
 }
 
-const getGroundhogBySlug = (slug, { oldestFirst = false } = {}) => {
+const getGroundhogBySlug = (slug, { oldestFirst = true } = {}) => {
   return _getGroundhog(slug, { identifier: 'slug', oldestFirst })
 }
 
@@ -217,7 +217,7 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
         'type', g.type,
         'active', g.active,
         'description', g.description,
-        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug),
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         '${predictionKey}', (
           ${year ? '' : 'SELECT json_group_array(o) FROM ('}
           SELECT json_object(
@@ -420,8 +420,15 @@ router.get('/predictions/:year', validYear, function (req, res) {
 /* GET all groundhogs */
 router.get('/groundhogs', function (req, res) {
   let groundhogs = getGroundhogs({ year: CURRENT_YEAR })
-  // sort groundhogs by "predictionsCount". This is an aggregate field so better do it here
-  groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
+  const nameFirst = req.query.nameFirst === 'true'
+
+  if (nameFirst) {
+    // sort by name
+    groundhogs.sort((a, b) => (a.name > b.name ? 1 : -1))
+  } else {
+    // sort by most predictions to least predictions
+    groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
+  }
 
   const recentPredictions = { total: 0, winter: 0, spring: 0 }
   groundhogs.forEach((g) => {
@@ -433,6 +440,7 @@ router.get('/groundhogs', function (req, res) {
     title: 'Groundhogs',
     groundhogs,
     recentPredictions: recentPredictions,
+    nameFirst,
   })
 })
 
@@ -453,8 +461,9 @@ router.get('/groundhogs/:slug', validSlug, (req, res) => {
 router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   // years == all years (including nulls), total == all predictions (nulls are not included)
   let allPredictions = { years: 0, total: 0, shadow: 0, noShadow: 0, null: 0 }
+  const oldestFirst = req.query.oldestFirst === 'true'
 
-  let groundhog = getGroundhogBySlug(req.params.slug)
+  let groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst })
   groundhog['predictions'].forEach((p) => {
     ++allPredictions['years']
 
@@ -464,6 +473,10 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
       ? ++allPredictions['noShadow'] && ++allPredictions['total'] // eslint-disable-line indent
       : ++allPredictions['null'] // eslint-disable-line indent
   })
+
+  const firstYear = oldestFirst
+    ? groundhog.predictions[0].year
+    : groundhog.predictions[groundhog.predictions.length - 1].year
 
   allPredictions = {
     ...allPredictions,
@@ -477,6 +490,8 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
     title: `${groundhog.shortname}’s Predictions`,
     groundhog,
     allPredictions,
+    firstYear,
+    oldestFirst,
   })
 })
 

@@ -10,13 +10,20 @@
   <div class="inner-content">
     <div class="inner-content__main">
       <div class="max-width--850">
-        <p>There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs who made predictions in 2022. By default, groundhogs are sorted by number of predictions.</p>
-
+        <p>There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs who made predictions in 2022.</p>
         <p>If you don’t see your favourite prognosticator, feel free to
           <a class="link--icon" href="add-groundhog">
             {{ icon({ add: true }) }} <span>add a groundhog</span>
           </a>.
         </p>
+
+        {% if nameFirst %}
+          {% set predictionsUrl = '/groundhogs' %}
+          <p>Groundhogs are sorted alphabetically. <a href="{{ predictionsUrl }}" class="underline">Sort groundhogs by number of predictions</a>.</p>
+        {% else %}
+          {% set nameUrl = '/groundhogs?nameFirst=true' %}
+          <p>Groundhogs are sorted by number of predictions. <a href="{{ nameUrl }}" class="underline">Sort groundhogs alphabetically</a>.</p>
+        {% endif %}
       </div>
       <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
         <table role="grid" class="data-table__table">
