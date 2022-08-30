@@ -8,11 +8,11 @@
 <html lang="en" id="html">
   <head>
     <title>
-      {% if title == 'GROUNDHOG-DAY.com' %}
-        {{ site_title() }}
-      {% else %}
-        {{ title }} — {{ site_title() }}
-      {% endif %}
+      {%- if title == 'GROUNDHOG-DAY.com' -%}
+        {{- site_title() -}}
+      {%- else -%}
+        {{ title }} — {{- site_title() -}}
+      {%- endif -%}
     </title>
     {% if GITHUB_SHA -%}
       <meta name="keywords" content="GITHUB_SHA={{ GITHUB_SHA }}" />
@@ -20,6 +20,51 @@
     <meta name="robots" content="noindex" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if pageMeta %}
+      {%- if "description" in pageMeta -%}
+        <meta name="description" content="{{ pageMeta.description }}" />
+      {%- elif daysLeft -%}
+        <meta name="description" content="The leading data source for Groundhog Day, with more than 40 prognosticators spanning more than a century. Only {{ daysLeft }} days until Groundhog Day 2023." />
+      {%- endif %}
+      {% if "canonical" in pageMeta -%}
+        <link rel="canonical" href="{{ pageMeta.canonical }}" />
+      {%- endif %}
+      
+      <!-- open graph tags -->
+      <meta property="og:type" content="website" />
+      {% if title == 'GROUNDHOG-DAY.com' -%}
+        <meta property="og:title" content="GROUNDHOG-DAY.com" />
+      {%- else -%}
+        <meta property="og:title" content="{{ title }} — GROUNDHOG-DAY.com" />
+      {%- endif %}
+      {% if "canonical" in pageMeta -%}
+        <meta property="og:url" content="{{ pageMeta.canonical }}" />
+      {%- endif %}
+      
+      <!-- twitter card tags additive with the og: tags -->
+      {%- if "image" in pageMeta -%}
+        <meta property="og:image" content="{{ pageMeta.baseUrl }}images/ghogs/og-image/{{- pageMeta.image -}}.png" />
+        <meta property="og:image:type" content="image/png" />
+        <!-- @TODO -->
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      {% else %}
+        <meta property="og:image" content="{{ pageMeta.baseUrl }}images/og-image-ghog-day-2.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      {%- endif %}
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="@pcraig3" />
+        <meta name="twitter:card" content="summary_large_image" />
+      {%- if "image" in pageMeta -%}
+        <meta name="twitter:image" content="{{ pageMeta.baseUrl }}images/ghogs/og-image/{{- pageMeta.image -}}.png" />
+      {% else %}
+        <meta name="twitter:image" content="{{ pageMeta.baseUrl }}images/og-image-ghog-day-2.png" />
+      {%- endif %}
+    {% endif %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

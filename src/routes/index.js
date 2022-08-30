@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 const DB = require('better-sqlite3-helper')
 const createError = require('http-errors')
+const aAnAre = require('../filters/aAnAre')
 
 /* Constants */
 const EARLIEST_RECORDED_PREDICTION = DB()
@@ -37,6 +38,27 @@ const _escapeHtml = (unsafe) => {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;')
+}
+
+const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
+  let url = req.protocol + '://' + req.get('host')
+  url = withPath ? `${url}${req.originalUrl}` : url
+  return trailingSlash
+    ? url.endsWith('/')
+      ? url
+      : `${url}/`
+    : url.endsWith('/')
+    ? url.slice(0, -1) // eslint-disable-line indent
+    : url // eslint-disable-line indent
+}
+
+const _getPageMeta = (req, description, slug) => {
+  return {
+    ...(description && { description }),
+    ...(slug && { image: slug }),
+    canonical: _getUrlFromRequest(req, { trailingSlash: false }),
+    baseUrl: _getUrlFromRequest(req, { withPath: false }),
+  }
 }
 
 /* Queries */
@@ -343,22 +365,41 @@ router.get('/', function (req, res) {
     predictionResults,
     randomGroundhogs,
     totalGroundhogs,
+    pageMeta: _getPageMeta(req),
   })
 })
 
 /* GET about page. */
 router.get('/about', function (req, res) {
-  res.render('pages/about', { title: 'About' })
+  res.render('pages/about', {
+    title: 'About',
+    pageMeta: _getPageMeta(
+      req,
+      'Overiew of how GROUNDHOG-DAY.COM came to be and why you would even do this in the first place.',
+    ),
+  })
 })
 
 /* GET api page. */
 router.get('/api', function (req, res) {
-  res.render('pages/api', { title: 'API' })
+  res.render('pages/api', {
+    title: 'API',
+    pageMeta: _getPageMeta(
+      req,
+      'A free JSON API for prognosticating groundhogs and their annual predictions. Get all predictions for single groundhogs or all predictions for a given year.',
+    ),
+  })
 })
 
 /* GET "add groundhog" page. */
 router.get('/add-groundhog', function (req, res) {
-  res.render('pages/add-groundhog', { title: 'Add a groundhog' })
+  res.render('pages/add-groundhog', {
+    title: 'Add a groundhog',
+    pageMeta: _getPageMeta(
+      req,
+      'Add a new groundhogs to GROUNDHOG-DAY.COM: the more groundhogs we have, the more accurate we can be. It’s science.',
+    ),
+  })
 })
 
 router.get('/predictions', function (req, res) {
@@ -389,6 +430,10 @@ router.get('/predictions', function (req, res) {
     title: 'Predictions by year',
     predictions: predictionResults,
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
+    pageMeta: _getPageMeta(
+      req,
+      `See aggregate groundhog predictions by year, from ${CURRENT_YEAR} all the way back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
+    ),
   })
 })
 
@@ -433,6 +478,10 @@ router.get('/predictions/:year', validYear, function (req, res) {
     predictions,
     predictionTotals,
     nameFirst,
+    pageMeta: _getPageMeta(
+      req,
+      `See all groundhog predictions for ${year}. See which groundhogs are well-informed vs those that are blowing smoke.`,
+    ),
   })
 })
 
@@ -460,8 +509,35 @@ router.get('/groundhogs', function (req, res) {
     groundhogs,
     recentPredictions: recentPredictions,
     nameFirst,
+    pageMeta: _getPageMeta(
+      req,
+      `See all ${groundhogs.length} prognosticators, whether certified groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.COM is all-welcoming.`,
+    ),
   })
 })
+
+const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear } = {}) => {
+  const modifier = aAnAre(groundhog.type) === 'is an' ? 'oracle' : 'prognosticating'
+  let secondPhrase
+
+  if (allPredictionsCount && firstYear) {
+    const verb = groundhog.type.endsWith('hogs') ? 'have' : 'has'
+    secondPhrase = ` ${groundhog.name} ${verb} made ${allPredictionsCount} predictions since ${firstYear}.`
+  } else {
+    const prediction =
+      groundhog.predictions[0].shadow === 0
+        ? 'predicted an early spring'
+        : groundhog.predictions[0].shadow === 1
+        ? 'predicted a longer winter' // eslint-disable-line indent
+        : 'did not make a prediction' // eslint-disable-line indent
+
+    secondPhrase = ` In ${CURRENT_YEAR}, ${groundhog.shortname} ${prediction}.`
+  }
+
+  return `${groundhog.name} ${aAnAre(groundhog.type)} ${modifier} ${groundhog.type} from ${
+    groundhog.city
+  } in ${groundhog.region}, ${groundhog.country}.${secondPhrase}`
+}
 
 /* GET single groundhog */
 router.get('/groundhogs/:slug', validSlug, (req, res) => {
@@ -473,6 +549,7 @@ router.get('/groundhogs/:slug', validSlug, (req, res) => {
     title: groundhog.name,
     groundhog,
     allPredictions: groundhog.predictions.length - nullPredictions,
+    pageMeta: _getPageMeta(req, getGroundhogMetaDescription(groundhog), groundhog.slug),
   })
 })
 
@@ -511,6 +588,14 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
     allPredictions,
     firstYear,
     oldestFirst,
+    pageMeta: _getPageMeta(
+      req,
+      getGroundhogMetaDescription(groundhog, {
+        allPredictionsCount: allPredictions.total,
+        firstYear,
+      }),
+      groundhog.slug,
+    ),
   })
 })
 

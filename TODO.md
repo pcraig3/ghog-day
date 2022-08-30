@@ -30,6 +30,7 @@ FOR AN EVENTUAL LAUNCH
   - Add description
   - Add title, sitemap, author, link
 - How to update just the data for 1 year
+- CORS
 
 DONE
 
