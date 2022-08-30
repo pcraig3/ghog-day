@@ -6,6 +6,7 @@ const logger = require('morgan')
 const nunjucks = require('nunjucks')
 const helmet = require('helmet')
 const DB = require('better-sqlite3-helper')
+var cors = require('cors')
 
 // The first call creates the global instance with your settings
 DB({
@@ -54,6 +55,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(helmet({ contentSecurityPolicy: false }))
+app.use(cors())
 
 app.use('/', indexRouter)
 

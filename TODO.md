@@ -24,17 +24,15 @@ FOR AN EVENTUAL LAUNCH
 - Sitemap
 - Better footer?
 - Credit Tyler Benning
-- Pictures
+- How to update just the data for 1 year
+
+DONE
+
+- CORS
 - Images & <meta> stuff
   - Add generic meta image for non-groundhog pages
   - Add description
   - Add title, sitemap, author, link
-- How to update just the data for 1 year
-- CORS
-
-DONE
-
-- Images
   - Fix layout glitch
   - Check all images show up
   - Compress images
