@@ -1,9 +1,15 @@
 
 {% macro site_title(params) %}
-    {% if params.url %}
+    {%- if not params.title -%}
+    <span class="site-title">
+    {%- endif -%}
+    {%- if params.url -%}
         <a href="/" class="underline">GROUNDHOG-DAY.com</a>
-    {% else %}
+    {%- else -%}
         GROUNDHOG-DAY.com
-    {% endif %}
+    {%- endif -%}
+    {%- if not params.title -%}
+    </span>
+    {%- endif -%}
 {% endmacro %}
 

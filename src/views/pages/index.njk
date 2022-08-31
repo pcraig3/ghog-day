@@ -15,7 +15,7 @@
       <span>All years</span> {{ icon({ right: true }) }}</a>
     </div>
   </div>
-  <p>The prognostication given by the majority of groundhogs.</p>
+  <p>The given result is that which the majority of groundhogs agreed on.</p>
   <div class="card--grid">
     {% for result in predictionResults %}
       <a href="/predictions/{{ result.year }}">
@@ -41,7 +41,7 @@
       <span>All groundhogs</span> {{ icon({ right: true }) }}</a>
     </div>
   </div>
-  <p>This is a ‘box-of-chocolates’ random selection out of <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
+  <p>This is a ‘box-of-chocolates’ assortment out of <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
 
   <div class="card--grid">
     {% for groundhog in randomGroundhogs %}
@@ -65,9 +65,11 @@
 
   <br />
 
-  <h2 class="h4">What is this site?</h2>
+  <h2 class="h4">About GROUNDHOG-DAY.com</h2>
   <div class="max-width--850">
-    <p class="mb--0">{{ site_title({ url: false }) }} combines the ancient wisdom of <a href="/groundhogs">groundhogs</a> with the entrepreneurial dynamism of <a href="/api">structured data</a>. Use it for your PhD thesis or instead of your unreliable weather app.</p>
+    <p>Every February 2nd – in deepest, darkest winter – humanity seeks guidance from mystic marmots, whose obscure rituals and ancient tongue foretell of spring’s return. The tradition is fascinating, but the future is now.</p>
+    <p>{{ site_title() }} is the leading data source for North America’s many prophetic prognosticators: unleashing the ancient wisdom of <a href="/groundhogs">groundhogs</a> through the entrepreneurial dynamism of <a href="/api">structured data</a>.</p>
+    <p class="mb--0">Move over, ‘unicorn’ companies — we’ve got our own magic animal.</p>
   </div>
 
 {% endblock %}

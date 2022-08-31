@@ -9,9 +9,9 @@
   <head>
     <title>
       {%- if title == 'GROUNDHOG-DAY.com' -%}
-        {{- site_title() -}}
+        {{ site_title({ title: true }) }}
       {%- else -%}
-        {{ title }} — {{- site_title() -}}
+        {{ title }} — {{ site_title({ title: true }) }}
       {%- endif -%}
     </title>
     {% if GITHUB_SHA -%}
