@@ -7,7 +7,6 @@ TODO
 - Do a smartbear API schema
 - Data as CSV
 - footer always on the bottom?
-- reverse the data for the predictions? (using query parameter)
 - Revisit menu?
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
@@ -37,6 +36,7 @@ DONE
   - Check all images show up
   - Compress images
   - Social share images
+  - Get specific image sizes for groundhogs
 - Don't total predictions minus the nulls
 - Rearrange data
   - Predictions years

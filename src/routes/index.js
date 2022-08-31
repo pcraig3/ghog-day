@@ -3,6 +3,8 @@ var router = express.Router()
 const DB = require('better-sqlite3-helper')
 const createError = require('http-errors')
 const aAnAre = require('../filters/aAnAre')
+const path = require('path')
+const sizeOf = require('image-size')
 
 /* Constants */
 const EARLIEST_RECORDED_PREDICTION = DB()
@@ -53,9 +55,14 @@ const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {})
 }
 
 const _getPageMeta = (req, description, slug) => {
+  let dimensions
+  if (slug) {
+    dimensions = sizeOf(path.resolve(__dirname, `../../public/images/ghogs/og-image/${slug}.png`))
+  }
+
   return {
     ...(description && { description }),
-    ...(slug && { image: slug }),
+    ...(slug && { image: slug, imageWidth: dimensions.width, imageHeight: dimensions.height }),
     canonical: _getUrlFromRequest(req, { trailingSlash: false }),
     baseUrl: _getUrlFromRequest(req, { withPath: false }),
   }
