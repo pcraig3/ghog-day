@@ -7,6 +7,18 @@
 <!doctype html>
 <html lang="en" id="html">
   <head>
+    {% if NODE_ENV == 'production' %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3SGGHMTHC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-G3SGGHMTHC');
+    </script>
+    {%- endif %}
+
     <title>
       {%- if title == 'GROUNDHOG-DAY.com' -%}
         {{ site_title({ title: true }) }} — the leading Groundhog Day data source.

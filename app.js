@@ -46,6 +46,9 @@ app.use((req, res, next) => {
   // add (optional) github sha to templates
   app.locals.GITHUB_SHA = process.env.GITHUB_SHA
 
+  // add the node env to the templates
+  app.locals.NODE_ENV = process.env.NODE_ENV
+
   next()
 })
 

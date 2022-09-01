@@ -18,13 +18,13 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Analytics
 - Sitemap
 - Better footer?
 - How to update just the data for 1 year
 
 DONE
 
+- Analytics
 - Credit Tyler Benning
 - Actual explanation of groundhog day
 - CORS
