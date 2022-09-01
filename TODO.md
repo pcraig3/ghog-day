@@ -18,15 +18,15 @@ TODO
 
 FOR AN EVENTUAL LAUNCH
 
-- Actual explanation of groundhog day
 - Analytics
 - Sitemap
 - Better footer?
-- Credit Tyler Benning
 - How to update just the data for 1 year
 
 DONE
 
+- Credit Tyler Benning
+- Actual explanation of groundhog day
 - CORS
 - Images & <meta> stuff
   - Add generic meta image for non-groundhog pages

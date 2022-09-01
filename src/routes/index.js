@@ -387,6 +387,17 @@ router.get('/about', function (req, res) {
   })
 })
 
+/* GET "add groundhog" page. */
+router.get('/add-groundhog', function (req, res) {
+  res.render('pages/add-groundhog', {
+    title: 'Add a groundhog',
+    pageMeta: _getPageMeta(
+      req,
+      'Add new groundhogs to GROUNDHOG-DAY.com: the more we have, the more accurate we are. It’s science.',
+    ),
+  })
+})
+
 /* GET api page. */
 router.get('/api', function (req, res) {
   res.render('pages/api', {
@@ -398,13 +409,13 @@ router.get('/api', function (req, res) {
   })
 })
 
-/* GET "add groundhog" page. */
-router.get('/add-groundhog', function (req, res) {
-  res.render('pages/add-groundhog', {
-    title: 'Add a groundhog',
+/* GET api page. */
+router.get('/contact', function (req, res) {
+  res.render('pages/contact', {
+    title: 'Contact',
     pageMeta: _getPageMeta(
       req,
-      'Add new groundhogs to GROUNDHOG-DAY.com: the more we have, the more accurate we are. It’s science.',
+      'Please reach out with any questions, concerns, or general feedback. Unlike Jimmy the Groundhog, I don’t bite.',
     ),
   })
 })

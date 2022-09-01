@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  api
+{%- endblock %}
+
+{% block content %}
+  {{ page_header({ h1: 'Contact', backUrl: '/', backText: 'Home' }) }}
+
+  <div class="max-width--850">
+    <p>{{ site_title({ url: false }) }} wants to be the leading data source for North America’s prognosticating groundhogs and their yearly predictions. Our mission is to provide <a href="/api">Groundhog Day data</a> that is free, accurate, and portable. Every year, there are a spate of newspaper articles doing some kind of data analysis on Groundhog Day results — {{ site_title({ url: false }) }} makes that easier than ever.</p>
+
+    <p>Please reach out if:</p>
+    <ul class="with-bullets">
+      <li>you are able to fill in any missing predictions</li>
+      <li>you would like to change the photo or description for an existing groundhog</li>
+      <li>you would like your contact information added to the page for a particular groundhog</li>
+      <li>you would like a new groundhog added to the site</li>
+      <li>you have any feedback that you think would make the site better</li>
+      <li>you just want to say hello because you are a chatty Cathy</li>
+    </ul>
+
+    <p>If you would like to <a href="/add-groundhog">add a new groundhog</a>, there is a dedicated page for that.</p>
+    <p>For all other inquiries / corrections, email “<a href="mailto:hello@groundhog-day.com">hello@groundhog-day.com</a>”.
+
+    <br />
+    <br />
+    <h2 class="h3">Who is behind {{ site_title({ url: false }) }}?</h2>
+
+    <h3 class="h5">Paul Craig, Developer</h3>
+
+    <p>My name is <a href="https://pcraig3.ca/" target="_blank">Paul</a> and I barely ever thought about groundhogs until <a href="https://www.canadaland.com/podcast/750-dead-willies/" target="_blank">Canadaland’s episode #750: Dead Willies</a>. Afterwards, I started Googling around and was horrified to learn that the best-case-scenario for retrieving past predictions is downloading a PDF file (an awful way to store data), with the more common case being that there is simply no central list of predictions at all.</p>
+    <p>In addition to building the site + API, I have unwittingly become possibly one of the foremost Groundhog Day experts in Canada slash the world. To inquire about keynote speaking at your conference or even just to say hi, email me at “<a href="mailto:paul@groundhog-day.com">paul@groundhog-day.com</a>”.</p>
+
+    <p><strong>Favourite groundhog</strong>: to be honest, I really like <a href="/groundhogs/lucy-the-lobster">Lucy the Lobster</a> from Nova Scotia.
+
+    <h3 class="h5">Tyler Benning, Designer</h3>
+
+    <p><a href="https://www.tylerbenning.com" target="_blank">Tyler</a> is a super talented Designer extraordinaire who agreed to help come up with some groundhog-mocks in between surfing the Altantic, couchsurfing Vancouver, and getting a real job. If there’s some aspect of the design you don’t like, it’s probably when I didn’t take his advice.</p>
+    <p class="mb--0"><strong>Favourite groundhog</strong>: 🤷‍♀️</p>
+
+  </div>
+{% endblock %}
