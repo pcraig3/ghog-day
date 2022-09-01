@@ -40,6 +40,10 @@
 
   border: 2px solid black;
   border-top: none;
+
+  @include mixins.mobile {
+    font-size: 85%;
+  }
 }
 
 .groundhog--residence {
@@ -63,5 +67,26 @@
   > a {
     margin-right: vars.$space-sm;
     display: inline-block;
+  }
+
+  @include mixins.mobile {
+    font-size: 85%;
+  }
+}
+
+.groundhog--contact {
+  margin-top: vars.$space-lg;
+  text-align: center;
+
+  p {
+    font-size: 80%;
+    margin: 0;
+    display: inline-block;
+
+    @include mixins.mobile {
+      font-size: 85%;
+      border: 1px solid black;
+      padding: vars.$space-xs;
+    }
   }
 }
