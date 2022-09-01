@@ -316,7 +316,7 @@ const validSlug = (req, res, next) => {
   if (!slugs.includes(slug)) {
     throw new createError(
       400,
-      `Bad groundhog identifier  (<code>${_escapeHtml(slug)}</code>), maybe you spelled it wrong?`,
+      `Bad groundhog identifier (<code>${_escapeHtml(slug)}</code>), maybe you spelled it wrong?`,
     )
   }
 
@@ -382,7 +382,7 @@ router.get('/about', function (req, res) {
     title: 'About',
     pageMeta: _getPageMeta(
       req,
-      'Overiew of how GROUNDHOG-DAY.COM came to be and why you would even do this in the first place.',
+      'The history of our modern Groundhog Day. It’s exactly as weird as you think.',
     ),
   })
 })
@@ -404,7 +404,7 @@ router.get('/add-groundhog', function (req, res) {
     title: 'Add a groundhog',
     pageMeta: _getPageMeta(
       req,
-      'Add a new groundhogs to GROUNDHOG-DAY.COM: the more groundhogs we have, the more accurate we can be. It’s science.',
+      'Add new groundhogs to GROUNDHOG-DAY.com: the more we have, the more accurate we are. It’s science.',
     ),
   })
 })
@@ -439,7 +439,7 @@ router.get('/predictions', function (req, res) {
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
     pageMeta: _getPageMeta(
       req,
-      `See aggregate groundhog predictions by year, from ${CURRENT_YEAR} all the way back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
+      `See aggregate groundhog predictions by year, from ${CURRENT_YEAR} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
     ),
   })
 })
@@ -487,7 +487,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
     nameFirst,
     pageMeta: _getPageMeta(
       req,
-      `See all groundhog predictions for ${year}. See which groundhogs are well-informed vs those that are blowing smoke.`,
+      `Groundhog predictions for ${year}. See which groundhogs are well-informed vs those that are blowing smoke.`,
     ),
   })
 })
@@ -518,7 +518,7 @@ router.get('/groundhogs', function (req, res) {
     nameFirst,
     pageMeta: _getPageMeta(
       req,
-      `See all ${groundhogs.length} prognosticators, whether certified groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.COM is all-welcoming.`,
+      `See all ${groundhogs.length} prognosticators, whether genuine groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
     ),
   })
 })
