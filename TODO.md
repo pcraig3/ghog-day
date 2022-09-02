@@ -1,12 +1,10 @@
 TODO
 
 - Separate API from UI
-- Find more data
 - "final" groundhogs page
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
-- footer always on the bottom?
 - Revisit menu?
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
@@ -15,15 +13,13 @@ TODO
   - Countdown page
   - Groundhog nearest to you
   - Page of the most out-there facts
-
-FOR AN EVENTUAL LAUNCH
-
+- Sortable tables
 - Sitemap
-- Better footer?
 - How to update just the data for 1 year
 
 DONE
 
+- Remove the "don't index me" stuff
 - Analytics
 - Credit Tyler Benning
 - Actual explanation of groundhog day

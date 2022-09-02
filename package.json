@@ -1,7 +1,13 @@
 {
   "name": "ghog-day",
-  "version": "0.0.0",
-  "private": true,
+  "description": "groundhog day website: get all groundhogs and their predictions, year by year. it's a real holiday",
+  "version": "1.0.0",
+  "license": "MIT",
+  "homepage": "https://groundhog-day.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pcraig3/ghog-day.git"
+  },
   "scripts": {
     "dev": "NODE_ENV=dev DEBUG=ghog-day:* nodemon -e js,njk ./bin/www & npm run scss:watch",
     "lint": "eslint \"./**/*.js\"",
