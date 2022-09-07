@@ -51,7 +51,13 @@
         </div>
       </div>
       <div class="groundhog--contact">
-        <p><a href="/contact" class="underline">Get in touch</a> to edit this groundhog.</a></p>
+        <p>
+          {% if groundhog.contact -%}
+            <a href="mailto:{{ groundhog.contact }}" class="underline">Get in touch</a> with this groundhog.</a>
+          {%- else -%}
+            <a href="/contact" class="underline">Get in touch</a> to edit this groundhog.</a>
+          {%- endif %}
+        </p>
       </div>
     </div>
 

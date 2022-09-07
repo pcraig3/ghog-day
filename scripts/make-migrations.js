@@ -13,6 +13,7 @@ CREATE TABLE groundhogs (
   region TEXT,
   country TEXT,
   source TEXT,
+  contact TEXT,
   currentPrediction TEXT,
   isGroundhog BOOLEAN,
   type TEXT,
@@ -65,15 +66,15 @@ const insertGroundhogs = () => {
         reject(error)
       })
       .on('data', (row) => {
-        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, source, currentPrediction, isGroundhog, type, active, description) VALUES (${parseInt(
+        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, source, contact, currentPrediction, isGroundhog, type, active, description) VALUES (${parseInt(
           row.id,
         )}, '${escape(row.slug)}', '${escape(row.shortname)}', '${escape(row.name)}', '${escape(
           row.city,
         )}', '${escape(row.region)}', '${escape(row.country)}', '${escape(row.source)}', '${escape(
-          row.currentPrediction,
-        )}', ${isBoolean(row.isGroundhog)}, '${escape(row.type)}', '${isBoolean(
-          row.active,
-        )}', '${escape(row.description)}');\n`
+          row.contact,
+        )}', '${escape(row.currentPrediction)}', ${isBoolean(row.isGroundhog)}, '${escape(
+          row.type,
+        )}', '${isBoolean(row.active)}', '${escape(row.description)}');\n`
 
         stream.write(insert)
       })
