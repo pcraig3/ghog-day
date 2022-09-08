@@ -10,7 +10,7 @@ nav {
 
   a {
     color: black;
-    text-decoration: none;
+    text-decoration: underline;
 
     &[aria-current] {
       font-weight: bold;
@@ -26,11 +26,34 @@ nav {
       min-height: 30px;
       background: white;
       border-top: 2px solid black;
-      position: fixed;
       bottom: 0px;
       z-index: 1;
       padding: 0.8em 1.2em 0.8em 1.2em;
       margin-left: -1.2em;
+    }
+
+    .nav--sm[open] + .nav--sm--logo {
+      display: none;
+    }
+
+    .nav--sm--logo {
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      padding: 0.8em 1.2em 0.8em 0;
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        height: 29px;
+      }
+
+      span {
+        text-decoration: underline;
+        margin-left: 2px;
+      }
     }
 
     .nav--md {
@@ -39,7 +62,8 @@ nav {
   }
 
   @include mixins.tablet {
-    .nav--sm {
+    .nav--sm,
+    .nav--sm--logo {
       display: none;
     }
 

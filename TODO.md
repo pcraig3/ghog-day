@@ -5,7 +5,6 @@ TODO
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
-- Revisit menu?
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
 - Groundhog day dountdown timer better + with marquee
@@ -19,6 +18,8 @@ TODO
 
 DONE
 
+- Revisit menu
+  - Mobile menu has less wasted space and it is way easier to go home
 - Add Poppy the Groundhog
 - Add a(n) (optional) contact field to groundhogs
 - Remove the "don't index me" stuff
