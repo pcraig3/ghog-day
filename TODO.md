@@ -19,6 +19,8 @@ TODO
 
 DONE
 
+- Add Poppy the Groundhog
+- Add a(n) (optional) contact field to groundhogs
 - Remove the "don't index me" stuff
 - Analytics
 - Credit Tyler Benning
