@@ -9,8 +9,8 @@
   {{ page_header({ h1: groundhog.name, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: dataUrl }) }}
 
   <div class="inner-content inner-content--with-summary">
-    <div class="description">
-      {% if groundhog.predictions[0].shadow %}
+    <div class="flash">
+       {% if groundhog.predictions[0].shadow %}
         <aside class="highlight highlight--winter">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
           <div class="message"><span>This year, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
@@ -21,7 +21,8 @@
           <div class="message"><span>This year, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
         </aside>
       {% endif %}
-
+    </div>
+    <div class="description">
       <h2 class="h4">About</h2>
       <p>{{ groundhog.description }}</p>
     </div>

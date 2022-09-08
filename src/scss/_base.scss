@@ -74,9 +74,14 @@ footer {
   grid: auto-flow min-content / 1fr;
   grid-gap: 1em;
   grid-template-areas:
-    'description'
+    'flash      '
     'summary    '
+    'description'
     'predictions';
+
+  .flash {
+    grid-area: flash;
+  }
 
   .description {
     grid-area: description;
@@ -96,6 +101,7 @@ footer {
     grid-gap: 0 2em;
 
     grid-template-areas:
+      'flash       summary'
       'description summary'
       'predictions summary';
   }
