@@ -20,6 +20,7 @@ DONE
 
 - Revisit menu
   - Mobile menu has less wasted space and it is way easier to go home
+  - Let's just go for it: removing the header on mobile #yolo
 - Add Poppy the Groundhog
 - Add a(n) (optional) contact field to groundhogs
 - Remove the "don't index me" stuff

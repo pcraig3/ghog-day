@@ -47,6 +47,10 @@ img {
 }
 
 @include mixins.mobile {
+  main {
+    margin-top: -30px;
+  }
+
   .hidden--mobile {
     display: none;
   }
