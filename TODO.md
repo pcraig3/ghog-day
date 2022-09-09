@@ -13,11 +13,11 @@ TODO
   - Groundhog nearest to you
   - Page of the most out-there facts
 - Sortable tables
-- Sitemap
 - How to update just the data for 1 year
 
 DONE
 
+- Sitemap
 - Revisit menu
   - Mobile menu has less wasted space and it is way easier to go home
   - Let's just go for it: removing the header on mobile #yolo
