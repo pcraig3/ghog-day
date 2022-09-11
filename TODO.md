@@ -17,6 +17,7 @@ TODO
 
 DONE
 
+- Bugfix: use https and remove query params for canonical urls
 - Sitemap
 - Revisit menu
   - Mobile menu has less wasted space and it is way easier to go home
