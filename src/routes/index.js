@@ -43,7 +43,7 @@ const _escapeHtml = (unsafe) => {
 }
 
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
-  let url = req.protocol + '://' + req.get('host')
+  let url = 'https://' + req.get('host')
   url = withPath ? `${url}${req.originalUrl}` : url
   return trailingSlash
     ? url.endsWith('/')
