@@ -17,6 +17,7 @@ TODO
 
 DONE
 
+- Bugfix: fix up HTML validation errors
 - Bugfix: use https and remove query params for canonical urls
 - Sitemap
 - Revisit menu

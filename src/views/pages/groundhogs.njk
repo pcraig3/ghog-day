@@ -26,37 +26,37 @@
         {% endif %}
       </div>
       <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
-        <table role="grid" class="data-table__table">
+        <table class="data-table__table">
           <caption id="data-table--groundhogs">
             <h2 class="data-table__title h4">All groundhogs</h2>
           </caption>
-          <thead role="presentation" class="visible">
-            <tr role="row">
-              <th role="rowheader">Name</th>
-              <th role="rowheader">Region</th>
-              <th role="rowheader">Country</th>
-              <th role="rowheader">Latest prediction</th>
-              <th role="rowheader">Total predictions</th>
+          <thead class="visible">
+            <tr>
+              <th>Name</th>
+              <th>Region</th>
+              <th>Country</th>
+              <th>Latest prediction</th>
+              <th>Total predictions</th>
             </tr>
           </thead>
-          <tbody role="presentation">
+          <tbody>
             {% for groundhog in groundhogs %}
-              <tr role="row" onclick="window.location='/groundhogs/{{ groundhog.slug }}';">
-                <th role="columnheader"><a href="/groundhogs/{{ groundhog.slug }}" class="underline">{{ groundhog.name }}</a></th>
-                <td role="gridcell">
+              <tr onclick="window.location='/groundhogs/{{ groundhog.slug }}';">
+                <th><a href="/groundhogs/{{ groundhog.slug }}" class="underline">{{ groundhog.name }}</a></th>
+                <td>
                   {{ groundhog.region }}
                 </td>
-                <td role="gridcell">
+                <td>
                   {{ groundhog.country }}
                 </td>
-                <td role="gridcell">
+                <td>
                   {% if groundhog.latestPrediction.shadow %}
                     <span role="img" aria-label="Longer winter">❄️</span>
                   {% else %}
                     <span role="img" aria-label="Early spring">🌼</span>
                   {% endif %}
                 </td>
-                <td role="gridcell">
+                <td>
                   {{ groundhog.predictionsCount }}
                 </td>
               </tr>

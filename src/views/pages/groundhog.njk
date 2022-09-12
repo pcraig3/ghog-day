@@ -56,7 +56,7 @@
           {% if groundhog.contact -%}
             <a href="mailto:{{ groundhog.contact }}" class="underline">Get in touch</a> with this groundhog.</a>
           {%- else -%}
-            <a href="/contact" class="underline">Get in touch</a> to edit this groundhog.</a>
+            <a href="/contact" class="underline">Get in touch</a> to edit this groundhog.
           {%- endif %}
         </p>
       </div>
@@ -79,7 +79,7 @@
             {%- for prediction in groundhog.predictions -%}
               {% if prediction.year >= 2018 %}
                 <tr>
-                  <th role="columnheader"><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
+                  <th><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
                   <td class="hidden--mobile-xs">
                     {% if prediction.shadow == true -%}
                       Yes, saw shadow
