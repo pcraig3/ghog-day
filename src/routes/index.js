@@ -114,10 +114,7 @@ const getPredictionsByYear = (year) => {
     )
     .all(year)
 
-  const formattedPredictions = []
-  predictions.forEach((p) => formattedPredictions.push(JSON.parse(p.predictions)))
-
-  return formattedPredictions
+  return predictions.map((p) => JSON.parse(p.predictions))
 }
 
 // TODO: due to the subquery, this call might be inefficient
@@ -145,7 +142,7 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'type', g.type,
         'active', g.active,
         'description', g.description
-      ) AS gh
+      )
       FROM groundhogs AS g
       WHERE g.slug = p.slug
     ))) AS predictions
@@ -171,7 +168,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
   const by = identifier === 'slug' ? 'slug' : 'id'
 
-  let groundhogObj = DB()
+  let { groundhog } = DB()
     .prepare(
       `
     SELECT json_object(
@@ -190,7 +187,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
       'active', g.active,
       'description', g.description,
       'predictions', (
-        SELECT json_group_array(o)
+        SELECT json_group_array(json(o))
         FROM (SELECT json_object(
               'year', p.year,
               'shadow', p.shadow,
@@ -207,15 +204,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
     )
     .get(value)
 
-  if (groundhogObj) {
-    groundhogObj = JSON.parse(groundhogObj.groundhog)
-    // predictions come back as an array of strings, not an array of objects
-    groundhogObj.predictions = groundhogObj.predictions.map((p) =>
-      typeof p === 'string' ? JSON.parse(p) : p,
-    )
-  }
-
-  return groundhogObj
+  return JSON.parse(groundhog)
 }
 
 const getGroundhogById = (id, { oldestFirst = false } = {}) => {
@@ -252,7 +241,7 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
         'description', g.description,
         'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         '${predictionKey}', (
-          ${year ? '' : 'SELECT json_group_array(o) FROM ('}
+          ${year ? '' : 'SELECT json_group_array(json(o)) FROM ('}
           SELECT json_object(
                 'year', p.year,
                 'shadow', p.shadow,
@@ -636,26 +625,26 @@ router.get('/api/v1/', function (req, res) {
 /* get groundhogs as JSON */
 router.get('/api/v1/groundhogs', function (req, res) {
   const groundhogs = getGroundhogs({ oldestFirst: true })
-  res.send(groundhogs)
+  res.json(groundhogs)
 })
 
 /* get a single groundhog as JSON by id */
 router.get('/api/v1/groundhogs/:gId([0-9]{0,3})', validId, function (req, res) {
   const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
-  res.send(groundhog)
+  res.json(groundhog)
 })
 
 /* get a single groundhog as JSON by slug */
 router.get('/api/v1/groundhogs/:slug', validSlug, function (req, res) {
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: true })
-  res.send(groundhog)
+  res.json(groundhog)
 })
 
 /* get predictions for a single year as JSON */
 router.get('/api/v1/predictions', redirectYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
 
-  res.send(predictions)
+  res.json(predictions)
 })
 
 module.exports = router
