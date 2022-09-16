@@ -621,6 +621,18 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   })
 })
 
+router.get('/api/v1/', function (req, res) {
+  res.json({
+    message: 'Hello! Welcome to the Groundhog-Day.com API: the leading Groundhog Day data source.',
+    _links: {
+      self: { href: 'https://groundhog-day.com/api/v1/' },
+      groundhogs: { href: 'https://groundhog-day.com/api/v1/groundhogs' },
+      predictions: { href: 'https://groundhog-day.com/api/v1/predictions' },
+      // spec: { href: 'https://groundhog-day.com/api/v1/spec' },
+    },
+  })
+})
+
 /* get groundhogs as JSON */
 router.get('/api/v1/groundhogs', function (req, res) {
   const groundhogs = getGroundhogs({ oldestFirst: true })
