@@ -18,7 +18,6 @@ TODO
   - All years: sort by heading
   - One year: sort by name, prediction, region (?)
   - One year: search by name
-  - All predictions: sort by heading
 - How to update just the data for 1 year
 
 DONE
@@ -26,6 +25,7 @@ DONE
 - Sortable tables
   - All groundhogs: sort by heading
   - Search all groundhogs
+  - All predictions: sort by heading
 - Bugfix: add root API response and don't return strings in JSON
 - Bugfix: fix up HTML validation errors
 - Bugfix: use https and remove query params for canonical urls
