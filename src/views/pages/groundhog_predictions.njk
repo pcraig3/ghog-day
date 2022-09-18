@@ -4,6 +4,15 @@
   groundhog-predictions
 {%- endblock %}
 
+{% block footer_scripts %}
+  <script type="text/javascript" src="/javascripts/vendor/list.min.js"></script>
+  <script>
+    new List('sortable--groundhog-predictions', {
+      valueNames: ['year']
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
   {% set backUrl = ['/groundhogs/', groundhog.slug] | join %}
   {% set dataUrl = ['/api/v1/groundhogs/', groundhog.slug] | join %}
@@ -23,33 +32,25 @@
         {% endif %}
       </ul>
 
-      {% if oldestFirst %}
-        {% set descUrl = ['/groundhogs/', groundhog.slug, '/predictions'] | join %}
-        <p>Predictions are sorted from oldest to most recent. <a href="{{ descUrl }}" class="underline">Sort by most recent predictions first</a>.</p>
-      {% else %}
-        {% set ascUrl = ['/groundhogs/', groundhog.slug, '/predictions?oldestFirst=true'] | join %}
-        <p>Predictions are sorted most recent to oldest. <a href="{{ ascUrl }}" class="underline">Sort by oldest predictions first</a>.</p>
-      {% endif %}
-
       {% set hasDetails = groundhog.predictions[0].details %}
-      <div class="data-table predictions {% if hasDetails%}predictions--has-details{% else %}max-width--850{% endif %}" role="region" aria-labelledby="data-table--predictions">
+      <div id="sortable--groundhog-predictions" class="data-table predictions {% if hasDetails%}predictions--has-details{% else %}max-width--850{% endif %}" role="region" aria-labelledby="data-table--predictions">
         <table class="data-table__table data-table__table--with-line-breaks">
           <caption id="data-table--predictions">
             <h2 class="data-table__title h4">All predictions</h2>
           </caption>
           <thead class="visible">
             <tr>
-              <th>Year</th>
+              <th class="sort" data-sort="year">Year</th>
               <th>Saw shadow?</th>
               {% if hasDetails %}
                 <th class="hidden--mobile-xs">Details</th>
               {% endif %}
             </tr>
           </thead>
-          <tbody>
+          <tbody class="list">
             {% for prediction in groundhog.predictions %}
                 <tr>
-                  <th>{{ prediction.year }}</th>
+                  <th class="year">{{ prediction.year }}</th>
                   <td>
                     {% if prediction.shadow == true -%}
                       Yes, saw shadow.

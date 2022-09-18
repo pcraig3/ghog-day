@@ -13,10 +13,19 @@ TODO
   - Groundhog nearest to you
   - Page of the most out-there facts
 - Sortable tables
+  - All groundhogs: reverse the "count" table header sort
+  - Accessible announcements of how many results for a search
+  - All years: sort by heading
+  - One year: sort by name, prediction, region (?)
+  - One year: search by name
 - How to update just the data for 1 year
 
 DONE
 
+- Sortable tables
+  - All groundhogs: sort by heading
+  - Search all groundhogs
+  - All predictions: sort by heading
 - Bugfix: add root API response and don't return strings in JSON
 - Bugfix: fix up HTML validation errors
 - Bugfix: use https and remove query params for canonical urls

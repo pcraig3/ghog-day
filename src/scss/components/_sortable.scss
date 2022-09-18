@@ -1,0 +1,63 @@
+@use '../mixins';
+@use '../vars';
+
+th[data-sort].sort {
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background: rgba(180, 180, 180, 0.15);
+
+    &::after {
+      border-top: 7px solid rgba(180, 180, 180, 0.8);
+    }
+  }
+
+  &::after {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 7px solid rgba(180, 180, 180, 0.5);
+    content: '';
+    position: absolute;
+    margin-right: 10px;
+    right: 0;
+    top: 45%;
+  }
+
+  &.asc::after {
+    border-top: 7px solid black;
+    top: 45%;
+  }
+
+  &.desc::after {
+    border-bottom: 7px solid black;
+    border-top: 0;
+    top: 48%;
+  }
+}
+
+.data-table table th[data-sort='country'],
+.data-table table th[data-sort='latest'],
+.data-table table th[data-sort='count'] {
+  padding-right: 30px;
+}
+
+.sortable--groundhogs--search--container {
+  padding-top: 5px;
+
+  input {
+    border: none;
+    border-bottom: 1.5px solid black;
+
+    &:focus {
+      outline: 2px dotted vars.$color-focus;
+      outline-offset: 2px;
+    }
+  }
+
+  @include mixins.mobile-xs {
+    margin-left: 4px;
+  }
+}
