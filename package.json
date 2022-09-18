@@ -1,7 +1,7 @@
 {
   "name": "ghog-day",
   "description": "groundhog day website: get all groundhogs and their predictions, year by year. it's a real holiday",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "homepage": "https://groundhog-day.com",
   "repository": {
@@ -27,7 +27,7 @@
     "helmet": "^6.0.0",
     "http-errors": "~2.0.0",
     "image-size": "^1.0.2",
-    "list.js": "^2.3.1",
+    "list.js": "github:iamrobert/list.js#patch-1",
     "morgan": "~1.10.0",
     "nunjucks": "^3.2.3",
     "sass": "^1.54.9"
