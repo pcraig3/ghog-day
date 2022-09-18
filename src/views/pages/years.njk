@@ -4,6 +4,15 @@
   years
 {%- endblock %}
 
+{% block footer_scripts %}
+  <script src="/javascripts/vendor/list.min.js"></script>
+  <script>
+    new List('sortable--years', {
+      valueNames: ['year']
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
   {{ page_header({ h1: title, backUrl: '/', backText: 'Home', dataUrl: '/api/v1/predictions?currentYear=2022' }) }}
 
@@ -11,23 +20,23 @@
     <div class="inner-content__main">
       <p>Recorded predictions go as far back as <strong>{{ oldestPrediction }}</strong>.</p>
 
-      <div class="years data-table" role="region" aria-labelledby="data-table--years" tabindex="0">
+      <div id="sortable--years" class="years data-table" role="region" aria-labelledby="data-table--years" tabindex="0">
         <table class="data-table__table">
           <caption id="data-table--years">
             <h2 class="data-table__title h4">All predictions</h2>
           </caption>
           <thead class="visible">
             <tr>
-              <th>Year</th>
+              <th class="sort" data-sort="year">Year</th>
               <th class="center--mobile">Prediction</th>
               <th class="center--mobile">Spring : Winter</th>
               <th class="hidden--mobile-xs">Total predictions</th>
             </tr>
           </thead>
-          <tbody role="presentation">
+          <tbody role="presentation" class="list">
             {% for prediction in predictions %}
               <tr onclick="window.location='/predictions/{{ prediction.year }}';">
-                <th><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
+                <th class="year"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
                 <td class="center--mobile">
                   {% if prediction.prediction == 'winter' %}
                     <span role="img" aria-label="Longer winter">❄️</span> <span class="hidden--mobile-xs">Longer winter</span>
