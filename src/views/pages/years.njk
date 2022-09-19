@@ -36,7 +36,7 @@
           <tbody role="presentation" class="list">
             {% for prediction in predictions %}
               <tr onclick="window.location='/predictions/{{ prediction.year }}';">
-                <th class="year"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
+                <th class="year extra-padding"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
                 <td class="center--mobile">
                   {% if prediction.prediction == 'winter' %}
                     <span role="img" aria-label="Longer winter">❄️</span> <span class="hidden--mobile-xs">Longer winter</span>

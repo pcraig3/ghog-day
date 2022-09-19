@@ -38,9 +38,7 @@ th[data-sort].sort {
   }
 }
 
-.data-table table th[data-sort='country'],
-.data-table table th[data-sort='latest'],
-.data-table table th[data-sort='count'] {
+.data-table table th.extra-padding {
   padding-right: 30px;
 }
 
@@ -48,9 +46,12 @@ th[data-sort].sort {
   padding-top: 5px;
 
   input {
+    -webkit-appearance: none;
     border: none;
     border-bottom: 1.5px solid black;
-    -webkit-appearance: none;
+    border-radius: 0;
+    background-color: rgba(180, 180, 180, 0.15);
+    padding: 2px 5px;
 
     &:focus {
       outline: 2px dotted vars.$color-focus;
