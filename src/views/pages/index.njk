@@ -16,23 +16,25 @@
     </div>
   </div>
   <p>The given result is that which the majority of groundhogs agreed on.</p>
-  <div class="card--grid">
+  <ul class="card--grid no-paragraph-margin">
     {% for result in predictionResults %}
-      <a href="/predictions/{{ result.year }}">
-        <div class="card card--{{ result.prediction }}">
-          <span class="card--triangle"></span>
-          <div class="card--heading h2">{{ result.year }}</div>
-          {% if result.prediction == 'winter' %}
-            <div class="card--subhead"><span aria-hidden="true">❄️</span> Longer winter</div>
-            <div class="card--details card--bg-change">{{ result.groundhogs[result.prediction] }} groundhogs saw their shadows</div>
-          {% else %}
-            <div class="card--subhead"><span aria-hidden="true">🌼</span> Early spring</div>
-            <div class="card--details card--bg-change">{{ result.groundhogs[result.prediction] }} groundhogs did not see their shadow</div>
-          {% endif %}
-        </div>
-      </a>
+      <li>
+        <a href="/predictions/{{ result.year }}">
+          <div class="card card--{{ result.prediction }}">
+            <span class="card--triangle"></span>
+            <div class="card--heading h2">{{ result.year }}</div>
+            {% if result.prediction == 'winter' %}
+              <div class="card--subhead"><span aria-hidden="true">❄️</span> Longer winter</div>
+              <div class="card--details card--bg-change">{{ result.groundhogs[result.prediction] }} groundhogs saw their shadows</div>
+            {% else %}
+              <div class="card--subhead"><span aria-hidden="true">🌼</span> Early spring</div>
+              <div class="card--details card--bg-change">{{ result.groundhogs[result.prediction] }} groundhogs did not see their shadow</div>
+            {% endif %}
+          </div>
+        </a>
+      </li>
     {% endfor %}
-  </div>
+  </ul>
 
   <br />
   <div class="heading-with-right-link">
@@ -43,20 +45,22 @@
   </div>
   <p>This is a ‘box-of-chocolates’ assortment out of <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
 
-  <div class="card--grid">
+  <ul class="card--grid no-paragraph-margin">
     {% for groundhog in randomGroundhogs %}
-      <a href="/groundhogs/{{ groundhog.slug }}">
-        {% set class = 'card--winter' if groundhog.shadow else 'card--spring' %}
-        {% set latestPrediction = 'longer winter' if groundhog.shadow else 'early spring' %}
-        <div class="card {{ class }}">
-          <span class="card--triangle"></span>
-          <div class="card--heading h5">{{ groundhog.name }}</div>
-          <div class="card--subhead">{{ groundhog.location }}</div>
-          <div class="card--details card--bg-change">Latest prediction: {{ latestPrediction }}</div>
-        </div>
-      </a>
+      <li>
+        <a href="/groundhogs/{{ groundhog.slug }}">
+          {% set class = 'card--winter' if groundhog.shadow else 'card--spring' %}
+          {% set latestPrediction = 'longer winter' if groundhog.shadow else 'early spring' %}
+          <div class="card {{ class }}">
+            <span class="card--triangle"></span>
+            <div class="card--heading h5">{{ groundhog.name }}</div>
+            <div class="card--subhead">{{ groundhog.location }}</div>
+            <div class="card--details card--bg-change">Latest prediction: {{ latestPrediction }}</div>
+          </div>
+        </a>
+      </li>
     {% endfor %}
-  </div>
+  </ul>
   <div style="margin-top: 20px;">
     <a class="link--icon underline" href="/add-groundhog">
       {{ icon({ add: true }) }} <span>Add a groundhog</span>

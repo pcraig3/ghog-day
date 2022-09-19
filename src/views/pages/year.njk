@@ -4,6 +4,32 @@
   predictions
 {%- endblock %}
 
+{% block footer_scripts %}
+  <script src="/javascripts/vendor/list.min.js"></script>
+  <script>
+    const list = new List('sortable--year', {
+      valueNames: ['name', 'prediction']
+    });
+    const form = document.querySelector('#sortable--year--form');
+    const select = document.querySelector('#sortable--year--select');
+    const filterNoJs = document.querySelector('#sortable--no-js');
+
+    filterNoJs.classList.add('no-script')
+    form.classList.add('js-enabled')
+    form.addEventListener('submit', handleSubmit);
+    select.addEventListener('change', handleSubmit);
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      let [name, order] = select.value.split('--')
+      if(name) {
+        list.sort(name, { order });
+      }
+    }
+  </script>
+{% endblock %}
+
 {% block content %}
   {% set h1 = [years.year, ' predictions'] | join %}
   {% set dataUrl = ['/api/v1/predictions/?year=', years.year] | join %}
@@ -41,24 +67,37 @@
     </div>
   
   </div>
-  <div class="predictions">
+  <div class="predictions" id="sortable--year">
     <h2 class="h5">{{ predictionTotals.total }} predictions in {{ years.year }}</h2>
-    {% if nameFirst %}
-      {% set predictionsUrl = ['/predictions/', years.year] | join %}
-      <p class="predictions--sort"><a href="{{ predictionsUrl }}" class="underline">Sort groundhogs by prediction</a></p>
-    {% else %}
-      {% set nameUrl = ['/predictions/', years.year, '?nameFirst=true'] | join %}
-      <p class="predictions--sort"><a href="{{ nameUrl }}" class="underline">Sort groundhogs by name</a></p>
-    {% endif %}
-    <div class="card--grid">
+    <div id="sortable--no-js">
+      {% if nameFirst %}
+        {% set predictionsUrl = ['/predictions/', years.year] | join %}
+        <p class="predictions--sort"><a href="{{ predictionsUrl }}" class="underline">Sort groundhogs by prediction</a></p>
+      {% else %}
+        {% set nameUrl = ['/predictions/', years.year, '?nameFirst=true'] | join %}
+        <p class="predictions--sort"><a href="{{ nameUrl }}" class="underline">Sort groundhogs by name</a></p>
+      {% endif %}
+    </div>
+    <form id="sortable--year--form">
+      <label for="sortable--year--select">Sort by</label>
+      <select name="year" id="sortable--year--select">
+          <option value="" selected disabled>--</option>
+          <option value="name--asc" aria-label="Name, from A to Z">Name (A → Z)</option>
+          <option value="name--desc" aria-label="Name, from Z to A">Name (Z → A)</option>
+          <option value="prediction--desc" aria-label="Predictions: early spring predictions first, then longer winter">Prediction (🌼 → ❄️)</option>
+          <option value="prediction--asc" aria-label="Predictions: longer winter predictions first, then early spring">Prediction (❄️ → 🌼)</option>
+      </select>
+    </form>
+    <ul class="card--grid no-paragraph-margin list">
       {% for prediction in predictions %}
+        <li>
         <a href="/groundhogs/{{ prediction.groundhog.slug }}">
           {% set classname = 'card--winter' if prediction.shadow == true else ('card--spring' if prediction.shadow == false else 'card--no-prediction') %}
           <div class="card {{ classname }}">
               <span class="card--triangle"></span>
-              <div class="card--heading h5">{{ prediction.groundhog.name }}</div>
+              <div class="name card--heading h5">{{ prediction.groundhog.name }}</div>
               <div class="card--subhead">{{ prediction.groundhog.region }}, {{ prediction.groundhog.country }}</div>
-              <div class="card--details card--bg-change">
+              <div class="prediction card--details card--bg-change">
                 {% if prediction.shadow == true -%}
                   <div class="icon"><span aria-hidden="true">❄️</span></div>
                   <div>Longer winter</div>
@@ -72,7 +111,8 @@
               </div>
           </div>
         </a>
+        </li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
 {% endblock %}

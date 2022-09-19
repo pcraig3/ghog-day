@@ -16,8 +16,8 @@ ol {
 }
 
 p {
-  + ul,
-  + ol {
+  + ul:not(.no-paragraph-margin),
+  + ol:not(.no-paragraph-margin) {
     margin-top: calc(-1 * vars.$space-md);
     margin-bottom: vars.$space-lg;
   }

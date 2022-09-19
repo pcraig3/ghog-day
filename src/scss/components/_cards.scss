@@ -5,7 +5,8 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 0.75fr));
   grid-gap: vars.$space-lg;
 
-  > a {
+  > li,
+  > li > a {
     display: inline-grid;
 
     &:focus,
