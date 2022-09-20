@@ -19,10 +19,11 @@ TODO
 - How to update just the data for 1 year
 - Year pages redux
   - Add upcoming year
-- Move links on index page
+- Move links on index page (maybe)
 
 DONE
 
+- Shorten the "Add" instructions
 - Year pages redux
   - Change title and h1
   - Add top-line sentence.
