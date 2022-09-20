@@ -449,6 +449,10 @@ router.get('/predictions', function (req, res) {
   })
 })
 
+router.get('/predictions/2023', function (req, res) {
+  return res.redirect('/groundhog-day-2023')
+})
+
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, function (req, res) {
   /* ~TODO: Handle no prediction */
