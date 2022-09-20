@@ -18,6 +18,7 @@ TODO
   - One year: search by name
 - How to update just the data for 1 year
 - Move links on index page (maybe)
+- Add a countdown
 
 DONE
 
