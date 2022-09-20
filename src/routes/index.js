@@ -403,7 +403,7 @@ router.get('/api', function (req, res) {
   })
 })
 
-/* GET api page. */
+/* GET contact page. */
 router.get('/contact', function (req, res) {
   res.render('pages/contact', {
     title: 'Contact',
@@ -486,6 +486,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
     })
   }
 
+  /* eslint-disable */
   const intro = {
     lead: `In ${year}, Groundhog Day was on ${dateString}`,
     predictionIntro:
@@ -499,6 +500,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
         ? 'a longer winter'
         : 'an early spring',
   }
+  /* eslint-enable */
 
   res.render('pages/year', {
     title: `Groundhog Day ${year}`,
@@ -510,6 +512,38 @@ router.get('/predictions/:year', validYear, function (req, res) {
     pageMeta: _getPageMeta(
       req,
       `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
+    ),
+  })
+})
+
+/* GET 2023 (upcoming) page */
+/* ~@TODO: make this general. not hardcoded */
+router.get('/groundhog-day-2023', function (req, res) {
+  const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
+  let predictions = getPredictionsByYear(2022)
+  predictions.forEach((prediction) => {
+    ++predictionTotals['years']
+
+    prediction['shadow'] === 1
+      ? ++predictionTotals['winter'] && ++predictionTotals['total']
+      : prediction['shadow'] === 0
+      ? ++predictionTotals['spring'] && ++predictionTotals['total'] // eslint-disable-line indent
+      : ++predictionTotals['null'] // eslint-disable-line indent
+  })
+
+  const predictionString =
+    predictionTotals['winter'] > predictionTotals['spring'] ? 'a longer winter' : 'an early spring'
+
+  const dateString = format(new Date('2023-02-02T00:00:00'), 'iiii, MMMM do')
+
+  res.render('pages/groundhog-day-2023', {
+    title: 'Groundhog Day 2023',
+    dateString,
+    daysLeft: _getDaysToGroundhogDay(),
+    predictionString,
+    pageMeta: _getPageMeta(
+      req,
+      `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
     ),
   })
 })

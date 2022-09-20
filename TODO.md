@@ -17,8 +17,6 @@ TODO
   - Keyboard controls for table heading sorts
   - One year: search by name
 - How to update just the data for 1 year
-- Year pages redux
-  - Add upcoming year
 - Move links on index page (maybe)
 
 DONE
@@ -26,8 +24,9 @@ DONE
 - Shorten the "Add" instructions
 - Year pages redux
   - Change title and h1
-  - Add top-line sentence.
+  - Add top-line sentence
   - Make sure it is in meta tag
+  - Add upcoming year
 - Sortable tables
   - All groundhogs: sort by heading
   - All groundhogs: reverse the "count" table header sort

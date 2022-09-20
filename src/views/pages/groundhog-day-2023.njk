@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  groundhog-day-2023
+{%- endblock %}
+
+{% block content %}
+  {{ page_header({ h1: 'Groundhog Day 2023', backUrl: '/', backText: 'Home' }) }}
+
+  <div class="max-width--850">
+    <p>
+      <strong>In 2023, Groundhog Day will be on {{ dateString }}.</strong>
+    </p>
+    <p>
+      That’s (only) {{ daysLeft }} days from now, so make sure to pick out <a href="/groundhogs">your favourite prognosticator</a> well in advance. Most of them livestream their predictions online, and some of them host a pancake breakfast if you can make it out in person.
+    </p>
+    <p>Unfortunately, Groundhog Day is <strong>not</strong> a statutory holiday in Canada or the USA.
+    
+    <h2 class="h5">About Groundhog Day</h2>
+    <p><a href="/about">According to tradition</a>, if a groundhog sees its shadow on February 2nd, it means six more weeks of winter. No shadow means an early spring. <a href="/about#candlemas-the-groundhog-day-forerunner">Read more about the history of Groundhog Day</a>.</p>
+
+    <h2 class="h5">Past predictions</h2>
+    <p class="mb--0"><a href="/predictions/2022">In 2022, most groundhogs predicted <strong>{{ predictionString }}</strong></a>. Check out the results to see who got it right or wrong. (Whether they were right or not depends on where you live.) Or, <a href="/predictions">see past predictions for all years</a>.</p>
+  </div>
+{% endblock %}

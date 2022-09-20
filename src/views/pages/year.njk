@@ -64,8 +64,10 @@
           {{ icon({ left: true }) }} <span>{{ years.next }} predictions</span>
         </a>
       {% else %}
-        {# otherwise the "prev" link is on the left hand side #}
-        <span></span>
+        {# ~@TODO: hardcoded #}
+        <a href="/groundhog-day-2023" class="predictions--navigation--next-year underline link--icon">
+          {{ icon({ left: true }) }} <span>Groundhog Day 2023</span>
+        </a>
       {% endif %}
       {% if years.prev %}
         <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">

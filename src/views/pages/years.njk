@@ -34,6 +34,18 @@
             </tr>
           </thead>
           <tbody role="presentation" class="list">
+              <tr onclick="window.location='/groundhog-day-2023';">
+                <th class="year extra-padding"><a href="/groundhog-day-2023" class="underline">{{2023 }}</a></th>
+                <td class="center--mobile">
+                  <span class="hidden--mobile-xs" aria-label="No prediction yet">—</span>
+                </td>
+                <td class="center--mobile">
+                  <span class="hidden--mobile-xs" aria-label="No prediction yet">—</span>
+                </td>
+                <td class="hidden--mobile-xs">
+                  <span class="hidden--mobile-xs" aria-label="No prediction yet">—</span>
+                </td>
+              </tr>
             {% for prediction in predictions %}
               <tr onclick="window.location='/predictions/{{ prediction.year }}';">
                 <th class="year extra-padding"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>

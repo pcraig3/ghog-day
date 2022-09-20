@@ -5,17 +5,17 @@
 {%- endblock %}
 
 {% block content %}
-  <h1>Only {{ daysLeft }} days until Groundhog Day 2023.</h1>
+  <h1>Only {{ daysLeft }} days until <a href="/groundhog-day-2023" class="underline">Groundhog Day 2023</a>.</h1>
 
   <br />
 
   <div class="heading-with-right-link">
-    <h2 class="heading h3">Predictions by year</h2>
+    <h2 class="heading h3"><a href="/predictions">Predictions by year</a></h2>
     <div class="right-link"><a href="/predictions" class="link--icon link--icon--right underline">
       <span>All years</span> {{ icon({ right: true }) }}</a>
     </div>
   </div>
-  <p>The yearly result is whichever the majority of groundhogs agreed on.</p>
+  <p>The yearly result is what the majority of groundhogs agreed on.</p>
   <ul class="card--grid no-paragraph-margin">
     {% for result in predictionResults %}
       <li>
@@ -38,7 +38,7 @@
 
   <br />
   <div class="heading-with-right-link">
-    <h2 class="heading h3">Featured groundhogs</h2>
+    <h2 class="heading h3"><a href="/groundhogs">Featured groundhogs</a></h2>
     <div class="right-link"><a href="/groundhogs" class="link--icon underline">
       <span>All groundhogs</span> {{ icon({ right: true }) }}</a>
     </div>
