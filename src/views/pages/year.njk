@@ -31,9 +31,17 @@
 {% endblock %}
 
 {% block content %}
-  {% set h1 = [years.year, ' predictions'] | join %}
+  {% set h1 = ['Groundhog Day ', years.year] | join %}
   {% set dataUrl = ['/api/v1/predictions/?year=', years.year] | join %}
   {{ page_header({ h1: h1, backUrl: '/predictions', backText: 'Predictions', dataUrl: dataUrl }) }}
+
+  <p>
+    {%- if intro.predictionIntro -%}
+      {{ intro.lead }}. {{ intro.predictionIntro }} <strong>{{ intro.predictionConclusion }}</strong>.
+    {%- else -%}
+      {{ intro.lead }}. {{ intro.predictionConclusion }}.
+    {%- endif -%}
+  </p>
 
   <div class="predictions--summary">
     <ul>

@@ -1,6 +1,7 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 const DB = require('better-sqlite3-helper')
+const format = require('date-fns/format')
 const createError = require('http-errors')
 const aAnAre = require('../filters/aAnAre')
 const path = require('path')
@@ -297,7 +298,7 @@ const validSlug = (req, res, next) => {
   const slugs = getGroundhogSlugs()
 
   if (!slug) {
-    var randomSlug = slugs[Math.floor(Math.random() * slugs.length)]
+    const randomSlug = slugs[Math.floor(Math.random() * slugs.length)]
     throw new createError(
       400,
       `You didn’t pick a groundhog. Here’s a random one: <code><a href="/groundhogs/${_escapeHtml(
@@ -461,6 +462,8 @@ router.get('/predictions/:year', validYear, function (req, res) {
     prev: year === EARLIEST_RECORDED_PREDICTION ? undefined : year - 1,
   }
 
+  const dateString = format(new Date(`${year}-02-02T00:00:00`), 'iiii, MMMM do')
+
   let predictions = getPredictionsByYear(year)
 
   predictions.forEach((prediction) => {
@@ -483,15 +486,30 @@ router.get('/predictions/:year', validYear, function (req, res) {
     })
   }
 
+  const intro = {
+    lead: `In ${year}, Groundhog Day was on ${dateString}`,
+    predictionIntro:
+      predictionTotals['winter'] === predictionTotals['spring'] ? '' : 'Most groundhogs predicted',
+    predictionConclusion:
+      predictionTotals['total'] === 0
+        ? 'No predictions were reported for this year'
+        : predictionTotals['winter'] === predictionTotals['spring']
+        ? 'Half of groundhogs predicted an early spring, and half predicted a longer winter'
+        : predictionTotals['winter'] > predictionTotals['spring']
+        ? 'a longer winter'
+        : 'an early spring',
+  }
+
   res.render('pages/year', {
-    title: `${year} predictions`,
+    title: `Groundhog Day ${year}`,
     years,
+    intro,
     predictions,
     predictionTotals,
     nameFirst,
     pageMeta: _getPageMeta(
       req,
-      `Groundhog predictions for ${year}. See which groundhogs are well-informed vs those that are blowing smoke.`,
+      `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
     ),
   })
 })
