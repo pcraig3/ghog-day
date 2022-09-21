@@ -43,6 +43,7 @@ nav {
       padding: 0.8em 1.2em 0.8em 0;
 
       a {
+        display: flex;
         text-decoration: none;
       }
 
@@ -52,7 +53,7 @@ nav {
 
       span {
         text-decoration: underline;
-        margin-left: 2px;
+        margin-left: vars.$space-xs;
       }
     }
 

@@ -10,11 +10,12 @@ header {
 a.logo {
   display: inline-flex;
   align-items: center;
-  font-size: 2.441rem;
+  font-size: 1.8rem;
   margin: 0;
   line-height: 1;
   text-decoration: none;
   border-bottom: 2px solid black;
+  padding-bottom: 2px;
 
   &:hover,
   &:focus {
@@ -23,8 +24,8 @@ a.logo {
   }
 
   .logo--img {
-    width: 40px;
-    margin-right: vars.$space-md;
+    width: 34px;
+    margin-right: vars.$space-sm;
   }
 
   span {
@@ -33,7 +34,11 @@ a.logo {
   }
 
   @include mixins.tablet-mobile {
-    padding-bottom: vars.$space-xs;
+    padding-bottom: 0;
+
+    .logo--img {
+      padding-bottom: 2px;
+    }
   }
 
   @include mixins.mobile {

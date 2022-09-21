@@ -61,17 +61,17 @@
     <div class="predictions--navigation">
       {% if years.next %}
         <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
-          {{ icon({ left: true }) }} <span>{{ years.next }} predictions</span>
+          {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> predictions</span></span>
         </a>
       {% else %}
         {# ~@TODO: hardcoded #}
         <a href="/groundhog-day-2023" class="predictions--navigation--next-year underline link--icon">
-          {{ icon({ left: true }) }} <span>Groundhog Day 2023</span>
+          {{ icon({ left: true }) }} <span><span class="hidden--mobile-xs">Groundhog Day </span>2023</span>
         </a>
       {% endif %}
       {% if years.prev %}
         <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
-          <span>{{ years.prev }} predictions</span> {{ icon({ right: true }) }}
+          <span>{{ years.prev }}<span class="hidden--mobile-xs"> predictions</span></span> {{ icon({ right: true }) }}
         </a>
       {% endif %}
     </div>

@@ -20,6 +20,7 @@ TODO
 
 DONE
 
+- Smaller fullscreen logo: don't want it arguing with the H1
 - Update the README
 - "Final" groundhogs page
 - Bugfix: Don't show predictions grid for years with no predictions
