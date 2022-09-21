@@ -698,7 +698,6 @@ router.get('/api/v1/groundhogs/:slug', validSlug, function (req, res) {
 /* get predictions for a single year as JSON */
 router.get('/api/v1/predictions', redirectYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
-
   res.json(predictions)
 })
 

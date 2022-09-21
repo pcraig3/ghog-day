@@ -20,6 +20,7 @@ TODO
 
 DONE
 
+- Update the README
 - "Final" groundhogs page
 - Bugfix: Don't show predictions grid for years with no predictions
 - Unit tests for allowable years
