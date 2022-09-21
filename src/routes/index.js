@@ -12,7 +12,7 @@ const EARLIEST_RECORDED_PREDICTION = DB()
   .prepare('SELECT MIN(year) as year FROM predictions;')
   .get().year
 
-// TODO: This should actually be 2022 until Feb 2nd
+// ~@TODO: This should actually be 2022 until Feb 2nd
 const CURRENT_YEAR = new Date().getFullYear()
 
 /* Utils */
@@ -444,7 +444,7 @@ router.get('/predictions', function (req, res) {
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
     pageMeta: _getPageMeta(
       req,
-      `See aggregate groundhog predictions by year, from ${CURRENT_YEAR} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
+      `See and compare groundhog predictions by year, from ${CURRENT_YEAR} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
     ),
   })
 })
@@ -455,7 +455,6 @@ router.get('/predictions/2023', function (req, res) {
 
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, function (req, res) {
-  /* ~TODO: Handle no prediction */
   const year = parseInt(req.params.year)
   const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
   const nameFirst = req.query.nameFirst === 'true'
@@ -668,7 +667,7 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 
 router.get('/api/v1/', function (req, res) {
   res.json({
-    message: 'Hello! Welcome to the Groundhog-Day.com API: the leading Groundhog Day data source.',
+    message: 'Hello! Welcome to the Groundhog-Day.com API: the leading Groundhog Day data source',
     _links: {
       self: { href: 'https://groundhog-day.com/api/v1/' },
       groundhogs: { href: 'https://groundhog-day.com/api/v1/groundhogs' },

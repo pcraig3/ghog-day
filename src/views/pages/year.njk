@@ -77,8 +77,9 @@
     </div>
   
   </div>
+  {% if predictionTotals.total -%}
   <div class="predictions" id="sortable--year">
-    <h2 class="h5">{{ predictionTotals.total }} predictions in {{ years.year }}</h2>
+    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} in {{ years.year }}</h2>
     <div id="sortable--no-js">
       {% if nameFirst %}
         {% set predictionsUrl = ['/predictions/', years.year] | join %}
@@ -125,4 +126,5 @@
       {% endfor %}
     </ul>
   </div>
+  {%- endif -%}
 {% endblock %}

@@ -1,13 +1,12 @@
 TODO
 
 - Separate API from UI
-- "final" groundhogs page
 - "data" seo
 - Do a smartbear API schema
 - Data as CSV
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
-- Groundhog day dountdown timer better + with marquee
+- Groundhog day countdown timer better + with marquee
 - Ideas from Julia
   - Countdown page
   - Groundhog nearest to you
@@ -15,13 +14,16 @@ TODO
 - Sortable tables
   - Accessible announcements of how many results for a search
   - Keyboard controls for table heading sorts
-  - One year: search by name
 - How to update just the data for 1 year
 - Move links on index page (maybe)
 - Add a countdown
 
 DONE
 
+- "Final" groundhogs page
+- Bugfix: Don't show predictions grid for years with no predictions
+- Unit tests for allowable years
+- Bugfix: Fix upcoming year sorting in the Predictions table
 - Shorten the "Add" instructions
 - Year pages redux
   - Change title and h1
