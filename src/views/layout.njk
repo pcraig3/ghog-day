@@ -79,14 +79,13 @@
     <link rel="manifest" href="/site.webmanifest">
   </head>
   <body class="{% block body_classes %}{% endblock %}">
-    <header class="hidden--mobile">
+    <header>
       <a class="logo" href="/" aria-label="Groundhog-Day.com">
         <img src="/images/logo.png" class="logo--img" alt="" />
-        <span aria-hidden="true">Groundhog<span class="letter-spacing--less">-</span>D<span class="letter-spacing--less">a</span>y.com</span>
+        <span class="hidden--mobile" aria-hidden="true">Groundhog<span class="letter-spacing--less">-</span>D<span class="letter-spacing--less">a</span>y.com</span>
       </a>
-      <div class="header--right">
-        <a style="display: none" class="link--icon hidden--mobile" href="/get-in-touch">
-          <span>Get in touch </span><span class="icon icon--right" aria-hidden="true">{{ icon({ right: true }) }}</span></a>
+      <div class="header--right hidden--mobile">
+        <span>The leading Groundhog Day data source</span>
       </div>
     </header>
 

@@ -20,6 +20,8 @@ TODO
 
 DONE
 
+- Add groundhog day header back on mobile
+  - Also add a tagline
 - Smaller fullscreen logo: don't want it arguing with the H1
 - Update the README
 - "Final" groundhogs page

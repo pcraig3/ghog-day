@@ -39,6 +39,10 @@
 
 .letter-spacing--less {
   letter-spacing: -3px;
+
+  @include mixins.mobile-xs {
+    letter-spacing: -1px;
+  }
 }
 
 img {

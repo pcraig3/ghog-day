@@ -5,6 +5,13 @@ header {
   display: flex;
   align-items: center;
   padding-bottom: vars.$space-xs;
+
+  @include mixins.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: vars.$space-lg;
+    padding-bottom: 2px;
+  }
 }
 
 a.logo {
@@ -14,14 +21,7 @@ a.logo {
   margin: 0;
   line-height: 1;
   text-decoration: none;
-  border-bottom: 2px solid black;
   padding-bottom: 2px;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    border-bottom: 2px solid vars.$color-focus;
-  }
 
   .logo--img {
     width: 34px;
@@ -31,6 +31,16 @@ a.logo {
   span {
     text-transform: uppercase;
     color: black;
+  }
+
+  @include mixins.tablet {
+    border-bottom: 2px solid black;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      border-bottom: 2px solid vars.$color-focus;
+    }
   }
 
   @include mixins.tablet-mobile {
@@ -46,17 +56,44 @@ a.logo {
   }
 
   @include mixins.mobile-xs {
-    font-size: 1.6rem;
+    font-size: 1.44rem;
   }
 }
 
 .header--right {
   flex: 1;
-  border-bottom: 2px solid black;
-  align-self: end;
-  text-align: end; /* offset for the header link underline */
 
   a {
     text-decoration: none;
+  }
+
+  @include mixins.tablet {
+    border-bottom: 2px solid black;
+    align-self: end;
+    text-align: end; /* offset for the header link underline */
+  }
+}
+
+/* hide the subheading on other pages */
+
+@include mixins.mobile {
+  .index header {
+    border-bottom: 1.5px solid black;
+    margin-bottom: vars.$space-xxl;
+    border-bottom: 1.5px solid black;
+  }
+
+  .index header .logo > span {
+    display: inline-block;
+  }
+
+  .index header .header--right {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 441px) and (max-width: 805px) {
+  .index header .header--right {
+    font-size: 92%;
   }
 }
