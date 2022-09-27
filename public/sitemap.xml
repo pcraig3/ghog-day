@@ -6,1139 +6,1200 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+
 <url>
   <loc>https://groundhog-day.com/</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/api</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/contact</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhog-day-2023</loc>
-  <lastmod>2022-09-20T03:45:12+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2022</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2021</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2020</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/grover-and-sue</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/chesapeake-chuck</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/punxsutawney-phil</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/add-groundhog</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/about</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/octoraro-orphie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/french-creek-freddie</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/lawrenceville-lucy</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/add-groundhog</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/about</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/punxsutawney-phil</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/wiarton-willie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/jimmy-the-groundhog</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/concord-charlie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/buckeye-chuck</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/general-beauregard-lee</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/french-creek-freddie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/gertie-the-groundhog</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/staten-island-chuck</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/dunkirk-dave</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://groundhog-day.com/groundhogs/manitoba-merv</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <loc>https://groundhog-day.com/groundhogs/staten-island-chuck</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/lander-lil</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/manitoba-merv</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/shubenacadie-sam</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/woodstock-willie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/sir-walter-wally</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/poor-richard</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/uni-the-groundhog</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/balzac-billy</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://groundhog-day.com/groundhogs/stormy-marmot</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <loc>https://groundhog-day.com/groundhogs/uni-the-groundhog</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://groundhog-day.com/groundhogs/ms-g</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/malverne-mel</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <loc>https://groundhog-day.com/groundhogs/grover-and-sue</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/holtsville-hal</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/malverne-mel</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/ms-g</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/stormy-marmot</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/chuckles-the-groundhog</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/two-rivers-tunnel</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/fred-la-marmotte</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/snohomish-slew</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/woody-the-woodchuck</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/flatiron-freddy</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/fred-la-marmotte</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/snohomish-slew</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/two-rivers-tunnel</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/woody-the-woodchuck</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/bee-cave-bob</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/chilly-charlie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/beardsley-bart</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/sand-mountain-sam</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/stonewall-jackson</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/bowman-bill</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/fenwick-flossie</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/chesapeake-chuck</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/scramble-the-duck</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/snowy-the-prairie-dog</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/benny-the-bass</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/harleysville-hank</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/potomac-phil</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/gordy-the-groundhog</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/lucy-the-lobster</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/poppy-the-groundhog</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2019</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2018</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2017</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2016</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2015</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2014</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2013</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2012</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2011</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2010</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2009</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2008</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2007</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2006</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2005</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2004</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2003</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2002</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2001</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2000</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1999</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1998</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1997</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1996</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1995</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1994</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1993</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1992</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1991</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1990</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1989</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1988</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1987</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1986</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1985</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1984</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1983</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1982</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1981</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1980</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1979</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1978</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1977</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1976</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1975</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1974</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1973</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1972</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1971</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1970</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1969</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1968</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1967</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1966</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1965</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1964</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1963</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1962</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1961</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1960</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1959</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1958</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1957</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1956</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1955</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1954</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1953</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1952</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1951</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1950</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1949</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1948</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1947</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1946</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1945</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1944</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1943</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1942</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1941</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1940</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1939</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1938</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1937</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1936</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1935</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1934</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1933</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1932</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1931</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1930</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1929</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1928</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1927</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1926</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1925</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1924</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1923</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1922</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1921</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1920</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1919</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1918</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1917</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1916</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1915</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1914</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1913</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1912</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1911</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1910</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1909</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1908</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1907</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1906</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1905</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1904</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1903</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1902</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1901</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1900</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1899</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1898</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1897</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1896</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1895</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1894</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1893</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1892</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1891</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1890</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1889</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1888</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1887</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/1886</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/grover-and-sue/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/chesapeake-chuck/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/punxsutawney-phil/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/octoraro-orphie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/french-creek-freddie/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/lawrenceville-lucy/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/punxsutawney-phil/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/wiarton-willie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/jimmy-the-groundhog/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/concord-charlie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/buckeye-chuck/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/general-beauregard-lee/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/french-creek-freddie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/gertie-the-groundhog/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/staten-island-chuck/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/dunkirk-dave/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://groundhog-day.com/groundhogs/manitoba-merv/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <loc>https://groundhog-day.com/groundhogs/staten-island-chuck/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/lander-lil/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/manitoba-merv/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/shubenacadie-sam/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/woodstock-willie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/sir-walter-wally/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/poor-richard/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/uni-the-groundhog/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/balzac-billy/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://groundhog-day.com/groundhogs/stormy-marmot/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <loc>https://groundhog-day.com/groundhogs/uni-the-groundhog/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://groundhog-day.com/groundhogs/ms-g/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/malverne-mel/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <loc>https://groundhog-day.com/groundhogs/grover-and-sue/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/holtsville-hal/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/malverne-mel/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/ms-g/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/stormy-marmot/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/chuckles-the-groundhog/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/two-rivers-tunnel/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/fred-la-marmotte/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/snohomish-slew/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://groundhog-day.com/groundhogs/woody-the-woodchuck/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/flatiron-freddy/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/fred-la-marmotte/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/snohomish-slew/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/two-rivers-tunnel/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/woody-the-woodchuck/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/bee-cave-bob/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/chilly-charlie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/beardsley-bart/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/sand-mountain-sam/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/stonewall-jackson/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/bowman-bill/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/fenwick-flossie/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/chesapeake-chuck/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/scramble-the-duck/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/snowy-the-prairie-dog/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/benny-the-bass/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/harleysville-hank/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/potomac-phil/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/gordy-the-groundhog/predictions</loc>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/lucy-the-lobster/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/poppy-the-groundhog/predictions</loc>
-  <lastmod>2022-09-08T21:21:47+00:00</lastmod>
+  <lastmod>2022-09-27T04:48:16+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 </urlset>
