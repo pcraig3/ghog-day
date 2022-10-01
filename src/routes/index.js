@@ -104,7 +104,8 @@ const getPredictionsByYear = (year) => {
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
-        'description', g.description
+        'description', g.description,
+        'image', g.image
       ) AS gh
       FROM groundhogs AS g
       WHERE g.slug = p.slug
@@ -142,7 +143,8 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
-        'description', g.description
+        'description', g.description,
+        'image', g.image
       )
       FROM groundhogs AS g
       WHERE g.slug = p.slug
@@ -187,6 +189,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
       'type', g.type,
       'active', g.active,
       'description', g.description,
+      'image', g.image,
       'predictions', (
         SELECT json_group_array(json(o))
         FROM (SELECT json_object(
@@ -240,6 +243,7 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
         'type', g.type,
         'active', g.active,
         'description', g.description,
+        'image', g.image,
         'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         '${predictionKey}', (
           ${year ? '' : 'SELECT json_group_array(json(o)) FROM ('}

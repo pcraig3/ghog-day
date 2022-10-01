@@ -9,6 +9,10 @@ const isBoolean = (booleanValue = '') => {
   }
 }
 
+const createImgRef = (slug) => {
+  return `https://groundhog-day.com/images/ghogs/${slug}.png`
+}
+
 /**
  * Escape a string for insertion into a DB
  * From: https://stackoverflow.com/questions/7744912/making-a-javascript-string-sql-friendly
@@ -44,6 +48,7 @@ const escape = (str) => {
 }
 
 module.exports = {
-  isBoolean,
+  createImgRef,
   escape,
+  isBoolean,
 }
