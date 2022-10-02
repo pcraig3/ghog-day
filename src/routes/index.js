@@ -671,15 +671,21 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 
 router.get('/api/v1/', function (req, res) {
   res.json({
-    message: 'Hello! Welcome to the Groundhog-Day.com API: the leading Groundhog Day data source',
+    message: 'Hello! Welcome to the Groundhog Day API: the leading Groundhog Day data source',
     _links: {
       self: { href: 'https://groundhog-day.com/api/v1/' },
       groundhogs: { href: 'https://groundhog-day.com/api/v1/groundhogs' },
-      predictions: { href: 'https://groundhog-day.com/api/v1/predictions' },
-      // spec: { href: 'https://groundhog-day.com/api/v1/spec' },
+      groundhog: { href: 'https://groundhog-day.com/api/v1/groundhogs/wiarton-willie' },
+      predictions: { href: `https://groundhog-day.com/api/v1/predictions?year=${CURRENT_YEAR}` },
+      spec: { href: 'https://groundhog-day.com/api/v1/spec' },
     },
   })
 })
+
+const spec = path.join(__dirname, '../../reference/Groundhog-Day-API.v1.yaml')
+
+// Serve the OpenAPI spec
+router.use('/api/v1/spec', express.static(spec))
 
 /* get groundhogs as JSON */
 router.get('/api/v1/groundhogs', function (req, res) {
