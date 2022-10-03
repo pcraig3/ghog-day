@@ -1,11 +1,13 @@
 const express = require('express')
-const router = express.Router()
 const DB = require('better-sqlite3-helper')
 const format = require('date-fns/format')
 const createError = require('http-errors')
 const aAnAre = require('../filters/aAnAre')
 const path = require('path')
 const sizeOf = require('image-size')
+
+const router = express.Router()
+const APIRouter = express.Router()
 
 /* Constants */
 const EARLIEST_RECORDED_PREDICTION = DB()
@@ -104,7 +106,8 @@ const getPredictionsByYear = (year) => {
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
-        'description', g.description
+        'description', g.description,
+        'image', g.image
       ) AS gh
       FROM groundhogs AS g
       WHERE g.slug = p.slug
@@ -142,7 +145,8 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
-        'description', g.description
+        'description', g.description,
+        'image', g.image
       )
       FROM groundhogs AS g
       WHERE g.slug = p.slug
@@ -187,6 +191,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
       'type', g.type,
       'active', g.active,
       'description', g.description,
+      'image', g.image,
       'predictions', (
         SELECT json_group_array(json(o))
         FROM (SELECT json_object(
@@ -240,6 +245,7 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
         'type', g.type,
         'active', g.active,
         'description', g.description,
+        'image', g.image,
         'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         '${predictionKey}', (
           ${year ? '' : 'SELECT json_group_array(json(o)) FROM ('}
@@ -270,7 +276,7 @@ const validYear = (req, res, next) => {
   if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
     throw new createError(
       400,
-      `The <code>year</code> must be between ${_escapeHtml(
+      `The 'year' must be between ${_escapeHtml(
         EARLIEST_RECORDED_PREDICTION,
       )} and ${_escapeHtml(CURRENT_YEAR)} (inclusive).`,
     )
@@ -286,7 +292,7 @@ const validId = (req, res, next) => {
   if (isNaN(id) || !ids.includes(id)) {
     throw new createError(
       400,
-      `Bad groundhog identifier (<code>${_escapeHtml(id)}</code>), pick a real one.`,
+      `Bad groundhog identifier ('${_escapeHtml(id)}'), pick a real one.`,
     )
   }
 
@@ -301,16 +307,16 @@ const validSlug = (req, res, next) => {
     const randomSlug = slugs[Math.floor(Math.random() * slugs.length)]
     throw new createError(
       400,
-      `You didn’t pick a groundhog. Here’s a random one: <code><a href="/groundhogs/${_escapeHtml(
+      `You didn’t pick a groundhog. Here’s a random one: <a href="/groundhogs/${_escapeHtml(
         randomSlug,
-      )}">${_escapeHtml(randomSlug)}</a></code>`,
+      )}">${_escapeHtml(randomSlug)}</a>`,
     )
   }
 
   if (!slugs.includes(slug)) {
     throw new createError(
       400,
-      `Bad groundhog identifier (<code>${_escapeHtml(slug)}</code>), maybe you spelled it wrong?`,
+      `Bad groundhog identifier ('${_escapeHtml(slug)}'), maybe you spelled it wrong?`,
     )
   }
 
@@ -395,10 +401,10 @@ router.get('/add-groundhog', function (req, res) {
 /* GET api page. */
 router.get('/api', function (req, res) {
   res.render('pages/api', {
-    title: 'API',
+    title: 'Groundhog Day API',
     pageMeta: _getPageMeta(
       req,
-      'A free JSON API for prognosticating groundhogs and their annual predictions. Get all predictions for single groundhogs or all predictions for a given year.',
+      'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
     ),
   })
 })
@@ -665,40 +671,64 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   })
 })
 
-router.get('/api/v1/', function (req, res) {
+APIRouter.get('/', function (req, res) {
   res.json({
-    message: 'Hello! Welcome to the Groundhog-Day.com API: the leading Groundhog Day data source',
+    message: 'Hello! Welcome to the Groundhog Day API: the leading Groundhog Day data source',
     _links: {
       self: { href: 'https://groundhog-day.com/api/v1/' },
       groundhogs: { href: 'https://groundhog-day.com/api/v1/groundhogs' },
-      predictions: { href: 'https://groundhog-day.com/api/v1/predictions' },
-      // spec: { href: 'https://groundhog-day.com/api/v1/spec' },
+      groundhog: { href: 'https://groundhog-day.com/api/v1/groundhogs/wiarton-willie' },
+      predictions: { href: `https://groundhog-day.com/api/v1/predictions?year=${CURRENT_YEAR}` },
+      spec: { href: 'https://groundhog-day.com/api/v1/spec' },
     },
   })
 })
 
+const spec = path.join(__dirname, '../../reference/Groundhog-Day-API.v1.yaml')
+
+// Serve the OpenAPI spec
+APIRouter.use('/spec', express.static(spec))
+
 /* get groundhogs as JSON */
-router.get('/api/v1/groundhogs', function (req, res) {
+APIRouter.get('/groundhogs', function (req, res) {
   const groundhogs = getGroundhogs({ oldestFirst: true })
   res.json(groundhogs)
 })
 
 /* get a single groundhog as JSON by id */
-router.get('/api/v1/groundhogs/:gId([0-9]{0,3})', validId, function (req, res) {
+APIRouter.get('/groundhogs/:gId([0-9]{0,3})', validId, function (req, res) {
   const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
   res.json(groundhog)
 })
 
 /* get a single groundhog as JSON by slug */
-router.get('/api/v1/groundhogs/:slug', validSlug, function (req, res) {
+APIRouter.get('/groundhogs/:slug', validSlug, function (req, res) {
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: true })
   res.json(groundhog)
 })
 
 /* get predictions for a single year as JSON */
-router.get('/api/v1/predictions', redirectYear, validYear, function (req, res) {
+APIRouter.get('/predictions', redirectYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
   res.json(predictions)
 })
 
-module.exports = router
+/* API not found error responses */
+APIRouter.get('/*', (req, res) => {
+  res.status(404)
+  throw new createError(404, `Error: Could not find route “${req.path}”`)
+})
+
+// eslint-disable-next-line no-unused-vars
+APIRouter.use(function (err, req, res, next) {
+  const status = err.status || res.statusCode
+  return res.status(status).send({
+    error: {
+      status,
+      message: err.toString() || err.message,
+      timestamp: new Date(Date.now()).toISOString(),
+    },
+  })
+})
+
+module.exports = { router, APIRouter }

@@ -2,7 +2,6 @@ TODO
 
 - Separate API from UI
 - "data" seo
-- Do a smartbear API schema
 - Data as CSV
 - Stretch goal: was that an accurate prediction for that year?
 - More tests
@@ -11,6 +10,7 @@ TODO
   - Countdown page
   - Groundhog nearest to you
   - Page of the most out-there facts
+  - Page of non-groundhog predictors
 - Sortable tables
   - Accessible announcements of how many results for a search
   - Keyboard controls for table heading sorts
@@ -20,6 +20,9 @@ TODO
 
 DONE
 
+- Do a smartbear API schema
+  - Return API error messages as JSON, not HTML
+  - Update the documentation for the API
 - Add groundhog day header back on mobile
   - Also add a tagline
 - Smaller fullscreen logo: don't want it arguing with the H1

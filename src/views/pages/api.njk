@@ -5,14 +5,15 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: 'API', backUrl: '/', backText: 'Home' }) }}
+  {{ page_header({ h1: 'Groundhog Day API', backUrl: '/', backText: 'Home' }) }}
 
   <div class="max-width--850">
-    <p>The {{ site_title({ url: false }) }} API is free, fast, and simple. It’s the critical infrastructure you need for your next multi-billion-dollar business venture.</p>
+    <p>The <a href="/api/v1/" target="_blank">{{ site_title({ url: false }) }} API</a> returns all of North America's prognosticating animals and their yearly weather predictions.
+    It’s the critical infrastructure you need for your next multi-billion-dollar business venture.</p>
 
     <p>
       <span aria-hidden="true" class="flip-x large-font">🦫</span>
-      <a href="/api/v1/">https://groundhog-day.com/api/v1/</a>
+      <a href="/api/v1/" target="_blank">https://groundhog-day.com/api/v1/</a>
       <span aria-hidden="true" class="large-font">🦫</span>
     </p>
 
@@ -23,16 +24,16 @@
       <li>Get all predictions for a given year</li>
     </ul>
 
-    <p>That should be enough to get you started, but there is an OpenAPI schema coming soon if you need better documentation before you roll out your <abbr title="Groundhogs as a Platform">GaaP</abbr> (Groundhogs as a Platform).</p>
+    <p>That should be enough to get you started, but <a href="https://app.swaggerhub.com/apis/pcraig3/groundhog-day-api/1.0.0" target="_blank">there’s an OpenAPI schema</a> available if you need enterprise-level documentation before rolling out your <abbr title="Groundhogs as a Platform">GaaP</abbr> (Groundhogs as a Platform) strategy.</p>
 
     <h2 class="h3">Getting data</h2>
 
     <p>There are 3 endpoints. All are <code>GET</code> requests.
 
     <ul class="with-bullets">
-      <li><code><a href="/api/v1/groundhogs">/api/v1/groundhogs</a></code></li>
-      <li><code><a href="/api/v1/groundhogs/wiarton-willie">/api/v1/groundhog/{slug}</a></code></li>
-      <li><code><a href="/api/v1/predictions">/api/v1/predictions?year={year}</a></code></li>
+      <li><code><a href="/api/v1/groundhogs" target="_blank">/api/v1/groundhogs</a></code></li>
+      <li><code><a href="/api/v1/groundhogs/wiarton-willie" target="_blank">/api/v1/groundhog/{slug}</a></code></li>
+      <li><code><a href="/api/v1/predictions" target="_blank">/api/v1/predictions?year={year}</a></code></li>
     </ul>
 
     <h2 class="h3">Adding/modifying data</h2>
