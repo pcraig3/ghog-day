@@ -33,7 +33,7 @@ const nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views
 nunjucksEnvironment.addFilter('cleanUrl', require('./src/filters/cleanUrl'))
 nunjucksEnvironment.addFilter('aAnAre', require('./src/filters/aAnAre'))
 
-const indexRouter = require('./src/routes/index')
+const { router, APIRouter } = require('./src/routes/index')
 
 // view engine setup
 app.set('views', path.join(__dirname, './src/views'))
@@ -60,7 +60,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(helmet({ contentSecurityPolicy: false }))
 app.use(cors())
 
-app.use('/', indexRouter)
+app.use('/', router)
+app.use('/api/v1', APIRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

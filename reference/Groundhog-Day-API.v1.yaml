@@ -465,6 +465,37 @@ paths:
                         details: ''
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  example-1:
+                    error:
+                      status: 400
+                      message: 'BadRequestError: Bad groundhog identifier (''fake''), maybe you spelled it wrong?'
+                      timestamp: '2022-10-03T03:36:54.661Z'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                      message:
+                        type: string
+                      timestamp:
+                        type: string
+                    required:
+                      - status
+                      - message
+                      - timestamp
+              examples:
+                /groundhogs/punxsutawney-paul:
+                  value:
+                    error:
+                      status: 400
+                      message: 'BadRequestError: Bad groundhog identifier (''punxsutawney-paul''), maybe you spelled it wrong?'
+                      timestamp: '2022-10-03T03:37:51.567Z'
       operationId: groundhog
       description: Returns a prognosticating animal and its known predictions.
       tags:
@@ -574,6 +605,37 @@ paths:
               description: /api/v1/predictions?year=2022
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  example-1:
+                    error:
+                      status: 400
+                      message: 'BadRequestError: The ''year'' must be between 1886 and 2022 (inclusive).'
+                      timestamp: '2022-10-03T03:38:55.169Z'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                      message:
+                        type: string
+                      timestamp:
+                        type: string
+                    required:
+                      - status
+                      - message
+                      - timestamp
+              examples:
+                /predictions?year=1800:
+                  value:
+                    error:
+                      status: 400
+                      message: 'BadRequestError: The ''year'' must be between 1886 and 2022 (inclusive).'
+                      timestamp: '2022-10-03T03:38:55.169Z'
       operationId: predictions
       description: Get all predictions for a given year.
       parameters:
