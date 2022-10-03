@@ -6,12 +6,20 @@
 
 ## About
 
-GROUNDHOG-DAY.com is the leading data source for North America’s prognosticating groundhogs and their yearly predictions. It's a fun little [express](https://expressjs.com) alpp with a frontend you can look at and an API you can use.
+GROUNDHOG-DAY.com is the leading data source for North America’s prognosticating groundhogs and their yearly predictions. It's a fun little [express](https://expressjs.com) app with a frontend you can look at and an API you can use.
 
 - The frontend is pretty straightforward: nunjucks and sass and JS only when I have to.
-- The API does what APIs do: serves resources in JSON.
+- The API does what APIs do: serves resources in JSON. It's free, fast, and simple.
 
 There's kind of an interesting concept here: the data is basically static and it's all about `GET`s. To make it cheap, fast, and easy, there's one container with an in-memory DB that is seeded when the container boots up on deploy. Super easy to work on and cheap to run, even with 100s of thousands of hits a month.
+
+## Using the API
+
+Please get in touch if you are using the API and you need something, because I can probably make it work better if I have enough real-life use-cases.
+
+[Read more on the API](https://groundhog-day.com/api).
+
+There's an OpenAPI spec at [`Groundhog-Day-API.v1.yaml`](https://github.com/pcraig3/ghog-day/blob/main/reference/Groundhog-Day-API.v1.yaml) and a <a href="https://app.swaggerhub.com/apis/pcraig3/groundhog-day-api" target="_blank">SwaggerHub</a> page where you can test the endpoints.
 
 ## Getting started
 

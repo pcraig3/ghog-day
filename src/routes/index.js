@@ -401,10 +401,10 @@ router.get('/add-groundhog', function (req, res) {
 /* GET api page. */
 router.get('/api', function (req, res) {
   res.render('pages/api', {
-    title: 'API',
+    title: 'Groundhog Day API',
     pageMeta: _getPageMeta(
       req,
-      'A free JSON API for prognosticating groundhogs and their annual predictions. Get all predictions for single groundhogs or all predictions for a given year.',
+      'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
     ),
   })
 })
