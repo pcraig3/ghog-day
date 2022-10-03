@@ -5,7 +5,13 @@
   "license": "MIT",
   "homepage": "https://groundhog-day.com",
   "keywords": [
-    "Groundhog Day", "groundhogs", "marmots", "weather", "prognostications", "punxsutawney phil", "wiarton willie"
+    "Groundhog Day",
+    "groundhogs",
+    "marmots",
+    "weather",
+    "prognostications",
+    "punxsutawney phil",
+    "wiarton willie"
   ],
   "repository": {
     "type": "git",

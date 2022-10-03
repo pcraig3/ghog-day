@@ -6,7 +6,7 @@ const logger = require('morgan')
 const nunjucks = require('nunjucks')
 const helmet = require('helmet')
 const DB = require('better-sqlite3-helper')
-var cors = require('cors')
+const cors = require('cors')
 
 // The first call creates the global instance with your settings
 DB({
