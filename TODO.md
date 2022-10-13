@@ -20,6 +20,7 @@ TODO
 
 DONE
 
+- Add a robots.txt file
 - Do a smartbear API schema
   - Return API error messages as JSON, not HTML
   - Update the documentation for the API
