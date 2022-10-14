@@ -41,7 +41,7 @@
           <thead class="visible">
             <tr>
               <th class="sort" data-sort="year">Year</th>
-              <th>Saw shadow?</th>
+              <th>Prediction</th>
               {% if hasDetails %}
                 <th class="hidden--mobile-xs">Details</th>
               {% endif %}
@@ -52,14 +52,14 @@
                 <tr>
                   <th class="year">{{ prediction.year }}</th>
                   <td>
-                    {% if prediction.shadow == true -%}
-                      Yes, saw shadow.
+                    {%- if prediction.shadow == true %}
+                      <span aria-hidden="true">❄️</span> More winter
                     {%- elseif prediction.shadow == false -%}
-                      Nope, no shadow.
+                      <span aria-hidden="true">🌼</span> Early spring
                     {%- else -%}
                       <span aria-hidden="true">—</span>
                       <span class="visually-hidden">No prediction.</span>
-                    {%- endif %}
+                    {% endif -%}
                   </td>
                   {% if hasDetails -%}
                       <td class="hidden--mobile-xs">{{ prediction.details }}</td>
