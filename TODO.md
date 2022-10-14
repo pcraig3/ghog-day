@@ -20,6 +20,12 @@ TODO
 
 DONE
 
+- Fix up the API schema
+  - Use API schema to validate API responses
+  - Write more tests for the API responses
+  - Download the .yaml file with a filename
+  - All API responses now start with an object name
+- Turn off request logs during testing
 - Add a robots.txt file
 - Do a smartbear API schema
   - Return API error messages as JSON, not HTML

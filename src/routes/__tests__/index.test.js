@@ -118,3 +118,168 @@ describe('Test ui responses', () => {
     })
   })
 })
+
+// TEST API responses
+describe('Test API responses', () => {
+  describe('Verify CORS headers', () => {
+    const corsUrls = [
+      '/api',
+      '/api/fake',
+      '/api/v1/',
+      '/api/v1/spec',
+      '/api/v1/groundhogs',
+      '/api/v1/predictions?year=2022',
+    ]
+    corsUrls.map((url) => {
+      test(`"${url}" should return a CORS header`, async () => {
+        const response = await request(app).get(url)
+        expect(response.headers['access-control-allow-origin']).toEqual('*')
+      })
+    })
+  })
+
+  describe('Test /api/spec response', () => {
+    test('it should return 200', async () => {
+      const response = await request(app).get('/api/v1/spec')
+      expect(response.statusCode).toBe(200)
+      expect(response.headers['content-disposition']).toEqual(
+        'attachment; filename="Groundhog-Day-API.v1.yaml"',
+      )
+      expect(response.headers['content-type']).toEqual('text/yaml; charset=UTF-8')
+      expect(response.text).toMatch(/openapi: 3.0.0/)
+    })
+  })
+
+  describe('Test /api response', () => {
+    test('it should return 200', async () => {
+      const response = await request(app).get('/api')
+      expect(response.statusCode).toBe(200)
+    })
+
+    test('it should return the h1, title, and meta tag', async () => {
+      const response = await request(app).get('/api')
+      const $ = cheerio.load(response.text)
+      expect($('h1').text()).toEqual('Groundhog Day API')
+      expect($('title').text()).toEqual('Groundhog Day API — GROUNDHOG-DAY.com')
+      expect($('meta[name="description"]').attr('content')).toEqual(
+        'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
+      )
+    })
+  })
+
+  test('for /api/v1/* not found path a 404 status', async () => {
+    const response = await request(app).get('/api/v1/marmots')
+    expect(response.statusCode).toBe(404)
+
+    let { error } = JSON.parse(response.text)
+    expect(error).toMatchObject({
+      message: 'Not Found: not found',
+      status: response.statusCode,
+      timestamp: expect.any(String),
+    })
+  })
+
+  test('for /api/v1/ path it should return a message ', async () => {
+    const response = await request(app).get('/api/v1/')
+    expect(response.statusCode).toBe(200)
+
+    let json = JSON.parse(response.text)
+    expect(json.message).toMatch(/Hello! Welcome to the Groundhog Day API/)
+    expect(Object.keys(json._links)).toEqual([
+      'self',
+      'groundhogs',
+      'groundhog',
+      'predictions',
+      'spec',
+    ])
+  })
+
+  describe('for /api/v1/groundhogs/:id path', () => {
+    const wiartonWillie = {
+      id: 3,
+      slug: 'wiarton-willie',
+      shortname: 'Willie',
+      name: 'Wiarton Willie',
+      city: 'Wiarton',
+      region: 'Ontario',
+      country: 'Canada',
+      predictions: expect.any(Array),
+    }
+
+    test('it should return a groundhog for a good string ID: "wiarton-willie"', async () => {
+      const response = await request(app).get('/api/v1/groundhogs/wiarton-willie')
+      expect(response.statusCode).toBe(200)
+
+      let { groundhog } = JSON.parse(response.text)
+      expect(groundhog).toMatchObject(wiartonWillie)
+    })
+
+    test('it should return a groundhog for a good integer ID: "3"', async () => {
+      const response = await request(app).get('/api/v1/groundhogs/3')
+      expect(response.statusCode).toBe(200)
+
+      let { groundhog } = JSON.parse(response.text)
+      expect(groundhog).toMatchObject(wiartonWillie)
+    })
+
+    const badIDs = ['murder-suicide-mark', 'punk-rock-phil', 0, 100]
+    badIDs.map((id) => {
+      test(`it should return an error message for a bad ID: ${id}`, async () => {
+        const response = await request(app).get(`/api/v1/groundhogs/${id}`)
+        expect(response.statusCode).toBe(400)
+
+        let { error } = JSON.parse(response.text)
+
+        const messageSuffix =
+          typeof id === 'string' ? 'maybe you spelled it wrong?' : 'pick a real one.'
+
+        expect(error).toMatchObject({
+          message: `BadRequestError: Bad groundhog identifier ('${id}'), ${messageSuffix}`,
+          status: response.statusCode,
+          timestamp: expect.any(String),
+        })
+      })
+    })
+  })
+
+  describe('for /api/v1/predictions path', () => {
+    test('it should return a redirect if there is no year', async () => {
+      const response = await request(app).get('/api/v1/predictions')
+      expect(response.headers['location']).toEqual(`/api/v1/predictions?year=${CURRENT_YEAR}`)
+      expect(response.statusCode).toBe(302)
+    })
+
+    test('it should return a good response for a good year', async () => {
+      const response = await request(app).get(`/api/v1/predictions?year=${CURRENT_YEAR}`)
+      expect(response.statusCode).toBe(200)
+
+      let { predictions } = JSON.parse(response.text)
+      expect(predictions).toMatchObject(expect.any(Array))
+      expect(predictions[0].year).toEqual(CURRENT_YEAR)
+    })
+
+    test(`it should return an error for a too early year: "${
+      EARLIEST_RECORDED_PREDICTION - 1
+    }`, async () => {
+      const response = await request(app).get(
+        `/api/v1/predictions?year=${EARLIEST_RECORDED_PREDICTION - 1}`,
+      )
+      expect(response.statusCode).toBe(400)
+
+      let { error } = JSON.parse(response.text)
+      expect(error.status).toBe(400)
+      expect(error.message).toBe('Bad Request: request.query.year should be >= 1886')
+    })
+
+    test(`it should return an error for a future year: "${CURRENT_YEAR + 1}`, async () => {
+      const response = await request(app).get(`/api/v1/predictions?year=${CURRENT_YEAR + 1}`)
+      expect(response.statusCode).toBe(400)
+
+      let { error } = JSON.parse(response.text)
+      expect(error.status).toBe(400)
+      expect(error.message).toBe(
+        "BadRequestError: The 'year' must be between 1886 and 2022 (inclusive).", // eslint-disable-line quotes
+      )
+    })
+  })
+})

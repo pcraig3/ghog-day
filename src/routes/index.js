@@ -276,9 +276,9 @@ const validYear = (req, res, next) => {
   if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
     throw new createError(
       400,
-      `The 'year' must be between ${_escapeHtml(
-        EARLIEST_RECORDED_PREDICTION,
-      )} and ${_escapeHtml(CURRENT_YEAR)} (inclusive).`,
+      `The 'year' must be between ${_escapeHtml(EARLIEST_RECORDED_PREDICTION)} and ${_escapeHtml(
+        CURRENT_YEAR,
+      )} (inclusive).`,
     )
   }
 
@@ -290,10 +290,7 @@ const validId = (req, res, next) => {
   const ids = getGroundhogIDs()
 
   if (isNaN(id) || !ids.includes(id)) {
-    throw new createError(
-      400,
-      `Bad groundhog identifier ('${_escapeHtml(id)}'), pick a real one.`,
-    )
+    throw new createError(400, `Bad groundhog identifier ('${_escapeHtml(id)}'), pick a real one.`)
   }
 
   next()
@@ -671,6 +668,18 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   })
 })
 
+// Import the express-openapi-validator library
+const OpenApiValidator = require('express-openapi-validator')
+const spec = path.join(__dirname, '../../reference/Groundhog-Day-API.v1.yaml')
+
+APIRouter.use(
+  OpenApiValidator.middleware({
+    apiSpec: spec,
+    validateRequests: true, // (default)
+    validateResponses: true, // false by default
+  }),
+)
+
 APIRouter.get('/', function (req, res) {
   res.json({
     message: 'Hello! Welcome to the Groundhog Day API: the leading Groundhog Day data source',
@@ -684,33 +693,33 @@ APIRouter.get('/', function (req, res) {
   })
 })
 
-const spec = path.join(__dirname, '../../reference/Groundhog-Day-API.v1.yaml')
-
 // Serve the OpenAPI spec
-APIRouter.use('/spec', express.static(spec))
+APIRouter.get('/spec', function (req, res) {
+  res.download(spec, 'Groundhog-Day-API.v1.yaml')
+})
 
 /* get groundhogs as JSON */
 APIRouter.get('/groundhogs', function (req, res) {
   const groundhogs = getGroundhogs({ oldestFirst: true })
-  res.json(groundhogs)
+  res.json({ groundhogs })
 })
 
 /* get a single groundhog as JSON by id */
 APIRouter.get('/groundhogs/:gId([0-9]{0,3})', validId, function (req, res) {
   const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
-  res.json(groundhog)
+  res.json({ groundhog })
 })
 
 /* get a single groundhog as JSON by slug */
 APIRouter.get('/groundhogs/:slug', validSlug, function (req, res) {
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: true })
-  res.json(groundhog)
+  res.json({ groundhog })
 })
 
 /* get predictions for a single year as JSON */
 APIRouter.get('/predictions', redirectYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
-  res.json(predictions)
+  res.json({ predictions })
 })
 
 /* API not found error responses */

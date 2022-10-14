@@ -1,7 +1,7 @@
 {
   "name": "ghog-day",
   "description": "groundhog day website: get all groundhogs and their predictions, year by year. it's a real holiday",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "license": "MIT",
   "homepage": "https://groundhog-day.com",
   "keywords": [
@@ -34,6 +34,7 @@
     "date-fns": "^2.29.3",
     "debug": "~4.3.4",
     "express": "~4.18.2",
+    "express-openapi-validator": "^4.13.8",
     "fast-csv": "^4.3.6",
     "helmet": "^6.0.0",
     "http-errors": "~2.0.0",

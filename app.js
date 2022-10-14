@@ -52,13 +52,15 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(helmet({ contentSecurityPolicy: false }))
 app.use(cors())
+
+// if NODE_ENV does not equal 'test', add a request logger
+process.env.NODE_ENV !== 'test' && app.use(logger('dev'))
 
 app.use('/', router)
 app.use('/api/v1', APIRouter)

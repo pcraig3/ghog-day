@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Groundhog Day API
-  version: 1.0.0
+  version: 1.1.0
   description: This API returns all of North America's prognosticating animals and their yearly weather predictions.
   contact:
     name: Paul Craig
@@ -77,8 +77,8 @@ components:
           type: integer
           minimum: 0
           maximum: 1
-          exclusiveMinimum: true
-          exclusiveMaximum: true
+          exclusiveMinimum: false
+          exclusiveMaximum: false
           format: binary
         type:
           type: string
@@ -87,8 +87,8 @@ components:
           format: binary
           minimum: 0
           maximum: 1
-          exclusiveMinimum: true
-          exclusiveMaximum: true
+          exclusiveMinimum: false
+          exclusiveMaximum: false
           enum:
             - 0
             - 1
@@ -116,7 +116,6 @@ components:
         - active
         - description
         - image
-        - predictions
     Prediction:
       type: object
       x-examples:
@@ -140,30 +139,24 @@ components:
             active: 1
             description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
             image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+      title: Prediction
+      description: An annual prediction of an early spring or a longer winter.
       properties:
         year:
           type: integer
           minimum: 1886
-          exclusiveMinimum: true
+          exclusiveMinimum: false
         shadow:
           type: integer
-          format: binary
           minimum: 0
-          exclusiveMinimum: true
-          exclusiveMaximum: true
           maximum: 1
-          enum:
-            - 0
-            - 1
+          nullable: true
         details:
           type: string
         groundhog:
           $ref: '#/components/schemas/Groundhog'
       required:
         - year
-        - shadow
-      title: Prediction
-      description: An annual prediction of an early spring or a longer winter.
 paths:
   /api/v1:
     get:
@@ -260,7 +253,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: object
                 x-examples:
                   example-1:
                     - id: 1
@@ -333,81 +326,85 @@ paths:
                         - year: 2022
                           shadow: 1
                           details: ''
-                items:
-                  $ref: '#/components/schemas/Groundhog'
+                properties:
+                  groundhogs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Groundhog'
               examples:
                 /groundhogs:
                   value:
-                    - id: 1
-                      slug: punxsutawney-phil
-                      shortname: Phil
-                      name: Punxsutawney Phil
-                      city: Punxsutawney
-                      region: Pennsylvania
-                      country: USA
-                      source: 'https://www.groundhog.org/history-past-predictions'
-                      contact: ''
-                      currentPrediction: 'https://www.groundhog.org/prognostication'
-                      isGroundhog: 1
-                      type: Groundhog
-                      active: 1
-                      description: 'Punxsutawney Phil is a superstar prognosticating groundhog from Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog nog” administered at the annual Groundhog Picnic.'
-                      image: 'https://groundhog-day.com/images/ghogs/punxsutawney-phil.png'
-                      predictionsCount: 7
-                      predictions:
-                        - year: 2016
-                          shadow: 0
-                          details: 'No Shadow- Early Spring It was 28° at Gobbler’s Knob. Phil made his perdition of an Early Spring at 7:25 a.m.'
-                        - year: 2017
-                          shadow: 1
-                          details: '7:25 a.m. Saw His Shadow, Six More Weeks of Winter! There were a few snow flurries during the prognostication.'
-                        - year: 2018
-                          shadow: 1
-                          details: 'At 7:25 a.m. with 18,000 Phil Phans present, Phil saw his shadow! Six More Weeks of Winter!'
-                        - year: 2019
-                          shadow: 0
-                          details: 'NO Shadow at 7:28 AM; 14º fog & mist with -1º Wind Chill.'
-                        - year: 2020
-                          shadow: 0
-                          details: 'NO Shadow at 7:26 AM; 30º with light snow falling.'
-                        - year: 2021
-                          shadow: 1
-                          details: 'Shadow at 7:25 AM; 19º with light snow. Coronavirus fear prohibits crowds on Gobbler’s Knob.'
-                        - year: 2022
-                          shadow: 1
-                          details: 'Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.'
-                    - id: 46
-                      slug: lucy-the-lobster
-                      shortname: Lucy
-                      name: Lucy the Lobster
-                      city: Barrington
-                      region: Nova Scotia
-                      country: Canada
-                      source: 'https://twitter.com/lucylobsterns'
-                      contact: ''
-                      currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
-                      isGroundhog: 0
-                      type: Atlantic lobster
-                      active: 1
-                      description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
-                      image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
-                      predictionsCount: 4
-                      predictions:
-                        - year: 2018
-                          shadow: 0
-                          details: ''
-                        - year: 2019
-                          shadow: 1
-                          details: ''
-                        - year: 2020
-                          shadow: 1
-                          details: ''
-                        - year: 2021
-                          shadow: null
-                          details: ''
-                        - year: 2022
-                          shadow: 1
-                          details: ''
+                    groundhogs:
+                      - id: 1
+                        slug: punxsutawney-phil
+                        shortname: Phil
+                        name: Punxsutawney Phil
+                        city: Punxsutawney
+                        region: Pennsylvania
+                        country: USA
+                        source: 'https://www.groundhog.org/history-past-predictions'
+                        contact: ''
+                        currentPrediction: 'https://www.groundhog.org/prognostication'
+                        isGroundhog: 1
+                        type: Groundhog
+                        active: 1
+                        description: 'Punxsutawney Phil is a superstar prognosticating groundhog from Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog nog” administered at the annual Groundhog Picnic.'
+                        image: 'https://groundhog-day.com/images/ghogs/punxsutawney-phil.png'
+                        predictionsCount: 7
+                        predictions:
+                          - year: 2016
+                            shadow: 0
+                            details: 'No Shadow- Early Spring It was 28° at Gobbler’s Knob. Phil made his perdition of an Early Spring at 7:25 a.m.'
+                          - year: 2017
+                            shadow: 1
+                            details: '7:25 a.m. Saw His Shadow, Six More Weeks of Winter! There were a few snow flurries during the prognostication.'
+                          - year: 2018
+                            shadow: 1
+                            details: 'At 7:25 a.m. with 18,000 Phil Phans present, Phil saw his shadow! Six More Weeks of Winter!'
+                          - year: 2019
+                            shadow: 0
+                            details: 'NO Shadow at 7:28 AM; 14º fog & mist with -1º Wind Chill.'
+                          - year: 2020
+                            shadow: 0
+                            details: 'NO Shadow at 7:26 AM; 30º with light snow falling.'
+                          - year: 2021
+                            shadow: 1
+                            details: 'Shadow at 7:25 AM; 19º with light snow. Coronavirus fear prohibits crowds on Gobbler’s Knob.'
+                          - year: 2022
+                            shadow: 1
+                            details: 'Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.'
+                      - id: 46
+                        slug: lucy-the-lobster
+                        shortname: Lucy
+                        name: Lucy the Lobster
+                        city: Barrington
+                        region: Nova Scotia
+                        country: Canada
+                        source: 'https://twitter.com/lucylobsterns'
+                        contact: ''
+                        currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
+                        isGroundhog: 0
+                        type: Atlantic lobster
+                        active: 1
+                        description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
+                        image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+                        predictionsCount: 4
+                        predictions:
+                          - year: 2018
+                            shadow: 0
+                            details: ''
+                          - year: 2019
+                            shadow: 1
+                            details: ''
+                          - year: 2020
+                            shadow: 1
+                            details: ''
+                          - year: 2021
+                            shadow: null
+                            details: ''
+                          - year: 2022
+                            shadow: 1
+                            details: ''
       operationId: groundhogs
       description: Returns all prognosticating animals with their known predictions.
       tags:
@@ -428,41 +425,45 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Groundhog'
+                type: object
+                properties:
+                  groundhog:
+                    $ref: '#/components/schemas/Groundhog'
               examples:
                 /groundhogs/lucy-the-lobster:
                   value:
-                    id: 46
-                    slug: lucy-the-lobster
-                    shortname: Lucy
-                    name: Lucy the Lobster
-                    city: Barrington
-                    region: Nova Scotia
-                    country: Canada
-                    source: 'https://twitter.com/lucylobsterns'
-                    contact: ''
-                    currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
-                    isGroundhog: 0
-                    type: Atlantic lobster
-                    active: 1
-                    description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
-                    image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
-                    predictions:
-                      - year: 2018
-                        shadow: 0
-                        details: ''
-                      - year: 2019
-                        shadow: 1
-                        details: ''
-                      - year: 2020
-                        shadow: 1
-                        details: ''
-                      - year: 2021
-                        shadow: null
-                        details: ''
-                      - year: 2022
-                        shadow: 1
-                        details: ''
+                    groundhog:
+                      id: 46
+                      slug: lucy-the-lobster
+                      shortname: Lucy
+                      name: Lucy the Lobster
+                      city: Barrington
+                      region: Nova Scotia
+                      country: Canada
+                      source: 'https://twitter.com/lucylobsterns'
+                      contact: ''
+                      currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
+                      isGroundhog: 0
+                      type: Atlantic lobster
+                      active: 1
+                      description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
+                      image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+                      predictions:
+                        - year: 2018
+                          shadow: 0
+                          details: ''
+                        - year: 2019
+                          shadow: 1
+                          details: ''
+                        - year: 2020
+                          shadow: 1
+                          details: ''
+                        - year: 2021
+                          shadow: null
+                          details: ''
+                        - year: 2022
+                          shadow: 1
+                          details: ''
         '400':
           description: Bad Request
           content:
@@ -500,7 +501,7 @@ paths:
       description: Returns a prognosticating animal and its known predictions.
       tags:
         - groundhogs
-  /predictions:
+  /api/v1/predictions:
     parameters: []
     get:
       summary: Get predictions for a given year
@@ -512,7 +513,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: object
                 x-examples:
                   example-1:
                     - year: 2020
@@ -553,49 +554,53 @@ paths:
                         active: 1
                         description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
                         image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
-                items:
-                  $ref: '#/components/schemas/Prediction'
+                properties:
+                  predictions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Prediction'
               examples:
                 /predictions?year=2020:
                   value:
-                    - year: 2020
-                      shadow: 0
-                      details: 'NO Shadow at 7:26 AM; 30º with light snow falling.'
-                      groundhog:
-                        id: 1
-                        slug: punxsutawney-phil
-                        shortname: Phil
-                        name: Punxsutawney Phil
-                        city: Punxsutawney
-                        region: Pennsylvania
-                        country: USA
-                        source: 'https://www.groundhog.org/history-past-predictions'
-                        contact: ''
-                        currentPrediction: 'https://www.groundhog.org/prognostication'
-                        isGroundhog: 1
-                        type: Groundhog
-                        active: 1
-                        description: 'Punxsutawney Phil is a superstar prognosticating groundhog from Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog nog” administered at the annual Groundhog Picnic.'
-                        image: 'https://groundhog-day.com/images/ghogs/punxsutawney-phil.png'
-                    - year: 2020
-                      shadow: 1
-                      details: ''
-                      groundhog:
-                        id: 46
-                        slug: lucy-the-lobster
-                        shortname: Lucy
-                        name: Lucy the Lobster
-                        city: Barrington
-                        region: Nova Scotia
-                        country: Canada
-                        source: 'https://twitter.com/lucylobsterns'
-                        contact: ''
-                        currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
-                        isGroundhog: 0
-                        type: Atlantic lobster
-                        active: 1
-                        description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
-                        image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+                    predictions:
+                      - year: 2020
+                        shadow: 0
+                        details: 'NO Shadow at 7:26 AM; 30º with light snow falling.'
+                        groundhog:
+                          id: 1
+                          slug: punxsutawney-phil
+                          shortname: Phil
+                          name: Punxsutawney Phil
+                          city: Punxsutawney
+                          region: Pennsylvania
+                          country: USA
+                          source: 'https://www.groundhog.org/history-past-predictions'
+                          contact: ''
+                          currentPrediction: 'https://www.groundhog.org/prognostication'
+                          isGroundhog: 1
+                          type: Groundhog
+                          active: 1
+                          description: 'Punxsutawney Phil is a superstar prognosticating groundhog from Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog nog” administered at the annual Groundhog Picnic.'
+                          image: 'https://groundhog-day.com/images/ghogs/punxsutawney-phil.png'
+                      - year: 2020
+                        shadow: 1
+                        details: ''
+                        groundhog:
+                          id: 46
+                          slug: lucy-the-lobster
+                          shortname: Lucy
+                          name: Lucy the Lobster
+                          city: Barrington
+                          region: Nova Scotia
+                          country: Canada
+                          source: 'https://twitter.com/lucylobsterns'
+                          contact: ''
+                          currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
+                          isGroundhog: 0
+                          type: Atlantic lobster
+                          active: 1
+                          description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
+                          image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
         '302':
           description: Found
           headers:
@@ -642,11 +647,9 @@ paths:
         - schema:
             type: integer
             minimum: 1886
-            exclusiveMinimum: true
           in: query
           name: year
           description: A calendar year
-          required: true
   /api/v1/spec:
     get:
       summary: Get JSON schema
@@ -654,12 +657,16 @@ paths:
         '200':
           description: OK
           headers:
+            content-disposition:
+              schema:
+                type: string
+              description: attachment; filename="Groundhog-Day-API.v1.yaml"
             content-type:
               schema:
                 type: string
               description: text/yaml; charset=UTF-8
       operationId: spec
-      description: Serve the JSON shema as a yaml file.
+      description: Gets the schema for the JSON API as a yaml file.
       tags:
         - info
 tags:
