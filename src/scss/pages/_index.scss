@@ -20,6 +20,10 @@
     @include mixins.mobile {
       padding-right: vars.$space-lg;
     }
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .right-link {

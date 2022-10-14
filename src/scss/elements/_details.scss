@@ -6,6 +6,13 @@ details {
     @include mixins.button;
     display: list-item;
     width: fit-content;
+    list-style-type: '☰';
+    font-size: 120%;
+    padding: 1px 6px 4px 5px;
+
+    span {
+      font-size: 85%;
+    }
 
     &:hover,
     &:focus {
@@ -30,8 +37,8 @@ details {
 
       &[open] > summary {
         position: absolute;
-        right: 1.2em;
-        bottom: 0.8em;
+        right: 1em;
+        bottom: 0.67em;
       }
 
       > summary {
