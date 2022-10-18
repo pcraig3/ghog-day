@@ -2,7 +2,7 @@
 @use '../mixins';
 
 .overflow-x,
-.groundhogs main,
+[class^="groundhogs"] main,
 .years main {
   overflow-x: auto;
 }

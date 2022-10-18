@@ -6,7 +6,7 @@ details {
     @include mixins.button;
     display: list-item;
     width: fit-content;
-    list-style-type: '☰';
+    list-style-type: none;
     font-size: 120%;
     padding: 1px 6px 4px 5px;
 
@@ -14,10 +14,17 @@ details {
       font-size: 85%;
     }
 
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '☰';
+    }
+
     &:hover,
     &:focus {
       color: vars.$color-focus !important;
-      text-decoration: underline;
     }
 
     &:focus {
