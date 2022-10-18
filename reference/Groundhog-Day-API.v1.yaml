@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Groundhog Day API
-  version: 1.1.0
+  version: 1.1.1
   description: This API returns all of North America's prognosticating animals and their yearly weather predictions.
   contact:
     name: Paul Craig
@@ -409,6 +409,13 @@ paths:
       description: Returns all prognosticating animals with their known predictions.
       tags:
         - groundhogs
+      parameters:
+        - schema:
+            type: string
+            example: Canada or USA
+          in: query
+          name: country
+          description: Filter groundhogs by country of origin (USA or Canada).
   '/api/v1/groundhogs/{slug}':
     parameters:
       - schema:

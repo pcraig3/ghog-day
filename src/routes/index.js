@@ -221,10 +221,11 @@ const getGroundhogBySlug = (slug, { oldestFirst = true } = {}) => {
   return _getGroundhog(slug, { identifier: 'slug', oldestFirst })
 }
 
-const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
+const getGroundhogs = ({ oldestFirst = false, year = false, country = undefined } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
   const predictionKey = year ? 'latestPrediction' : 'predictions'
   const yearClause = year ? 'AND p.year = 2022' : ''
+  const whereClause = ['USA', 'Canada'].includes(country) ? `g.country = '${country}'` : '1 = 1'
 
   let [{ groundhogs }] = DB()
     .prepare(
@@ -261,7 +262,8 @@ const getGroundhogs = ({ oldestFirst = false, year = false } = {}) => {
         )
         ${year ? '' : ')'}
       ) as groundhogs
-      FROM groundhogs AS g;`,
+      FROM groundhogs AS g
+      WHERE ${whereClause};`,
     )
     .all()
 
@@ -566,8 +568,9 @@ router.get('/groundhog-day-2023', function (req, res) {
 })
 
 /* GET all groundhogs */
-router.get('/groundhogs', function (req, res) {
-  let groundhogs = getGroundhogs({ year: CURRENT_YEAR })
+router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], function (req, res) {
+  const country = req.path === '/groundhogs-in-canada' ? 'Canada' : req.path === '/groundhogs-in-usa' ? 'USA' : undefined
+  let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country })
   const nameFirst = req.query.nameFirst === 'true'
 
   if (nameFirst) {
@@ -584,14 +587,16 @@ router.get('/groundhogs', function (req, res) {
     g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
 
-  res.render('pages/groundhogs', {
-    title: 'Groundhogs',
+  const pageTitle = req.path.includes('canada') ? 'Groundhogs in Canada' : req.path.includes('usa') ? 'Groundhogs in the USA' : 'Groundhogs'
+  const nationality = req.path.includes('canada') ? 'Canadian ' : req.path.includes('usa') ? 'American' : ''
+  res.render(`pages/${req.path}`, {
+    title: pageTitle,
     groundhogs,
     recentPredictions: recentPredictions,
     nameFirst,
     pageMeta: _getPageMeta(
       req,
-      `See all ${groundhogs.length} prognosticators, whether genuine groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
+      `See all ${groundhogs.length} ${nationality}prognosticators, whether genuine groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
     ),
   })
 })
@@ -711,7 +716,12 @@ APIRouter.get('/spec', function (req, res) {
 
 /* get groundhogs as JSON */
 APIRouter.get('/groundhogs', function (req, res) {
-  const groundhogs = getGroundhogs({ oldestFirst: true })
+  let country = undefined
+  if(req.query.country) {
+    country = req.query.country.toLowerCase() === 'canada' ? 'Canada' : req.query.country.toLowerCase() === 'usa' ? 'USA' : undefined
+  }
+
+  const groundhogs = getGroundhogs({ oldestFirst: true, country })
   res.json({ groundhogs })
 })
 

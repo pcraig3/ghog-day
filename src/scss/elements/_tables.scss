@@ -138,11 +138,6 @@
     overflow: auto;
   }
 
-  &[role='region'][aria-labelledby][tabindex]:focus {
-    outline: 2px dotted black;
-    outline-offset: -2px;
-  }
-
   /* shadow */
   &[role='region'][aria-labelledby][tabindex] {
     background: linear-gradient(to right, #fff 30%, rgba(255, 255, 255, 0)),

@@ -194,6 +194,41 @@ describe('Test API responses', () => {
     ])
   })
 
+  describe('for /api/v1/groundhogs path', () => {
+    const GROUNDHOGS_ALL = 48
+    const GROUNDHOGS_CANADA = 10
+    const GROUNDHOGS_USA = 38
+
+    const urls = [
+      {
+        path: '/api/v1/groundhogs',
+        total: GROUNDHOGS_ALL,
+      },
+      {
+        path: '/api/v1/groundhogs?country=canada',
+        total: GROUNDHOGS_CANADA,
+      },
+      {
+        path: '/api/v1/groundhogs?country=usa',
+        total: GROUNDHOGS_USA,
+      },
+      {
+        path: '/api/v1/groundhogs?country=portugal',
+        total: GROUNDHOGS_ALL,
+      },
+    ]
+
+    urls.map(url => {
+      test(`it should return ${url.total} groundhogs for path: "${url.path}"`, async () => {
+        const response = await request(app).get(url.path)
+        expect(response.statusCode).toBe(200)
+
+        let { groundhogs } = JSON.parse(response.text)
+        expect(groundhogs.length).toBe(url.total)
+      })
+    })
+  })
+
   describe('for /api/v1/groundhogs/:id path', () => {
     const wiartonWillie = {
       id: 3,

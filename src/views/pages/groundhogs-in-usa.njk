@@ -1,0 +1,23 @@
+{% extends "pages/groundhogs.njk" %}
+
+{% block body_classes -%}
+  groundhogs--usa
+{%- endblock %}
+
+{% block groundhogsHeader %}
+  {{ page_header({ h1: title, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: '/api/v1/groundhogs?country=usa' }) }}
+{% endblock %}
+
+{% block groundhogsIntro %}
+  <p>There are <strong>{{ groundhogs | length }}</strong> weather-predicting American groundhogs who made predictions in 2022.</p>
+    <p>If you don’t see your favourite freedom-loving prognosticator, feel free to
+      <a class="link--icon" href="add-groundhog">
+        {{ icon({ add: true }) }} <span>add a groundhog</span>, y’all
+      </a>.
+    </p>
+{% endblock %}}
+
+{% block groundhogsTableHeader %}American groundhogs{% endblock %}
+
+{% block groundhogsTableCountryHeaderClass %}display--none{% endblock %}
+{% block groundhogsTableCountryCellClass %}display--none{% endblock %}
