@@ -24,10 +24,10 @@
     {% if pageMeta %}
       {%- if "description" in pageMeta -%}
         <meta name="description" content="{{ pageMeta.description }}" />
-        <!-- Note: this could be half the size -->
         <meta property="og:description" content="{{ pageMeta.description }}" />
       {%- elif daysLeft -%}
         <meta name="description" content="The leading data source for Groundhog Day, with more than 40 prognosticators spanning more than a century. Only {{ daysLeft }} days until Groundhog Day 2023." />
+        <meta property="og:description" content="The leading data source for Groundhog Day, with more than 40 prognosticators spanning more than a century. Only {{ daysLeft }} days until Groundhog Day 2023." />
       {%- endif %}
       {% if "canonical" in pageMeta -%}
         <link rel="canonical" href="{{ pageMeta.canonical }}" />
