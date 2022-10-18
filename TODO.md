@@ -20,6 +20,9 @@ TODO
 
 DONE
 
+- Create pages allowing viewing groundhogs by country of origin
+  - Updated the API to allow the "country" query param for groundhogs retrieval
+- Add About page to the nav
 - Fix up the API schema
   - Use API schema to validate API responses
   - Write more tests for the API responses
