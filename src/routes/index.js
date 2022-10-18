@@ -379,6 +379,17 @@ router.get('/about', function (req, res) {
     title: 'About',
     pageMeta: _getPageMeta(
       req,
+      'Groundhog Day is a lighthearted holiday celebrated annually across North America in which ‘prognosticating’ animals predict the onset of spring.',
+    ),
+  })
+})
+
+/* GET history page. */
+router.get('/history-of-groundhog-day', function (req, res) {
+  res.render('pages/history', {
+    title: 'About',
+    pageMeta: _getPageMeta(
+      req,
       'The history of our modern Groundhog Day. It’s exactly as weird as you think.',
     ),
   })

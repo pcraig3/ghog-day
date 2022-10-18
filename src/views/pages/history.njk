@@ -1,0 +1,39 @@
+{% extends "layout.njk" %}
+
+{% block body_classes -%}
+  history
+{%- endblock %}
+
+{% block content %}
+  {{ page_header({ h1: 'History of Groundhog Day', backUrl: '/', backText: 'Home' }) }}
+
+  <div class="max-width--850">
+    <p>At first glance, Groundhog Day may not seem to have emerged from strict scientific principles or a rational Enlightenment worldview, but it’s not as bananas as you might think.</p>
+   
+    <p>As a child, I liked Groundhog Day just like anyone else does, which was: it was fun but I didn’t really get it. It was interesting to see the fuzzy groundhog and hear the forecast, but I didn’t really understand the logic around the groundhog and the shadow, or how groundhogs got roped into this at all.</p>
+    <p>Aren’t groundhogs asleep in February? Why are men in top hats yanking them from their burrows in the middle of winter? How much can an animal that lives most of its life underground even know about the weather? (<a href="https://scrambletheduck.org/faq/#why-do-you-use-a-duck-instead-of-a-groundhog%3F" target="_blank">Not much, according to Scramble the Duck</a>).
+    <p>It turns out that the modern Groundhog Day tradition is a tale of adaptation, with its origin in a centuries-old Christian holiday.</p>
+
+    <h3 class="h4" id="candlemas-the-groundhog-day-forerunner">Candlemas, the Groundhog Day forerunner</h3>
+    <p><a href="https://www.history.com/this-day-in-history/first-groundhog-day" target="_blank">Groundhog Day is rooted in the historical Christian tradition of <strong>Candlemas</strong></a>, about halfway between the winter solstice and the spring equinox. Conventionally, this was understood to be the midpoint of winter, and superstition held that if Candlemas was sunny, the second half of winter would be cold and stormy, whereas a cloudy day portended the arrival of spring.</p>
+    <p><a href="https://www.stormfax.com/ghogday.htm" target="_blank">There is an old English poem that captures this folk wisdom:</a>
+    <blockquote>
+    If Candlemas be fair and bright,<br />
+    Winter has another flight.<br />
+    If Candlemas brings clouds and rain,<br />
+    Winter will not come again.
+    </blockquote>
+    <p>Winter basically sucks to live through, especially before central heating and dual-paned windows, so you can imagine people are hopeful for signs of spring. And there’s something insightful in this: spring weather can be pretty miserable — oftentimes it’s grey and rainy and wet — whereas the middle of winter has plenty of bright, clear days where it is insensibly cold outside. Essentially, the Candlemas prediction assumes that overcast weather is a harbinger of spring, whereas a clear day means you’re still in the thick of winter.</p>
+
+    <h3 class="h4" id="so-why-the-groundhog">So why the groundhog?</h3> 
+    <p>Obviously the ‘let’s check the weather’ part of Groundhog Day doesn’t explain the central figure: a prophetic groundhog who predicts the future. It turns out this also comes from traditional folksy wisdom. According to custom in historical German/Dutch communities, if bears, badgers, or hedgehogs were observed around the time of Candlemas Day, it was a sign that spring was just around the corner.</p>
+    <p>Bears, badgers, and hedgehogs are hibernating animals. If they come out of hibernation in early February, it suggests the weather is improving. However, if they go outside and “see their shadow” (because the sun is out, which implies it is not yet spring), they realize they are up prematurely and they head back to bed for a few more weeks.</p>
+    <p>When European settlers arrived in North America, they didn’t find too many badgers, but they did find groundhogs and bears. <a href="https://www.canadashistory.ca/explore/environment/the-battle-for-february-2" target="_blank">In Canada, it appears that bears were initially preferred to give a seasonal prediction</a> instead of groundhogs, which were firmly established in the US. (<a href="https://blogs.loc.gov/folklife/2022/02/groundhog-day-ancient-origins-of-a-modern-celebration/" target="_blank">Numerous “Groundhog Lodges” were established in New England in the early 1900’s</a>). However, groundhogs have important practical advantages over bears for public events: eg, you can move them around easily and they won’t tear your head off (even if <a href="https://www.nbcnews.com/news/weird-news/jimmy-groundhog-bites-sun-prairie-wisconsin-mayors-ear-n298656" target="_blank">they do like to nip an ear every now and again</a>). So, over time, the ‘did the bear see its shadow?’ variant lost ground to the now-dominant market leader, the humble groundhog.</p>
+
+    <h3 class="h4" id="the-staying-power-of-groundhog-day">The staying power of Groundhog Day</h3> 
+    <p>Groundhog Day is essentially the merging of two traditional folk beliefs, one about the weather (is it sunny or overcast?), and one about hibernating animals (are they awake yet?). Our modern Groundhog Day tradition mixes elements of both, but it is in essence rooted in the weather: if it’s a sunny day, the groundhog sees its shadow, meaning a longer winter. If it’s overcast, get ready for spring.</p>
+    <p>Famously, <a href="https://fivethirtyeight.com/features/groundhogs-do-not-make-good-meteorologists/" target="_blank">Punxsutawney Phil is only accurate ~40% of the time</a>, meaning that Groundhog Day isn’t really about reliable predictions. Instead, there’s something else at work here.</p>
+    <p>Here’s what I think.</p>
+    <p class="mb--0">Groundhog Day is a quaint bit of carefree amusement that breaks up the monotony of one of the most joyless times of the year. For the winter-afflicted, early February is a low point: winter has already been around for months and there’s almost no end in sight. Cue Groundhog Day, arriving with a burst of cheer and a whiff of ridiculousness: elevating a plump, fuzzy little animal that is hard not to love. It’s super cute, it comes with pancakes and Groundhog Nog, and it resonates with something deeply felt within all of us — that even after centuries of technological progress, scientific discovery, and rational inquiry, we are still superstitious beings skirting black cats, awaiting full moons, and wishing on woodchucks for better weather.</p>
+  </div>
+{% endblock %}
