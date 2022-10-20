@@ -32,6 +32,10 @@ const nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views
 // TODO: remove this if it's not being used
 nunjucksEnvironment.addFilter('cleanUrl', require('./src/filters/cleanUrl'))
 nunjucksEnvironment.addFilter('aAnAre', require('./src/filters/aAnAre'))
+nunjucksEnvironment.addFilter(
+  'richResultsBreadcrumbs',
+  require('./src/filters/richResults/breadcrumbs'),
+)
 
 const { router, APIRouter } = require('./src/routes/index')
 
@@ -42,6 +46,8 @@ app.set('view engine', 'njk')
 app.use((req, res, next) => {
   // add current route to templates
   app.locals.path = req.path
+  // add status code to templates
+  app.locals.status = res.statusCode
 
   // add (optional) github sha to templates
   app.locals.GITHUB_SHA = process.env.GITHUB_SHA

@@ -77,6 +77,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    {% if status == 200 -%}
+      <!-- Breadcrumb structured data -->
+      <script>{{ path | richResultsBreadcrumbs | safe }}</script>
+    {%- endif %}
   </head>
   <body class="{% block body_classes %}{% endblock %}">
     <header>
