@@ -570,12 +570,15 @@ router.get('/groundhog-day-2023', function (req, res) {
 
 /* GET all groundhogs */
 router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], function (req, res) {
+  /* eslint-disable indent */
   const country =
     req.path === '/groundhogs-in-canada'
       ? 'Canada'
       : req.path === '/groundhogs-in-usa'
       ? 'USA'
       : undefined
+  /* eslint-enable */
+
   let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country })
   const nameFirst = req.query.nameFirst === 'true'
 
@@ -593,6 +596,7 @@ router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], funct
     g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
 
+  /* eslint-disable indent */
   const pageTitle = req.path.includes('canada')
     ? 'Groundhogs in Canada'
     : req.path.includes('usa')
@@ -603,6 +607,8 @@ router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], funct
     : req.path.includes('usa')
     ? 'American'
     : ''
+  /* eslint-enable */
+
   res.render(`pages/${req.path}`, {
     title: pageTitle,
     groundhogs,
@@ -736,12 +742,14 @@ APIRouter.get('/spec', function (req, res) {
 APIRouter.get('/groundhogs', function (req, res) {
   let country = undefined
   if (req.query.country) {
+    /* eslint-disable indent */
     country =
       req.query.country.toLowerCase() === 'canada'
         ? 'Canada'
         : req.query.country.toLowerCase() === 'usa'
         ? 'USA'
         : undefined
+    /* eslint-enable */
   }
 
   const groundhogs = getGroundhogs({ oldestFirst: true, country })

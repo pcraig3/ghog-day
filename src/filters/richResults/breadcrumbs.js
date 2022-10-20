@@ -10,7 +10,7 @@ const richResultsBreadcrumbs = (path) => {
 
   if (path === '/') return JSON.stringify(_returnBreadcrumbs(breadcrumbList), null, 2)
 
-  const [_, ...pathArr] = path.split('/')
+  const [_, ...pathArr] = path.split('/') // eslint-disable-line no-unused-vars
 
   let page, entity, entityName
 
@@ -47,12 +47,14 @@ const richResultsBreadcrumbs = (path) => {
 
   // the prediction page for a groundhog
   if (pathArr.length === 3) {
-    shortName =
+    /* eslint-disable indent */
+    const shortName =
       entityName === 'Ms G'
         ? 'Ms. G'
         : ['la', 'the', 'and', 'Stormy', 'Stonewall'].some((phrase) => entityName.includes(phrase))
         ? entityName.split(' ').shift()
         : entityName.split(' ').pop()
+    /* eslint-enable */
 
     breadcrumbList = breadcrumbList.concat([
       {
