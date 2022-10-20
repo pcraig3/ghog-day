@@ -35,7 +35,7 @@
   {% set dataUrl = ['/api/v1/predictions/?year=', years.year] | join %}
   {{ page_header({ h1: h1, backUrl: '/predictions', backText: 'Predictions', dataUrl: dataUrl }) }}
 
-  <p>
+  <p class="speakable">
     {%- if intro.predictionIntro -%}
       {{ intro.lead }}. {{ intro.predictionIntro }} <strong>{{ intro.predictionConclusion }}</strong>.
     {%- else -%}

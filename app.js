@@ -36,6 +36,10 @@ nunjucksEnvironment.addFilter(
   'richResultsBreadcrumbs',
   require('./src/filters/richResults/breadcrumbs'),
 )
+nunjucksEnvironment.addFilter(
+  'richResultsSpeakable',
+  require('./src/filters/richResults/speakable'),
+)
 
 const { router, APIRouter } = require('./src/routes/index')
 

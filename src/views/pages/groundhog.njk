@@ -13,18 +13,18 @@
        {% if groundhog.predictions[0].shadow %}
         <aside class="highlight highlight--winter">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <div class="message"><span>This year, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
+          <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
         </aside>
       {% else %}
         <aside class="highlight highlight--spring">
           <div class="icon"><span aria-hidden="true">🌼</span></div>
-          <div class="message"><span>This year, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
+          <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
         </aside>
       {% endif %}
     </div>
     <div class="description">
       <h2 class="h4">About</h2>
-      <p>{{ groundhog.description }}</p>
+      <p class="speakable">{{ groundhog.description }}</p>
     </div>
 
     <div class="summary">

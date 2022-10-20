@@ -18,13 +18,13 @@ TODO
 - Move links on index page (maybe)
 - Add a countdown
 - Add RichResults
-  - Speakable?
   - Dataset lol
 
 DONE
 
 - Add RichResults
   - Breadcrumbs
+  - Speakable
 - Create pages allowing viewing groundhogs by country of origin
   - Updated the API to allow the "country" query param for groundhogs retrieval
 - Add About page to the nav

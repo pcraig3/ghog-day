@@ -80,7 +80,11 @@
 
     {% if status == 200 -%}
       <!-- Breadcrumb structured data -->
-      <script>{{ path | richResultsBreadcrumbs | safe }}</script>
+      <script type="application/ld+json">{{ path | richResultsBreadcrumbs | safe }}</script>
+    {%- endif %}
+    {% if pageMeta.speakable -%}
+      <!-- Speakable structured data -->
+      <script type="application/ld+json">{{ path | richResultsSpeakable(title) | safe }}</script>
     {%- endif %}
   </head>
   <body class="{% block body_classes %}{% endblock %}">

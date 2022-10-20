@@ -57,7 +57,7 @@ const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {})
     : url // eslint-disable-line indent
 }
 
-const _getPageMeta = (req, { description, slug } = {}) => {
+const _getPageMeta = (req, { description, slug, speakable } = {}) => {
   let dimensions
   if (slug) {
     dimensions = sizeOf(path.resolve(__dirname, `../../public/images/ghogs/og-image/${slug}.png`))
@@ -68,6 +68,7 @@ const _getPageMeta = (req, { description, slug } = {}) => {
     ...(slug && { image: slug, imageWidth: dimensions.width, imageHeight: dimensions.height }),
     canonical: _getUrlFromRequest(req, { trailingSlash: false }),
     baseUrl: _getUrlFromRequest(req, { withPath: false }),
+    speakable,
   }
 }
 
@@ -382,6 +383,7 @@ router.get('/about', function (req, res) {
     pageMeta: _getPageMeta(req, {
       description:
         'Groundhog Day is a lighthearted holiday celebrated annually across North America in which ‘prognosticating’ animals predict the onset of spring.',
+      speakable: true,
     }),
   })
 })
@@ -392,6 +394,7 @@ router.get('/history-of-groundhog-day', function (req, res) {
     title: 'About',
     pageMeta: _getPageMeta(req, {
       description: 'The history of our modern Groundhog Day. It’s exactly as weird as you think.',
+      speakable: true,
     }),
   })
 })
@@ -528,6 +531,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
     nameFirst,
     pageMeta: _getPageMeta(req, {
       description: `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
+      speakable: true,
     }),
   })
 })
@@ -559,6 +563,7 @@ router.get('/groundhog-day-2023', function (req, res) {
     predictionString,
     pageMeta: _getPageMeta(req, {
       description: `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
+      speakable: true,
     }),
   })
 })
@@ -642,9 +647,11 @@ router.get('/groundhogs/:slug', validSlug, (req, res) => {
     title: groundhog.name,
     groundhog,
     allPredictions: groundhog.predictions.length - nullPredictions,
+    year: CURRENT_YEAR,
     pageMeta: _getPageMeta(req, {
       description: getGroundhogMetaDescription(groundhog),
       slug: groundhog.slug,
+      speakable: true,
     }),
   })
 })
@@ -696,6 +703,7 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 
 // Import the express-openapi-validator library
 const OpenApiValidator = require('express-openapi-validator')
+
 const spec = path.join(__dirname, '../../reference/Groundhog-Day-API.v1.yaml')
 
 APIRouter.use(
