@@ -57,7 +57,7 @@ const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {})
     : url // eslint-disable-line indent
 }
 
-const _getPageMeta = (req, description, slug) => {
+const _getPageMeta = (req, { description, slug } = {}) => {
   let dimensions
   if (slug) {
     dimensions = sizeOf(path.resolve(__dirname, `../../public/images/ghogs/og-image/${slug}.png`))
@@ -379,10 +379,10 @@ router.get('/', function (req, res) {
 router.get('/about', function (req, res) {
   res.render('pages/about', {
     title: 'About',
-    pageMeta: _getPageMeta(
-      req,
-      'Groundhog Day is a lighthearted holiday celebrated annually across North America in which ‘prognosticating’ animals predict the onset of spring.',
-    ),
+    pageMeta: _getPageMeta(req, {
+      description:
+        'Groundhog Day is a lighthearted holiday celebrated annually across North America in which ‘prognosticating’ animals predict the onset of spring.',
+    }),
   })
 })
 
@@ -390,10 +390,9 @@ router.get('/about', function (req, res) {
 router.get('/history-of-groundhog-day', function (req, res) {
   res.render('pages/history', {
     title: 'About',
-    pageMeta: _getPageMeta(
-      req,
-      'The history of our modern Groundhog Day. It’s exactly as weird as you think.',
-    ),
+    pageMeta: _getPageMeta(req, {
+      description: 'The history of our modern Groundhog Day. It’s exactly as weird as you think.',
+    }),
   })
 })
 
@@ -401,10 +400,10 @@ router.get('/history-of-groundhog-day', function (req, res) {
 router.get('/add-groundhog', function (req, res) {
   res.render('pages/add-groundhog', {
     title: 'Add a groundhog',
-    pageMeta: _getPageMeta(
-      req,
-      'Add new groundhogs to GROUNDHOG-DAY.com: the more we have, the more accurate we are. It’s science.',
-    ),
+    pageMeta: _getPageMeta(req, {
+      description:
+        'Add new groundhogs to GROUNDHOG-DAY.com: the more we have, the more accurate we are. It’s science.',
+    }),
   })
 })
 
@@ -412,10 +411,10 @@ router.get('/add-groundhog', function (req, res) {
 router.get('/api', function (req, res) {
   res.render('pages/api', {
     title: 'Groundhog Day API',
-    pageMeta: _getPageMeta(
-      req,
-      'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
-    ),
+    pageMeta: _getPageMeta(req, {
+      description:
+        'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
+    }),
   })
 })
 
@@ -423,10 +422,10 @@ router.get('/api', function (req, res) {
 router.get('/contact', function (req, res) {
   res.render('pages/contact', {
     title: 'Contact',
-    pageMeta: _getPageMeta(
-      req,
-      'Please reach out with any questions, concerns, or general feedback. Unlike Jimmy the Groundhog, I don’t bite.',
-    ),
+    pageMeta: _getPageMeta(req, {
+      description:
+        'Please reach out with any questions, concerns, or general feedback. Unlike Jimmy the Groundhog, I don’t bite.',
+    }),
   })
 })
 
@@ -458,10 +457,9 @@ router.get('/predictions', function (req, res) {
     title: 'Predictions by year',
     predictions: predictionResults,
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
-    pageMeta: _getPageMeta(
-      req,
-      `See and compare groundhog predictions by year, from ${CURRENT_YEAR} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
-    ),
+    pageMeta: _getPageMeta(req, {
+      description: `See and compare groundhog predictions by year, from ${CURRENT_YEAR} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
+    }),
   })
 })
 
@@ -528,10 +526,9 @@ router.get('/predictions/:year', validYear, function (req, res) {
     predictions,
     predictionTotals,
     nameFirst,
-    pageMeta: _getPageMeta(
-      req,
-      `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
-    ),
+    pageMeta: _getPageMeta(req, {
+      description: `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
+    }),
   })
 })
 
@@ -560,16 +557,20 @@ router.get('/groundhog-day-2023', function (req, res) {
     dateString,
     daysLeft: _getDaysToGroundhogDay(),
     predictionString,
-    pageMeta: _getPageMeta(
-      req,
-      `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
-    ),
+    pageMeta: _getPageMeta(req, {
+      description: `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
+    }),
   })
 })
 
 /* GET all groundhogs */
 router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], function (req, res) {
-  const country = req.path === '/groundhogs-in-canada' ? 'Canada' : req.path === '/groundhogs-in-usa' ? 'USA' : undefined
+  const country =
+    req.path === '/groundhogs-in-canada'
+      ? 'Canada'
+      : req.path === '/groundhogs-in-usa'
+      ? 'USA'
+      : undefined
   let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country })
   const nameFirst = req.query.nameFirst === 'true'
 
@@ -587,17 +588,24 @@ router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], funct
     g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
   })
 
-  const pageTitle = req.path.includes('canada') ? 'Groundhogs in Canada' : req.path.includes('usa') ? 'Groundhogs in the USA' : 'Groundhogs'
-  const nationality = req.path.includes('canada') ? 'Canadian ' : req.path.includes('usa') ? 'American' : ''
+  const pageTitle = req.path.includes('canada')
+    ? 'Groundhogs in Canada'
+    : req.path.includes('usa')
+    ? 'Groundhogs in the USA'
+    : 'Groundhogs'
+  const nationality = req.path.includes('canada')
+    ? 'Canadian '
+    : req.path.includes('usa')
+    ? 'American'
+    : ''
   res.render(`pages/${req.path}`, {
     title: pageTitle,
     groundhogs,
     recentPredictions: recentPredictions,
     nameFirst,
-    pageMeta: _getPageMeta(
-      req,
-      `See all ${groundhogs.length} ${nationality}prognosticators, whether genuine groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
-    ),
+    pageMeta: _getPageMeta(req, {
+      description: `See all ${groundhogs.length} ${nationality}prognosticators, whether genuine groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
+    }),
   })
 })
 
@@ -634,7 +642,10 @@ router.get('/groundhogs/:slug', validSlug, (req, res) => {
     title: groundhog.name,
     groundhog,
     allPredictions: groundhog.predictions.length - nullPredictions,
-    pageMeta: _getPageMeta(req, getGroundhogMetaDescription(groundhog), groundhog.slug),
+    pageMeta: _getPageMeta(req, {
+      description: getGroundhogMetaDescription(groundhog),
+      slug: groundhog.slug,
+    }),
   })
 })
 
@@ -673,14 +684,13 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
     allPredictions,
     firstYear,
     oldestFirst,
-    pageMeta: _getPageMeta(
-      req,
-      getGroundhogMetaDescription(groundhog, {
+    pageMeta: _getPageMeta(req, {
+      description: getGroundhogMetaDescription(groundhog, {
         allPredictionsCount: allPredictions.total,
         firstYear,
       }),
-      groundhog.slug,
-    ),
+      slug: groundhog.slug,
+    }),
   })
 })
 
@@ -717,8 +727,13 @@ APIRouter.get('/spec', function (req, res) {
 /* get groundhogs as JSON */
 APIRouter.get('/groundhogs', function (req, res) {
   let country = undefined
-  if(req.query.country) {
-    country = req.query.country.toLowerCase() === 'canada' ? 'Canada' : req.query.country.toLowerCase() === 'usa' ? 'USA' : undefined
+  if (req.query.country) {
+    country =
+      req.query.country.toLowerCase() === 'canada'
+        ? 'Canada'
+        : req.query.country.toLowerCase() === 'usa'
+        ? 'USA'
+        : undefined
   }
 
   const groundhogs = getGroundhogs({ oldestFirst: true, country })
