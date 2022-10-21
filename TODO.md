@@ -15,13 +15,13 @@ TODO
   - Accessible announcements of how many results for a search
   - Keyboard controls for table heading sorts
 - How to update just the data for 1 year
-- Move links on index page (maybe)
 - Add a countdown
 - Add RichResults
   - Dataset lol
 
 DONE
 
+- Add an intro sentence on the index page.
 - Add RichResults
   - Breadcrumbs
   - Speakable

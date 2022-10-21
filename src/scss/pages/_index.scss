@@ -7,6 +7,44 @@
   }
 }
 
+.intro-sentence {
+  div {
+    border: 1.5px solid black;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 90%;
+
+    margin-top: calc(2.5 * vars.$space-xl);
+    margin-bottom: calc(3 * vars.$space-xl);
+
+    background: #f9f9f9;
+
+    > span {
+      display: block;
+
+      &:first-of-type {
+        margin-bottom: vars.$space-xs;
+      }
+    }
+  }
+
+  @include mixins.mobile {
+    div {
+      padding: 8px;
+      max-width: 500px;
+
+      margin-top: calc(2 * vars.$space-xl);
+      margin-bottom: calc(3 * vars.$space-xl);
+
+      > span {
+        &:first-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 .heading-with-right-link {
   margin-top: vars.$space-xl;
   display: flex;

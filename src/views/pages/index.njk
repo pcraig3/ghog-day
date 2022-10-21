@@ -7,10 +7,15 @@
 {% block content %}
   <h1>Only {{ daysLeft }} days until <a href="/groundhog-day-2023" class="underline">Groundhog Day 2023</a>.</h1>
 
-  <br />
+  <aside class="intro-sentence">
+    <div>
+      <span><a href="/about" class="underline">Groundhog Day</a> is a North American holiday where groundhogs predict the arrival of spring.</span>
+      <span><a href="#index--about">{{ site_title() }}</a> catalogues <a href="#index--groundhogs" class="underline">prognosticating groundhogs</a> and their <a href="#index--predictions" class="underline">yearly predictions</a>.</span>
+    </div>
+  </aside>
 
   <div class="heading-with-right-link">
-    <h2 class="heading h3"><a href="/predictions">Predictions by year</a></h2>
+    <h2 class="heading h3" id="index--predictions"><a href="/predictions">Predictions by year</a></h2>
     <div class="right-link"><a href="/predictions" class="link--icon link--icon--right">
       <span>All years</span> {{ icon({ right: true }) }}</a>
     </div>
@@ -38,7 +43,7 @@
 
   <br />
   <div class="heading-with-right-link">
-    <h2 class="heading h3"><a href="/groundhogs">Featured groundhogs</a></h2>
+    <h2 class="heading h3" id="index--groundhogs"><a href="/groundhogs">Featured groundhogs</a></h2>
     <div class="right-link"><a href="/groundhogs" class="link--icon">
       <span>All groundhogs</span> {{ icon({ right: true }) }}</a>
     </div>
@@ -69,7 +74,7 @@
 
   <br />
 
-  <h2 class="h4" id="about">About GROUNDHOG-DAY.com</h2>
+  <h2 class="h4" id="index--about">About GROUNDHOG-DAY.com</h2>
   <div class="max-width--850">
     <p>{{ site_title() }} is the leading data source for North America’s prophetic prognosticators: unleashing the ancient wisdom of <a href="/groundhogs">groundhogs</a> with the entrepreneurial dynamism of <a href="/api">structured data</a>.</p>
     <p>Every February 2nd – in deepest, darkest winter – humanity seeks guidance from mystic marmots, whose obscure rituals and ancient tongue foretell of spring’s return. <a href="/history-of-groundhog-day">The tradition is fascinating</a>, but the future is now.</p>

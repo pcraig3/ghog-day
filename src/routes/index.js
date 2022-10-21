@@ -372,7 +372,10 @@ router.get('/', function (req, res) {
     predictionResults,
     randomGroundhogs,
     totalGroundhogs,
-    pageMeta: _getPageMeta(req),
+    pageMeta: _getPageMeta(req, {
+      description:
+        'GROUNDHOG-DAY.com is the leading Groundhog Day data source: cataloging North America’s prognosticating animals and their yearly weather predictions.',
+    }),
   })
 })
 
@@ -416,7 +419,7 @@ router.get('/api', function (req, res) {
     title: 'Groundhog Day API',
     pageMeta: _getPageMeta(req, {
       description:
-        'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
+        'A free JSON API for North America’s prognosticating animals and their yearly weather predictions.',
     }),
   })
 })

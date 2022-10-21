@@ -26,8 +26,8 @@
         <meta name="description" content="{{ pageMeta.description }}" />
         <meta property="og:description" content="{{ pageMeta.description }}" />
       {%- elif daysLeft -%}
-        <meta name="description" content="The leading data source for Groundhog Day, with more than 40 prognosticators spanning more than a century. Only {{ daysLeft }} days until Groundhog Day 2023." />
-        <meta property="og:description" content="The leading data source for Groundhog Day, with more than 40 prognosticators spanning more than a century. Only {{ daysLeft }} days until Groundhog Day 2023." />
+        <meta name="description" content="The leading data source for Groundhog Day." />
+        <meta property="og:description" content="The leading data source for Groundhog Day." />
       {%- endif %}
       {% if "canonical" in pageMeta -%}
         <link rel="canonical" href="{{ pageMeta.canonical }}" />
@@ -96,7 +96,6 @@
       <div class="header--right hidden--mobile">
         <a href="/api">
           <span>The leading Groundhog Day data source</span></a>
-
       </div>
     </header>
 

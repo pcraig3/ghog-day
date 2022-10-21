@@ -25,7 +25,7 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('GROUNDHOG-DAY.com — the leading Groundhog Day data source')
       // expect($('h1').text()).toEqual('Only 135 days until Groundhog Day 2023.')
       expect($('meta[name="description"]').attr('content')).toMatch(
-        'The leading data source for Groundhog Day, with more than 40 prognosticators spanning more than a century.',
+        'GROUNDHOG-DAY.com is the leading Groundhog Day data source: cataloging North America’s prognosticating animals and their yearly weather predictions.',
       )
     })
   })
@@ -162,7 +162,7 @@ describe('Test API responses', () => {
       expect($('h1').text()).toEqual('Groundhog Day API')
       expect($('title').text()).toEqual('Groundhog Day API — GROUNDHOG-DAY.com')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'A free JSON API all of North America’s prognosticating animals and their yearly weather predictions.',
+        'A free JSON API for North America’s prognosticating animals and their yearly weather predictions.',
       )
     })
   })
@@ -218,7 +218,7 @@ describe('Test API responses', () => {
       },
     ]
 
-    urls.map(url => {
+    urls.map((url) => {
       test(`it should return ${url.total} groundhogs for path: "${url.path}"`, async () => {
         const response = await request(app).get(url.path)
         expect(response.statusCode).toBe(200)
