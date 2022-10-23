@@ -88,6 +88,7 @@
     {%- endif %}
   </head>
   <body class="{% block body_classes %}{% endblock %}">
+    <a class="skip-link" href="#main">Skip to main content <img src="/images/logo--white.png" class="logo--img" alt="" aria-hidden="true" /></a>
     <header>
       <a class="logo" href="/" aria-label="Groundhog-Day.com">
         <img src="/images/logo.png" class="logo--img" alt="logo" />
@@ -115,7 +116,7 @@
       </div>
     </nav>
     {# <aside>Aside</aside> #}
-    <main>
+    <main id="main">
       {% block content %}{% endblock %}
     </main>
     <footer>

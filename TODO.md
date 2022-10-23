@@ -21,6 +21,7 @@ TODO
 
 DONE
 
+- Skip link
 - Add an intro sentence on the index page.
 - Add RichResults
   - Breadcrumbs

@@ -1,0 +1,36 @@
+.skip-link {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 200px;
+  padding: 0px 52px 0px 0px;
+  text-align: center;
+  top: 0;
+  left: 35px;
+  box-sizing: content-box;
+
+  img {
+    width: 40px;
+    position: absolute;
+    transform: rotate(180deg);
+    right: 12px;
+    top: -40px;
+    transition: top 0.8s ease 0.25s;
+  }
+
+  &:focus {
+    clip: rect(auto, auto, auto, auto);
+    height: inherit;
+    overflow: inherit;
+    background: #00b7ff;
+    color: white;
+    border: 2px dotted black;
+    border-top: none;
+
+    img {
+      top: -15px;
+    }
+  }
+}
