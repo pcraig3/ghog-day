@@ -198,6 +198,7 @@ describe('Test API responses', () => {
     const GROUNDHOGS_ALL = 48
     const GROUNDHOGS_CANADA = 10
     const GROUNDHOGS_USA = 38
+    const GROUNDHOGS_ALTERNATIVE = 23
 
     const urls = [
       {
@@ -215,6 +216,10 @@ describe('Test API responses', () => {
       {
         path: '/api/v1/groundhogs?country=portugal',
         total: GROUNDHOGS_ALL,
+      },
+      {
+        path: '/api/v1/groundhogs?isGroundhog=false',
+        total: GROUNDHOGS_ALTERNATIVE,
       },
     ]
 
@@ -257,7 +262,7 @@ describe('Test API responses', () => {
       expect(groundhog).toMatchObject(wiartonWillie)
     })
 
-    const badIDs = ['murder-suicide-mark', 'punk-rock-phil', 0, 100]
+    const badIDs = ['murder-suicide-mark', 'punk-rock-pete', 0, 100]
     badIDs.map((id) => {
       test(`it should return an error message for a bad ID: ${id}`, async () => {
         const response = await request(app).get(`/api/v1/groundhogs/${id}`)

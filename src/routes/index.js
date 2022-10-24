@@ -45,6 +45,19 @@ const _escapeHtml = (unsafe) => {
     .replace(/'/g, '&#039;')
 }
 
+const _parseBoolean = (value) => {
+  if (!value) {
+    return undefined
+  }
+
+  const yes = ['1', 'true']
+  const no = ['0', 'false']
+
+  value = value.toLowerCase()
+
+  return yes.includes(value) ? 1 : no.includes(value) ? 0 : undefined
+}
+
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
   let url = 'https://' + req.get('host')
   url = withPath ? `${url}${req.path}` : url
@@ -222,11 +235,19 @@ const getGroundhogBySlug = (slug, { oldestFirst = true } = {}) => {
   return _getGroundhog(slug, { identifier: 'slug', oldestFirst })
 }
 
-const getGroundhogs = ({ oldestFirst = false, year = false, country = undefined } = {}) => {
+const getGroundhogs = ({
+  oldestFirst = false,
+  year = false,
+  country = undefined,
+  isGroundhog = undefined,
+} = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
   const predictionKey = year ? 'latestPrediction' : 'predictions'
   const yearClause = year ? 'AND p.year = 2022' : ''
-  const whereClause = ['USA', 'Canada'].includes(country) ? `g.country = '${country}'` : '1 = 1'
+  let whereClause = ['USA', 'Canada'].includes(country) ? `g.country = '${country}'` : '1 = 1'
+  if (isGroundhog !== undefined) {
+    whereClause = `${whereClause} AND isGroundhog='${isGroundhog ? 1 : 0}'`
+  }
 
   let [{ groundhogs }] = DB()
     .prepare(
@@ -572,56 +593,74 @@ router.get('/groundhog-day-2023', function (req, res) {
 })
 
 /* GET all groundhogs */
-router.get(['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'], function (req, res) {
-  /* eslint-disable indent */
-  const country =
-    req.path === '/groundhogs-in-canada'
-      ? 'Canada'
-      : req.path === '/groundhogs-in-usa'
-      ? 'USA'
-      : undefined
-  /* eslint-enable */
+router.get(
+  ['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa', '/alternative-groundhogs'],
+  function (req, res) {
+    /* eslint-disable indent */
+    const country =
+      req.path === '/groundhogs-in-canada'
+        ? 'Canada'
+        : req.path === '/groundhogs-in-usa'
+        ? 'USA'
+        : undefined
+    /* eslint-enable */
+    const isGroundhog = req.path === '/alternative-groundhogs' ? false : undefined
 
-  let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country })
-  const nameFirst = req.query.nameFirst === 'true'
+    let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country, isGroundhog })
+    const nameFirst = req.query.nameFirst === 'true'
 
-  if (nameFirst) {
-    // sort by name
-    groundhogs.sort((a, b) => (a.name > b.name ? 1 : -1))
-  } else {
-    // sort by most predictions to least predictions
-    groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
-  }
+    if (nameFirst) {
+      // sort by name
+      groundhogs.sort((a, b) => (a.name > b.name ? 1 : -1))
+    } else {
+      // sort by most predictions to least predictions
+      groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
+    }
 
-  const recentPredictions = { total: 0, winter: 0, spring: 0 }
-  groundhogs.forEach((g) => {
-    ++recentPredictions['total']
-    g['latestPrediction']['shadow'] ? ++recentPredictions['winter'] : ++recentPredictions['spring']
-  })
+    const recentPredictions = { total: 0, winter: 0, spring: 0 }
+    const groundhogTypes = { groundhog: 0, other: 0 }
+    groundhogs.forEach((g) => {
+      ++recentPredictions['total']
+      g['latestPrediction']['shadow']
+        ? ++recentPredictions['winter']
+        : ++recentPredictions['spring']
 
-  /* eslint-disable indent */
-  const pageTitle = req.path.includes('canada')
-    ? 'Groundhogs in Canada'
-    : req.path.includes('usa')
-    ? 'Groundhogs in the USA'
-    : 'Groundhogs'
-  const nationality = req.path.includes('canada')
-    ? 'Canadian '
-    : req.path.includes('usa')
-    ? 'American'
-    : ''
-  /* eslint-enable */
+      g.type === 'Groundhog' ? ++groundhogTypes['groundhog'] : ++groundhogTypes['other']
+    })
 
-  res.render(`pages/${req.path}`, {
-    title: pageTitle,
-    groundhogs,
-    recentPredictions: recentPredictions,
-    nameFirst,
-    pageMeta: _getPageMeta(req, {
-      description: `See all ${groundhogs.length} ${nationality}prognosticators, whether genuine groundhogs or otherwise. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
-    }),
-  })
-})
+    /* eslint-disable indent */
+    const pageTitle = req.path.includes('canada')
+      ? 'Groundhogs in Canada'
+      : req.path.includes('usa')
+      ? 'Groundhogs in the USA'
+      : req.path.includes('alternative')
+      ? 'Alternative groundhogs'
+      : 'Groundhogs'
+    const nationality = req.path.includes('canada')
+      ? 'Canadian '
+      : req.path.includes('usa')
+      ? 'American '
+      : req.path.includes('alternative')
+      ? 'non-traditional '
+      : ''
+    /* eslint-enable */
+
+    res.render(`pages/${req.path.includes('alternative') ? '/groundhogs-alternative' : req.path}`, {
+      title: pageTitle,
+      groundhogs,
+      groundhogTypes,
+      recentPredictions: recentPredictions,
+      nameFirst,
+      pageMeta: _getPageMeta(req, {
+        description: `See all ${groundhogs.length} ${nationality}prognosticators${
+          req.path.includes('alternative')
+            ? ' across Canada and the USA'
+            : ', whether genuine groundhogs or otherwise'
+        }. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
+      }),
+    })
+  },
+)
 
 const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear } = {}) => {
   const modifier = aAnAre(groundhog.type) === 'is an' ? 'oracle' : 'prognosticating'
@@ -755,7 +794,8 @@ APIRouter.get('/groundhogs', function (req, res) {
     /* eslint-enable */
   }
 
-  const groundhogs = getGroundhogs({ oldestFirst: true, country })
+  const isGroundhog = _parseBoolean(req.query.isGroundhog)
+  const groundhogs = getGroundhogs({ oldestFirst: true, country, isGroundhog })
   res.json({ groundhogs })
 })
 

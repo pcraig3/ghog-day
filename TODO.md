@@ -10,7 +10,6 @@ TODO
   - Countdown page
   - Groundhog nearest to you
   - Page of the most out-there facts
-  - Page of non-groundhog predictors
 - Sortable tables
   - Accessible announcements of how many results for a search
   - Keyboard controls for table heading sorts
@@ -21,13 +20,15 @@ TODO
 
 DONE
 
+- Create pages allowing viewing non-traditional groundhogs
+  - Updated the API to allow "isGroundhog" query param for groundhogs retrieval
 - Skip link
 - Add an intro sentence on the index page.
 - Add RichResults
   - Breadcrumbs
   - Speakable
 - Create pages allowing viewing groundhogs by country of origin
-  - Updated the API to allow the "country" query param for groundhogs retrieval
+  - Updated the API to allow "country" query param for groundhogs retrieval
 - Add About page to the nav
 - Fix up the API schema
   - Use API schema to validate API responses
