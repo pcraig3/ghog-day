@@ -4,6 +4,15 @@
   groundhogs--usa
 {%- endblock %}
 
+{% block footer_scripts %}
+  <script src="/javascripts/vendor/list.min.js"></script>
+  <script>
+    new List('sortable--groundhogs', {
+      valueNames: ['name', 'region', 'latest', 'count']
+    });
+  </script>
+{% endblock %}
+
 {% block groundhogsHeader %}
   {{ page_header({ h1: title, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: '/api/v1/groundhogs?country=usa' }) }}
 {% endblock %}
@@ -17,7 +26,40 @@
     </p>
 {% endblock %}}
 
-{% block groundhogsTableHeader %}American groundhogs{% endblock %}
-
-{% block groundhogsTableCountryHeaderClass %}display--none{% endblock %}
-{% block groundhogsTableCountryCellClass %}display--none{% endblock %}
+{% block groundhogsTable %}
+  <div class="groundhogs data-table" role="region" aria-labelledby="data-table--groundhogs" tabindex="0">
+    <table class="data-table__table">
+      <caption id="data-table--groundhogs">
+        <h2 class="data-table__title h4">American groundhogs</h2>
+      </caption>
+      <thead class="visible">
+        <tr>
+          <th class="sort" data-sort="name">Name</th>
+          <th class="sort" data-sort="region">Region</th>
+          <th class="sort extra-padding" data-sort="latest">Latest prediction</th>
+          <th class="sort extra-padding" data-sort="count" data-default-order="desc">Total predictions</th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        {% for groundhog in groundhogs %}
+          <tr onclick="window.location='/groundhogs/{{ groundhog.slug }}';">
+            <th class="name"><a href="/groundhogs/{{ groundhog.slug }}" class="underline">{{ groundhog.name }}</a></th>
+            <td class="region">
+              {{ groundhog.region }}
+            </td>
+            <td class="latest">
+              {% if groundhog.latestPrediction.shadow %}
+                <span role="img" aria-label="Longer winter">❄️</span>
+              {% else %}
+                <span role="img" aria-label="Early spring">🌼</span>
+              {% endif %}
+            </td>
+            <td class="count">
+              {{ groundhog.predictionsCount }}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
