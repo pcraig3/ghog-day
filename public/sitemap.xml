@@ -19,7 +19,7 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs</loc>
-  <lastmod>2022-10-20T07:09:07+00:00</lastmod>
+  <lastmod>2022-10-24T02:45:10+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -85,6 +85,11 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs-in-canada</loc>
   <lastmod>2022-10-20T07:09:07+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/alternative-groundhogs</loc>
+  <lastmod>2022-10-24T02:45:10+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
