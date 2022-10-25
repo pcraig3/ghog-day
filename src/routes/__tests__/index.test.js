@@ -206,6 +206,10 @@ describe('Test API responses', () => {
         total: GROUNDHOGS_ALL,
       },
       {
+        path: '/api/v1/groundhogs/', // extra trailing slash and it still works
+        total: GROUNDHOGS_ALL,
+      },
+      {
         path: '/api/v1/groundhogs?country=canada',
         total: GROUNDHOGS_CANADA,
       },

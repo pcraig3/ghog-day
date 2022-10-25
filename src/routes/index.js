@@ -596,15 +596,16 @@ router.get('/groundhog-day-2023', function (req, res) {
 router.get(
   ['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa', '/alternative-groundhogs'],
   function (req, res) {
+    const path = req.path.replace(/\/$/, '')
     /* eslint-disable indent */
     const country =
-      req.path === '/groundhogs-in-canada'
+      path === '/groundhogs-in-canada'
         ? 'Canada'
-        : req.path === '/groundhogs-in-usa'
+        : path === '/groundhogs-in-usa'
         ? 'USA'
         : undefined
     /* eslint-enable */
-    const isGroundhog = req.path === '/alternative-groundhogs' ? false : undefined
+    const isGroundhog = path === '/alternative-groundhogs' ? false : undefined
 
     let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country, isGroundhog })
     const nameFirst = req.query.nameFirst === 'true'
@@ -629,23 +630,23 @@ router.get(
     })
 
     /* eslint-disable indent */
-    const pageTitle = req.path.includes('canada')
+    const pageTitle = path.includes('canada')
       ? 'Groundhogs in Canada'
-      : req.path.includes('usa')
+      : path.includes('usa')
       ? 'Groundhogs in the USA'
-      : req.path.includes('alternative')
+      : path.includes('alternative')
       ? 'Alternative groundhogs'
       : 'Groundhogs'
-    const nationality = req.path.includes('canada')
+    const nationality = path.includes('canada')
       ? 'Canadian '
-      : req.path.includes('usa')
+      : path.includes('usa')
       ? 'American '
-      : req.path.includes('alternative')
+      : path.includes('alternative')
       ? 'non-traditional '
       : ''
     /* eslint-enable */
 
-    res.render(`pages/${req.path.includes('alternative') ? '/groundhogs-alternative' : req.path}`, {
+    res.render(`pages/${path.includes('alternative') ? '/groundhogs-alternative' : path}`, {
       title: pageTitle,
       groundhogs,
       groundhogTypes,
@@ -653,7 +654,7 @@ router.get(
       nameFirst,
       pageMeta: _getPageMeta(req, {
         description: `See all ${groundhogs.length} ${nationality}prognosticators${
-          req.path.includes('alternative')
+          path.includes('alternative')
             ? ' across Canada and the USA'
             : ', whether genuine groundhogs or otherwise'
         }. Despite the name, GROUNDHOG-DAY.com is all-welcoming.`,
