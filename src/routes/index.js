@@ -415,7 +415,7 @@ router.get('/about', function (req, res) {
 /* GET history page. */
 router.get('/history-of-groundhog-day', function (req, res) {
   res.render('pages/history', {
-    title: 'About',
+    title: 'History of Groundhog Day',
     pageMeta: _getPageMeta(req, {
       description: 'The history of our modern Groundhog Day. It’s exactly as weird as you think.',
       speakable: true,
