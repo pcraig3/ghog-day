@@ -37,13 +37,14 @@
               <tr onclick="window.location='/groundhog-day-2023';">
                 <th class="year"><a href="/predictions/2023" class="underline">2023</a></th>
                 <td class="center--mobile">
-                  <span aria-label="No prediction yet">—</span>
+                  <span aria-hidden="true">—</span>
+                  <span class="visually-hidden">No prediction yet</span>
                 </td>
                 <td class="center--mobile">
-                  <span aria-label="No prediction yet">—</span>
+                  <span aria-hidden="true">—</span>
                 </td>
                 <td class="hidden--mobile-xs">
-                  <span class="hidden--mobile-xs" aria-label="No prediction yet">—</span>
+                  <span aria-hidden="true">—</span>
                 </td>
               </tr>
             {% for prediction in predictions %}
