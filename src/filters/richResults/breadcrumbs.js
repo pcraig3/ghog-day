@@ -10,7 +10,7 @@ const richResultsBreadcrumbs = (path) => {
 
   if (path === '/') return JSON.stringify(_returnBreadcrumbs(breadcrumbList), null, 2)
 
-  const [_, ...pathArr] = path.split('/') // eslint-disable-line no-unused-vars
+  const [_, ...pathArr] = path.replace(/\/$/, '').split('/') // eslint-disable-line no-unused-vars
 
   let page, entity, entityName
 
@@ -86,8 +86,6 @@ const _getName = (path) => {
     case 'about':
     case 'contact':
     case 'groundhog-day-2023':
-    case 'groundhogs-in-canada':
-    case 'groundhogs-in-usa':
       // get last item in array and return Title case
       return _uppercase(path.split('-').pop())
     case 'history-of-groundhog-day':
@@ -96,6 +94,12 @@ const _getName = (path) => {
       return _uppercase(path.split('-').shift())
     case 'api':
       return 'API'
+    case 'groundhogs-in-canada':
+      return 'Groundhogs in Canada'
+    case 'groundhogs-in-usa':
+      return 'Groundhogs in USA'
+    case 'alternative-groundhogs':
+      return 'Alternative groundhogs'
     default:
       return ''
   }
