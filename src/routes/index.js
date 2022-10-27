@@ -9,6 +9,8 @@ const sizeOf = require('image-size')
 const router = express.Router()
 const APIRouter = express.Router()
 
+const { escapeHtml, getPercent, getRandomItems, parseBoolean } = require('./utils')
+
 /* Constants */
 const EARLIEST_RECORDED_PREDICTION = DB()
   .prepare('SELECT MIN(year) as year FROM predictions;')
@@ -17,47 +19,13 @@ const EARLIEST_RECORDED_PREDICTION = DB()
 // ~@TODO: This should actually be 2022 until Feb 2nd
 const CURRENT_YEAR = new Date().getFullYear()
 
-/* Utils */
-function _getPercent(percent, total) {
-  return Math.round((percent / total) * 100)
-}
-
-// https://bobbyhadz.com/blog/javascript-get-multiple-random-elements-from-array
-const _getRandomItems = (arr, { length = 3 } = {}) => {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, length)
-}
-
-// not that good, but fast
+// ~@TODO: fix this as well. right now it is not that good, but fast
 const _getDaysToGroundhogDay = () => {
   const diffInMs = new Date('2023-02-02Z05:00:00') - new Date()
   return Math.ceil(diffInMs / (1000 * 60 * 60 * 24))
 }
 
-const _escapeHtml = (unsafe) => {
-  if (typeof unsafe !== 'string') return unsafe
-
-  return unsafe
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;')
-}
-
-const _parseBoolean = (value) => {
-  if (!value) {
-    return undefined
-  }
-
-  const yes = ['1', 'true']
-  const no = ['0', 'false']
-
-  value = value.toLowerCase()
-
-  return yes.includes(value) ? 1 : no.includes(value) ? 0 : undefined
-}
-
+/* Request functions */
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
   let url = 'https://' + req.get('host')
   url = withPath ? `${url}${req.path}` : url
@@ -300,7 +268,7 @@ const validYear = (req, res, next) => {
   if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
     throw new createError(
       400,
-      `The 'year' must be between ${_escapeHtml(EARLIEST_RECORDED_PREDICTION)} and ${_escapeHtml(
+      `The 'year' must be between ${escapeHtml(EARLIEST_RECORDED_PREDICTION)} and ${escapeHtml(
         CURRENT_YEAR,
       )} (inclusive).`,
     )
@@ -314,7 +282,7 @@ const validId = (req, res, next) => {
   const ids = getGroundhogIDs()
 
   if (isNaN(id) || !ids.includes(id)) {
-    throw new createError(400, `Bad groundhog identifier ('${_escapeHtml(id)}'), pick a real one.`)
+    throw new createError(400, `Bad groundhog identifier ('${escapeHtml(id)}'), pick a real one.`)
   }
 
   next()
@@ -328,16 +296,16 @@ const validSlug = (req, res, next) => {
     const randomSlug = slugs[Math.floor(Math.random() * slugs.length)]
     throw new createError(
       400,
-      `You didn’t pick a groundhog. Here’s a random one: <a href="/groundhogs/${_escapeHtml(
+      `You didn’t pick a groundhog. Here’s a random one: <a href="/groundhogs/${escapeHtml(
         randomSlug,
-      )}">${_escapeHtml(randomSlug)}</a>`,
+      )}">${escapeHtml(randomSlug)}</a>`,
     )
   }
 
   if (!slugs.includes(slug)) {
     throw new createError(
       400,
-      `Bad groundhog identifier ('${_escapeHtml(slug)}'), maybe you spelled it wrong?`,
+      `Bad groundhog identifier ('${escapeHtml(slug)}'), maybe you spelled it wrong?`,
     )
   }
 
@@ -376,7 +344,7 @@ router.get('/', function (req, res) {
 
   // get groundhogs data
   const totalGroundhogs = _predictions[CURRENT_YEAR].length
-  let _currentYearPredictions = _getRandomItems(_predictions[CURRENT_YEAR])
+  let _currentYearPredictions = getRandomItems(_predictions[CURRENT_YEAR])
   const randomGroundhogs = _currentYearPredictions.map((p) => {
     const { shadow, groundhog: { slug, name, region, country } = {} } = p
     return {
@@ -729,8 +697,8 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   allPredictions = {
     ...allPredictions,
     percent: {
-      shadow: _getPercent(allPredictions.shadow, allPredictions.total),
-      noShadow: _getPercent(allPredictions.noShadow, allPredictions.total),
+      shadow: getPercent(allPredictions.shadow, allPredictions.total),
+      noShadow: getPercent(allPredictions.noShadow, allPredictions.total),
     },
   }
 
@@ -795,7 +763,7 @@ APIRouter.get('/groundhogs', function (req, res) {
     /* eslint-enable */
   }
 
-  const isGroundhog = _parseBoolean(req.query.isGroundhog)
+  const isGroundhog = parseBoolean(req.query.isGroundhog)
   const groundhogs = getGroundhogs({ oldestFirst: true, country, isGroundhog })
   res.json({ groundhogs })
 })
