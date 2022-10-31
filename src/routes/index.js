@@ -466,7 +466,6 @@ router.get('/predictions/2023', function (req, res) {
 router.get('/predictions/:year', validYear, function (req, res) {
   const year = parseInt(req.params.year)
   const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
-  const nameFirst = req.query.nameFirst === 'true'
 
   const years = {
     year,
@@ -488,15 +487,10 @@ router.get('/predictions/:year', validYear, function (req, res) {
       : ++predictionTotals['null'] // eslint-disable-line indent
   })
 
-  if (nameFirst) {
-    // sort by name
-    predictions.sort((a, b) => (a.groundhog.name > b.groundhog.name ? 1 : -1))
-  } else {
-    // sort by most predictions to least predictions
-    predictions.sort((a, b) => {
-      return a.shadow === null ? 1 : b.shadow === null ? -1 : a.shadow - b.shadow
-    })
-  }
+  // sort by most predictions to least predictions
+  predictions.sort((a, b) => {
+    return a.shadow === null ? 1 : b.shadow === null ? -1 : a.shadow - b.shadow
+  })
 
   /* eslint-disable */
   const intro = {
@@ -520,7 +514,6 @@ router.get('/predictions/:year', validYear, function (req, res) {
     intro,
     predictions,
     predictionTotals,
-    nameFirst,
     pageMeta: _getPageMeta(req, {
       description: `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
       speakable: true,
@@ -576,15 +569,9 @@ router.get(
     const isGroundhog = path === '/alternative-groundhogs' ? false : undefined
 
     let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country, isGroundhog })
-    const nameFirst = req.query.nameFirst === 'true'
 
-    if (nameFirst) {
-      // sort by name
-      groundhogs.sort((a, b) => (a.name > b.name ? 1 : -1))
-    } else {
-      // sort by most predictions to least predictions
-      groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
-    }
+    // sort by most predictions to least predictions
+    groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
 
     const recentPredictions = { total: 0, winter: 0, spring: 0 }
     const groundhogTypes = { groundhog: 0, other: 0 }
@@ -619,7 +606,6 @@ router.get(
       groundhogs,
       groundhogTypes,
       recentPredictions: recentPredictions,
-      nameFirst,
       pageMeta: _getPageMeta(req, {
         description: `See all ${groundhogs.length} ${nationality}prognosticators${
           path.includes('alternative')
