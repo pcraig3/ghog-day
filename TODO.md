@@ -11,7 +11,6 @@ TODO
   - Page of the most out-there facts
 - Sortable tables
   - Accessible announcements of how many results for a search
-  - Keyboard controls for table heading sorts
 - Add RichResults
   - Dataset lol
 
@@ -59,6 +58,7 @@ DONE
   - All predictions: sort by heading
   - All years: sort by heading
   - One year: sort by name, prediction
+  - Keyboard controls for table heading sorts
 - Bugfix: add root API response and don't return strings in JSON
 - Bugfix: fix up HTML validation errors
 - Bugfix: use https and remove query params for canonical urls

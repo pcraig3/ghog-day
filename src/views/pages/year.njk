@@ -12,9 +12,7 @@
     });
     const form = document.querySelector('#sortable--year--form');
     const select = document.querySelector('#sortable--year--select');
-    const filterNoJs = document.querySelector('#sortable--no-js');
 
-    filterNoJs.classList.add('no-script')
     form.classList.add('js-enabled')
     form.addEventListener('submit', handleSubmit);
     select.addEventListener('change', handleSubmit);

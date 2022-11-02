@@ -2,7 +2,7 @@
 @use '../mixins';
 
 .overflow-x,
-[class^="groundhogs"] main,
+[class^='groundhogs'] main,
 .years main {
   overflow-x: auto;
 }
@@ -136,6 +136,11 @@
 
   &[role='region'][aria-labelledby][tabindex] {
     overflow: auto;
+
+    &:focus {
+      outline: 2px dotted black;
+      outline-offset: -2px;
+    }
   }
 
   /* shadow */

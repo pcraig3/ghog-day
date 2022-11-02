@@ -139,6 +139,16 @@
           gtag('config', 'G-G3SGGHMTHC');
         </script>
       {%- endif %}
+      <script>
+        document.querySelectorAll('th.sort[tabIndex]').forEach(item => {
+          item.addEventListener('keyup', event => {
+            // trigger a click event when someone presses enter key
+            if(event.key === 'Enter') {
+              event.target.click()
+            }
+          })
+        })
+      </script>
       {% block footer_scripts %}{% endblock %}
   </body>
 </html>
