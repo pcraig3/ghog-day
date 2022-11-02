@@ -1,6 +1,5 @@
 TODO
 
-- Separate API from UI
 - "data" seo
 - Data as CSV
 - Stretch goal: was that an accurate prediction for that year?
@@ -13,8 +12,6 @@ TODO
 - Sortable tables
   - Accessible announcements of how many results for a search
   - Keyboard controls for table heading sorts
-- How to update just the data for 1 year
-- Add a countdown
 - Add RichResults
   - Dataset lol
 
@@ -22,6 +19,7 @@ DONE
 
 - Create pages allowing viewing non-traditional groundhogs
   - Updated the API to allow "isGroundhog" query param for groundhogs retrieval
+  - Updated breadcrumbs to show "/groundhogs" as parent page of derived pages
 - Skip link
 - Add an intro sentence on the index page.
 - Add RichResults
