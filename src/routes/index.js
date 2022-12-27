@@ -9,15 +9,12 @@ const sizeOf = require('image-size')
 const router = express.Router()
 const APIRouter = express.Router()
 
-const { escapeHtml, getPercent, getRandomItems, parseBoolean } = require('./utils')
+const { getCurrentYear, escapeHtml, getPercent, getRandomItems, parseBoolean } = require('./utils')
 
 /* Constants */
 const EARLIEST_RECORDED_PREDICTION = DB()
   .prepare('SELECT MIN(year) as year FROM predictions;')
   .get().year
-
-// ~@TODO: This should actually be 2022 until Feb 2nd
-const CURRENT_YEAR = new Date().getFullYear()
 
 // ~@TODO: fix this as well. right now it is not that good, but fast
 const _getDaysToGroundhogDay = () => {
@@ -262,14 +259,15 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
+  const currentYear = getCurrentYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
-  if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > CURRENT_YEAR) {
+  if (isNaN(year) || year < EARLIEST_RECORDED_PREDICTION || year > currentYear) {
     throw new createError(
       400,
       `The 'year' must be between ${escapeHtml(EARLIEST_RECORDED_PREDICTION)} and ${escapeHtml(
-        CURRENT_YEAR,
+        currentYear,
       )} (inclusive).`,
     )
   }
@@ -314,8 +312,7 @@ const validSlug = (req, res, next) => {
 
 const redirectYear = (req, res, next) => {
   if (!req.query.year) {
-    const currentYear = new Date().getFullYear()
-    return res.redirect(`/api/v1/predictions?year=${currentYear}`)
+    return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
   }
 
   next()
@@ -323,6 +320,7 @@ const redirectYear = (req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res) {
+  const currentYear = getCurrentYear()
   const _predictions = _getPredictions({ since: 2020 })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
@@ -343,8 +341,8 @@ router.get('/', function (req, res) {
   })
 
   // get groundhogs data
-  const totalGroundhogs = _predictions[CURRENT_YEAR].length
-  let _currentYearPredictions = getRandomItems(_predictions[CURRENT_YEAR])
+  const totalGroundhogs = _predictions[currentYear].length
+  let _currentYearPredictions = getRandomItems(_predictions[currentYear])
   const randomGroundhogs = _currentYearPredictions.map((p) => {
     const { shadow, groundhog: { slug, name, region, country } = {} } = p
     return {
@@ -453,7 +451,7 @@ router.get('/predictions', function (req, res) {
     predictions: predictionResults,
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
     pageMeta: _getPageMeta(req, {
-      description: `See and compare groundhog predictions by year, from ${CURRENT_YEAR} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
+      description: `See and compare groundhog predictions by year, from ${getCurrentYear()} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
     }),
   })
 })
@@ -469,7 +467,7 @@ router.get('/predictions/:year', validYear, function (req, res) {
 
   const years = {
     year,
-    next: year === CURRENT_YEAR ? undefined : year + 1,
+    next: year === getCurrentYear() ? undefined : year + 1,
     prev: year === EARLIEST_RECORDED_PREDICTION ? undefined : year - 1,
   }
 
@@ -568,7 +566,7 @@ router.get(
     /* eslint-enable */
     const isGroundhog = path === '/alternative-groundhogs' ? false : undefined
 
-    let groundhogs = getGroundhogs({ year: CURRENT_YEAR, country, isGroundhog })
+    let groundhogs = getGroundhogs({ year: getCurrentYear(), country, isGroundhog })
 
     // sort by most predictions to least predictions
     groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
@@ -632,7 +630,7 @@ const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear
         ? 'predicted a longer winter' // eslint-disable-line indent
         : 'did not make a prediction' // eslint-disable-line indent
 
-    secondPhrase = ` In ${CURRENT_YEAR}, ${groundhog.shortname} ${prediction}.`
+    secondPhrase = ` In ${getCurrentYear()}, ${groundhog.shortname} ${prediction}.`
   }
 
   return `${groundhog.name} ${aAnAre(groundhog.type)} ${modifier} ${groundhog.type} from ${
@@ -650,7 +648,7 @@ router.get('/groundhogs/:slug', validSlug, (req, res) => {
     title: groundhog.name,
     groundhog,
     allPredictions: groundhog.predictions.length - nullPredictions,
-    year: CURRENT_YEAR,
+    year: getCurrentYear(),
     pageMeta: _getPageMeta(req, {
       description: getGroundhogMetaDescription(groundhog),
       slug: groundhog.slug,
@@ -724,7 +722,9 @@ APIRouter.get('/', function (req, res) {
       self: { href: 'https://groundhog-day.com/api/v1/' },
       groundhogs: { href: 'https://groundhog-day.com/api/v1/groundhogs' },
       groundhog: { href: 'https://groundhog-day.com/api/v1/groundhogs/wiarton-willie' },
-      predictions: { href: `https://groundhog-day.com/api/v1/predictions?year=${CURRENT_YEAR}` },
+      predictions: {
+        href: `https://groundhog-day.com/api/v1/predictions?year=${getCurrentYear()}`,
+      },
       spec: { href: 'https://groundhog-day.com/api/v1/spec' },
     },
   })

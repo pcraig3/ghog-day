@@ -1,3 +1,19 @@
+var getDayOfYear = require('date-fns/getDayOfYear')
+
+// Get current _groundhog_ year
+// Until Feb 2, this should still read the past year
+const getCurrentYear = () => {
+  const date = new Date()
+  const dayOfYear = getDayOfYear(date)
+
+  // 31 days in January + 1st day of Feb
+  if (dayOfYear <= 32) {
+    return date.getFullYear() - 1
+  }
+
+  return date.getFullYear()
+}
+
 // escape HTML-y looking strings
 const escapeHtml = (unsafe) => {
   if (typeof unsafe !== 'string') return unsafe
@@ -36,6 +52,7 @@ const parseBoolean = (value) => {
 }
 
 module.exports = {
+  getCurrentYear,
   escapeHtml,
   getPercent,
   getRandomItems,
