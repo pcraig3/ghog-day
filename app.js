@@ -29,8 +29,6 @@ const nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views
   express: app,
 })
 
-// TODO: remove this if it's not being used
-nunjucksEnvironment.addFilter('cleanUrl', require('./src/filters/cleanUrl'))
 nunjucksEnvironment.addFilter('aAnAre', require('./src/filters/aAnAre'))
 nunjucksEnvironment.addFilter(
   'richResultsBreadcrumbs',
