@@ -9,18 +9,19 @@ const sizeOf = require('image-size')
 const router = express.Router()
 const APIRouter = express.Router()
 
-const { getCurrentYear, escapeHtml, getPercent, getRandomItems, parseBoolean } = require('./utils')
+const {
+  getCurrentYear,
+  getDaysToGroundhogDay,
+  escapeHtml,
+  getPercent,
+  getRandomItems,
+  parseBoolean,
+} = require('./utils')
 
 /* Constants */
 const EARLIEST_RECORDED_PREDICTION = DB()
   .prepare('SELECT MIN(year) as year FROM predictions;')
   .get().year
-
-// ~@TODO: fix this as well. right now it is not that good, but fast
-const _getDaysToGroundhogDay = () => {
-  const diffInMs = new Date('2023-02-02Z05:00:00') - new Date()
-  return Math.ceil(diffInMs / (1000 * 60 * 60 * 24))
-}
 
 /* Request functions */
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
@@ -355,7 +356,7 @@ router.get('/', function (req, res) {
 
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
-    daysLeft: _getDaysToGroundhogDay(),
+    daysLeft: getDaysToGroundhogDay(),
     predictionResults,
     randomGroundhogs,
     totalGroundhogs,
@@ -542,7 +543,7 @@ router.get('/groundhog-day-2023', function (req, res) {
   res.render('pages/groundhog-day-2023', {
     title: 'Groundhog Day 2023',
     dateString,
-    daysLeft: _getDaysToGroundhogDay(),
+    daysLeft: getDaysToGroundhogDay(),
     predictionString,
     pageMeta: _getPageMeta(req, {
       description: `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,

@@ -1,4 +1,11 @@
-const { getCurrentYear, escapeHtml, getPercent, getRandomItems, parseBoolean } = require('../index')
+const {
+  getCurrentYear,
+  getDaysToGroundhogDay,
+  escapeHtml,
+  getPercent,
+  getRandomItems,
+  parseBoolean,
+} = require('../index')
 
 jest.useFakeTimers()
 
@@ -26,6 +33,33 @@ describe('Test getCurrentYear', () => {
   test('Returns previous year on Feb 1st', () => {
     jest.setSystemTime(new Date('2022-02-01T12:00:00'))
     expect(getCurrentYear()).toEqual(2021)
+  })
+})
+
+describe('Test getDaysToGroundhogDay', () => {
+  test('Returns 365 on Feb 2', () => {
+    jest.setSystemTime(new Date('2022-02-02T12:00:00'))
+    expect(getDaysToGroundhogDay()).toEqual(365)
+  })
+
+  test('Returns 1 on Feb 1', () => {
+    jest.setSystemTime(new Date('2022-02-01T12:00:00'))
+    expect(getDaysToGroundhogDay()).toEqual(1)
+  })
+
+  test('Returns 20 on Dec 31', () => {
+    jest.setSystemTime(new Date('2022-12-31T12:00:00'))
+    expect(getDaysToGroundhogDay()).toEqual(33)
+  })
+
+  test('Returns 20 on Jan 1', () => {
+    jest.setSystemTime(new Date('2022-01-01T12:00:00'))
+    expect(getDaysToGroundhogDay()).toEqual(32)
+  })
+
+  test('Returns 20 on October 8 1', () => {
+    jest.setSystemTime(new Date('2022-10-08T12:00:00'))
+    expect(getDaysToGroundhogDay()).toEqual(117)
   })
 })
 
