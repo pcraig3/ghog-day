@@ -9,7 +9,7 @@
 
 <url>
   <loc>https://groundhog-day.com/</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -19,12 +19,12 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -39,22 +39,22 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhog-day-2023</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2022</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2021</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2020</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -70,6 +70,11 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs/bowman-bill</loc>
   <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/boise-bill</loc>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -89,12 +94,12 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs-in-usa</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/alternative-groundhogs</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -445,6 +450,11 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs/bowman-bill/predictions</loc>
   <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/boise-bill/predictions</loc>
+  <lastmod>2022-12-29T16:47:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>

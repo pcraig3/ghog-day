@@ -16,6 +16,7 @@ TODO
 
 DONE
 
+- Change out all the pictures: .png to .jpeg
 - Create pages allowing viewing non-traditional groundhogs
   - Updated the API to allow "isGroundhog" query param for groundhogs retrieval
   - Updated breadcrumbs to show "/groundhogs" as parent page of derived pages

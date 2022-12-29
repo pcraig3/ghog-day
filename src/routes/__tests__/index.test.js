@@ -3,14 +3,14 @@ const request = require('supertest')
 const cheerio = require('cheerio')
 
 const app = require('../../../app.js')
+const { getCurrentYear } = require('../utils')
 // const DBconfig = require('../../config/better-sqlite3-helper.config')
 
 // // The first call creates the global instance with your settings
 // DB(DBconfig)
 
 const EARLIEST_RECORDED_PREDICTION = 1886
-// ~@TODO: This should actually be 2022 until Feb 2nd
-const CURRENT_YEAR = new Date().getFullYear()
+const CURRENT_YEAR = getCurrentYear()
 
 describe('Test ui responses', () => {
   describe('Test / response', () => {
@@ -195,10 +195,10 @@ describe('Test API responses', () => {
   })
 
   describe('for /api/v1/groundhogs path', () => {
-    const GROUNDHOGS_ALL = 51
+    const GROUNDHOGS_ALL = 52
     const GROUNDHOGS_CANADA = 11
-    const GROUNDHOGS_USA = 40
-    const GROUNDHOGS_ALTERNATIVE = 26
+    const GROUNDHOGS_USA = 41
+    const GROUNDHOGS_ALTERNATIVE = 27
 
     const urls = [
       {

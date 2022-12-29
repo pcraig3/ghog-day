@@ -17,6 +17,10 @@
     background: vars.$color-spring-faded;
   }
 
+  &.highlight--none {
+    background: #eee;
+  }
+
   > div {
     display: flex;
     align-items: center;

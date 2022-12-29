@@ -10,15 +10,20 @@
 
   <div class="inner-content inner-content--with-summary">
     <div class="flash">
-       {% if groundhog.predictions[0].shadow %}
+       {% if groundhog.predictions[0].shadow == true -%}
         <aside class="highlight highlight--winter">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
           <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
         </aside>
-      {% else %}
+      {% elseif groundhog.predictions[0].shadow == false -%}
         <aside class="highlight highlight--spring">
           <div class="icon"><span aria-hidden="true">🌼</span></div>
           <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
+        </aside>
+      {% else %}
+        <aside class="highlight highlight--none">
+          <div class="icon"><span aria-hidden="true">🙊</span></div>
+          <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} <strong>didn’t make a prediction</strong>.</span></div>
         </aside>
       {% endif %}
     </div>
