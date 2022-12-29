@@ -75,7 +75,10 @@ const insertGroundhogs = () => {
           row.contact,
         )}', '${escape(row.currentPrediction)}', ${isBoolean(row.isGroundhog)}, '${escape(
           row.type,
-        )}', '${isBoolean(row.active)}', '${escape(row.description)}', '${createImgRef(row.slug)}');\n`
+        )}', '${isBoolean(row.active)}', '${escape(row.description).replace(
+          '\\%',
+          '%',
+        )}', '${createImgRef(row.slug)}');\n`
 
         stream.write(insert)
       })
