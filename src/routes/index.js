@@ -39,7 +39,7 @@ const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {})
 const _getPageMeta = (req, { description, slug, speakable } = {}) => {
   let dimensions
   if (slug) {
-    dimensions = sizeOf(path.resolve(__dirname, `../../public/images/ghogs/og-image/${slug}.png`))
+    dimensions = sizeOf(path.resolve(__dirname, `../../public/images/ghogs/og-image/${slug}.jpeg`))
   }
 
   return {
