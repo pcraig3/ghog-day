@@ -12,6 +12,7 @@ CREATE TABLE groundhogs (
   city TEXT,
   region TEXT,
   country TEXT,
+  coordinates TEXT,
   source TEXT,
   contact TEXT,
   currentPrediction TEXT,
@@ -67,15 +68,15 @@ const insertGroundhogs = () => {
         reject(error)
       })
       .on('data', (row) => {
-        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, source, contact, currentPrediction, isGroundhog, type, active, description, image) VALUES (${parseInt(
+        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, description, image) VALUES (${parseInt(
           row.id,
         )}, '${escape(row.slug)}', '${escape(row.shortname)}', '${escape(row.name)}', '${escape(
           row.city,
-        )}', '${escape(row.region)}', '${escape(row.country)}', '${escape(row.source)}', '${escape(
-          row.contact,
-        )}', '${escape(row.currentPrediction)}', ${isBoolean(row.isGroundhog)}, '${escape(
-          row.type,
-        )}', '${isBoolean(row.active)}', '${escape(row.description).replace(
+        )}', '${escape(row.region)}', '${escape(row.country)}', '${row.coordinates}', '${escape(
+          row.source,
+        )}', '${escape(row.contact)}', '${escape(row.currentPrediction)}', ${isBoolean(
+          row.isGroundhog,
+        )}, '${escape(row.type)}', '${isBoolean(row.active)}', '${escape(row.description).replace(
           '\\%',
           '%',
         )}', '${createImgRef(row.slug)}');\n`
