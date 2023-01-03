@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Groundhog Day API
-  version: 1.1.2
+  version: 1.2.0
   description: This API returns all of North America's prognosticating animals and their yearly weather predictions.
   contact:
     name: Paul Craig
@@ -18,37 +18,39 @@ components:
       type: object
       x-examples:
         /groundhog/lucy-the-lobster:
-          id: 46
-          slug: lucy-the-lobster
-          shortname: Lucy
-          name: Lucy the Lobster
-          city: Barrington
-          region: Nova Scotia
-          country: Canada
-          source: 'https://twitter.com/lucylobsterns'
-          contact: ''
-          currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
-          isGroundhog: 0
-          type: Atlantic lobster
-          active: 1
-          description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
-          image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
-          predictions:
-            - year: 2018
-              shadow: 0
-              details: ''
-            - year: 2019
-              shadow: 1
-              details: ''
-            - year: 2020
-              shadow: 1
-              details: ''
-            - year: 2021
-              shadow: null
-              details: ''
-            - year: 2022
-              shadow: 1
-              details: ''
+          groundhog:
+            id: 51
+            slug: lucy-the-lobster
+            shortname: Lucy
+            name: Lucy the Lobster
+            city: Barrington
+            region: Nova Scotia
+            country: Canada
+            coordinates: '43.5623505,-65.5700017'
+            source: 'https://twitter.com/lucylobsterns'
+            contact: ''
+            currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
+            isGroundhog: 0
+            type: Atlantic lobster
+            active: 1
+            description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
+            image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+            predictions:
+              - year: 2018
+                shadow: 0
+                details: ''
+              - year: 2019
+                shadow: 1
+                details: ''
+              - year: 2020
+                shadow: 1
+                details: ''
+              - year: 2021
+                shadow: null
+                details: ''
+              - year: 2022
+                shadow: 1
+                details: ''
       description: An animal that makes an annual prediction on Groundhog Day.
       title: Groundhog
       properties:
@@ -66,6 +68,8 @@ components:
         region:
           type: string
         country:
+          type: string
+        coordinates:
           type: string
         source:
           type: string
@@ -108,6 +112,7 @@ components:
         - city
         - region
         - country
+        - coordinates
         - source
         - contact
         - currentPrediction
@@ -131,6 +136,7 @@ components:
             city: Barrington
             region: Nova Scotia
             country: Canada
+            coordinates: '43.5623505,-65.5700017'
             source: 'https://twitter.com/lucylobsterns'
             contact: ''
             currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
@@ -342,6 +348,7 @@ paths:
                         city: Punxsutawney
                         region: Pennsylvania
                         country: USA
+                        coordinates: '40.9311988,-78.9622483'
                         source: 'https://www.groundhog.org/history-past-predictions'
                         contact: ''
                         currentPrediction: 'https://www.groundhog.org/prognostication'
@@ -350,14 +357,8 @@ paths:
                         active: 1
                         description: 'Punxsutawney Phil is a superstar prognosticating groundhog from Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog nog” administered at the annual Groundhog Picnic.'
                         image: 'https://groundhog-day.com/images/ghogs/punxsutawney-phil.png'
-                        predictionsCount: 7
+                        predictionsCount: 5
                         predictions:
-                          - year: 2016
-                            shadow: 0
-                            details: 'No Shadow- Early Spring It was 28° at Gobbler’s Knob. Phil made his perdition of an Early Spring at 7:25 a.m.'
-                          - year: 2017
-                            shadow: 1
-                            details: '7:25 a.m. Saw His Shadow, Six More Weeks of Winter! There were a few snow flurries during the prognostication.'
                           - year: 2018
                             shadow: 1
                             details: 'At 7:25 a.m. with 18,000 Phil Phans present, Phil saw his shadow! Six More Weeks of Winter!'
@@ -373,13 +374,14 @@ paths:
                           - year: 2022
                             shadow: 1
                             details: 'Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.'
-                      - id: 46
+                      - id: 51
                         slug: lucy-the-lobster
                         shortname: Lucy
                         name: Lucy the Lobster
                         city: Barrington
                         region: Nova Scotia
                         country: Canada
+                        coordinates: '43.5623505,-65.5700017'
                         source: 'https://twitter.com/lucylobsterns'
                         contact: ''
                         currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
@@ -450,13 +452,14 @@ paths:
                 /groundhogs/lucy-the-lobster:
                   value:
                     groundhog:
-                      id: 46
+                      id: 51
                       slug: lucy-the-lobster
                       shortname: Lucy
                       name: Lucy the Lobster
                       city: Barrington
                       region: Nova Scotia
                       country: Canada
+                      coordinates: '43.5623505,-65.5700017'
                       source: 'https://twitter.com/lucylobsterns'
                       contact: ''
                       currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
@@ -591,6 +594,7 @@ paths:
                           city: Punxsutawney
                           region: Pennsylvania
                           country: USA
+                          coordinates: '40.9311988,-78.9622483'
                           source: 'https://www.groundhog.org/history-past-predictions'
                           contact: ''
                           currentPrediction: 'https://www.groundhog.org/prognostication'
@@ -603,13 +607,14 @@ paths:
                         shadow: 1
                         details: ''
                         groundhog:
-                          id: 46
+                          id: 51
                           slug: lucy-the-lobster
                           shortname: Lucy
                           name: Lucy the Lobster
                           city: Barrington
                           region: Nova Scotia
                           country: Canada
+                          coordinates: '43.5623505,-65.5700017'
                           source: 'https://twitter.com/lucylobsterns'
                           contact: ''
                           currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'

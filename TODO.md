@@ -18,6 +18,7 @@ DONE
 
 - Change out all the pictures: .png to .jpeg
 - Add coordinates to all of the groundhogs
+  - Update the API schema
 - Create pages allowing viewing non-traditional groundhogs
   - Updated the API to allow "isGroundhog" query param for groundhogs retrieval
   - Updated breadcrumbs to show "/groundhogs" as parent page of derived pages
