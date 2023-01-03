@@ -312,7 +312,7 @@ describe('Test API responses', () => {
 
       let { error } = JSON.parse(response.text)
       expect(error.status).toBe(400)
-      expect(error.message).toBe('Bad Request: request.query.year should be >= 1886')
+      expect(error.message).toBe('Bad Request: request/query/year must be >= 1886')
     })
 
     test(`it should return an error for a future year: "${CURRENT_YEAR + 1}`, async () => {
