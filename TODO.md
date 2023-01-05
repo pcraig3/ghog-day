@@ -14,10 +14,10 @@ TODO
   - Dataset lol
 - Add groundhog map
 - Add location pin link to groundhog profile
-- Move "All ..." links on index page so people see them
 
 DONE
 
+- Move "All ..." links on index page so people see them
 - Make sure there is always a Canadian groundhog on the index page
 - Add consensus information to groundhog predictions
 - Change out all the pictures: .png to .jpeg

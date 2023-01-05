@@ -16,8 +16,8 @@
 
   <div class="heading-with-right-link">
     <h2 class="heading h3" id="index--predictions"><a href="/predictions">Predictions by year</a></h2>
-    <div class="right-link"><a href="/predictions" class="link--icon link--icon--right">
-      <span>All years</span> {{ icon({ right: true }) }}</a>
+    <div class="right-link"><a href="/groundhog-day-2023" class="link--icon link--icon--right">
+      <span>2023</span> {{ icon({ right: true }) }}</a>
     </div>
   </div>
   <p>The yearly result is what the majority of groundhogs agreed on.</p>
@@ -39,15 +39,19 @@
       </li>
     {% endfor %}
   </ul>
+  <div style="margin-top: 1rem;">
+    <a href="/predictions" class="link--icon link--icon--right underline">
+      <span>All years</span> {{ icon({ right: true }) }}
+    </a>
+  </div>
 
   <br />
   <div class="heading-with-right-link">
     <h2 class="heading h3" id="index--groundhogs"><a href="/groundhogs">Groundhogs</a></h2>
-    <div class="right-link"><a href="/groundhogs" class="link--icon">
-      <span>All groundhogs</span> {{ icon({ right: true }) }}</a>
+    <div class="right-link">
     </div>
   </div>
-  <p>This is a ‘box-of-chocolates’ assortment out of <strong>{{ totalGroundhogs }}</strong> total groundhogs.</p>
+  <p>This is a ‘box-of-chocolates’ random selection out of <a href="/groundhogs"><strong>{{ totalGroundhogs }}</strong> total groundhogs</a>.</p>
 
   <ul class="card--grid no-paragraph-margin">
     {% for groundhog in randomGroundhogs %}
@@ -65,9 +69,9 @@
       </li>
     {% endfor %}
   </ul>
-  <div style="margin-top: 20px;">
-    <a class="link--icon underline" href="/add-groundhog">
-      {{ icon({ add: true }) }} <span>Add a groundhog</span>
+  <div style="margin-top: 1rem;">
+    <a href="/groundhogs" class="link--icon link--icon--right underline">
+      <span>All groundhogs</span> {{ icon({ right: true }) }}
     </a>
   </div>
 
