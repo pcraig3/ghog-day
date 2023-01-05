@@ -350,7 +350,14 @@ router.get('/', function (req, res) {
 
   // get groundhogs data
   const totalGroundhogs = _predictions[currentYear].length
-  let _currentYearPredictions = getRandomItems(_predictions[currentYear])
+  // seed with empty object
+  let _currentYearPredictions = [{ groundhog: { country: '' } }]
+
+  // keep looping until at least one groundhog is from Canada
+  while (!_currentYearPredictions.find((p) => p.groundhog.country === 'Canada')) {
+    _currentYearPredictions = getRandomItems(_predictions[currentYear])
+  }
+
   const randomGroundhogs = _currentYearPredictions.map((p) => {
     const { shadow, groundhog: { slug, name, region, country } = {} } = p
     return {
