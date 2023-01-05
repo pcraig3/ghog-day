@@ -34,8 +34,8 @@
   {{ page_header({ h1: h1, backUrl: '/predictions', backText: 'Predictions', dataUrl: dataUrl }) }}
 
   <p class="speakable">
-    {%- if intro.predictionIntro -%}
-      {{ intro.lead }}. {{ intro.predictionIntro }} <strong>{{ intro.predictionConclusion }}</strong>.
+    {%- if not intro.predictionTied -%}
+      {{ intro.lead }}. Most groundhogs <span aria-hidden='true'>({{ intro.predictionPercent }}%)</span> predicted <strong>{{ intro.predictionConclusion }}</strong>.
     {%- else -%}
       {{ intro.lead }}. {{ intro.predictionConclusion }}.
     {%- endif -%}

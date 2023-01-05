@@ -30,6 +30,7 @@
               <th class="sort extra-padding" data-sort="year" tabIndex="0">Year</th>
               <th class="center--mobile">Prediction</th>
               <th class="center--mobile">Spring : Winter</th>
+              <th class="hidden--mobile-xs">Consensus (%)</th>
               <th class="hidden--mobile-xs">Total predictions</th>
             </tr>
           </thead>
@@ -63,6 +64,15 @@
                 </td>
                 <td class="center--mobile">
                   {{ prediction.groundhogs.spring }} : {{ prediction.groundhogs.winter }}
+                </td>
+                <td class="hidden--mobile-xs">
+                  {% if prediction.percentConsensus %}
+                    {{ prediction.percentConsensus }}%
+                    <span class="visually-hidden">of groundhogs agreed</span>
+                  {% else %}
+                    <span aria-hidden="true">—</span>
+                    <span class="visually-hidden">No consensus</span>
+                  {% endif %}
                 </td>
                 <td class="hidden--mobile-xs">
                   {% set totalPredictions = prediction.groundhogs.winter + prediction.groundhogs.spring %}

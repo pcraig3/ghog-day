@@ -331,7 +331,7 @@ router.get('/', function (req, res) {
   const predictionResults = []
 
   _years.forEach((year) => {
-    const yearPredictions = { year, prediction: '', groundhogs: { winter: 0, spring: 0 } }
+    const yearPredictions = { year, agree: '', disagree: '', groundhogs: { winter: 0, spring: 0 } }
 
     _predictions[year].forEach((prediction) => {
       const season = prediction.shadow ? 'winter' : 'spring'
@@ -339,8 +339,11 @@ router.get('/', function (req, res) {
     })
 
     // TODO: if they are equal, this breaks
-    yearPredictions.prediction =
+    yearPredictions.agree =
       yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
+
+    yearPredictions.disagree =
+      yearPredictions.groundhogs.winter <= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
 
     predictionResults.push(yearPredictions)
   })
@@ -433,7 +436,12 @@ router.get('/predictions', function (req, res) {
   const predictionResults = []
 
   _years.forEach((year) => {
-    const yearPredictions = { year, prediction: '', groundhogs: { winter: 0, spring: 0, null: 0 } }
+    const yearPredictions = {
+      year,
+      prediction: '',
+      groundhogs: { winter: 0, spring: 0, null: 0 },
+      percentConsensus: 0,
+    }
 
     _predictions[year].forEach((prediction) => {
       const season =
@@ -447,6 +455,15 @@ router.get('/predictions', function (req, res) {
         : yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring
         ? 'winter' // eslint-disable-line indent
         : 'spring' // eslint-disable-line indent
+
+    // Get agreement percentage — if tied, there is no consensus
+    if (yearPredictions.prediction !== 'tied') {
+      // numerator: winning prediction, demoninator: winter + spring (no nulls)
+      yearPredictions['percentConsensus'] = getPercent(
+        yearPredictions.groundhogs[yearPredictions.prediction],
+        yearPredictions.groundhogs['winter'] + yearPredictions.groundhogs['spring'],
+      )
+    }
 
     predictionResults.push(yearPredictions)
   })
@@ -468,7 +485,14 @@ router.get('/predictions/2023', function (req, res) {
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, function (req, res) {
   const year = parseInt(req.params.year)
-  const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
+  const predictionTotals = {
+    years: 0,
+    total: 0,
+    winter: 0,
+    spring: 0,
+    null: 0,
+    prediction: '',
+  }
 
   const years = {
     year,
@@ -488,6 +512,13 @@ router.get('/predictions/:year', validYear, function (req, res) {
       : prediction['shadow'] === 0
       ? ++predictionTotals['spring'] && ++predictionTotals['total'] // eslint-disable-line indent
       : ++predictionTotals['null'] // eslint-disable-line indent
+
+    predictionTotals.prediction =
+      predictionTotals.winter === predictionTotals.spring
+        ? 'tied'
+        : predictionTotals.winter >= predictionTotals.spring
+        ? 'winter' // eslint-disable-line indent
+        : 'spring' // eslint-disable-line indent
   })
 
   // sort by most predictions to least predictions
@@ -496,16 +527,19 @@ router.get('/predictions/:year', validYear, function (req, res) {
   })
 
   /* eslint-disable */
+  const predictionTied = predictionTotals['prediction'] === 'tied'
   const intro = {
     lead: `In ${year}, Groundhog Day was on ${dateString}`,
-    predictionIntro:
-      predictionTotals['winter'] === predictionTotals['spring'] ? '' : 'Most groundhogs predicted',
+    predictionTied,
+    predictionPercent: predictionTied
+      ? 0
+      : getPercent(predictionTotals[predictionTotals['prediction']], predictionTotals['total']),
     predictionConclusion:
       predictionTotals['total'] === 0
         ? 'No predictions were reported for this year'
-        : predictionTotals['winter'] === predictionTotals['spring']
+        : predictionTotals['prediction'] === 'tied'
         ? 'Half of groundhogs predicted an early spring, and half predicted a longer winter'
-        : predictionTotals['winter'] > predictionTotals['spring']
+        : predictionTotals['prediction'] === 'winter'
         ? 'a longer winter'
         : 'an early spring',
   }
