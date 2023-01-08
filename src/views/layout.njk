@@ -71,8 +71,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=Readex+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" >
-
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -86,6 +84,10 @@
       <!-- Speakable structured data -->
       <script type="application/ld+json">{{ path | richResultsSpeakable(title) | safe }}</script>
     {%- endif %}
+
+    {% block header_scripts %}{% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" >
   </head>
   <body class="{% block body_classes %}{% endblock %}">
     <a class="skip-link" href="#main">Skip to main content <img src="/images/logo--white.png" class="logo--img" alt="" aria-hidden="true" /></a>

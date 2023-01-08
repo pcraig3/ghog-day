@@ -39,6 +39,8 @@
     "helmet": "^6.0.1",
     "http-errors": "~2.0.0",
     "image-size": "^1.0.2",
+    "leaflet": "^1.9.3",
+    "leaflet.markercluster": "^1.5.3",
     "list.js": "github:iamrobert/list.js#patch-1",
     "morgan": "~1.10.0",
     "nunjucks": "^3.2.3",

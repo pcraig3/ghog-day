@@ -1,0 +1,57 @@
+@use '../vars';
+
+#map { 
+  height: 500px;
+  border: 2px solid black;
+}
+
+.leaflet-popup-tip-container,
+.leaflet-tooltip-top::before {
+  display: none;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-tooltip {
+  border-radius: 0;
+  border: 2px solid black;
+}
+
+.leaflet-popup-content,
+.leaflet-tooltip {
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: 300;
+  margin: vars.$space-md vars.$space-lg vars.$space-md vars.$space-md;
+}
+
+.leaflet-popup-content a {
+  color: black;
+}
+
+.leaflet-popup-content .groundhog-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.leaflet-popup--triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-right: 25px solid vars.$color-spring;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+
+.leaflet-popup--winter .leaflet-popup--triangle {
+  color: vars.$color-winter;
+}
+
+.leaflet-popup--none .leaflet-popup--triangle {
+  border-right-color: #eee;
+}
+
+.leaflet-tooltip-pane {
+  z-index: 701;
+}

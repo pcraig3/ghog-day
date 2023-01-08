@@ -10,7 +10,7 @@
     "sourceType": "module"
   },
   "plugins": ["jest"],
-  "ignorePatterns": ["**/vendor/*.js"],
+  "ignorePatterns": ["**/vendor/*.js", "/public/javascripts/vendor/**"],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1, "ignoredNodes": ["TemplateLiteral *"] }],
     "linebreak-style": 0,

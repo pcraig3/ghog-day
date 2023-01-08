@@ -748,6 +748,19 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   })
 })
 
+/* get groundhogs and then spit them out on the map */
+router.get('/map', function (req, res) {
+  const groundhogs = getGroundhogs({ oldestFirst: true })
+
+  res.render('pages/map', {
+    title: 'Map',
+    pageMeta: _getPageMeta(req, {
+      description: 'Groundhog Day map, we love it.',
+    }),
+    groundhogs,
+  })
+})
+
 // Import the express-openapi-validator library
 const OpenApiValidator = require('express-openapi-validator')
 
