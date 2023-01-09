@@ -1,8 +1,10 @@
+@use '../mixins';
 @use '../vars';
 
 #map { 
   height: 500px;
   border: 2px solid black;
+  z-index: 1;
 }
 
 .leaflet-popup-tip-container,
@@ -54,4 +56,10 @@
 
 .leaflet-tooltip-pane {
   z-index: 701;
+}
+
+@include mixins.mobile {
+  .leaflet-popup {
+    bottom: -3px !important;
+  }
 }

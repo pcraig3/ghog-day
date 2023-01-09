@@ -2,6 +2,8 @@
 @use '../vars';
 
 nav {
+  z-index: 2;
+
   ul {
     margin: 0;
     padding: 0;
