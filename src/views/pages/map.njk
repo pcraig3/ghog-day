@@ -22,7 +22,23 @@
 
   <p>Welcome to the map of all the groundhogs. It is mostly working.</p>
 
-  <div id="map"></div>
+  <div class="map--container">
+    <div class="map--list">
+      <ul>
+        {% for g in groundhogs %}
+          <li>
+            <div class="card card--winter">
+              <div class="name card--heading h5">{{ g.name }}</div>
+              <div class="card--subhead">{{ g.type }}</div>
+              <div class="card--subhead">{{ g.city }}, {{ g.region }}</div>
+              <div class="card--subhead">{{ g.predictionsCount }} predictions since {{ g.predictions[0].year }}</div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div id="map" class="map--leaflet"></div>
+  </div>
 {% endblock %}
 
 {% block footer_scripts %}

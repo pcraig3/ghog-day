@@ -1,10 +1,53 @@
 @use '../mixins';
 @use '../vars';
 
-#map { 
-  height: 500px;
-  border: 2px solid black;
+.map--container {
+  display: flex;
+  gap: vars.$space-lg;
+}
+
+.map--list,
+.map--leaflet {
+  height: 502px;
   z-index: 1;
+}
+
+.map--list {
+  flex: 2;
+  overflow: scroll;
+  padding-right: vars.$space-lg;
+  border-top: 2px solid transparent;
+
+  &:hover {
+    border-top: 2px dotted black;
+    border-bottom: 2px dotted black;
+  }
+}
+
+.map--leaflet {
+  flex: 3 0 200px;
+  border: 2px solid black;
+  margin-top: 2px;
+}
+
+.map--list {
+  li:not(:last-of-type) {
+      margin-bottom: vars.$space-md;
+  }
+
+  .card {
+    width: 100%;
+    padding-bottom: vars.$space-md;
+  }
+
+  .card--heading {
+    margin-bottom: vars.$space-xs;
+  }
+
+  .card--subhead {
+    margin-left: vars.$space-md;
+    margin-bottom: 0;
+  }
 }
 
 .leaflet-popup-tip-container,
@@ -47,7 +90,7 @@
 }
 
 .leaflet-popup--winter .leaflet-popup--triangle {
-  color: vars.$color-winter;
+  border-right-color: vars.$color-winter;
 }
 
 .leaflet-popup--none .leaflet-popup--triangle {

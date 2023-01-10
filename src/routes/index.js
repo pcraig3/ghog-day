@@ -752,6 +752,15 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 router.get('/map', function (req, res) {
   const groundhogs = getGroundhogs({ oldestFirst: true })
 
+  // add latestPrediction to all groundhogs
+  groundhogs.map((g) => {
+    const { shadow } = g.predictions[g.predictions.length - 1]
+    g['latestPrediction'] = shadow === null ? '' : shadow ? 'winter' : 'spring'
+  })
+
+  // sort groundhogs by name
+  groundhogs.sort((a, b) => a.name.localeCompare(b.name))
+
   res.render('pages/map', {
     title: 'Map',
     pageMeta: _getPageMeta(req, {

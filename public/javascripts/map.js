@@ -57,24 +57,19 @@ gh.map((g, i) => {
   let [lat, long] = g.coordinates.split(',')
   let marker = L.marker([lat, long], { icon: divIcon, id: i })
 
-  const latestPrediction = g.predictions[g.predictions.length - 1]
-  const currentPrediction =
-    latestPrediction.shadow === null ? '' : latestPrediction.shadow ? '❄️' : '🌼'
-
+  const icon = !g.latestPrediction ? '' : g.latestPrediction === 'winter' ? '❄️' : '🌼'
   const popupOptions = {
-    className: `leaflet-popup--${
-      latestPrediction.shadow === null ? 'none' : latestPrediction.shadow ? 'winter' : 'spring'
-    }`,
+    className: `leaflet-popup--${!g.latestPrediction ? 'none' : g.latestPrediction}`,
     closeButton: false,
   }
 
   marker.bindPopup(
     `<span class="leaflet-popup--triangle"></span>
-        <strong class="groundhog-name"><a href="https://groundhog-day.com/groundhogs/${g.slug}">${g.name}</a></strong> ${currentPrediction}
+        <strong class="groundhog-name"><a href="https://groundhog-day.com/groundhogs/${g.slug}">${g.name}</a></strong> ${icon}
         <br />
-        ${g.city}, ${g.region}
+        ${g.type}
         <br />
-        ${g.type}`,
+        ${g.city}, ${g.region}`,
     popupOptions,
   )
 
