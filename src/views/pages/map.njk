@@ -24,10 +24,10 @@
 
   <div class="map--container">
     <div class="map--list">
-      <ul>
+      <ul id="sortable--map">
         {% for g in groundhogs %}
           <li>
-            <div class="card card--winter">
+            <div class="card" data-id="{{ g.id }}">
               <div class="name card--heading h5">{{ g.name }}</div>
               <div class="card--subhead">{{ g.type }}</div>
               <div class="card--subhead">{{ g.city }}, {{ g.region }}</div>

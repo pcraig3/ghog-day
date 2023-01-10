@@ -53,9 +53,9 @@ function setActiveIcon(marker) {
 var markers = L.markerClusterGroup({ maxClusterRadius: 27, disableClusteringAtZoom: 6 })
 
 /* create marker for each groundhog */
-gh.map((g, i) => {
+gh.map((g) => {
   let [lat, long] = g.coordinates.split(',')
-  let marker = L.marker([lat, long], { icon: divIcon, id: i })
+  let marker = L.marker([lat, long], { icon: divIcon, id: g.id })
 
   const icon = !g.latestPrediction ? '' : g.latestPrediction === 'winter' ? '❄️' : '🌼'
   const popupOptions = {
@@ -83,14 +83,14 @@ gh.map((g, i) => {
   marker.bindTooltip(g.name, tooltipOptions).openTooltip()
 
   marker.on('mouseover', function () {
-    if (iMarker === i) return
+    if (iMarker === this.options.id) return
     setTimeout(setActiveIcon, 5, this)
 
     if (iMarker >= 0 && !markerArray[iMarker].isPopupOpen()) {
       // marker exists does not have an open popup
       markerArray[iMarker].setIcon(divIcon)
     }
-    iMarker = i
+    iMarker = this.options.id
   })
 
   marker.on('mouseout popupclose', function (e) {
@@ -114,9 +114,28 @@ gh.map((g, i) => {
     }
   })
 
-  markerArray[i] = marker
+  markerArray[g.id] = marker
 
   markers.addLayer(marker)
 })
 
 map.addLayer(markers)
+
+function clickItem() {
+  const id = this.dataset.id
+
+  if (iMarker >= 0) markerArray[iMarker].setIcon(divIcon)
+  markerArray[id].setIcon(divIconActive)
+  markerArray[id].openPopup()
+
+  map.flyTo(markerArray[id]._latlng, 6).once('moveend', () => {
+    markerArray[id].openPopup()
+  })
+
+  iMarker = id
+}
+
+var items = document.getElementById('sortable--map').querySelectorAll('.card')
+Array.prototype.forEach.call(items, (item) => {
+  item.addEventListener('click', clickItem, false)
+})

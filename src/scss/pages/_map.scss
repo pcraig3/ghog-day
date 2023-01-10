@@ -14,6 +14,7 @@
 
 .map--list {
   flex: 2;
+  max-width: 350px;
   overflow: scroll;
   padding-right: vars.$space-lg;
   border-top: 2px solid transparent;
@@ -21,6 +22,14 @@
   &:hover {
     border-top: 2px dotted black;
     border-bottom: 2px dotted black;
+  }
+
+  @include mixins.tablet-only {
+    flex: 3;
+  }
+
+  @include mixins.mobile {
+    display: none;
   }
 }
 
