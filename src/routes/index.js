@@ -751,22 +751,32 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 /* get groundhogs and then spit them out on the map */
 router.get('/map', function (req, res) {
   const groundhogs = getGroundhogs({ oldestFirst: true })
+  const totals = {
+    all: groundhogs.length,
+    usa: 0,
+    canada: 0,
+  }
 
-  // add latestPrediction to all groundhogs
   groundhogs.map((g) => {
+    // add latestPrediction to all groundhogs
     const { shadow } = g.predictions[g.predictions.length - 1]
     g['latestPrediction'] = shadow === null ? '' : shadow ? 'winter' : 'spring'
+
+    // update totals
+    totals[g.country.toLowerCase()]++
   })
 
   // sort groundhogs by name
   groundhogs.sort((a, b) => a.name.localeCompare(b.name))
 
   res.render('pages/map', {
-    title: 'Map',
+    title: 'Groundhog Map',
     pageMeta: _getPageMeta(req, {
-      description: 'Groundhog Day map, we love it.',
+      description:
+        'Find your closest groundhog on an interactive map of North America (unless you’re from Saskatchewan).',
     }),
     groundhogs,
+    totals,
   })
 })
 
