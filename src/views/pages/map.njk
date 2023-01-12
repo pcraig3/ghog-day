@@ -5,11 +5,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/javascripts/vendor/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/javascripts/vendor/leaflet/dist/leaflet.css" >
     <script src="/javascripts/vendor/leaflet/dist/leaflet.js"></script>
 
-    <link rel="stylesheet" href="/javascripts/vendor/leaflet.markercluster/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="/javascripts/vendor/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="/javascripts/vendor/leaflet.markercluster/dist/MarkerCluster.css" >
+    <link rel="stylesheet" href="/javascripts/vendor/leaflet.markercluster/dist/MarkerCluster.Default.css" >
     <script src="/javascripts/vendor/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
 {%- endblock %}
 
@@ -18,24 +18,26 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: 'Map', backUrl: '/home', backText: 'Home'}) }}
+  {{ page_header({ h1: 'Groundhog Map', backUrl: '/', backText: 'Home'}) }}
 
   <p>Welcome to the map of all the groundhogs. It is mostly working.</p>
 
   <div class="map--container">
-    <div class="map--list">
-      <ul id="sortable--map">
-        {% for g in groundhogs %}
-          <li>
-            <div class="card" data-id="{{ g.id }}">
-              <div class="name card--heading h5">{{ g.name }}</div>
-              <div class="card--subhead">{{ g.type }}</div>
-              <div class="card--subhead">{{ g.city }}, {{ g.region }}</div>
-              <div class="card--subhead">{{ g.predictionsCount }} predictions since {{ g.predictions[0].year }}</div>
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
+    <div class="map--list--wrapper">
+      <div class="map--list">
+        <ul id="sortable--map">
+          {% for g in groundhogs %}
+            <li>
+              <div class="card" data-id="{{ g.id }}">
+                <div class="name card--heading h5">{{ g.name }}</div>
+                <div class="card--subhead">{{ g.type }}</div>
+                <div class="card--subhead">{{ g.city }}, {{ g.region }}</div>
+                <div class="card--subhead">{{ g.predictionsCount }} predictions since {{ g.predictions[0].year }}</div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
     <div id="map" class="map--leaflet"></div>
   </div>

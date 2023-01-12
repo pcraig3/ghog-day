@@ -4,28 +4,55 @@
 .map--container {
   display: flex;
   gap: vars.$space-lg;
+  height: 500px;
 }
 
 .map--list,
 .map--leaflet {
-  height: 502px;
   z-index: 1;
 }
 
-.map--list {
-  flex: 2;
-  max-width: 350px;
-  overflow: scroll;
-  padding-right: vars.$space-lg;
+.map--list--wrapper,
+.map--leaflet {
+  height: 100%;
   border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.map--list--wrapper {
+  position: relative;
+
+  &::after {
+    content: "";
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1em;
+    position: absolute;
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255, 1) 100%);
+  }
 
   &:hover {
     border-top: 2px dotted black;
     border-bottom: 2px dotted black;
+
+    &::after {
+      height: 2em;
+    }
   }
 
-  @include mixins.tablet-only {
+  .map--list {
     flex: 3;
+    overflow-y: scroll;
+    max-width: 360px;
+    padding-right: vars.$space-lg;
+    height: 100%;
+
+    @include mixins.tablet-only {
+      flex: 4;
+    }
   }
 
   @include mixins.mobile {
@@ -36,7 +63,6 @@
 .map--leaflet {
   flex: 3 0 200px;
   border: 2px solid black;
-  margin-top: 2px;
 }
 
 .map--list {
