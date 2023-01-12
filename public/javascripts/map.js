@@ -1,5 +1,21 @@
 /* global document, L */
 
+const cards = document.querySelector('#sortable--map')
+
+function unselectCards() {
+  cards.querySelectorAll('.card').forEach((e) => e.classList.remove('selected'))
+}
+
+function selectCard(id) {
+  const card = cards.querySelector(`.card[data-id="${id}"]`)
+
+  // if already selected, skip
+  if (!card.classList.contains('selected')) {
+    unselectCards()
+    card.classList.add('selected')
+  }
+}
+
 // https://jsfiddle.net/sxvLykkt/12/
 var gh = JSON.parse(document.getElementById('data').textContent)
 
@@ -93,9 +109,14 @@ gh.map((g) => {
     iMarker = this.options.id
   })
 
+  marker.on('popupopen', function () {
+    selectCard(this.options.id)
+  })
+
   marker.on('mouseout popupclose', function (e) {
     if (e.type !== 'popupclose' && this.isPopupOpen()) return
 
+    unselectCards()
     this.setIcon(divIcon)
     iMarker = -1
   })
@@ -124,7 +145,11 @@ map.addLayer(markers)
 function clickItem() {
   const id = this.dataset.id
 
-  if (iMarker >= 0) markerArray[iMarker].setIcon(divIcon)
+  if (iMarker >= 0) {
+    markerArray[iMarker].setIcon(divIcon)
+  }
+
+  selectCard(id)
   markerArray[id].setIcon(divIconActive)
   markerArray[id].openPopup()
 

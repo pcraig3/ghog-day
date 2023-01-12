@@ -28,12 +28,12 @@
         <ul id="sortable--map">
           {% for g in groundhogs %}
             <li>
-              <div class="card" data-id="{{ g.id }}">
+              <button class="card" data-id="{{ g.id }}">
                 <div class="name card--heading h5">{{ g.name }}</div>
                 <div class="card--subhead">{{ g.type }}</div>
                 <div class="card--subhead">{{ g.city }}, {{ g.region }}</div>
                 <div class="card--subhead">{{ g.predictionsCount }} predictions since {{ g.predictions[0].year }}</div>
-              </div>
+              </button>
             </li>
           {% endfor %}
         </ul>

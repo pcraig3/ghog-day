@@ -35,8 +35,8 @@
   }
 
   &:hover {
-    border-top: 2px dotted black;
-    border-bottom: 2px dotted black;
+    border-top: 2px dashed black;
+    border-bottom: 2px dashed black;
 
     &::after {
       height: 2em;
@@ -73,6 +73,17 @@
   .card {
     width: 100%;
     padding-bottom: vars.$space-md;
+    line-height: 1.75;
+
+    &.selected {
+      background: rgba(180, 180, 180, 0.15);
+      outline: 2px dotted black;
+      outline-offset: -8px;
+
+      .card--heading {
+        color: vars.$color-focus;
+      }
+    }
   }
 
   .card--heading {
