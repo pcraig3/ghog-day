@@ -81,7 +81,7 @@ gh.map((g) => {
 
   marker.bindPopup(
     `<span class="leaflet-popup--triangle"></span>
-        <strong class="groundhog-name"><a href="https://groundhog-day.com/groundhogs/${g.slug}">${g.name}</a></strong> ${icon}
+        <strong class="groundhog-name"><a href="/groundhogs/${g.slug}">${g.name}</a></strong> ${icon}
         <br />
         ${g.type}
         <br />
@@ -142,7 +142,10 @@ gh.map((g) => {
 
 map.addLayer(markers)
 
-function clickItem() {
+function clickItem(e) {
+  // if clicked the "More info" button, do nothing
+  if (e.target.tagName === 'A') return
+
   const id = this.dataset.id
 
   if (iMarker >= 0) {

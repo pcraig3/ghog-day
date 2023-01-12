@@ -32,7 +32,7 @@
                 <div class="name card--heading h5">{{ g.name }}</div>
                 <div class="card--subhead">{{ g.type }}</div>
                 <div class="card--subhead">{{ g.city }}, {{ g.region }}</div>
-                <div class="card--subhead">{{ g.predictionsCount }} predictions since {{ g.predictions[0].year }}</div>
+                <div class="card--subhead"><a class="link-button" href="/groundhogs/{{ g.slug }}">More information<span class="visually-hidden">about {{ g.name }}</span></a></div>
               </button>
             </li>
           {% endfor %}

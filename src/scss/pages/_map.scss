@@ -73,26 +73,42 @@
   .card {
     width: 100%;
     padding-bottom: vars.$space-md;
-    line-height: 1.75;
+    line-height: 1.65;
+
+    &:hover {
+      .card--heading {
+        color: black;
+        text-decoration: none;
+      }
+    }
 
     &.selected {
       background: rgba(180, 180, 180, 0.15);
       outline: 2px dotted black;
       outline-offset: -8px;
-
-      .card--heading {
-        color: vars.$color-focus;
-      }
     }
   }
 
   .card--heading {
     margin-bottom: vars.$space-xs;
+    text-decoration: none;
   }
 
   .card--subhead {
     margin-left: vars.$space-md;
     margin-bottom: 0;
+  }
+
+  a.link-button {
+    @include mixins.button;
+    display: inline-block;
+    margin-top: vars.$space-sm;
+    font-size: 85%;
+    background: white;
+
+    &:hover {
+      color: vars.$color-focus !important;
+    }
   }
 }
 
