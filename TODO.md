@@ -12,11 +12,21 @@ TODO
   - Accessible announcements of how many results for a search
 - Add RichResults
   - Dataset lol
-- Add groundhog map
 - Add location pin link to groundhog profile
+- Add Groundhog Map
+  - Add to sitemap
+  - Accessible search
+  - Add some text for screenreaders: they are probably better off with the table.
 
 DONE
 
+- Add Groundhog Map
+  - Show them all on a map
+  - Custom pins
+  - Custom tooltip
+  - Add a list
+  - Filter the list
+  - Link the page
 - Move "All ..." links on index page so people see them
 - Make sure there is always a Canadian groundhog on the index page
 - Add consensus information to groundhog predictions

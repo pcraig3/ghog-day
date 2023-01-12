@@ -1,13 +1,13 @@
 /* global document, L */
 
-const cards = document.querySelector('#sortable--map')
+const cardList = document.querySelector('#sortable--map ul.list')
 
 function unselectCards() {
-  cards.querySelectorAll('.card').forEach((e) => e.classList.remove('selected'))
+  cardList.querySelectorAll('.card').forEach((e) => e.classList.remove('selected'))
 }
 
 function selectCard(id) {
-  const card = cards.querySelector(`.card[data-id="${id}"]`)
+  const card = cardList.querySelector(`.card[data-id="${id}"]`)
 
   // if already selected, skip
   if (!card.classList.contains('selected')) {
@@ -163,7 +163,7 @@ function clickItem(e) {
   iMarker = id
 }
 
-var items = document.getElementById('sortable--map').querySelectorAll('.card')
+var items = cardList.querySelectorAll('.card')
 Array.prototype.forEach.call(items, (item) => {
   item.addEventListener('click', clickItem, false)
 })

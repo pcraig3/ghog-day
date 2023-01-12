@@ -60,7 +60,8 @@ th[data-sort].sort {
   padding-right: 30px;
 }
 
-.sortable--groundhogs--search--container {
+.sortable--groundhogs--search--container,
+.sortable--map--search--container {
   padding-top: 5px;
 
   input {

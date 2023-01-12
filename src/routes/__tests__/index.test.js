@@ -117,6 +117,25 @@ describe('Test ui responses', () => {
       expect($('link[rel="canonical"]').attr('href')).toMatch('/groundhog-day-2023')
     })
   })
+
+  describe('Test /map response', () => {
+    test('it should return 200', async () => {
+      const response = await request(app).get('/map')
+      expect(response.statusCode).toBe(200)
+    })
+
+    test('it should return the h1, title, meta tag, and canonical link', async () => {
+      const response = await request(app).get('/map')
+      const $ = cheerio.load(response.text)
+
+      expect($('title').text()).toEqual('Groundhog Map — GROUNDHOG-DAY.com')
+      expect($('h1').text()).toEqual('Groundhog Map')
+      expect($('meta[name="description"]').attr('content')).toEqual(
+        'Find your closest groundhog on an interactive map of North America (unless you’re from Saskatchewan).',
+      )
+      expect($('link[rel="canonical"]').attr('href')).toMatch('/map')
+    })
+  })
 })
 
 // TEST API responses

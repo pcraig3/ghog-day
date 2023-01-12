@@ -5,6 +5,7 @@
   display: flex;
   gap: vars.$space-lg;
   height: 500px;
+  margin-top: vars.$space-xxl;
 }
 
 .map--list,
@@ -35,12 +36,15 @@
   }
 
   &:hover {
-    border-top: 2px dashed black;
     border-bottom: 2px dashed black;
 
     &::after {
       height: 2em;
     }
+  }
+
+  @include mixins.mobile {
+    display: none;
   }
 
   .map--list {
@@ -55,8 +59,19 @@
     }
   }
 
-  @include mixins.mobile {
-    display: none;
+  .sortable--map--search--container {
+    padding-top: 0;
+    margin-top: calc(-1 * vars.$space-sm);
+  }
+
+  .top-border {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: calc(100% + 1rem);
+    border-top: 2px solid black;
+    margin-top: vars.$space-lg;
+    margin-bottom: vars.$space-lg;
   }
 }
 
@@ -66,7 +81,7 @@
 }
 
 .map--list {
-  li:not(:last-of-type) {
+  li {
       margin-bottom: vars.$space-md;
   }
 
