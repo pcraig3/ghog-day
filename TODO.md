@@ -17,6 +17,8 @@ TODO
   - Add to sitemap
   - Accessible search
   - Add some text for screenreaders: they are probably better off with the table.
+  - Add FB share photo of the map
+- Update sitemap
 
 DONE
 
