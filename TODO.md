@@ -14,15 +14,16 @@ TODO
   - Dataset lol
 - Add location pin link to groundhog profile
 - Add Groundhog Map
-  - Add to sitemap
   - Accessible search
   - Add some text for screenreaders: they are probably better off with the table.
   - Add FB share photo of the map
-- Update sitemap
+  - Add query param that selects a groundhog when the page loads
 
 DONE
 
+- Update sitemap
 - Add Groundhog Map
+  - Add to sitemap
   - Show them all on a map
   - Custom pins
   - Custom tooltip

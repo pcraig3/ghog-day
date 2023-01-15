@@ -9,7 +9,12 @@
 
 <url>
   <loc>https://groundhog-day.com/</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/map</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -19,13 +24,13 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/about</loc>
@@ -39,22 +44,22 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhog-day-2023</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2022</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2021</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2020</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -79,7 +84,52 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/buffalo-bert</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/middlemiss-mike</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/smith-lake-jake</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/mount-joy-minnie</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/wildwood-willie</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/chuck-wood</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/mount-gretna-grady</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/patty-pagoda</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/stumptown-fil</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/yonah-the-groundhog</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -464,8 +514,53 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/buffalo-bert/predictions</loc>
-  <lastmod>2023-01-02T23:16:12+00:00</lastmod>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/middlemiss-mike/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/smith-lake-jake/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/mount-joy-minnie/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/wildwood-willie/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/chuck-wood/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/mount-gretna-grady/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/patty-pagoda/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/stumptown-fil/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/yonah-the-groundhog/predictions</loc>
+  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/punxsutawney-phil/predictions</loc>
