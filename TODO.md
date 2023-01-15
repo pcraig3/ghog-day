@@ -16,13 +16,13 @@ TODO
 - Add Groundhog Map
   - Accessible search
   - Add some text for screenreaders: they are probably better off with the table.
-  - Add FB share photo of the map
   - Add query param that selects a groundhog when the page loads
 
 DONE
 
 - Update sitemap
 - Add Groundhog Map
+  - Add FB share photo of the map
   - Add to sitemap
   - Show them all on a map
   - Custom pins

@@ -133,6 +133,7 @@ describe('Test ui responses', () => {
       expect($('meta[name="description"]').attr('content')).toEqual(
         'Find your closest groundhog on an interactive map of North America (unless you’re from Saskatchewan).',
       )
+      expect($('meta[property="og:image"]').attr('content')).toMatch('/images/map.jpeg')
       expect($('link[rel="canonical"]').attr('href')).toMatch('/map')
     })
   })

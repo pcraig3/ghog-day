@@ -45,12 +45,17 @@
       {%- endif %}
       
       <!-- twitter card tags additive with the og: tags -->
-      {%- if "image" in pageMeta -%}
+      {%- if "image" in pageMeta %}
         <meta property="og:image" content="{{ pageMeta.baseUrl }}images/ghogs/og-image/{{- pageMeta.image -}}.jpeg" >
         <meta property="og:image:type" content="image/jpg" >
         <meta property="og:image:width" content="{{ pageMeta.imageWidth }}" >
         <meta property="og:image:height" content="{{ pageMeta.imageHeight }}" >
-      {% else %}
+      {%- elif path == '/map' %}
+        <meta property="og:image" content="{{ pageMeta.baseUrl }}images/map.jpeg" >
+        <meta property="og:image:type" content="image/jpg" >
+        <meta property="og:image:width" content="1200" >
+        <meta property="og:image:height" content="630" >
+      {%- else %}
         <meta property="og:image" content="{{ pageMeta.baseUrl }}images/og-image-ghog-day-2.png" >
         <meta property="og:image:type" content="image/png" >
         <meta property="og:image:width" content="1200" >
@@ -60,9 +65,11 @@
         <meta name="twitter:card" content="summary" >
         <meta name="twitter:creator" content="@pcraig3" >
         <meta name="twitter:card" content="summary_large_image" >
-      {%- if "image" in pageMeta -%}
+      {%- if "image" in pageMeta %}
         <meta name="twitter:image" content="{{ pageMeta.baseUrl }}images/ghogs/og-image/{{- pageMeta.image -}}.jpeg" >
-      {% else %}
+      {%- elif path == '/map' %}
+        <meta name="twitter:image" content="{{ pageMeta.baseUrl }}images/map.jpeg" >
+      {%- else %}
         <meta name="twitter:image" content="{{ pageMeta.baseUrl }}images/og-image-ghog-day-2.png" >
       {%- endif %}
     {% endif %}
