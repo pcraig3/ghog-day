@@ -106,6 +106,8 @@ const _getName = (path) => {
       return _uppercase(path.split('-').shift())
     case 'api':
       return 'API'
+    case 'map':
+      return 'Groundhog Map'
     case 'groundhogs-in-canada':
       return 'Groundhogs in Canada'
     case 'groundhogs-in-usa':
