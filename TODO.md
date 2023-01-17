@@ -8,20 +8,21 @@ TODO
   - Countdown page
   - Groundhog nearest to you
   - Page of the most out-there facts
-- Sortable tables
-  - Accessible announcements of how many results for a search
 - Add RichResults
   - Dataset lol
 - Add location pin link to groundhog profile
 - Add Groundhog Map
-  - Accessible search
   - Add some text for screenreaders: they are probably better off with the table.
   - Add query param that selects a groundhog when the page loads
+  - Check kayboard/screenreader for base functionality
 
 DONE
 
+- Sortable tables
+  - Accessible announcements of how many results for a search
 - Update sitemap
 - Add Groundhog Map
+  - Accessible search
   - Add FB share photo of the map
   - Add to sitemap
   - Show them all on a map

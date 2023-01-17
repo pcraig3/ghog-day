@@ -27,9 +27,15 @@
   <div class="map--container">
     <div class="map--list--wrapper" >
       <div class="map--list" id="sortable--map">
-        <form role="search" class="sortable--map--search--container">
-          <label for="sortable--map--search">Search for a groundhog:</label>
-          <input id="sortable--map--search" class="search" placeholder="Chuck…" type="search" />
+        <form class="sortable--map--search--container">
+          <div role="search">
+            <label for="sortable--map--search">Find groundhogs by name:</label>
+            <div class="sortable--map--search--results">
+              <span class="visually-hidden">Groundhogs will be filtered as you type</span>
+              <input id="sortable--map--search" class="search" placeholder="Chuck…" type="search" />
+              <span id="sortable--map--results" class="results" aria-live="polite"></span>
+            </div>
+          </div>
         </form>
 
         <div class="top-border"></div>
@@ -64,4 +70,5 @@
       valueNames: ['name', 'type', 'location']
     });
   </script>
+  <script src="/javascripts/filter.js"></script>
 {% endblock %}

@@ -64,6 +64,10 @@ th[data-sort].sort {
 .sortable--map--search--container {
   padding-top: 5px;
 
+  .sortable--groundhogs--search--results {
+    display: inline-block;
+  }
+
   input {
     -webkit-appearance: none;
     border: 1.5px solid black;
@@ -76,6 +80,13 @@ th[data-sort].sort {
     }
   }
 
+  .results {
+    display: inline-block;
+    width: 90px;
+    color: #555;
+    margin-left: vars.$space-xs;
+  }
+
   @include mixins.mobile-xs {
     margin-left: vars.$space-xs;
     margin-bottom: vars.$space-xs;
@@ -83,6 +94,7 @@ th[data-sort].sort {
     input {
       padding: 5px 8px;
       margin-top: 3px;
+      margin-bottom: 1px;
     }
   }
 }

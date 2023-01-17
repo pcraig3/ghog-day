@@ -11,6 +11,7 @@
       valueNames: ['name', 'region', 'country', 'latest', 'count']
     });
   </script>
+  <script src="/javascripts/filter.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -24,7 +25,7 @@
         {% block groundhogsIntro %}
           <p>
             There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs in <a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canada</a> or <a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">the USA</a> who made predictions in 2022 — including <a href="/alternative-groundhogs"><strong>{{ groundhogTypes.other }}</strong> ‘alternative’ prognosticators</a>.
-            See where they live on the <a href="/map">Groundhog Map</a>.</p>
+          See where they live on the <a href="/map">Groundhog Map</a>.</p>
           <p>If you don’t see your favourite prognosticator, feel free to
             <a class="link--icon" href="add-groundhog">
               {{ icon({ add: true }) }} <span>add a groundhog</span>
@@ -33,9 +34,15 @@
         {% endblock %}
       </div>
       <div id="sortable--groundhogs">
-        <form role="search" class="sortable--groundhogs--search--container">
-          <label for="sortable--groundhogs--search">Find groundhogs by name:</label>
-          <input id="sortable--groundhogs--search" class="search" placeholder="{% block groundhogsPlaceholder %}Chuck…{% endblock %}" type="search" />
+        <form class="sortable--groundhogs--search--container">
+          <div role="search">
+            <label for="sortable--groundhogs--search">Find groundhogs by name:</label>
+            <div class="sortable--groundhogs--search--results">
+              <span class="visually-hidden">Groundhogs will be filtered as you type</span>
+              <input id="sortable--groundhogs--search" class="search" placeholder="{% block groundhogsPlaceholder %}Chuck…{% endblock %}" type="search" />
+              <span id="sortable--groundhogs--results" class="results" aria-live="polite"></span>
+            </div>
+          </div>
         </form>
 
         {% block groundhogsTable %}
