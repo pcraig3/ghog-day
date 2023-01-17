@@ -22,6 +22,7 @@ DONE
   - Accessible announcements of how many results for a search
 - Update sitemap
 - Add Groundhog Map
+  - Make the map more visible with a fun SVG
   - Accessible search
   - Add FB share photo of the map
   - Add to sitemap

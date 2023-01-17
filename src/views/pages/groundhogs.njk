@@ -24,11 +24,12 @@
       <div class="max-width--850">
         {% block groundhogsIntro %}
           <p>
-            There are <strong>{{ groundhogs | length }}</strong> weather-predicting groundhogs in <a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canada</a> or <a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">the USA</a> who made predictions in 2022 — including <a href="/alternative-groundhogs"><strong>{{ groundhogTypes.other }}</strong> ‘alternative’ prognosticators</a>.
-          See where they live on the <a href="/map">Groundhog Map</a>.</p>
-          <p>If you don’t see your favourite prognosticator, feel free to
-            <a class="link--icon" href="add-groundhog">
-              {{ icon({ add: true }) }} <span>add a groundhog</span>
+            There are <strong>{{ groundhogs | length }}</strong> weather-forecasting prognosticators in <a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canada</a> or <a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">the USA</a> who made predictions in 2022 — including <a href="/alternative-groundhogs"><strong>{{ groundhogTypes.other }}</strong> ‘alternative’ groundhogs</a>.
+          </p>
+          <p>
+            Locate your fave prognosticator on the
+            <a class="link--icon" href="/map">
+              {{ icon({ map: true }) }} <span>Groundhog Map</span>
             </a>.
           </p>
         {% endblock %}
@@ -87,6 +88,13 @@
           </div>
         {% endblock %}
       </div>
+    </div>
+    <div style="margin-top: 1.5em;">
+      <p class="mb--0">If you don’t see your favourite prognosticator, feel free to
+        <a class="link--icon underline" href="/add-groundhog">
+          {{ icon({ add: true }) }} <span>add a groundhog</span>
+        </a>.
+      </p>
     </div>
   </div>
 {% endblock %}
