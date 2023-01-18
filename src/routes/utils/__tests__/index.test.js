@@ -5,6 +5,7 @@ const {
   getPercent,
   getRandomItems,
   parseBoolean,
+  removeTrailingSlashes,
 } = require('../index')
 
 jest.useFakeTimers()
@@ -125,5 +126,30 @@ describe('Test parseBoolean', () => {
     test(`returns null for value: “${val}”`, () => {
       expect(parseBoolean(val)).toBeUndefined()
     })
+  })
+})
+
+describe('Test removeTrailingSlashes', () => {
+  test('removes trailing slashes from the end of a url', () => {
+    expect(removeTrailingSlashes('https://www.example.com/')).toBe('https://www.example.com')
+    expect(removeTrailingSlashes('https://www.example.com////')).toBe('https://www.example.com')
+  })
+
+  test('returns the original url if there are no trailing slashes', () => {
+    expect(removeTrailingSlashes('https://www.example.com')).toBe('https://www.example.com')
+  })
+
+  test('returns the original url with slashes if there is a query param', () => {
+    expect(removeTrailingSlashes('https://www.example.com/?name=paul')).toBe(
+      'https://www.example.com/?name=paul',
+    )
+  })
+
+  test('returns an empty string if the input is only slashes', () => {
+    expect(removeTrailingSlashes('////')).toBe('')
+  })
+
+  test('returns an empty string if the input is empty', () => {
+    expect(removeTrailingSlashes('')).toBe('')
   })
 })

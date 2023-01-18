@@ -16,7 +16,7 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: 'Groundhog Map', backUrl: '/groundhogs', backText: 'All groundhogs'}) }}
+  {{ page_header({ h1: 'Groundhog Map', backUrl: back.url, backText: back.text}) }}
 
   <div class="max-width--850">
     <p>There are <a href="/groundhogs"><strong>{{ totals.all }}</strong> prognosticators</a> throughout North America: <a href="/groundhogs-in-usa"><strong>{{ totals.usa }}</strong> in the USA</a>, and <a href="/groundhogs-in-canada"><strong>{{ totals.canada }}</strong> in Canada</a>.

@@ -16,6 +16,7 @@ const {
   getPercent,
   getRandomItems,
   parseBoolean,
+  removeTrailingSlashes,
 } = require('./utils')
 
 /* Constants */
@@ -155,7 +156,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
   const by = identifier === 'slug' ? 'slug' : 'id'
 
-  let { groundhog } = DB()
+  let result = DB()
     .prepare(
       `
     SELECT json_object(
@@ -193,7 +194,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
     )
     .get(value)
 
-  return JSON.parse(groundhog)
+  return result && result.groundhog ? JSON.parse(result.groundhog) : result
 }
 
 const getGroundhogById = (id, { oldestFirst = false } = {}) => {
@@ -315,6 +316,38 @@ const validSlug = (req, res, next) => {
   next()
 }
 
+const validBackUrl = (req, res, next) => {
+  const url =
+    req.session && req.session.prevPath && req.session.prevPath !== req.session.path
+      ? req.session.prevPath
+      : undefined
+  if (!url) return next()
+
+  let back
+  if (url === '/') back = { url: '/', text: 'Home' }
+  else if (url === '/groundhogs') back = { url, text: 'All groundhogs' }
+  else if (url === '/groundhogs-in-canada') back = { url, text: 'Groundhogs in Canada' }
+  else if (url === '/groundhogs-in-usa') back = { url, text: 'Groundhogs in the USA' }
+  else if (url === '/alternative-groundhogs') back = { url, text: 'Alternative groundhogs' }
+  else if (url === '/map') back = { url, text: 'Groundhog Map' }
+  else if (url === '/predictions') back = { url, text: 'Predictions' }
+  else if (url.startsWith('/predictions/')) {
+    const year = parseInt(removeTrailingSlashes(url).split('/').pop())
+    if (year && year >= EARLIEST_RECORDED_PREDICTION && year <= getCurrentYear()) {
+      back = { url, text: `Groundhog Day ${year}` }
+    }
+  } else if (url.startsWith('/groundhogs/')) {
+    const slug = removeTrailingSlashes(url).split('/').pop()
+    const groundhog = getGroundhogBySlug(slug)
+    if (groundhog) {
+      back = { url, text: groundhog.name }
+    }
+  }
+
+  req.locals = { back }
+  next()
+}
+
 const redirectYear = (req, res, next) => {
   if (!req.query.year) {
     return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
@@ -322,6 +355,14 @@ const redirectYear = (req, res, next) => {
 
   next()
 }
+
+/* keep previous path in session */
+router.use((req, res, next) => {
+  if (!req.session) req.session = {}
+  if (req.session.path) req.session.prevPath = req.session.path
+  req.session.path = req.path
+  next()
+})
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -490,7 +531,10 @@ router.get('/predictions/2023', function (req, res) {
 })
 
 /* GET predictions page for a year. */
-router.get('/predictions/:year', validYear, function (req, res) {
+router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
+  const back =
+    req.locals && req.locals.back ? req.locals.back : { url: '/predictions', text: 'Predictions' }
+
   const year = parseInt(req.params.year)
   const predictionTotals = {
     years: 0,
@@ -562,12 +606,15 @@ router.get('/predictions/:year', validYear, function (req, res) {
       description: `${intro.lead}. ${intro.predictionIntro} ${intro.predictionConclusion}.`,
       speakable: true,
     }),
+    back,
   })
 })
 
 /* GET 2023 (upcoming) page */
 /* ~@TODO: make this general. not hardcoded */
-router.get('/groundhog-day-2023', function (req, res) {
+router.get('/groundhog-day-2023', validBackUrl, function (req, res) {
+  const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
+
   const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
   let predictions = getPredictionsByYear(2022)
   predictions.forEach((prediction) => {
@@ -594,6 +641,7 @@ router.get('/groundhog-day-2023', function (req, res) {
       description: `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
       speakable: true,
     }),
+    back,
   })
 })
 
@@ -685,7 +733,10 @@ const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear
 }
 
 /* GET single groundhog */
-router.get('/groundhogs/:slug', validSlug, (req, res) => {
+router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
+  const back =
+    req.locals && req.locals.back ? req.locals.back : { url: '/groundhogs', text: 'All groundhogs' }
+
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
   let nullPredictions = 0
   groundhog.predictions.forEach((p) => p.shadow === null && ++nullPredictions)
@@ -700,6 +751,7 @@ router.get('/groundhogs/:slug', validSlug, (req, res) => {
       slug: groundhog.slug,
       speakable: true,
     }),
+    back,
   })
 })
 
@@ -749,7 +801,9 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 })
 
 /* get groundhogs and then spit them out on the map */
-router.get('/map', function (req, res) {
+router.get('/map', validBackUrl, function (req, res) {
+  const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
+
   const groundhogs = getGroundhogs({ oldestFirst: true })
   const totals = {
     all: groundhogs.length,
@@ -780,6 +834,7 @@ router.get('/map', function (req, res) {
     groundhogs,
     initial: groundhog ? groundhog.id : '',
     totals,
+    back,
   })
 })
 

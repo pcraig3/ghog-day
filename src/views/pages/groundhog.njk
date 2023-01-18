@@ -6,7 +6,7 @@
 
 {% block content %}
   {% set dataUrl = ['/api/v1/groundhogs/', groundhog.slug] | join %}
-  {{ page_header({ h1: groundhog.name, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: dataUrl }) }}
+  {{ page_header({ h1: groundhog.name, backUrl: back.url, backText: back.text, dataUrl: dataUrl }) }}
 
   <div class="inner-content inner-content--with-summary">
     <div class="flash">

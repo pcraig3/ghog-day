@@ -14,10 +14,13 @@ TODO
   - Add some text for screenreaders: they are probably better off with the table.
   - Check keyboard/screenreader for base functionality
   - Fix how the list looks mobile
-- Back link can change for groundhog map
+- Fix the whole site for 2024
+- Put map groundhogs derivatives
 
 DONE
 
+- Back link can change for groundhog map
+  - Basically make the back link know what page you came from
 - Add location pin link to groundhog profile
 - Sortable tables
   - Accessible announcements of how many results for a search
