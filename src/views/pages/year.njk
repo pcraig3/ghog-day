@@ -31,7 +31,7 @@
 {% block content %}
   {% set h1 = ['Groundhog Day ', years.year] | join %}
   {% set dataUrl = ['/api/v1/predictions?year=', years.year] | join %}
-  {{ page_header({ h1: h1, backUrl: '/predictions', backText: 'Predictions', dataUrl: dataUrl }) }}
+  {{ page_header({ h1: h1, backUrl: back.url, backText: back.text, dataUrl: dataUrl }) }}
 
   <p class="speakable">
     {%- if not intro.predictionTied -%}

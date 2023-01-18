@@ -30,6 +30,10 @@ a {
   display: inline-flex;
   align-items: center;
 
+  > svg {
+    fill: black;
+  }
+
   > .icon {
     margin-right: vars.$space-xs;
     height: 20px;

@@ -56,6 +56,18 @@ footer {
   }
 }
 
+@include mixins.tablet-only {
+  body.map {
+    grid: auto-flow min-content / 1fr 5fr;
+    grid-template-areas:
+      'header header'
+      'nav    ...   '
+      'main   main  '
+      'main   main  '
+      'footer ...   ';
+  }
+}
+
 @include mixins.desktop {
   body {
     grid: auto-flow min-content / 1fr 4fr;

@@ -7,6 +7,8 @@ const nunjucks = require('nunjucks')
 const helmet = require('helmet')
 const DB = require('better-sqlite3-helper')
 const cors = require('cors')
+const session = require('express-session')
+const { randomUUID } = require('crypto')
 
 // The first call creates the global instance with your settings
 DB({
@@ -66,6 +68,18 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(helmet({ contentSecurityPolicy: false }))
 app.use(cors())
+app.use(
+  session({
+    secret: randomUUID(),
+    saveUninitialized: true,
+    cookie: {
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 1000 * 60 * 60 * 24, // one day
+    },
+    resave: false,
+  }),
+)
 
 // if NODE_ENV does not equal 'test', add a request logger
 process.env.NODE_ENV !== 'test' && app.use(logger('dev'))

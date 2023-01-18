@@ -57,6 +57,9 @@ const parseBoolean = (value) => {
   return yes.includes(value) ? 1 : no.includes(value) ? 0 : undefined
 }
 
+// https://gist.github.com/jens1101/9f3faa6c2dae23537257f1c3d0afdfdf
+const removeTrailingSlashes = (url) => url.replace(/\/+$/, '')
+
 module.exports = {
   getCurrentYear,
   getDaysToGroundhogDay,
@@ -64,4 +67,5 @@ module.exports = {
   getPercent,
   getRandomItems,
   parseBoolean,
+  removeTrailingSlashes,
 }

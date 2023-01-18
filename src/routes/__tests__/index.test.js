@@ -136,6 +136,32 @@ describe('Test ui responses', () => {
       expect($('meta[property="og:image"]').attr('content')).toMatch('/images/map.jpeg')
       expect($('link[rel="canonical"]').attr('href')).toMatch('/map')
     })
+
+    describe('query param ?groundhog', () => {
+      test('empty: HTML attribute should be empty', async () => {
+        const response = await request(app).get('/map?groundhog')
+        expect(response.statusCode).toBe(200)
+
+        const $ = cheerio.load(response.text)
+        expect($('#sortable--map').attr('data-initial')).toBe('')
+      })
+
+      test('bad value: HTML attribute should be empty', async () => {
+        const response = await request(app).get('/map?groundhog=grand-theft-auto-gary')
+        expect(response.statusCode).toBe(200)
+
+        const $ = cheerio.load(response.text)
+        expect($('#sortable--map').attr('data-initial')).toBe('')
+      })
+
+      test('good value: should find groundhog ID in HTML attribute', async () => {
+        const response = await request(app).get('/map?groundhog=wiarton-willie')
+        expect(response.statusCode).toBe(200)
+
+        const $ = cheerio.load(response.text)
+        expect($('#sortable--map').attr('data-initial')).toMatch('3')
+      })
+    })
   })
 })
 

@@ -6,7 +6,7 @@
 
 {% block content %}
   {% set dataUrl = ['/api/v1/groundhogs/', groundhog.slug] | join %}
-  {{ page_header({ h1: groundhog.name, backUrl: '/groundhogs', backText: 'All groundhogs', dataUrl: dataUrl }) }}
+  {{ page_header({ h1: groundhog.name, backUrl: back.url, backText: back.text, dataUrl: dataUrl }) }}
 
   <div class="inner-content inner-content--with-summary">
     <div class="flash">
@@ -48,7 +48,9 @@
           {% set resides = 'Reside in' if 'hogs' in groundhog.type else 'Resides in' %}
           <div class="subhead">{{ resides }}</div>
           <div class="text">
-            {{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}
+            <a class="link--icon" href="/map?groundhog={{ groundhog.slug }}">
+              {{ icon({ map: true }) }} <span>{{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}</span>
+            </a>            
           </div>
         </div>
         <div class="groundhog--source">
