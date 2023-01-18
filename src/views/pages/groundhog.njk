@@ -48,7 +48,9 @@
           {% set resides = 'Reside in' if 'hogs' in groundhog.type else 'Resides in' %}
           <div class="subhead">{{ resides }}</div>
           <div class="text">
-            {{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}
+            <a class="link--icon" href="/map?groundhog={{ groundhog.slug }}">
+              {{ icon({ map: true }) }} <span>{{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}</span>
+            </a>            
           </div>
         </div>
         <div class="groundhog--source">

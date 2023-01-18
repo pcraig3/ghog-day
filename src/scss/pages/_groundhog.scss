@@ -55,6 +55,14 @@
     font-weight: 400;
     font-size: 130%;
     line-height: 1.45;
+
+    @include mixins.mobile {
+      margin-bottom: vars.$space-xs;
+    }
+  }
+
+  .icon.icon--map {
+    margin-right: vars.$space-sm;
   }
 }
 

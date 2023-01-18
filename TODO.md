@@ -10,7 +10,6 @@ TODO
   - Page of the most out-there facts
 - Add RichResults
   - Dataset lol
-- Add location pin link to groundhog profile
 - Add Groundhog Map
   - Add some text for screenreaders: they are probably better off with the table.
   - Check keyboard/screenreader for base functionality
@@ -19,6 +18,7 @@ TODO
 
 DONE
 
+- Add location pin link to groundhog profile
 - Sortable tables
   - Accessible announcements of how many results for a search
 - Update sitemap
