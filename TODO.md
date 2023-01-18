@@ -13,8 +13,9 @@ TODO
 - Add location pin link to groundhog profile
 - Add Groundhog Map
   - Add some text for screenreaders: they are probably better off with the table.
-  - Add query param that selects a groundhog when the page loads
-  - Check kayboard/screenreader for base functionality
+  - Check keyboard/screenreader for base functionality
+  - Fix how the list looks mobile
+- Back link can change for groundhog map
 
 DONE
 
@@ -22,6 +23,7 @@ DONE
   - Accessible announcements of how many results for a search
 - Update sitemap
 - Add Groundhog Map
+  - Add query param that selects a groundhog when the page loads
   - Make the map more visible with a fun SVG
   - Accessible search
   - Add FB share photo of the map

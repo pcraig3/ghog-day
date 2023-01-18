@@ -769,6 +769,8 @@ router.get('/map', function (req, res) {
   // sort groundhogs by name
   groundhogs.sort((a, b) => a.name.localeCompare(b.name))
 
+  const groundhog = groundhogs.find((g) => g.slug === req.query.groundhog)
+
   res.render('pages/map', {
     title: 'Groundhog Map',
     pageMeta: _getPageMeta(req, {
@@ -776,6 +778,7 @@ router.get('/map', function (req, res) {
         'Find your closest groundhog on an interactive map of North America (unless you’re from Saskatchewan).',
     }),
     groundhogs,
+    initial: groundhog ? groundhog.id : '',
     totals,
   })
 })
