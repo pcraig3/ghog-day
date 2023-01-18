@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   if (initialGroundhogId) {
-    selectCard(initialGroundhogId, true)
+    selectCard(initialGroundhogId)
     cardList.querySelector(`.card[data-id="${initialGroundhogId}"]`).click()
   }
 })

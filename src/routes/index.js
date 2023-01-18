@@ -156,7 +156,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
   const by = identifier === 'slug' ? 'slug' : 'id'
 
-  let result = DB()
+  let { groundhog } = DB()
     .prepare(
       `
     SELECT json_object(
@@ -194,7 +194,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
     )
     .get(value)
 
-  return result && result.groundhog ? JSON.parse(result.groundhog) : result
+  return JSON.parse(groundhog)
 }
 
 const getGroundhogById = (id, { oldestFirst = false } = {}) => {
@@ -337,8 +337,8 @@ const validBackUrl = (req, res, next) => {
       back = { url, text: `Groundhog Day ${year}` }
     }
   } else if (url.startsWith('/groundhogs/')) {
-    const slug = removeTrailingSlashes(url).split('/').pop()
-    const groundhog = getGroundhogBySlug(slug)
+    const _slug = removeTrailingSlashes(url).split('/').pop()
+    const groundhog = getGroundhogSlugs().find((s) => s === _slug) && getGroundhogBySlug(_slug)
     if (groundhog) {
       back = { url, text: groundhog.name }
     }

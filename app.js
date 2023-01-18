@@ -70,9 +70,13 @@ app.use(helmet({ contentSecurityPolicy: false }))
 app.use(cors())
 app.use(
   session({
-    secret: process.env.NODE_ENV === 'production' ? randomUUID() : 'secret_shh',
+    secret: randomUUID(),
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, sameSite: 'strict' }, // one day
+    cookie: {
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 1000 * 60 * 60 * 24, // one day
+    },
     resave: false,
   }),
 )
