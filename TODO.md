@@ -13,7 +13,6 @@ TODO
 - Add Groundhog Map
   - Add some text for screenreaders: they are probably better off with the table.
   - Check keyboard/screenreader for base functionality
-  - Fix how the list looks mobile
 - Fix the whole site for 2024
 
 DONE
@@ -26,6 +25,7 @@ DONE
   - Accessible announcements of how many results for a search
 - Update sitemap
 - Add Groundhog Map
+  - Fix how the list looks mobile
   - Add query param that selects a groundhog when the page loads
   - Make the map more visible with a fun SVG
   - Accessible search

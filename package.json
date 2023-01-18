@@ -1,7 +1,7 @@
 {
   "name": "ghog-day",
   "description": "groundhog day website: get all groundhogs and their predictions, year by year. it's a real holiday",
-  "version": "1.10.3",
+  "version": "1.10.4",
   "license": "MIT",
   "homepage": "https://groundhog-day.com",
   "keywords": [
@@ -11,7 +11,8 @@
     "weather",
     "prognostications",
     "punxsutawney phil",
-    "wiarton willie"
+    "wiarton willie",
+    "groundhog map"
   ],
   "repository": {
     "type": "git",

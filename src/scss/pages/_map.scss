@@ -48,14 +48,13 @@
   }
 
   .map--list {
-    flex: 3;
     overflow-y: scroll;
-    max-width: 360px;
+    max-width: 350px;
     padding-right: vars.$space-lg;
     height: 100%;
 
     @include mixins.tablet-only {
-      flex: 4;
+      max-width: 320px;
     }
   }
 
@@ -89,6 +88,7 @@
     width: 100%;
     padding-bottom: vars.$space-md;
     line-height: 1.65;
+    overflow: hidden;
 
     &:hover {
       .card--heading {
