@@ -15,10 +15,10 @@ TODO
   - Check keyboard/screenreader for base functionality
   - Fix how the list looks mobile
 - Fix the whole site for 2024
-- Put map groundhogs derivatives
 
 DONE
 
+- Put map groundhogs derivatives
 - Back link can change for groundhog map
   - Basically make the back link know what page you came from
 - Add location pin link to groundhog profile
