@@ -9,8 +9,14 @@
 }
 
 .map--list,
-.map--leaflet {
+.map--leaflet,
+.screenreader-message {
   z-index: 1;
+
+  &:focus {
+    outline: 2px dotted black;
+    outline-offset: 2px;
+  }
 }
 
 .map--list--wrapper,
@@ -95,6 +101,12 @@
         color: black;
         text-decoration: none;
       }
+    }
+
+    &:focus {
+      background: rgba(180, 180, 180, 0.05);
+      outline: 2px dotted vars.$color-focus;
+      outline-offset: -8px;
     }
 
     &.selected {

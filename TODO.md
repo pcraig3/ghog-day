@@ -10,21 +10,25 @@ TODO
   - Page of the most out-there facts
 - Add RichResults
   - Dataset lol
-- Add Groundhog Map
-  - Add some text for screenreaders: they are probably better off with the table.
-  - Check keyboard/screenreader for base functionality
 - Fix the whole site for 2024
+- Data entry all the 2023 predictions
+- "Retired" groundhogs
+- Alternate, non-shadow prediction text
 
 DONE
 
 - Put map groundhogs derivatives
 - Back link can change for groundhog map
   - Basically make the back link know what page you came from
+  - "Map" from individual groundhogs opens those groundhogs
 - Add location pin link to groundhog profile
 - Sortable tables
   - Accessible announcements of how many results for a search
 - Update sitemap
 - Add Groundhog Map
+  - Add some text for screenreaders: they are probably better off with the table.
+  - Focus styles for the cards
+  - Put it in the main nav (demote "contact")
   - Fix how the list looks mobile
   - Add query param that selects a groundhog when the page loads
   - Make the map more visible with a fun SVG

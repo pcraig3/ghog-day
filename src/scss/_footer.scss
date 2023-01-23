@@ -7,6 +7,32 @@
 
 footer {
   line-height: 1.55;
+  position: relative;
+
+  .contact {
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    padding: 3px;
+  }
+
+  #back-to-top {
+    margin-top: 10px;
+    position: relative;
+
+    .icon {
+      position: absolute;
+
+      + span {
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+.contact footer .contact {
+  display: none;
 }
 
 @include mixins.mobile {
@@ -14,15 +40,14 @@ footer {
     padding-top: 10px;
     margin-top: 10px;
     margin-bottom: 60px;
-  }
-}
-
-@include mixins.mobile {
-  footer {
     border-top: 2px dotted black;
+    text-align: right;
+
+    .contact {
+      display: none;
+    }
   }
 
-  .groundhogs footer,
   .years footer,
   .groundhog-predictions footer {
     border-top: none;

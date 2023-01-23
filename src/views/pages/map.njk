@@ -19,6 +19,9 @@
   {{ page_header({ h1: 'Groundhog Map', backUrl: back.url, backText: back.text}) }}
 
   <div class="max-width--850">
+    <div tabIndex="0" class="screenreader-message">
+      <p>Note for keyboard users: <a href="/groundhogs">the table of all {{ totals.all }} groundhogs</a> might be easier to navigate than this map.</p>
+    </div>
     <p>There are <a href="/groundhogs"><strong>{{ totals.all }}</strong> prognosticators</a> throughout North America: <a href="/groundhogs-in-usa"><strong>{{ totals.usa }}</strong> in the USA</a>, and <a href="/groundhogs-in-canada"><strong>{{ totals.canada }}</strong> in Canada</a>.
     <br />
     Use the map to find your nearest groundhog (unless you’re from Saskatchewan — sorry bud).</p>
