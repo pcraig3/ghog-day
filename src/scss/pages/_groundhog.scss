@@ -92,6 +92,7 @@
     display: inline-block;
 
     @include mixins.mobile {
+      background: #f9f9f9;
       font-size: 85%;
       border: 1px solid black;
       padding: vars.$space-xs;
