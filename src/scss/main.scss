@@ -39,6 +39,12 @@
   @include mixins.visually-hidden;
 }
 
+.screenreader-message {
+  &:not(:focus, :focus-within) {
+    @include mixins.visually-hidden;
+  }
+}
+
 .letter-spacing--less {
   letter-spacing: -3px;
 

@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let marker = L.marker([lat, long], {
       icon: divIcon,
       id: g.id,
+      alt: g.name,
     })
 
     const icon = !g.latestPrediction ? '' : g.latestPrediction === 'winter' ? '❄️' : '🌼'
