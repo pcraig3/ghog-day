@@ -53,9 +53,17 @@ img {
   vertical-align: middle;
 }
 
+.hidden--desktop {
+  display: none;
+}
+
 @include mixins.mobile {
   main {
     margin-top: -30px;
+  }
+
+  .hidden--desktop {
+    display: block;
   }
 
   .hidden--mobile {
@@ -79,20 +87,6 @@ img {
 
   a {
     text-decoration: underline;
-  }
-}
-
-#back-to-top {
-  margin-top: 10px;
-  position: relative;
-
-  .icon {
-    position: absolute;
-    left: 0;
-
-    + span {
-      padding-left: 20px;
-    }
   }
 }
 

@@ -58,6 +58,12 @@ a {
     }
   }
 
+  &.link--icon--right {
+    .icon--map {
+      margin-left: vars.$space-xs;
+    }
+  }
+
   &:hover,
   &:focus {
     svg {
