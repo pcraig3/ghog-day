@@ -317,6 +317,13 @@ const validSlug = (req, res, next) => {
 }
 
 const validBackUrl = (req, res, next) => {
+  const _getValidGroundhogSlugFromUrl = (url) => {
+    if (!url.startsWith('/groundhogs/')) return ''
+
+    const _slug = removeTrailingSlashes(url).split('/').pop()
+    return getGroundhogSlugs().find((s) => s === _slug) || ''
+  }
+
   const url =
     req.session && req.session.prevPath && req.session.prevPath !== req.session.path
       ? req.session.prevPath
@@ -329,16 +336,20 @@ const validBackUrl = (req, res, next) => {
   else if (url === '/groundhogs-in-canada') back = { url, text: 'Groundhogs in Canada' }
   else if (url === '/groundhogs-in-usa') back = { url, text: 'Groundhogs in the USA' }
   else if (url === '/alternative-groundhogs') back = { url, text: 'Alternative groundhogs' }
-  else if (url === '/map') back = { url, text: 'Groundhog Map' }
-  else if (url === '/predictions') back = { url, text: 'Predictions' }
+  else if (url === '/groundhog-day-2023') back = { url, text: 'Groundhog Day 2023' }
+  else if (url === '/map') {
+    const _slug = _getValidGroundhogSlugFromUrl(req.session.path)
+    const backTo = _slug ? `${url}?groundhog=${_slug}` : url
+    back = { url: backTo, text: 'Groundhog Map' }
+  } else if (url === '/predictions') back = { url, text: 'Predictions' }
   else if (url.startsWith('/predictions/')) {
     const year = parseInt(removeTrailingSlashes(url).split('/').pop())
     if (year && year >= EARLIEST_RECORDED_PREDICTION && year <= getCurrentYear()) {
       back = { url, text: `Groundhog Day ${year}` }
     }
   } else if (url.startsWith('/groundhogs/')) {
-    const _slug = removeTrailingSlashes(url).split('/').pop()
-    const groundhog = getGroundhogSlugs().find((s) => s === _slug) && getGroundhogBySlug(_slug)
+    const _slug = _getValidGroundhogSlugFromUrl(url)
+    const groundhog = _slug && getGroundhogBySlug(_slug)
     if (groundhog) {
       back = { url, text: groundhog.name }
     }
