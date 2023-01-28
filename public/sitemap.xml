@@ -9,12 +9,12 @@
 
 <url>
   <loc>https://groundhog-day.com/</loc>
-  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/map</loc>
-  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -135,6 +135,16 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs/cluxatawney-henrietta</loc>
   <lastmod>2023-01-16T00:02:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/lady-edwina-of-essex</loc>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/unadilla-billie</loc>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -359,7 +369,7 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs/benny-the-bass</loc>
-  <lastmod>2022-11-02T22:39:12+00:00</lastmod>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
@@ -570,6 +580,16 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs/cluxatawney-henrietta/predictions</loc>
   <lastmod>2023-01-16T00:02:40+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/lady-edwina-of-essex/predictions</loc>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/unadilla-billie/predictions</loc>
+  <lastmod>2023-01-27T16:07:53+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
