@@ -85,6 +85,7 @@ const getPredictionsByYear = (year) => {
         'source', g.source,
         'contact', g.contact,
         'currentPrediction', g.currentPrediction,
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
@@ -125,6 +126,7 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'source', g.source,
         'contact', g.contact,
         'currentPrediction', g.currentPrediction,
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
@@ -176,6 +178,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
       'active', g.active,
       'description', g.description,
       'image', g.image,
+      'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
       'predictions', (
         SELECT json_group_array(json(o))
         FROM (SELECT json_object(
@@ -749,13 +752,13 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
     req.locals && req.locals.back ? req.locals.back : { url: '/groundhogs', text: 'All groundhogs' }
 
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
-  let nullPredictions = 0
-  groundhog.predictions.forEach((p) => p.shadow === null && ++nullPredictions)
+
+  // only 5 latest predictions
+  groundhog.predictions = groundhog.predictions.slice(0, 5)
 
   res.render('pages/groundhog', {
     title: groundhog.name,
     groundhog,
-    allPredictions: groundhog.predictions.length - nullPredictions,
     year: getCurrentYear(),
     pageMeta: _getPageMeta(req, {
       description: getGroundhogMetaDescription(groundhog),

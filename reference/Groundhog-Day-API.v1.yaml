@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Groundhog Day API
-  version: 1.2.0
+  version: 1.2.1
   description: This API returns all of North America's prognosticating animals and their yearly weather predictions.
   contact:
     name: Paul Craig
@@ -104,6 +104,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Prediction'
+        predictionsCount:
+          type: integer
+          minimum: 1
+          description: 'All predictions, excluding nulls.'
       required:
         - id
         - slug
@@ -163,6 +167,8 @@ components:
           $ref: '#/components/schemas/Groundhog'
       required:
         - year
+        - shadow
+        - details
 paths:
   /api/v1:
     get:
@@ -357,7 +363,7 @@ paths:
                         active: 1
                         description: 'Punxsutawney Phil is a superstar prognosticating groundhog from Punxsutawney, Pennsylvania. He makes his predictions from his burrow on Gobler’s Knob. According to legend, Phil has made weather prognostications since 1886, owing his improbably long life to the miraculous “groundhog nog” administered at the annual Groundhog Picnic.'
                         image: 'https://groundhog-day.com/images/ghogs/punxsutawney-phil.png'
-                        predictionsCount: 5
+                        predictionsCount: 127
                         predictions:
                           - year: 2018
                             shadow: 1
@@ -468,6 +474,7 @@ paths:
                       active: 1
                       description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
                       image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+                      predictionsCount: 4
                       predictions:
                         - year: 2018
                           shadow: 0
@@ -598,6 +605,7 @@ paths:
                           source: 'https://www.groundhog.org/history-past-predictions'
                           contact: ''
                           currentPrediction: 'https://www.groundhog.org/prognostication'
+                          predictionsCount: 127
                           isGroundhog: 1
                           type: Groundhog
                           active: 1
@@ -618,6 +626,7 @@ paths:
                           source: 'https://twitter.com/lucylobsterns'
                           contact: ''
                           currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
+                          predictionsCount: 127
                           isGroundhog: 0
                           type: Atlantic lobster
                           active: 1
