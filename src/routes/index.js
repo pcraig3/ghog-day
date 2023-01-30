@@ -381,7 +381,7 @@ router.use((req, res, next) => {
 /* GET home page. */
 router.get('/', function (req, res) {
   const currentYear = getCurrentYear()
-  const _predictions = _getPredictions({ since: 2020 })
+  const _predictions = _getPredictions({ since: 2021 })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
 

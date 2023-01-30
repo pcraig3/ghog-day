@@ -2,6 +2,10 @@
 @use '../vars';
 
 .index {
+  h1 {
+    margin-bottom: calc(3 * vars.$space-xl);
+  }
+
   hr {
     border: none;
   }
