@@ -5,7 +5,7 @@
 {%- endblock %}
 
 {% block content %}
-  <h1>{{ daysLeft }} days until <a href="/groundhog-day-2023" class="underline">Groundhog Day 2023</a>.</h1>
+  <h1>{{ daysLeft }} days until <a href="/predictions/2023" class="underline">Groundhog Day 2023</a>.</h1>
 
   <aside class="intro-sentence screenreader-message" tabIndex="0">
     <div>
@@ -30,9 +30,13 @@
             {% if result.prediction == 'winter' %}
               <div class="card--subhead"><span aria-hidden="true">❄️</span> Longer winter</div>
             {% else %}
-              <div class="card--subhead"><span aria-hidden="true">🌼</span> Early spring</div>
+              <div class="card--subhead">{% if result.year == 2023 %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
             {% endif %}
-            <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] }} groundhogs agreed, {{ result.groundhogs[result.disagree] }} did not</div>
+            {% if result.year == 2023 %}
+              <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] +  result.groundhogs[result.disagree] }} groundhogs reporting in so far</div>
+            {% else %}
+              <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] }} groundhogs agreed, {{ result.groundhogs[result.disagree] }} did not</div>
+            {% endif %}
           </div>
         </a>
       </li>
@@ -82,7 +86,7 @@
 
   <br />
 
-  <h2 class="h4" id="index--about">About GROUNDHOG-DAY.com</h2>
+  <h2 class="h3" id="index--about">About GROUNDHOG-DAY.com</h2>
   <div class="max-width--850">
     <p>{{ site_title() }} is the leading data source for North America’s prophetic prognosticators: unleashing the ancient wisdom of <a href="/groundhogs">groundhogs</a> with the entrepreneurial dynamism of <a href="/api">structured data</a>.</p>
     <p>Every February 2nd – in deepest, darkest winter – humanity seeks guidance from mystic marmots, whose obscure rituals and ancient tongue foretell of spring’s return. <a href="/history-of-groundhog-day">The tradition is fascinating</a>, but the future is now.</p>
