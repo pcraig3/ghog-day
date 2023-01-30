@@ -17,6 +17,10 @@ TODO
 
 DONE
 
+- 2023
+  - New layout
+  - Make sure the groundhog page shows the year
+  - Retire the "2023" placeholder page
 - Put map groundhogs derivatives
 - Back link can change for groundhog map
   - Basically make the back link know what page you came from
