@@ -363,9 +363,10 @@ const validBackUrl = (req, res, next) => {
   next()
 }
 
-const redirectYear = (req, res, next) => {
+const redirectAPIYear = (req, res, next) => {
   if (!req.query.year) {
-    return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
+    // TODO return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
+    return res.redirect('/api/v1/predictions?year=2023')
   }
 
   next()
@@ -747,7 +748,7 @@ const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear
         ? 'predicted a longer winter' // eslint-disable-line indent
         : 'did not make a prediction' // eslint-disable-line indent
 
-    secondPhrase = ` In ${getCurrentYear()}, ${groundhog.shortname} ${prediction}.`
+    secondPhrase = ` In ${groundhog.predictions[0].year}, ${groundhog.shortname} ${prediction}.`
   }
 
   return `${groundhog.name} ${aAnAre(groundhog.type)} ${modifier} ${groundhog.type} from ${
@@ -926,7 +927,7 @@ APIRouter.get('/groundhogs/:slug', validSlug, function (req, res) {
 })
 
 /* get predictions for a single year as JSON */
-APIRouter.get('/predictions', redirectYear, validYear, function (req, res) {
+APIRouter.get('/predictions', redirectAPIYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
   res.json({ predictions })
 })
