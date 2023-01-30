@@ -33,13 +33,22 @@
   {% set dataUrl = ['/api/v1/predictions?year=', years.year] | join %}
   {{ page_header({ h1: h1, backUrl: back.url, backText: back.text, dataUrl: dataUrl }) }}
 
+  <div class="max-width--850">
   <p class="speakable">
-    {%- if not intro.predictionTied -%}
+    {%- if years.year == 2023 -%}
+      <strong>In 2023, Groundhog Day is on Thursday, February 2nd.</strong>
+      </p>
+      <p>
+        <a href="/about">According to tradition</a>, if a groundhog sees its shadow on February 2nd, it means six more weeks of winter. No shadow means an early spring.
+        </p>
+      <p>We don’t have all this year’s predictions in yet, but here’s what we know so far.
+    {%- elseif not intro.predictionTied -%}
       {{ intro.lead }}. Most groundhogs <span aria-hidden='true'>({{ intro.predictionPercent }}%)</span> predicted <strong>{{ intro.predictionConclusion }}</strong>.
     {%- else -%}
       {{ intro.lead }}. {{ intro.predictionConclusion }}.
     {%- endif -%}
   </p>
+  </div>
 
   <div class="predictions--summary">
     <ul>
@@ -61,11 +70,6 @@
         <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
           {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> predictions</span></span>
         </a>
-      {% else %}
-        {# ~@TODO: hardcoded #}
-        <a href="/groundhog-day-2023" class="predictions--navigation--next-year underline link--icon">
-          {{ icon({ left: true }) }} <span><span class="hidden--mobile-xs">Groundhog Day </span>2023</span>
-        </a>
       {% endif %}
       {% if years.prev %}
         <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
@@ -77,7 +81,7 @@
   </div>
   {% if predictionTotals.total -%}
   <div class="predictions" id="sortable--year">
-    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} in {{ years.year }}</h2>
+    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} {% if years.year == 2023 %}(so far) {% endif %}in {{ years.year }}</h2>
     <form id="sortable--year--form">
       <label for="sortable--year--select">Sort by</label>
       <select name="year" id="sortable--year--select">

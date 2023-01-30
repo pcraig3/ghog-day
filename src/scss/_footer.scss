@@ -9,24 +9,12 @@ footer {
   line-height: 1.55;
   position: relative;
 
-  .contact {
-    border: 1px solid #ccc;
-    display: inline-block;
-    width: 120px;
-    text-align: center;
-    padding: 3px;
-  }
-
   #back-to-top {
     margin-top: 10px;
     position: relative;
 
-    .icon {
-      position: absolute;
-
-      + span {
-        padding-left: 20px;
-      }
+    span {
+      padding-right: 4px;
     }
   }
 }

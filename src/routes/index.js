@@ -85,6 +85,7 @@ const getPredictionsByYear = (year) => {
         'source', g.source,
         'contact', g.contact,
         'currentPrediction', g.currentPrediction,
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
@@ -125,6 +126,7 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'source', g.source,
         'contact', g.contact,
         'currentPrediction', g.currentPrediction,
+        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
@@ -176,6 +178,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
       'active', g.active,
       'description', g.description,
       'image', g.image,
+      'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
       'predictions', (
         SELECT json_group_array(json(o))
         FROM (SELECT json_object(
@@ -265,7 +268,8 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const currentYear = getCurrentYear()
+  // TODO
+  const currentYear = 2023 //getCurrentYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -336,7 +340,7 @@ const validBackUrl = (req, res, next) => {
   else if (url === '/groundhogs-in-canada') back = { url, text: 'Groundhogs in Canada' }
   else if (url === '/groundhogs-in-usa') back = { url, text: 'Groundhogs in the USA' }
   else if (url === '/alternative-groundhogs') back = { url, text: 'Alternative groundhogs' }
-  else if (url === '/groundhog-day-2023') back = { url, text: 'Groundhog Day 2023' }
+  // TODO else if (url === '/groundhog-day-2023') back = { url, text: 'Groundhog Day 2023' }
   else if (url === '/map') {
     const _slug = _getValidGroundhogSlugFromUrl(req.session.path)
     const backTo = _slug ? `${url}?groundhog=${_slug}` : url
@@ -359,9 +363,10 @@ const validBackUrl = (req, res, next) => {
   next()
 }
 
-const redirectYear = (req, res, next) => {
+const redirectAPIYear = (req, res, next) => {
   if (!req.query.year) {
-    return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
+    // TODO return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
+    return res.redirect('/api/v1/predictions?year=2023')
   }
 
   next()
@@ -378,19 +383,23 @@ router.use((req, res, next) => {
 /* GET home page. */
 router.get('/', function (req, res) {
   const currentYear = getCurrentYear()
-  const _predictions = _getPredictions({ since: 2020 })
+  const _predictions = _getPredictions({ since: 2021 })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
 
   _years.forEach((year) => {
-    const yearPredictions = { year, agree: '', disagree: '', groundhogs: { winter: 0, spring: 0 } }
+    const yearPredictions = {
+      year,
+      agree: '',
+      disagree: '',
+      groundhogs: { winter: 0, spring: 0, null: 0 },
+    }
 
     _predictions[year].forEach((prediction) => {
-      const season = prediction.shadow ? 'winter' : 'spring'
+      const season = prediction.shadow === null ? 'null' : prediction.shadow ? 'winter' : 'spring'
       yearPredictions['groundhogs'][season]++
     })
 
-    // TODO: if they are equal, this breaks
     yearPredictions.agree =
       yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring ? 'winter' : 'spring'
 
@@ -537,8 +546,8 @@ router.get('/predictions', function (req, res) {
   })
 })
 
-router.get('/predictions/2023', function (req, res) {
-  return res.redirect('/groundhog-day-2023')
+router.get('/predictions/2024', function (req, res) {
+  return res.redirect('/groundhog-day-2024')
 })
 
 /* GET predictions page for a year. */
@@ -558,7 +567,8 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
 
   const years = {
     year,
-    next: year === getCurrentYear() ? undefined : year + 1,
+    // TODO, remove this
+    next: year === 2023 ? undefined : year + 1,
     prev: year === EARLIEST_RECORDED_PREDICTION ? undefined : year - 1,
   }
 
@@ -621,9 +631,12 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
   })
 })
 
-/* GET 2023 (upcoming) page */
-/* ~@TODO: make this general. not hardcoded */
-router.get('/groundhog-day-2023', validBackUrl, function (req, res) {
+router.get('/groundhog-day-2023', function (req, res) {
+  return res.redirect('/predictions/2023')
+})
+
+/* GET 2024 (upcoming) page */
+router.get('/groundhog-day-2024', validBackUrl, function (req, res) {
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
 
   const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
@@ -643,13 +656,13 @@ router.get('/groundhog-day-2023', validBackUrl, function (req, res) {
 
   const dateString = format(new Date('2023-02-02T00:00:00'), 'iiii, MMMM do')
 
-  res.render('pages/groundhog-day-2023', {
-    title: 'Groundhog Day 2023',
+  res.render('pages/upcoming/groundhog-day-2024', {
+    title: 'Groundhog Day 2024',
     dateString,
     daysLeft: getDaysToGroundhogDay(),
     predictionString,
     pageMeta: _getPageMeta(req, {
-      description: `In 2023, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
+      description: `In 2024, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
       speakable: true,
     }),
     back,
@@ -735,7 +748,7 @@ const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear
         ? 'predicted a longer winter' // eslint-disable-line indent
         : 'did not make a prediction' // eslint-disable-line indent
 
-    secondPhrase = ` In ${getCurrentYear()}, ${groundhog.shortname} ${prediction}.`
+    secondPhrase = ` In ${groundhog.predictions[0].year}, ${groundhog.shortname} ${prediction}.`
   }
 
   return `${groundhog.name} ${aAnAre(groundhog.type)} ${modifier} ${groundhog.type} from ${
@@ -749,13 +762,13 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
     req.locals && req.locals.back ? req.locals.back : { url: '/groundhogs', text: 'All groundhogs' }
 
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
-  let nullPredictions = 0
-  groundhog.predictions.forEach((p) => p.shadow === null && ++nullPredictions)
+
+  // only 5 latest predictions
+  groundhog.predictions = groundhog.predictions.slice(0, 5)
 
   res.render('pages/groundhog', {
     title: groundhog.name,
     groundhog,
-    allPredictions: groundhog.predictions.length - nullPredictions,
     year: getCurrentYear(),
     pageMeta: _getPageMeta(req, {
       description: getGroundhogMetaDescription(groundhog),
@@ -914,7 +927,7 @@ APIRouter.get('/groundhogs/:slug', validSlug, function (req, res) {
 })
 
 /* get predictions for a single year as JSON */
-APIRouter.get('/predictions', redirectYear, validYear, function (req, res) {
+APIRouter.get('/predictions', redirectAPIYear, validYear, function (req, res) {
   let predictions = getPredictionsByYear(req.query.year)
   res.json({ predictions })
 })

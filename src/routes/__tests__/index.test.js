@@ -1,16 +1,12 @@
 const request = require('supertest')
-// const DB = require('better-sqlite3-helper')
 const cheerio = require('cheerio')
 
 const app = require('../../../app.js')
-const { getCurrentYear } = require('../utils')
-// const DBconfig = require('../../config/better-sqlite3-helper.config')
-
-// // The first call creates the global instance with your settings
-// DB(DBconfig)
+// TODO const { getCurrentYear } = require('../utils')
 
 const EARLIEST_RECORDED_PREDICTION = 1886
-const CURRENT_YEAR = getCurrentYear()
+// TODO const CURRENT_YEAR = getCurrentYear()
+const CURRENT_YEAR = 2023
 
 describe('Test ui responses', () => {
   describe('Test / response', () => {
@@ -43,7 +39,7 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('Punxsutawney Phil — GROUNDHOG-DAY.com')
       expect($('h1').text()).toEqual('Punxsutawney Phil')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA. In 2022, Phil predicted a longer winter.',
+        'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA. In 2023, Phil did not make a prediction.',
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/groundhogs/punxsutawney-phil')
     })
@@ -66,7 +62,7 @@ describe('Test ui responses', () => {
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/predictions')
 
-      expect($('tbody tr').first().find('a').text()).toEqual(`${CURRENT_YEAR + 1}`)
+      expect($('tbody tr').first().find('a').text()).toEqual(`${CURRENT_YEAR}`)
       expect($('tbody tr').last().find('a').text()).toEqual(`${EARLIEST_RECORDED_PREDICTION}`)
     })
   })
@@ -100,21 +96,10 @@ describe('Test ui responses', () => {
   })
 
   describe('Test /groundhog-day-2023 response', () => {
-    test('it should return 200', async () => {
+    test('it should return 302', async () => {
       const response = await request(app).get('/groundhog-day-2023')
-      expect(response.statusCode).toBe(200)
-    })
-
-    test('it should return the h1, title, meta tag, and canonical link', async () => {
-      const response = await request(app).get('/groundhog-day-2023')
-      const $ = cheerio.load(response.text)
-
-      expect($('title').text()).toEqual('Groundhog Day 2023 — GROUNDHOG-DAY.com')
-      expect($('h1').text()).toEqual('Groundhog Day 2023')
-      expect($('meta[name="description"]').attr('content')).toEqual(
-        'In 2023, Groundhog Day will be on Thursday, February 2nd. Groundhog Day is not a statutory holiday in Canada or the USA.',
-      )
-      expect($('link[rel="canonical"]').attr('href')).toMatch('/groundhog-day-2023')
+      expect(response.statusCode).toBe(302)
+      expect(response.headers.location).toBe('/predictions/2023')
     })
   })
 
@@ -241,10 +226,10 @@ describe('Test API responses', () => {
   })
 
   describe('for /api/v1/groundhogs path', () => {
-    const GROUNDHOGS_ALL = 65
+    const GROUNDHOGS_ALL = 66
     const GROUNDHOGS_CANADA = 12
-    const GROUNDHOGS_USA = 53
-    const GROUNDHOGS_ALTERNATIVE = 37
+    const GROUNDHOGS_USA = 54
+    const GROUNDHOGS_ALTERNATIVE = 38
 
     const urls = [
       {
@@ -312,7 +297,7 @@ describe('Test API responses', () => {
       expect(groundhog).toMatchObject(wiartonWillie)
     })
 
-    const badIDs = ['murder-suicide-mark', 'punk-rock-pete', 0, 100]
+    const badIDs = ['murder-suicide-marvin', 'grand-larceny-gord', 0, 100]
     badIDs.map((id) => {
       test(`it should return an error message for a bad ID: ${id}`, async () => {
         const response = await request(app).get(`/api/v1/groundhogs/${id}`)
@@ -368,7 +353,7 @@ describe('Test API responses', () => {
       let { error } = JSON.parse(response.text)
       expect(error.status).toBe(400)
       expect(error.message).toBe(
-        "BadRequestError: The 'year' must be between 1886 and 2022 (inclusive).", // eslint-disable-line quotes
+        "BadRequestError: The 'year' must be between 1886 and 2023 (inclusive).", // eslint-disable-line quotes
       )
     })
   })

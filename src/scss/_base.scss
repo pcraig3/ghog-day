@@ -70,7 +70,7 @@ footer {
 
 @include mixins.desktop {
   body {
-    grid: auto-flow min-content / 1fr 4fr;
+    grid: auto-flow min-content / 1fr 5.5fr;
     grid-template-areas:
       'header header'
       'nav    ...   '

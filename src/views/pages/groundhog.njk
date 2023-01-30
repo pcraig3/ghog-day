@@ -13,17 +13,17 @@
        {% if groundhog.predictions[0].shadow == true -%}
         <aside class="highlight highlight--winter">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
-          <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
+          <div class="message"><span>In {{ groundhog.predictions[0].year }}, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
         </aside>
       {% elseif groundhog.predictions[0].shadow == false -%}
         <aside class="highlight highlight--spring">
           <div class="icon"><span aria-hidden="true">🌼</span></div>
-          <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
+          <div class="message"><span>In {{ groundhog.predictions[0].year }}, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
         </aside>
       {% else %}
         <aside class="highlight highlight--none">
           <div class="icon"><span aria-hidden="true">🙊</span></div>
-          <div class="message"><span>In {{ year }}, {{ groundhog.shortname }} <strong>didn’t make a prediction</strong>.</span></div>
+          <div class="message"><span>In {{ groundhog.predictions[0].year }}, {{ groundhog.shortname }} <strong>hasn’t made a prediction yet</strong>.</span></div>
         </aside>
       {% endif %}
     </div>
@@ -88,37 +88,35 @@
           </thead>
           <tbody>
             {%- for prediction in groundhog.predictions -%}
-              {% if prediction.year >= 2018 %}
-                <tr>
-                  <th><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
-                  <td class="hidden--mobile-xs">
-                    {% if prediction.shadow == true -%}
-                      Yes, saw shadow
-                    {%- elseif prediction.shadow == false -%}
-                      Nope, no shadow
-                    {%- else -%}
-                      <span aria-hidden="true">—</span>
-                      <span class="visually-hidden">No prediction.</span>
-                    {%- endif %}
-                  </td>
-                  <td class="center--mobile">
-                    {%- if prediction.shadow == true %}
-                      <span aria-hidden="true">❄️</span> More winter
-                    {%- elseif prediction.shadow == false -%}
-                      <span aria-hidden="true">🌼</span> Early spring
-                    {%- else -%}
-                      <span aria-hidden="true">—</span>
-                      <span class="visually-hidden">No prediction.</span>
-                    {% endif -%}
-                  </td>
-                </tr>
-              {% endif %}
+              <tr>
+                <th><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
+                <td class="hidden--mobile-xs">
+                  {% if prediction.shadow == true -%}
+                    Yes, saw shadow
+                  {%- elseif prediction.shadow == false -%}
+                    Nope, no shadow
+                  {%- else -%}
+                    <span aria-hidden="true">—</span>
+                    <span class="visually-hidden">No prediction.</span>
+                  {%- endif %}
+                </td>
+                <td class="center--mobile">
+                  {%- if prediction.shadow == true %}
+                    <span aria-hidden="true">❄️</span> More winter
+                  {%- elseif prediction.shadow == false -%}
+                    <span aria-hidden="true">🌼</span> Early spring
+                  {%- else -%}
+                    <span aria-hidden="true">—</span>
+                    <span class="visually-hidden">No prediction.</span>
+                  {% endif -%}
+                </td>
+              </tr>
             {%- endfor -%}
           </tbody>
         </table>
         <p class="all-predictions">
           <a href="/groundhogs/{{ groundhog.slug }}/predictions" class="underline link--icon">
-            All {{ allPredictions }} predictions {{ icon({ right: true }) }}
+            All {{ groundhog.predictionsCount }} predictions {{ icon({ right: true }) }}
           </a>
         </p>
       </div>
