@@ -409,8 +409,6 @@ router.get('/', function (req, res) {
     predictionResults.push(yearPredictions)
   })
 
-  // get groundhogs data
-  const totalGroundhogs = _predictions[currentYear].length
   // seed with empty object
   let _currentYearPredictions = [{ groundhog: { country: '' } }]
 
@@ -434,7 +432,7 @@ router.get('/', function (req, res) {
     daysLeft: getDaysToGroundhogDay(),
     predictionResults,
     randomGroundhogs,
-    totalGroundhogs,
+    totalGroundhogs: getGroundhogSlugs().length,
     pageMeta: _getPageMeta(req, {
       description:
         'GROUNDHOG-DAY.com is the leading Groundhog Day data source: cataloging North America’s prognosticating animals and their yearly weather predictions.',
