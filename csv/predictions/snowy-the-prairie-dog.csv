@@ -1,9 +1,10 @@
 year,shadow,details
-2015,FALSE,
-2016,FALSE,
-2017,TRUE,
-2018,FALSE,
-2019,FALSE,
-2020,TRUE,
-2021,FALSE,
-2022,TRUE,
+2015,FALSE,"Snowy DID NOT see her shadow and winter was a no-show during the 2nd half of the season. Accuracy Score: Excellent"
+2016,FALSE,"Snowy DID NOT see her shadow and the 2nd half of winter was mild. Accuracy Score: Excellent"
+2017,TRUE,"Snowy DID see her shadow and winter did indeed continue. Accuracy Score: Excellent"
+2018,FALSE,"Snowy DID NOT see her shadow, but winter weather intensified & persisted into spring. Accuracy Score: Poor"
+2019,FALSE,"Snowy DID NOT see her shadow, but instead of an early spring, we got snow and Arctic air! Accuracy Score: Very Poor!"
+2020,TRUE,"Snowy SAW her shadow. A wintry pattern continued, but there were also some nice spring-like days! Her Score: Fair"
+2021,FALSE,"Snowy DID NOT see her shadow and an early spring arrived after some brief cold weather. Accuracy Score: Excellent!"
+2022,TRUE,"Snowy DID see her shadow and a mixed bag of wintry weather continued. Accuracy Score: Fair"
+2023,FALSE,"Snowy DID NOT see her shadow in contradiction to Punxsutawney Phil’s result... Accuracy Score: Stay tuned!"
