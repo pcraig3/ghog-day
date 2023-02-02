@@ -11,12 +11,15 @@ TODO
 - Add RichResults
   - Dataset lol
 - Fix the whole site for 2024
-- Data entry all the 2023 predictions
 - "Retired" groundhogs
 - Alternate, non-shadow prediction text
+- Data entry all the 2023 predictions
+  - More
 
 DONE
 
+- Data entry all the 2023 predictions
+  - Kinda
 - 2023
   - New layout
   - Make sure the groundhog page shows the year
