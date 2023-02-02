@@ -58,7 +58,7 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('Predictions by year — GROUNDHOG-DAY.com')
       expect($('h1').text()).toEqual('Predictions by year')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'See and compare groundhog predictions by year, from 2022 back to 1886 (which was before TikTok).',
+        'See and compare groundhog predictions by year, from 2023 back to 1886 (which was before TikTok).',
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/predictions')
 
