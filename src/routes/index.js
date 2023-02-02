@@ -392,6 +392,7 @@ router.get('/', function (req, res) {
       year,
       agree: '',
       disagree: '',
+      prediction: '',
       groundhogs: { winter: 0, spring: 0, null: 0 },
     }
 
