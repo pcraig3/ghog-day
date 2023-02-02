@@ -39,7 +39,7 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('Punxsutawney Phil — GROUNDHOG-DAY.com')
       expect($('h1').text()).toEqual('Punxsutawney Phil')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA. In 2023, Phil did not make a prediction.',
+        'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA. In 2023, Phil predicted a longer winter.',
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/groundhogs/punxsutawney-phil')
     })
