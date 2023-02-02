@@ -30,7 +30,7 @@
             {% if result.prediction == 'winter' %}
               <div class="card--subhead"><span aria-hidden="true">❄️</span> Longer winter</div>
             {% else %}
-              <div class="card--subhead">{% if result.year == 2023 %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
+              <div class="card--subhead">{% if result.year == 2023 %}Looks like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
             {% endif %}
             {% if result.year == 2023 %}
               <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] +  result.groundhogs[result.disagree] }} groundhogs reporting in so far</div>
