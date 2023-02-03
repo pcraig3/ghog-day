@@ -10,7 +10,7 @@ const isBoolean = (booleanValue = '') => {
 }
 
 const createImgRef = (slug) => {
-  return `https://groundhog-day.com/images/ghogs/${slug}.png`
+  return `https://groundhog-day.com/images/ghogs/${slug}.jpeg`
 }
 
 /**

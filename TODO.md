@@ -18,6 +18,7 @@ TODO
 
 DONE
 
+- Bugfix, all the images in the API were broken oops
 - Data entry all the 2023 predictions
   - Kinda
 - 2023
