@@ -268,8 +268,7 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  // TODO
-  const currentYear = 2023 //getCurrentYear()
+  const currentYear = getCurrentYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -365,8 +364,7 @@ const validBackUrl = (req, res, next) => {
 
 const redirectAPIYear = (req, res, next) => {
   if (!req.query.year) {
-    // TODO return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
-    return res.redirect('/api/v1/predictions?year=2023')
+    return res.redirect(`/api/v1/predictions?year=${getCurrentYear()}`)
   }
 
   next()
@@ -566,8 +564,7 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
 
   const years = {
     year,
-    // TODO, remove this
-    next: year === 2023 ? undefined : year + 1,
+    next: year === getCurrentYear() ? undefined : year + 1,
     prev: year === EARLIEST_RECORDED_PREDICTION ? undefined : year - 1,
   }
 
@@ -636,10 +633,12 @@ router.get('/groundhog-day-2023', function (req, res) {
 
 /* GET 2024 (upcoming) page */
 router.get('/groundhog-day-2024', validBackUrl, function (req, res) {
+  const currentYear = getCurrentYear()
+  const nextYear = currentYear + 1
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
 
   const predictionTotals = { years: 0, total: 0, winter: 0, spring: 0, null: 0 }
-  let predictions = getPredictionsByYear(2022)
+  let predictions = getPredictionsByYear(currentYear)
   predictions.forEach((prediction) => {
     ++predictionTotals['years']
 
@@ -653,15 +652,15 @@ router.get('/groundhog-day-2024', validBackUrl, function (req, res) {
   const predictionString =
     predictionTotals['winter'] > predictionTotals['spring'] ? 'a longer winter' : 'an early spring'
 
-  const dateString = format(new Date('2023-02-02T00:00:00'), 'iiii, MMMM do')
+  const dateString = format(new Date(`${nextYear}-02-02T00:00:00`), 'iiii, MMMM do')
 
-  res.render('pages/upcoming/groundhog-day-2024', {
-    title: 'Groundhog Day 2024',
+  res.render('pages/upcoming/groundhog-day-next', {
+    title: `Groundhog Day ${nextYear}`,
     dateString,
     daysLeft: getDaysToGroundhogDay(),
     predictionString,
     pageMeta: _getPageMeta(req, {
-      description: `In 2024, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
+      description: `In ${nextYear}, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
       speakable: true,
     }),
     back,

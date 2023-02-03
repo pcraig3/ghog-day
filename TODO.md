@@ -1,7 +1,6 @@
 TODO
 
 - Data as CSV
-- Stretch goal: was that an accurate prediction for that year?
 - More tests
 - Groundhog day countdown timer better + with marquee
 - Ideas from Julia
@@ -11,13 +10,17 @@ TODO
 - Add RichResults
   - Dataset lol
 - Fix the whole site for 2024
+  - Really fix it
 - "Retired" groundhogs
 - Alternate, non-shadow prediction text
 - Data entry all the 2023 predictions
   - More
+- Why doesn't the title show up? (investigate)
 
 DONE
 
+- Fix the whole site for 2024
+  - Remove hardcoded 2023 stuff
 - Bugfix, all the images in the API were broken oops
 - Data entry all the 2023 predictions
   - Kinda
