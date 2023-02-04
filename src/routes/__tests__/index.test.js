@@ -226,10 +226,10 @@ describe('Test API responses', () => {
   })
 
   describe('for /api/v1/groundhogs path', () => {
-    const GROUNDHOGS_ALL = 69
+    const GROUNDHOGS_ALL = 74
     const GROUNDHOGS_CANADA = 13
-    const GROUNDHOGS_USA = 56
-    const GROUNDHOGS_ALTERNATIVE = 39
+    const GROUNDHOGS_USA = 61
+    const GROUNDHOGS_ALTERNATIVE = 43
 
     const urls = [
       {

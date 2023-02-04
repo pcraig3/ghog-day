@@ -24,6 +24,7 @@ DONE
 - Bugfix, all the images in the API were broken oops
 - Data entry all the 2023 predictions
   - Kinda
+  - Mostly
 - 2023
   - New layout
   - Make sure the groundhog page shows the year
