@@ -97,9 +97,12 @@ const _getName = (path) => {
     case 'predictions':
     case 'about':
     case 'contact':
-    case 'groundhog-day-2023':
+    case 'groundhog-day-2024':
       // get last item in array and return Title case
-      return _uppercase(path.split('-').pop())
+      return path
+        .split('-')
+        .map((word) => _uppercase(word))
+        .join(' ')
     case 'history-of-groundhog-day':
     case 'add-groundhog':
       // get first item in array and return Title case
