@@ -116,6 +116,7 @@ footer {
     grid-template-areas:
       'flash       summary'
       'description summary'
-      'predictions summary';
+      'predictions summary'
+      '...         summary';
   }
 }
