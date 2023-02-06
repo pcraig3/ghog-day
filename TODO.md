@@ -9,22 +9,16 @@ TODO
   - Page of the most out-there facts
 - Add RichResults
   - Dataset lol
-- Fix the whole site for 2024
-  - Really fix it
 - "Retired" groundhogs
 - Alternate, non-shadow prediction text
-- Data entry all the 2023 predictions
-  - More
 - Why doesn't the title show up? (investigate)
 
 DONE
 
 - Fix the whole site for 2024
-  - Remove hardcoded 2023 stuff
 - Bugfix, all the images in the API were broken oops
 - Data entry all the 2023 predictions
-  - Kinda
-  - Mostly
+  - I think it’s done
 - 2023
   - New layout
   - Make sure the groundhog page shows the year
