@@ -216,7 +216,7 @@ const getGroundhogs = ({
 } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
   const predictionKey = year ? 'latestPrediction' : 'predictions'
-  const yearClause = year ? 'AND p.year = 2022' : ''
+  const yearClause = year ? `AND p.year = ${getCurrentYear()}` : ''
   let whereClause = ['USA', 'Canada'].includes(country) ? `g.country = '${country}'` : '1 = 1'
   if (isGroundhog !== undefined) {
     whereClause = `${whereClause} AND isGroundhog='${isGroundhog ? 1 : 0}'`
@@ -339,7 +339,7 @@ const validBackUrl = (req, res, next) => {
   else if (url === '/groundhogs-in-canada') back = { url, text: 'Groundhogs in Canada' }
   else if (url === '/groundhogs-in-usa') back = { url, text: 'Groundhogs in the USA' }
   else if (url === '/alternative-groundhogs') back = { url, text: 'Alternative groundhogs' }
-  // TODO else if (url === '/groundhog-day-2023') back = { url, text: 'Groundhog Day 2023' }
+  else if (url === '/groundhog-day-2024') back = { url, text: 'Groundhog Day 2024' }
   else if (url === '/map') {
     const _slug = _getValidGroundhogSlugFromUrl(req.session.path)
     const backTo = _slug ? `${url}?groundhog=${_slug}` : url
