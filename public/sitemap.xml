@@ -9,12 +9,12 @@
 
 <url>
   <loc>https://groundhog-day.com/</loc>
-  <lastmod>2023-01-30T00:33:56+00:00</lastmod>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/map</loc>
-  <lastmod>2023-01-30T00:33:56+00:00</lastmod>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -24,12 +24,12 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/groundhogs</loc>
-  <lastmod>2023-01-30T00:33:56+00:00</lastmod>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions</loc>
-  <lastmod>2023-02-02T09:32:01+00:00</lastmod>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -44,12 +44,12 @@
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2023</loc>
-  <lastmod>2023-02-02T09:32:01+00:00</lastmod>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://groundhog-day.com/predictions/2022</loc>
-  <lastmod>2023-01-15T16:41:30+00:00</lastmod>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -150,6 +150,46 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs/tinicum-tim</loc>
   <lastmod>2023-01-30T00:33:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/heavens-wildlife-harvey</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/snerd</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/concord-casimir</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/queen-city-charlie</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/mt-parker</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/pisgah-penny</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/hope-the-groundhog</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/schnogadahl-sammi</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -600,6 +640,46 @@
 <url>
   <loc>https://groundhog-day.com/groundhogs/tinicum-tim/predictions</loc>
   <lastmod>2023-01-30T00:33:56+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/heavens-wildlife-harvey/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/snerd/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/concord-casimir/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/queen-city-charlie/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/mt-parker/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/pisgah-penny/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/hope-the-groundhog/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://groundhog-day.com/groundhogs/schnogadahl-sammi/predictions</loc>
+  <lastmod>2023-02-06T03:42:04+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
