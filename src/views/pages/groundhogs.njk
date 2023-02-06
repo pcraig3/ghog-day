@@ -71,10 +71,12 @@
                       {{ groundhog.country }}
                     </td>
                     <td class="latest">
-                      {% if groundhog.latestPrediction.shadow %}
+                      {% if groundhog.latestPrediction.shadow == true -%}
                         <span role="img" aria-label="Longer winter">❄️</span>
-                      {% else %}
+                      {% elseif groundhog.latestPrediction.shadow == false -%}
                         <span role="img" aria-label="Early spring">🌼</span>
+                      {% else -%}
+                        <span role="img" aria-label="No prediction">—</span>
                       {% endif %}
                     </td>
                     <td class="count">

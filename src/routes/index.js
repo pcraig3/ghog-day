@@ -687,14 +687,8 @@ router.get(
     // sort by most predictions to least predictions
     groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
 
-    const recentPredictions = { total: 0, winter: 0, spring: 0 }
     const groundhogTypes = { groundhog: 0, other: 0 }
     groundhogs.forEach((g) => {
-      ++recentPredictions['total']
-      g['latestPrediction']['shadow']
-        ? ++recentPredictions['winter']
-        : ++recentPredictions['spring']
-
       g.type === 'Groundhog' ? ++groundhogTypes['groundhog'] : ++groundhogTypes['other']
     })
 
@@ -719,7 +713,6 @@ router.get(
       title: pageTitle,
       groundhogs,
       groundhogTypes,
-      recentPredictions: recentPredictions,
       pageMeta: _getPageMeta(req, {
         description: `See all ${groundhogs.length} ${nationality}prognosticators${
           path.includes('alternative')
