@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/v1/
 
 Sitemap: https://groundhog-day.com/sitemap.xml
