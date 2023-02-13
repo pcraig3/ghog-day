@@ -66,7 +66,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(helmet({ contentSecurityPolicy: false }))
+app.use(
+  helmet({ contentSecurityPolicy: false, crossOriginResourcePolicy: { policy: 'cross-origin' } }),
+)
 app.use(cors())
 app.use(
   session({
