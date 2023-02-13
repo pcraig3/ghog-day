@@ -15,6 +15,8 @@ TODO
 
 DONE
 
+- Hide API endpoints from search engine crawlers
+- API is usable in the browser
 - Fix the whole site for 2024
 - Bugfix, all the images in the API were broken oops
 - Data entry all the 2023 predictions
