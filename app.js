@@ -8,6 +8,7 @@ const helmet = require('helmet')
 const DB = require('better-sqlite3-helper')
 const cors = require('cors')
 const session = require('express-session')
+const compression = require('compression')
 const { randomUUID } = require('crypto')
 
 // The first call creates the global instance with your settings
@@ -69,6 +70,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   helmet({ contentSecurityPolicy: false, crossOriginResourcePolicy: { policy: 'cross-origin' } }),
 )
+app.use(compression())
 app.use(cors())
 app.use(
   session({

@@ -11,7 +11,6 @@ TODO
   - Dataset lol
 - "Retired" groundhogs
 - Alternate, non-shadow prediction text
-- Why doesn't the title show up? (investigate)
 
 DONE
 
