@@ -14,6 +14,10 @@ TODO
 
 DONE
 
+- Performance tweaks
+  - Defer fonts
+  - Gzip compression
+  - Minify CSS
 - Hide API endpoints from search engine crawlers
 - API is usable in the browser
 - Fix the whole site for 2024
