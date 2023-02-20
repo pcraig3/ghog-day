@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev DEBUG=ghog-day:* nodemon -e js,njk ./bin/www & npm run scss:watch",
     "lint": "eslint \"./**/*.js\"",
-    "scss:watch": "sass --watch src/scss/main.scss public/stylesheets/main.css",
+    "scss:watch": "sass --style=compressed --watch src/scss/main.scss public/stylesheets/main.css",
     "scss": "sass src/scss/main.scss public/stylesheets/main.css",
     "start": "npm run scss & npm run start:prod",
     "start:prod": "NODE_ENV=production node ./bin/www",
