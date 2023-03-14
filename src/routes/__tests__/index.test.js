@@ -58,7 +58,7 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('Predictions by year — GROUNDHOG-DAY.com')
       expect($('h1').text()).toEqual('Predictions by year')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'See and compare groundhog predictions by year, from 2023 back to 1886 (which was before TikTok).',
+        'See and compare Groundhog Day predictions by year, from 2023 back to 1886 (which was before TikTok).',
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/predictions')
 
@@ -116,7 +116,7 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('Groundhog Map — GROUNDHOG-DAY.com')
       expect($('h1').text()).toEqual('Groundhog Map')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'Find your closest groundhog on an interactive map of North America (unless you’re from Saskatchewan).',
+        'Find your closest Groundhog Day prognosticator on an interactive map of North America (unless you’re from Saskatchewan).',
       )
       expect($('meta[property="og:image"]').attr('content')).toMatch('/images/map.jpeg')
       expect($('link[rel="canonical"]').attr('href')).toMatch('/map')

@@ -538,7 +538,7 @@ router.get('/predictions', function (req, res) {
     predictions: predictionResults,
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
     pageMeta: _getPageMeta(req, {
-      description: `See and compare groundhog predictions by year, from ${getCurrentYear()} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
+      description: `See and compare Groundhog Day predictions by year, from ${getCurrentYear()} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
     }),
   })
 })
@@ -844,7 +844,7 @@ router.get('/map', validBackUrl, function (req, res) {
     title: 'Groundhog Map',
     pageMeta: _getPageMeta(req, {
       description:
-        'Find your closest groundhog on an interactive map of North America (unless you’re from Saskatchewan).',
+        'Find your closest Groundhog Day prognosticator on an interactive map of North America (unless you’re from Saskatchewan).',
     }),
     groundhogs,
     initial: groundhog ? groundhog.id : '',
