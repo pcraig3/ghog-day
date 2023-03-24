@@ -14,6 +14,7 @@ TODO
 
 DONE
 
+- Update groundhog predictions based on academic research
 - Performance tweaks
   - Defer fonts
   - Gzip compression
