@@ -6,7 +6,7 @@
 
 ## About
 
-GROUNDHOG-DAY.com is the leading data source for North America’s prognosticating groundhogs and their yearly predictions. It's a fun little [express](https://expressjs.com) app with a frontend you can look at and an API you can use.
+GROUNDHOG-DAY.com is the leading data source for North America’s prognosticating groundhogs and their yearly predictions. It's a fun little [express](https://expressjs.com) app with a frontend you can browse and an API you can use. Historical Groundhog Day data is collected from a variety of sources, including [an academic paper](https://journals.ametsoc.org/view/journals/wcas/13/3/WCAS-D-20-0171.1.xml).
 
 - The frontend is pretty straightforward: nunjucks and sass and JS only when I have to.
 - The API does what APIs do: serves resources in JSON. It's free, fast, and simple.
