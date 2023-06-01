@@ -534,7 +534,7 @@ router.get('/predictions', function (req, res) {
   })
 
   res.render('pages/years', {
-    title: 'Predictions by year',
+    title: 'All predictions by year',
     predictions: predictionResults,
     oldestPrediction: predictionResults[predictionResults.length - 1].year,
     pageMeta: _getPageMeta(req, {
@@ -550,7 +550,9 @@ router.get('/predictions/2024', function (req, res) {
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
   const back =
-    req.locals && req.locals.back ? req.locals.back : { url: '/predictions', text: 'Predictions' }
+    req.locals && req.locals.back
+      ? req.locals.back
+      : { url: '/predictions', text: 'All predictions' }
 
   const year = parseInt(req.params.year)
   const predictionTotals = {
@@ -611,10 +613,19 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
         ? 'a longer winter'
         : 'an early spring',
   }
+
+  const predictionTitle =
+    predictionTotals['total'] === 0
+      ? 'No data'
+      : predictionTotals.prediction === 'tied'
+      ? 'Tied'
+      : predictionTotals.prediction === 'winter'
+      ? 'Longer winter'
+      : 'Early spring'
   /* eslint-enable */
 
   res.render('pages/year', {
-    title: `Groundhog Day ${year}`,
+    title: `Groundhog Day ${year} results: ${predictionTitle}`,
     years,
     intro,
     predictions,
@@ -694,12 +705,12 @@ router.get(
 
     /* eslint-disable indent */
     const pageTitle = path.includes('canada')
-      ? 'Groundhogs in Canada'
+      ? 'All groundhogs in Canada'
       : path.includes('usa')
-      ? 'Groundhogs in the USA'
+      ? 'All groundhogs in the USA'
       : path.includes('alternative')
-      ? 'Alternative groundhogs'
-      : 'Groundhogs'
+      ? 'All alternative groundhogs'
+      : 'All groundhogs'
     const nationality = path.includes('canada')
       ? 'Canadian '
       : path.includes('usa')
@@ -714,7 +725,7 @@ router.get(
       groundhogs,
       groundhogTypes,
       pageMeta: _getPageMeta(req, {
-        description: `See all ${groundhogs.length} ${nationality}prognosticators${
+        description: `See a list of all ${groundhogs.length} ${nationality}prognosticators${
           path.includes('alternative')
             ? ' across Canada and the USA'
             : ', whether genuine groundhogs or otherwise'
@@ -758,7 +769,7 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
   groundhog.predictions = groundhog.predictions.slice(0, 5)
 
   res.render('pages/groundhog', {
-    title: groundhog.name,
+    title: `${groundhog.name} from ${groundhog.city}, ${groundhog.region}`,
     groundhog,
     year: getCurrentYear(),
     pageMeta: _getPageMeta(req, {
@@ -841,7 +852,7 @@ router.get('/map', validBackUrl, function (req, res) {
   const groundhog = groundhogs.find((g) => g.slug === req.query.groundhog)
 
   res.render('pages/map', {
-    title: 'Groundhog Map',
+    title: 'Groundhog Map: all prognosticators across USA and Canada',
     pageMeta: _getPageMeta(req, {
       description:
         'Find your closest Groundhog Day prognosticator on an interactive map of North America (unless you’re from Saskatchewan).',

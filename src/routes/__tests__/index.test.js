@@ -36,7 +36,9 @@ describe('Test ui responses', () => {
       const response = await request(app).get('/groundhogs/punxsutawney-phil')
       const $ = cheerio.load(response.text)
 
-      expect($('title').text()).toEqual('Punxsutawney Phil — GROUNDHOG-DAY.com')
+      expect($('title').text()).toEqual(
+        'Punxsutawney Phil from Punxsutawney, Pennsylvania — GROUNDHOG DAY',
+      )
       expect($('h1').text()).toEqual('Punxsutawney Phil')
       expect($('meta[name="description"]').attr('content')).toEqual(
         'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA. In 2023, Phil predicted a longer winter.',
@@ -55,8 +57,8 @@ describe('Test ui responses', () => {
       const response = await request(app).get('/predictions')
       const $ = cheerio.load(response.text)
 
-      expect($('title').text()).toEqual('Predictions by year — GROUNDHOG-DAY.com')
-      expect($('h1').text()).toEqual('Predictions by year')
+      expect($('title').text()).toEqual('All predictions by year — GROUNDHOG DAY')
+      expect($('h1').text()).toEqual('All predictions by year')
       expect($('meta[name="description"]').attr('content')).toEqual(
         'See and compare Groundhog Day predictions by year, from 2023 back to 1886 (which was before TikTok).',
       )
@@ -87,8 +89,8 @@ describe('Test ui responses', () => {
           const response = await request(app).get(`/predictions/${year.year}`)
           const $ = cheerio.load(response.text)
 
-          expect($('title').text()).toEqual(`Groundhog Day ${year.year} — GROUNDHOG-DAY.com`)
-          expect($('h1').text()).toEqual(`Groundhog Day ${year.year}`)
+          expect($('title').text()).toMatch(`Groundhog Day ${year.year}`)
+          expect($('h1').text()).toEqual(`Groundhog Day ${year.year} results`)
           expect($('link[rel="canonical"]').attr('href')).toMatch(`/predictions/${year.year}`)
         })
       }
@@ -113,7 +115,9 @@ describe('Test ui responses', () => {
       const response = await request(app).get('/map')
       const $ = cheerio.load(response.text)
 
-      expect($('title').text()).toEqual('Groundhog Map — GROUNDHOG-DAY.com')
+      expect($('title').text()).toEqual(
+        'Groundhog Map: all prognosticators across USA and Canada — GROUNDHOG DAY',
+      )
       expect($('h1').text()).toEqual('Groundhog Map')
       expect($('meta[name="description"]').attr('content')).toEqual(
         'Find your closest Groundhog Day prognosticator on an interactive map of North America (unless you’re from Saskatchewan).',
@@ -191,7 +195,7 @@ describe('Test API responses', () => {
       const response = await request(app).get('/api')
       const $ = cheerio.load(response.text)
       expect($('h1').text()).toEqual('Groundhog Day API')
-      expect($('title').text()).toEqual('Groundhog Day API — GROUNDHOG-DAY.com')
+      expect($('title').text()).toEqual('Groundhog Day API — GROUNDHOG DAY')
       expect($('meta[name="description"]').attr('content')).toEqual(
         'A free JSON API for North America’s prognosticating animals and their yearly weather predictions.',
       )

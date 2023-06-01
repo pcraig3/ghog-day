@@ -45,9 +45,14 @@
     }
   }
 
-  &--highlight {
+  .predictions--summary--highlight {
     padding: 0 vars.$space-xs;
-    background: linear-gradient(140deg, transparent, vars.$color-spring);
+  }
+
+  &--spring {
+    .predictions--summary--highlight {
+      background: linear-gradient(140deg, transparent, vars.$color-spring);
+    }
   }
 
   &--winter {

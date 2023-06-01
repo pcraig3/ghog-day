@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block content %}
-  {% set h1 = ['Groundhog Day ', years.year] | join %}
+  {% set h1 = ['Groundhog Day ', years.year, ' results'] | join %}
   {% set dataUrl = ['/api/v1/predictions?year=', years.year] | join %}
   {{ page_header({ h1: h1, backUrl: back.url, backText: back.text, dataUrl: dataUrl }) }}
 
@@ -46,13 +46,13 @@
   <div class="predictions--summary">
     <ul>
       <li>
-        <div class="predictions--summary--item predictions--summary--spring">
+        <div class="predictions--summary--item{%- if predictionTotals.prediction != 'winter' %} predictions--summary--spring{%- endif -%}">
           <div class="icon"><span aria-hidden="true">🌼</span></div>
           <strong class="h1">{{ predictionTotals.spring }}</strong> predicted <span class="predictions--summary--highlight">early spring</span>
         </div>
       </li><!--
       --><li>
-        <div class="predictions--summary--item predictions--summary--winter">
+        <div class="predictions--summary--item{%- if predictionTotals.prediction != 'spring' %} predictions--summary--winter{%- endif -%}">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
           <strong class="h1">{{ predictionTotals.winter }}</strong> predicted <span class="predictions--summary--highlight">longer winter</span>
         </div>
@@ -61,12 +61,12 @@
     <div class="predictions--navigation">
       {% if years.next %}
         <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
-          {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> predictions</span></span>
+          {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> results</span></span>
         </a>
       {% endif %}
       {% if years.prev %}
         <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
-          <span>{{ years.prev }}<span class="hidden--mobile-xs"> predictions</span></span> {{ icon({ right: true }) }}
+          <span>{{ years.prev }}<span class="hidden--mobile-xs"> results</span></span> {{ icon({ right: true }) }}
         </a>
       {% endif %}
     </div>
