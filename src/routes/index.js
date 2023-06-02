@@ -852,10 +852,10 @@ router.get('/map', validBackUrl, function (req, res) {
   const groundhog = groundhogs.find((g) => g.slug === req.query.groundhog)
 
   res.render('pages/map', {
-    title: 'Groundhog Map: all prognosticators across USA and Canada',
+    title: 'Groundhog Map',
     pageMeta: _getPageMeta(req, {
       description:
-        'Find your closest Groundhog Day prognosticator on an interactive map of North America (unless you’re from Saskatchewan).',
+        'Find your closest Groundhog Day prognosticator on an interactive map of all groundhogs across USA and Canada.',
     }),
     groundhogs,
     initial: groundhog ? groundhog.id : '',

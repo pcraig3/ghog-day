@@ -115,12 +115,10 @@ describe('Test ui responses', () => {
       const response = await request(app).get('/map')
       const $ = cheerio.load(response.text)
 
-      expect($('title').text()).toEqual(
-        'Groundhog Map: all prognosticators across USA and Canada — GROUNDHOG DAY',
-      )
+      expect($('title').text()).toEqual('Groundhog Map — GROUNDHOG DAY')
       expect($('h1').text()).toEqual('Groundhog Map')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'Find your closest Groundhog Day prognosticator on an interactive map of North America (unless you’re from Saskatchewan).',
+        'Find your closest Groundhog Day prognosticator on an interactive map of all groundhogs across USA and Canada.',
       )
       expect($('meta[property="og:image"]').attr('content')).toMatch('/images/map.jpeg')
       expect($('link[rel="canonical"]').attr('href')).toMatch('/map')
