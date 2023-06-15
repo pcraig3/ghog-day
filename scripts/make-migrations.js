@@ -19,6 +19,7 @@ CREATE TABLE groundhogs (
   isGroundhog BOOLEAN,
   type TEXT,
   active BOOLEAN,
+  successor TEXT,
   description TEXT,
   image TEXT
 );
@@ -68,7 +69,7 @@ const insertGroundhogs = () => {
         reject(error)
       })
       .on('data', (row) => {
-        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, description, image) VALUES (${parseInt(
+        const insert = `INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (${parseInt(
           row.id,
         )}, '${escape(row.slug)}', '${escape(row.shortname)}', '${escape(row.name)}', '${escape(
           row.city,
@@ -76,10 +77,9 @@ const insertGroundhogs = () => {
           row.source,
         )}', '${escape(row.contact)}', '${escape(row.currentPrediction)}', ${isBoolean(
           row.isGroundhog,
-        )}, '${escape(row.type)}', '${isBoolean(row.active)}', '${escape(row.description).replace(
-          '\\%',
-          '%',
-        )}', '${createImgRef(row.slug)}');\n`
+        )}, '${escape(row.type)}', '${isBoolean(row.active)}','${escape(row.successor)}', '${escape(
+          row.description,
+        ).replace('\\%', '%')}', '${createImgRef(row.slug)}');\n`
 
         stream.write(insert)
       })
