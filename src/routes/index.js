@@ -89,6 +89,7 @@ const getPredictionsByYear = (year) => {
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
+        'successor', g.successor,
         'description', g.description,
         'image', g.image
       ) AS gh
@@ -130,6 +131,7 @@ const _getPredictions = ({ since = 2018 } = {}) => {
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
+        'successor', g.successor,
         'description', g.description,
         'image', g.image
       )
@@ -176,6 +178,7 @@ const _getGroundhog = (value, { identifier = 'slug', oldestFirst = false } = {})
       'isGroundhog', g.isGroundhog,
       'type', g.type,
       'active', g.active,
+      'successor', g.successor,
       'description', g.description,
       'image', g.image,
       'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
@@ -241,6 +244,7 @@ const getGroundhogs = ({
         'isGroundhog', g.isGroundhog,
         'type', g.type,
         'active', g.active,
+        'successor', g.successor,
         'description', g.description,
         'image', g.image,
         'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
@@ -785,9 +789,8 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
 router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
   // years == all years (including nulls), total == all predictions (nulls are not included)
   let allPredictions = { years: 0, total: 0, shadow: 0, noShadow: 0, null: 0 }
-  const oldestFirst = req.query.oldestFirst === 'true'
 
-  let groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst })
+  let groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
   groundhog['predictions'].forEach((p) => {
     ++allPredictions['years']
 
@@ -798,9 +801,7 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
       : ++allPredictions['null'] // eslint-disable-line indent
   })
 
-  const firstYear = oldestFirst
-    ? groundhog.predictions[0].year
-    : groundhog.predictions[groundhog.predictions.length - 1].year
+  const firstYear = groundhog.predictions[groundhog.predictions.length - 1].year
 
   allPredictions = {
     ...allPredictions,
@@ -815,7 +816,6 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
     groundhog,
     allPredictions,
     firstYear,
-    oldestFirst,
     pageMeta: _getPageMeta(req, {
       description: getGroundhogMetaDescription(groundhog, {
         allPredictionsCount: allPredictions.total,

@@ -10,7 +10,12 @@
 
   <div class="inner-content inner-content--with-summary">
     <div class="flash">
-       {% if groundhog.predictions[0].shadow == true -%}
+      {% if groundhog.successor -%}
+        <aside class="highlight highlight--none">
+          <div class="icon"><span aria-hidden="true">👴</span></div>
+          <div class="message"><span>Ollie retired in 2021. <a href="/groundhogs/heavens-wildlife-harvey" class="underline">Heaven’s Wildlife Harvey</a> is the new groundhog for Oil Springs.</span></div>
+        </aside>
+      {% elseif groundhog.predictions[0].shadow == true -%}
         <aside class="highlight highlight--winter">
           <div class="icon"><span aria-hidden="true">❄️</span></div>
           <div class="message"><span>In {{ groundhog.predictions[0].year }}, {{ groundhog.shortname }} predicted a <strong>longer winter</strong>.</span></div>
@@ -55,7 +60,9 @@
         </div>
         <div class="groundhog--source">
           <a href="{{ groundhog.source }}" target="_blank" class="underline">Source</a>
-          <a href="{{ groundhog.currentPrediction }}" target="_blank" class="underline">Latest prediction</a>
+          {% if groundhog.currentPrediction %}
+            <a href="{{ groundhog.currentPrediction }}" target="_blank" class="underline">Latest prediction</a>
+          {% endif %}
         </div>
       </div>
       <div class="groundhog--contact">
