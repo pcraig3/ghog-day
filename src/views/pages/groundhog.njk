@@ -59,9 +59,9 @@
           </div>
         </div>
         <div class="groundhog--source">
-          <a href="{{ groundhog.source }}" target="_blank" class="underline">Source</a>
+          <a href="{{ groundhog.source }}" target="_blank" class="underline" rel="noopener">Source</a>
           {% if groundhog.currentPrediction %}
-            <a href="{{ groundhog.currentPrediction }}" target="_blank" class="underline">Latest prediction</a>
+            <a href="{{ groundhog.currentPrediction }}" target="_blank" class="underline" rel="noopener">Latest prediction</a>
           {% endif %}
         </div>
       </div>
@@ -71,7 +71,7 @@
             {%- if '@' in groundhog.contact -%}
               Email {{ groundhog.shortname }} at <a href="mailto:{{ groundhog.contact }}" class="underline">{{ groundhog.contact }}</a>
             {%- else -%}
-              Get in touch with {{ groundhog.shortname }} at <a href="https://{{ groundhog.contact }}" class="underline" target="_blank">{{ groundhog.contact }}</a>.</a>
+              Get in touch with {{ groundhog.shortname }} at <a href="https://{{ groundhog.contact }}" class="underline" target="_blank" rel="noopener">{{ groundhog.contact }}</a>.</a>
             {%- endif -%}
           {%- else -%}
             <a href="/contact" class="underline">Get in touch</a> to edit this groundhog.
