@@ -9,11 +9,11 @@ TODO
   - Page of the most out-there facts
 - Add RichResults
   - Dataset lol
-- "Retired" groundhogs
 - Alternate, non-shadow prediction text
 
 DONE
 
+- "Retired" groundhogs
 - Update groundhog predictions based on academic research
 - Performance tweaks
   - Defer fonts
