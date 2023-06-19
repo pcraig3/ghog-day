@@ -18,7 +18,7 @@ describe('Test ui responses', () => {
     test('it should return the h1, title, meta tag, and canonical link', async () => {
       const response = await request(app).get('/')
       const $ = cheerio.load(response.text)
-      expect($('title').text()).toEqual('GROUNDHOG-DAY.com — the leading Groundhog Day data source')
+      expect($('title').text()).toEqual('GROUNDHOG-DAY.com — The leading Groundhog Day data source')
       // expect($('h1').text()).toEqual('Only 135 days until Groundhog Day 2023.')
       expect($('meta[name="description"]').attr('content')).toMatch(
         'GROUNDHOG-DAY.com is the leading Groundhog Day data source: cataloging North America’s prognosticating animals and their yearly weather predictions.',
