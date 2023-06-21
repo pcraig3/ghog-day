@@ -12,7 +12,7 @@ const obfuscateEmail = (node) => {
 
     // Get email and text
     const email = atob(node.dataset.email)
-    const text = node.dataset.text || email
+    const text = node.dataset.text || email.split('?')[0]
 
     // Add dummy href and obfuscated email
     newNode.setAttribute('href', '#')
@@ -31,7 +31,7 @@ function unobfuscateEmail(event) {
   if (node.dataset.email) {
     // Get email and text
     const email = atob(node.dataset.email)
-    const text = node.dataset.text || email
+    const text = node.dataset.text || email.split('?')[0]
 
     // Set real mailto attribute and content
     node.setAttribute('href', 'mailto:'.concat(email))
