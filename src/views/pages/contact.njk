@@ -1,5 +1,9 @@
 {% extends "layout.njk" %}
 
+{% block header_scripts -%}
+  <script src="/javascripts/email.js"></script>
+{%- endblock %}
+
 {% block body_classes -%}
   contact
 {%- endblock %}
@@ -21,7 +25,7 @@
     </ul>
 
     <p>If you would like to <a href="/add-groundhog">add a new groundhog</a>, there is a dedicated page for that.</p>
-    <p>For all other inquiries / corrections, email “<a href="mailto:hello@groundhog-day.com">hello@groundhog-day.com</a>”.
+    <p>For all other inquiries / corrections, email <span class="email--swap" data-email="cGF1bEBncm91bmRob2ctZGF5LmNvbQ==">“paul [a] groundhog-day [dot] com”</span>.
 
     <br />
     <br />
@@ -30,7 +34,7 @@
     <h3 class="h5" id="contact--paul-craig">Paul Craig, Developer</h3>
 
     <p>My name is <a href="https://pcraig3.ca/" target="_blank">Paul</a> and I barely ever thought about groundhogs until <a href="https://www.canadaland.com/podcast/750-dead-willies/" target="_blank">Canadaland’s episode #750: Dead Willies</a>. Afterwards, I started Googling around and was horrified to learn that the best-case-scenario for retrieving past predictions is downloading a PDF file (an awful way to store data), with the more common case being that there is simply no central list of predictions at all.</p>
-    <p>In addition to building the site + API, I have accidentally become maybe one of the foremost Groundhog Day experts in Canada slash the world. To inquire about keynote speaking at your conference or even just to say hi, email me at “<a href="mailto:paul@groundhog-day.com">paul@groundhog-day.com</a>”.</p>
+    <p>In addition to building the site + API, I have accidentally become maybe one of the foremost Groundhog Day experts in Canada slash the world. To inquire about keynote speaking at your conference or even just to say hi, email me at <span class="email--swap" data-email="cGF1bEBncm91bmRob2ctZGF5LmNvbQ==">“paul [a] groundhog-day [dot] com”</span>.</p>
 
     <p><strong>Favourite groundhog</strong>: to be honest, I really like <a href="/groundhogs/lucy-the-lobster">Lucy the Lobster</a> from Nova Scotia.
 

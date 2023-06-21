@@ -1,5 +1,9 @@
 {% extends "layout.njk" %}
 
+{% block header_scripts -%}
+  <script src="/javascripts/email.js"></script>
+{%- endblock %}
+
 {% block body_classes -%}
   add-groundhog
 {%- endblock %}
@@ -30,6 +34,6 @@
     <p>Once you have your photo handy, it should only take 5 or so minutes to <a href="https://forms.gle/fki9UL1kwjSusbL59" target="_blank">submit your groundhog</a>.</p>
 
     <h2 class="h3" id="editing-a-groundhog">Editing a groundhog</h2>
-    <p class="mb--0">I have tried to make sure that all data on the site is accurate but mistakes do hpapen. If any information is incorrect or incomplete (eg, to add more predictions, edit a groundhog, change the photo), please email me at <a href="mailto:paul@groundhog-day.com">paul@groundhog-day.com</a> to let me know.</p>
+    <p class="mb--0">I have tried to make sure that all data on the site is accurate but mistakes do hpapen. If any information is incorrect or incomplete (eg, to add more predictions, edit a groundhog, change the photo), please email me at <span class="email--swap" data-email="cGF1bEBncm91bmRob2ctZGF5LmNvbQ==">“paul [a] groundhog-day [dot] com”</span> to let me know.</p>
   </div>
 {% endblock %}
