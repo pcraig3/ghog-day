@@ -215,6 +215,7 @@ const getGroundhogs = ({
   oldestFirst = false,
   year = false,
   country = undefined,
+  isActive = undefined,
   isGroundhog = undefined,
 } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
@@ -223,6 +224,9 @@ const getGroundhogs = ({
   let whereClause = ['USA', 'Canada'].includes(country) ? `g.country = '${country}'` : '1 = 1'
   if (isGroundhog !== undefined) {
     whereClause = `${whereClause} AND isGroundhog='${isGroundhog ? 1 : 0}'`
+  }
+  if (isActive !== undefined) {
+    whereClause = `${whereClause} AND active='${isActive ? 1 : 0}'`
   }
 
   let [{ groundhogs }] = DB()
@@ -912,7 +916,8 @@ APIRouter.get('/groundhogs', function (req, res) {
   }
 
   const isGroundhog = parseBoolean(req.query.isGroundhog)
-  const groundhogs = getGroundhogs({ oldestFirst: true, country, isGroundhog })
+  const isActive = parseBoolean(req.query.isActive)
+  const groundhogs = getGroundhogs({ oldestFirst: true, country, isGroundhog, isActive })
   res.json({ groundhogs })
 })
 
