@@ -102,7 +102,7 @@ app.use(function (err, req, res, next) {
   let h1 = 'Server error'
   let message =
     err.message ||
-    'Something went wrong. No cause for alarm. Contact paul@pcraig3 if you think you found a bug.'
+    'Something went wrong. No cause for alarm. Contact paul@pcraig.ca if you think you found a bug.'
 
   // only provide error stack in development
   let stack = req.app.get('env') === 'development' ? err.stack : ''
