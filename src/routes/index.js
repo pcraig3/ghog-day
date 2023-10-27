@@ -1,5 +1,5 @@
 const express = require('express')
-const DB = require('better-sqlite3-helper')
+const DB = require('@beenotung/better-sqlite3-helper')
 const format = require('date-fns/format')
 const createError = require('http-errors')
 const aAnAre = require('../filters/aAnAre')
