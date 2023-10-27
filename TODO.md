@@ -13,6 +13,7 @@ TODO
 
 DONE
 
+- Update stamen map tiles to stadia map tiles
 - Filter groundhogs by "active" when returning from the API
 - "Retired" groundhogs
 - Update groundhog predictions based on academic research
