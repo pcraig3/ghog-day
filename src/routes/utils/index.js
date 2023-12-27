@@ -1,4 +1,4 @@
-var getDayOfYear = require('date-fns/getDayOfYear')
+var { getDayOfYear } = require('date-fns/getDayOfYear')
 
 // Get current _groundhog_ year
 // Until Feb 2, this should still read the past year
