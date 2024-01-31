@@ -390,6 +390,10 @@ router.use((req, res, next) => {
 router.get('/', function (req, res) {
   const currentYear = getCurrentYear()
   const _predictions = _getPredictions({ since: 2021 })
+
+  // TODO, remove this!!
+  delete _predictions['2024']
+
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
 
