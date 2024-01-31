@@ -276,7 +276,7 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const currentYear = getCurrentYear()
+  const currentYear = getCurrentYear() + 1
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -555,8 +555,8 @@ router.get('/predictions', function (req, res) {
   })
 })
 
-router.get('/predictions/2024', function (req, res) {
-  return res.redirect('/groundhog-day-2024')
+router.get('/predictions/2025', function (req, res) {
+  return res.redirect('/groundhog-day-2025')
 })
 
 /* GET predictions page for a year. */
@@ -611,7 +611,10 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
   /* eslint-disable */
   const predictionTied = predictionTotals['prediction'] === 'tied'
   const intro = {
-    lead: `In ${year}, Groundhog Day was on ${dateString}`,
+    lead:
+      years.year === 2024
+        ? `In ${year}, Groundhog Day is on ${dateString}`
+        : `In ${year}, Groundhog Day was on ${dateString}`,
     predictionTied,
     predictionPercent: predictionTied
       ? 0
@@ -650,12 +653,16 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
   })
 })
 
+router.get('/groundhog-day-2024', function (req, res) {
+  return res.redirect('/predictions/2024')
+})
+
 router.get('/groundhog-day-2023', function (req, res) {
   return res.redirect('/predictions/2023')
 })
 
-/* GET 2024 (upcoming) page */
-router.get('/groundhog-day-2024', validBackUrl, function (req, res) {
+/* GET 2025 (upcoming) page */
+router.get('/groundhog-day-2025', validBackUrl, function (req, res) {
   const currentYear = getCurrentYear()
   const nextYear = currentYear + 1
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }

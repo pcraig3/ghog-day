@@ -36,7 +36,7 @@
   <div class="max-width--850">
   <p class="speakable">
     {%- if not intro.predictionTied -%}
-      {{ intro.lead }}. Most groundhogs <span aria-hidden='true'>({{ intro.predictionPercent }}%)</span> predicted <strong>{{ intro.predictionConclusion }}</strong>.
+      {{ intro.lead }}. {% if years.year === 2024 %}So far, most{% else %}Most{% endif %} groundhogs <span aria-hidden='true'>({{ intro.predictionPercent }}%)</span> predicted <strong>{{ intro.predictionConclusion }}</strong>.
     {%- else -%}
       {{ intro.lead }}. {{ intro.predictionConclusion }}.
     {%- endif -%}
@@ -59,7 +59,7 @@
       </li>
     </ul>
     <div class="predictions--navigation">
-      {% if years.next %}
+      {% if years.next and years.next != 2025 %}
         <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
           {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> results</span></span>
         </a>
