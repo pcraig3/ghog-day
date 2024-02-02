@@ -10,6 +10,8 @@ TODO
 - Add RichResults
   - Dataset lol
 - Alternate, non-shadow prediction text
+- Get a better handle on upcoming groundhog day
+- Remove all the temp stuff about today being groundhog day
 
 DONE
 
