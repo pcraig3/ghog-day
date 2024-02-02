@@ -437,7 +437,7 @@ router.get('/', function (req, res) {
 
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
-    daysLeft: getDaysToGroundhogDay(),
+    daysLeft: 1, //getDaysToGroundhogDay(),
     predictionResults,
     randomGroundhogs,
     totalGroundhogs: getGroundhogSlugs().length,
