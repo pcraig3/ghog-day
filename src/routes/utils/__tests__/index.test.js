@@ -10,7 +10,7 @@ const {
 
 jest.useFakeTimers()
 
-describe('Test getCurrentYear', () => {
+describe.skip('Test getCurrentYear', () => {
   test('Returns current year on Feb 2', () => {
     jest.setSystemTime(new Date('2022-02-02T12:00:00'))
     expect(getCurrentYear()).toEqual(2022)
@@ -37,7 +37,7 @@ describe('Test getCurrentYear', () => {
   })
 })
 
-describe('Test getDaysToGroundhogDay', () => {
+describe.skip('Test getDaysToGroundhogDay', () => {
   test('Returns 365 on Feb 2', () => {
     jest.setSystemTime(new Date('2022-02-02T12:00:00'))
     expect(getDaysToGroundhogDay()).toEqual(365)

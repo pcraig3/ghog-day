@@ -276,7 +276,7 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const currentYear = getCurrentYear() + 1
+  const currentYear = getCurrentYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -389,10 +389,7 @@ router.use((req, res, next) => {
 /* GET home page. */
 router.get('/', function (req, res) {
   const currentYear = getCurrentYear()
-  const _predictions = _getPredictions({ since: 2021 })
-
-  // TODO, remove this!!
-  delete _predictions['2024']
+  const _predictions = _getPredictions({ since: 2022 })
 
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []

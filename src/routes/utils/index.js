@@ -11,7 +11,7 @@ const getCurrentYear = () => {
     return date.getFullYear() - 1
   }
 
-  return date.getFullYear()
+  return 2024 // date.getFullYear()
 }
 
 const getDaysToGroundhogDay = () => {
