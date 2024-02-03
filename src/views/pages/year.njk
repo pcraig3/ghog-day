@@ -35,14 +35,7 @@
 
   <div class="max-width--850">
   <p class="speakable">
-    {%- if years.year == 2024 -%}
-      <strong>In 2024, Groundhog Day is on Thursday, February 2nd.</strong>
-      </p>
-      <p>
-        <a href="/about">According to tradition</a>, if a groundhog sees its shadow on February 2nd, it means six more weeks of winter. No shadow means an early spring.
-        </p>
-      <p>We don’t have all this year’s predictions in yet, but here’s what we know so far.
-    {%- elseif not intro.predictionTied -%}
+    {%- if not intro.predictionTied -%}
       {{ intro.lead }}. Most groundhogs <span aria-hidden='true'>({{ intro.predictionPercent }}%)</span> predicted <strong>{{ intro.predictionConclusion }}</strong>.
     {%- else -%}
       {{ intro.lead }}. {{ intro.predictionConclusion }}.
