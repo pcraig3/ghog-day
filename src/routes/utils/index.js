@@ -6,7 +6,6 @@ var { getDayOfYear } = require('date-fns/getDayOfYear')
 const getCurrentYear = () => {
   // TODO: remove
 
-  return 2024
   const date = new Date()
   const dayOfYear = getDayOfYear(date)
 
