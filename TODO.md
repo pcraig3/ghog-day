@@ -12,6 +12,16 @@ TODO
 - Alternate, non-shadow prediction text
 - Get a better handle on upcoming groundhog day
 - Remove all the temp stuff about today being groundhog day
+- Walter wally is toast
+- What is happening with Buckeye chuck
+- Fenwick Flossie photo: https://www.pelhamtoday.ca/local-news/fenwick-giant-slumbering-rodent-slowly-stirs-8159542
+- Respond to the Groundhog Day people
+- Fix the tests
+- Last updated on the page
+- Compile 10 more groundhogs
+- Add merch!
+- Look through wikipedia
+- Get in touch with the people who didn’t update
 
 DONE
 

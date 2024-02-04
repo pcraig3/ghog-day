@@ -29,12 +29,27 @@
             <tr>
               <th class="sort extra-padding" data-sort="year" tabIndex="0">Year</th>
               <th class="center--mobile">Prediction</th>
-              <th class="center--mobile">Spring : Winter</th>
+              <th class="hidden--mobile-xs">Spring : Winter</th>
               <th class="hidden--mobile-xs">Consensus (%)</th>
-              <th class="hidden--mobile-xs">Total predictions</th>
+              <th class="center--mobile">Total predictions</th>
             </tr>
           </thead>
           <tbody role="presentation" class="list">
+            <tr onclick="window.location='/predictions/2025';" aria-hidden="true">
+                <th class="year"><a href="/predictions/2025" class="underline">2025</a></th>
+                <td class="center--mobile">
+                  —
+                </td>
+                <td class="hidden--mobile-xs">
+                  —
+                </td>
+                <td class="hidden--mobile-xs">
+                  —
+                </td>
+                <td class="center--mobile">
+                  —
+                </td>
+              </tr>
             {% for prediction in predictions %}
               <tr onclick="window.location='/predictions/{{ prediction.year }}';">
                 <th class="year"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
@@ -49,7 +64,7 @@
                     <span role="img" aria-label="Tied">⛔️</span> <span class="hidden--mobile-xs">Tied</span>
                   {% endif %}
                 </td>
-                <td class="center--mobile">
+                <td class="hidden--mobile-xs">
                   {{ prediction.groundhogs.spring }} : {{ prediction.groundhogs.winter }}
                 </td>
                 <td class="hidden--mobile-xs">
@@ -61,7 +76,7 @@
                     <span class="visually-hidden">No consensus</span>
                   {% endif %}
                 </td>
-                <td class="hidden--mobile-xs">
+                <td class="center--mobile">
                   {% set totalPredictions = prediction.groundhogs.winter + prediction.groundhogs.spring %}
                   {{ totalPredictions }}
                 </td>

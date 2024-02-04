@@ -74,7 +74,7 @@
   </div>
   {% if predictionTotals.total -%}
   <div class="predictions" id="sortable--year">
-    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} {% if years.year == 2024 %}(so far) {% endif %}in {{ years.year }}</h2>
+    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} in {{ years.year }}</h2>
     <form id="sortable--year--form">
       <label for="sortable--year--select">Sort by</label>
       <select name="year" id="sortable--year--select">
