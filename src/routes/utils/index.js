@@ -64,12 +64,36 @@ const parseBoolean = (value) => {
 // https://gist.github.com/jens1101/9f3faa6c2dae23537257f1c3d0afdfdf
 const removeTrailingSlashes = (url) => url.replace(/\/+$/, '')
 
+const getRandomPositiveAdjective = () => {
+  const adjectives = [
+    'amazing',
+    'awesome',
+    'brilliant',
+    'excellent',
+    'fabulous',
+    'fantastic',
+    'incredible',
+    'magnificent',
+    'marvelous',
+    'outstanding',
+    'phenomenal',
+    'remarkable',
+    'sensational',
+    'terrific',
+    'tremendous',
+    'wonderful',
+  ]
+
+  return getRandomItems(adjectives, { length: 1 })[0]
+}
+
 module.exports = {
   getCurrentYear,
   getDaysToGroundhogDay,
   escapeHtml,
   getPercent,
   getRandomItems,
+  getRandomPositiveAdjective,
   parseBoolean,
   removeTrailingSlashes,
 }

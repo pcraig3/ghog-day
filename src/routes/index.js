@@ -15,6 +15,7 @@ const {
   escapeHtml,
   getPercent,
   getRandomItems,
+  getRandomPositiveAdjective,
   parseBoolean,
   removeTrailingSlashes,
 } = require('./utils')
@@ -778,6 +779,8 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
 
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
 
+  // count
+  const countPredictions = groundhog.predictions.length
   // only 5 latest predictions
   groundhog.predictions = groundhog.predictions.slice(0, 5)
 
@@ -785,6 +788,9 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
     title: `${groundhog.name} from ${groundhog.city}, ${groundhog.region}`,
     groundhog,
     year: getCurrentYear(),
+    countPredictions,
+    successor: groundhog.successor && getGroundhogBySlug(groundhog.successor),
+    randomPositiveAdjective: getRandomPositiveAdjective(),
     pageMeta: _getPageMeta(req, {
       description: getGroundhogMetaDescription(groundhog),
       slug: groundhog.slug,

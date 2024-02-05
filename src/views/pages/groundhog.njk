@@ -10,10 +10,15 @@
 
   <div class="inner-content inner-content--with-summary">
     <div class="flash">
-      {% if groundhog.successor -%}
+      {% if successor -%}
         <aside class="highlight highlight--none">
           <div class="icon"><span aria-hidden="true">👴</span></div>
-          <div class="message"><span>Ollie retired in 2021. <a href="/groundhogs/heavens-wildlife-harvey" class="underline">Heaven’s Wildlife Harvey</a> is the new groundhog for Oil Springs.</span></div>
+          <div class="message"><span>Ollie retired in 2021 and is succeeded by <a href="/groundhogs/{{ successor.slug }}" class="underline">{{ successor.name }}</a>.</span></div>
+        </aside>
+      {% elseif not groundhog.active -%}
+        <aside class="highlight highlight--none">
+          <div class="icon"><span aria-hidden="true">🧓</span></div>
+          <div class="message"><span><strong>{{ groundhog.shortname }} retired in {{ groundhog.predictions[0].year }}</strong> after {{ countPredictions }} {{ randomPositiveAdjective }} years of prognostication.</span></div>
         </aside>
       {% elseif groundhog.predictions[0].shadow == true -%}
         <aside class="highlight highlight--winter">
