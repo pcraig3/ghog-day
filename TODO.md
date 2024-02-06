@@ -20,6 +20,7 @@ TODO
 
 DONE
 
+- Add Mojave Max
 - Get in touch with the people who didn’t update
 - New pics for Lucy, Chuck, and Flossie
 - Walter wally is toast
