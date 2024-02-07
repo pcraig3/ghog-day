@@ -13,7 +13,7 @@
       {% if successor -%}
         <aside class="highlight highlight--none">
           <div class="icon"><span aria-hidden="true">👴</span></div>
-          <div class="message"><span>Ollie retired in 2021 and is succeeded by <a href="/groundhogs/{{ successor.slug }}" class="underline">{{ successor.name }}</a>.</span></div>
+          <div class="message"><span><strong>{{ groundhog.shortname }} retired in {{ groundhog.predictions[0].year }}</strong> and is succeeded by <a href="/groundhogs/{{ successor.slug }}" class="underline">{{ successor.name }}</a>.</span></div>
         </aside>
       {% elseif not groundhog.active -%}
         <aside class="highlight highlight--none">

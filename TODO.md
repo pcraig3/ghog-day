@@ -14,13 +14,15 @@ TODO
 - Respond to the Groundhog Day people
 - Fix the tests
 - Last updated on the page
-- Compile 10 more groundhogs
+- Compile 7 more groundhogs
 - Add merch!
 - Look through wikipedia
+- TODO: years on groundhogs page
+- Also, show active groundhogs by default
 
 DONE
 
-- Add Mojave Max
+- Add Mojave Max, Elliott, and Sylvia
 - Get in touch with the people who didn’t update
 - New pics for Lucy, Chuck, and Flossie
 - Walter wally is toast
