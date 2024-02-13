@@ -19,6 +19,7 @@ TODO
 - Look through wikipedia
 - TODO: years on groundhogs page
 - Also, show active groundhogs by default
+- Don't zoom in on inputs
 
 DONE
 
