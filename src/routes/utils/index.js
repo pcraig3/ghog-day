@@ -36,7 +36,7 @@ const escapeHtml = (unsafe) => {
     .replace(/'/g, '&#039;')
 }
 
-// return a percent as a rounded integet between 0-100
+// return a percent as a rounded integer between 0-100
 const getPercent = (percent, total) => {
   return Math.round((percent / total) * 100)
 }
