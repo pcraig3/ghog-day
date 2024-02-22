@@ -615,6 +615,7 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
     lead: `In ${year}, Groundhog Day was on ${dateString}`,
     predictionTied,
     predictionPercent,
+    predictionIntro: `Most groundhogs (${predictionPercent }%) predicted`,
     predictionConclusion:
       predictionTotals['total'] === 0
         ? 'No predictions were reported for this year'
