@@ -533,7 +533,7 @@ router.get('/predictions', function (req, res) {
 
     // Get agreement percentage — if tied, there is no consensus
     if (yearPredictions.prediction !== 'tied') {
-      // numerator: winning prediction, demoninator: winter + spring (no nulls)
+      // numerator: winning prediction, denominator: winter + spring (no nulls)
       yearPredictions['percentConsensus'] = getPercent(
         yearPredictions.groundhogs[yearPredictions.prediction],
         yearPredictions.groundhogs['winter'] + yearPredictions.groundhogs['spring'],
