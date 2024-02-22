@@ -608,12 +608,13 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
 
   /* eslint-disable */
   const predictionTied = predictionTotals['prediction'] === 'tied'
+  const predictionPercent = predictionTied
+  ? 0
+  : getPercent(predictionTotals[predictionTotals['prediction']], predictionTotals['total'])
   const intro = {
     lead: `In ${year}, Groundhog Day was on ${dateString}`,
     predictionTied,
-    predictionPercent: predictionTied
-      ? 0
-      : getPercent(predictionTotals[predictionTotals['prediction']], predictionTotals['total']),
+    predictionPercent,
     predictionConclusion:
       predictionTotals['total'] === 0
         ? 'No predictions were reported for this year'
