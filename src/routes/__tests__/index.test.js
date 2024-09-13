@@ -2,11 +2,10 @@ const request = require('supertest')
 const cheerio = require('cheerio')
 
 const app = require('../../../app.js')
-// TODO const { getCurrentYear } = require('../utils')
+const { getCurrentYear } = require('../utils')
 
 const EARLIEST_RECORDED_PREDICTION = 1886
-// TODO const CURRENT_YEAR = getCurrentYear()
-const CURRENT_YEAR = 2023
+const CURRENT_YEAR = getCurrentYear()
 
 describe('Test ui responses', () => {
   describe('Test / response', () => {
@@ -32,7 +31,7 @@ describe('Test ui responses', () => {
       expect(response.statusCode).toBe(200)
     })
 
-    test.skip('it should return the h1, title, meta tag, and canonical link', async () => {
+    test('it should return the h1, title, meta tag, and canonical link', async () => {
       const response = await request(app).get('/groundhogs/punxsutawney-phil')
       const $ = cheerio.load(response.text)
 
@@ -40,14 +39,14 @@ describe('Test ui responses', () => {
         'Punxsutawney Phil from Punxsutawney, Pennsylvania — GROUNDHOG DAY',
       )
       expect($('h1').text()).toEqual('Punxsutawney Phil')
-      expect($('meta[name="description"]').attr('content')).toEqual(
-        'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA. In 2023, Phil predicted a longer winter.',
+      expect($('meta[name="description"]').attr('content')).toMatch(
+        'Punxsutawney Phil is a prognosticating Groundhog from Punxsutawney in Pennsylvania, USA.',
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/groundhogs/punxsutawney-phil')
     })
   })
 
-  describe.skip('Test /predictions response', () => {
+  describe('Test /predictions response', () => {
     test('it should return 200', async () => {
       const response = await request(app).get('/predictions')
       expect(response.statusCode).toBe(200)
@@ -60,11 +59,11 @@ describe('Test ui responses', () => {
       expect($('title').text()).toEqual('All predictions by year — GROUNDHOG DAY')
       expect($('h1').text()).toEqual('All predictions by year')
       expect($('meta[name="description"]').attr('content')).toEqual(
-        'See and compare Groundhog Day predictions by year, from 2023 back to 1886 (which was before TikTok).',
+        `See and compare Groundhog Day predictions by year, from ${CURRENT_YEAR} back to 1886 (which was before TikTok).`,
       )
       expect($('link[rel="canonical"]').attr('href')).toMatch('/predictions')
 
-      expect($('tbody tr').first().find('a').text()).toEqual(`${CURRENT_YEAR}`)
+      expect($('tbody tr').first().find('a').text()).toEqual(`${CURRENT_YEAR + 1}`)
       expect($('tbody tr').last().find('a').text()).toEqual(`${EARLIEST_RECORDED_PREDICTION}`)
     })
   })
@@ -72,8 +71,8 @@ describe('Test ui responses', () => {
   describe('Test /predictions/:years response', () => {
     const years = [
       { year: CURRENT_YEAR, status: 200 },
-      { year: CURRENT_YEAR + 2, status: 302 }, // TODO: Change this
-      { year: CURRENT_YEAR + 3, status: 400 }, // TODO: Change this
+      { year: CURRENT_YEAR + 1, status: 302 },
+      { year: CURRENT_YEAR + 2, status: 400 },
       { year: EARLIEST_RECORDED_PREDICTION, status: 200 },
       { year: EARLIEST_RECORDED_PREDICTION - 1, status: 400 },
     ]
@@ -228,10 +227,10 @@ describe('Test API responses', () => {
   })
 
   describe('for /api/v1/groundhogs path', () => {
-    const GROUNDHOGS_ALL = 75
+    const GROUNDHOGS_ALL = 80
     const GROUNDHOGS_CANADA = 14
-    const GROUNDHOGS_USA = 61
-    const GROUNDHOGS_ALTERNATIVE = 43
+    const GROUNDHOGS_USA = 66
+    const GROUNDHOGS_ALTERNATIVE = 46
 
     const urls = [
       {
@@ -348,14 +347,14 @@ describe('Test API responses', () => {
       expect(error.message).toBe('Bad Request: request/query/year must be >= 1886')
     })
 
-    test.skip(`it should return an error for a future year: "${CURRENT_YEAR + 1}`, async () => {
+    test(`it should return an error for a future year: "${CURRENT_YEAR + 1}`, async () => {
       const response = await request(app).get(`/api/v1/predictions?year=${CURRENT_YEAR + 1}`)
       expect(response.statusCode).toBe(400)
 
       let { error } = JSON.parse(response.text)
       expect(error.status).toBe(400)
       expect(error.message).toBe(
-        "BadRequestError: The 'year' must be between 1886 and 2023 (inclusive).", // eslint-disable-line quotes
+        "BadRequestError: The 'year' must be between 1886 and 2024 (inclusive).", // eslint-disable-line quotes
       )
     })
   })

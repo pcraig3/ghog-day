@@ -11,14 +11,14 @@ TODO
   - Dataset lol
 - Alternate, non-shadow prediction text
 - Get a better handle on upcoming groundhog day
-- Respond to the Groundhog Day people
-- Fix the tests
 - Last updated on the page
 - Compile 5 more groundhogs
 - Add merch!
 - Look through wikipedia
 - TODO: years on groundhogs page
 - Also, show active groundhogs by default
+- Fix year tests
+- Fix: scroll bar in safari for groundhogs page
 
 DONE
 
