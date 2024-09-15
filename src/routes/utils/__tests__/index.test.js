@@ -77,7 +77,6 @@ describe('Test escapeHtml', () => {
 })
 
 describe('Test getPercent', () => {
-  // eslint-disable-next-line no-extra-semi
   ;[
     [5, 10, 50],
     [10, 10, 100],

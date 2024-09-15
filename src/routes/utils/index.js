@@ -2,10 +2,7 @@ var { getDayOfYear } = require('date-fns/getDayOfYear')
 
 // Get current _groundhog_ year
 // Until Feb 2, this should still read the past year
-/* eslint-disable */
 const getCurrentYear = () => {
-  // TODO: remove
-
   const date = new Date()
   const dayOfYear = getDayOfYear(date)
 
@@ -16,7 +13,6 @@ const getCurrentYear = () => {
 
   return date.getFullYear()
 }
-/* eslint-enable */
 
 const getDaysToGroundhogDay = () => {
   const nextYear = getCurrentYear() + 1
