@@ -533,7 +533,7 @@ router.get('/predictions', function (req, res) {
 
     // Get agreement percentage — if tied, there is no consensus
     if (yearPredictions.prediction !== 'tied') {
-      // numerator: winning prediction, demoninator: winter + spring (no nulls)
+      // numerator: winning prediction, denominator: winter + spring (no nulls)
       yearPredictions['percentConsensus'] = getPercent(
         yearPredictions.groundhogs[yearPredictions.prediction],
         yearPredictions.groundhogs['winter'] + yearPredictions.groundhogs['spring'],
@@ -608,12 +608,14 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
 
   /* eslint-disable */
   const predictionTied = predictionTotals['prediction'] === 'tied'
+  const predictionPercent = predictionTied
+  ? 0
+  : getPercent(predictionTotals[predictionTotals['prediction']], predictionTotals['total'])
   const intro = {
     lead: `In ${year}, Groundhog Day was on ${dateString}`,
     predictionTied,
-    predictionPercent: predictionTied
-      ? 0
-      : getPercent(predictionTotals[predictionTotals['prediction']], predictionTotals['total']),
+    predictionPercent,
+    predictionIntro: `Most groundhogs (${predictionPercent }%) predicted`,
     predictionConclusion:
       predictionTotals['total'] === 0
         ? 'No predictions were reported for this year'
