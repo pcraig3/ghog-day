@@ -11,8 +11,6 @@ TODO
   - Dataset lol
 - Alternate, non-shadow prediction text
 - Get a better handle on upcoming groundhog day
-- Respond to the Groundhog Day people
-- Fix the tests
 - Last updated on the page
 - Compile 5 more groundhogs
 - Add merch!
@@ -22,6 +20,9 @@ TODO
 
 DONE
 
+- Fix year tests
+- Add Charles Winchester
+- Fix: scroll bar in safari for groundhogs page
 - Fix: Don't zoom in on inputs
 - Add Mojave Max, Elliott, Sylvia, Big Al, and Cedar
 - Get in touch with the people who didn’t update
