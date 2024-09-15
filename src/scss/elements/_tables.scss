@@ -5,6 +5,7 @@
 [class^='groundhogs'] main,
 .years main {
   overflow-x: auto;
+  overflow-y: hidden; /* Hide vertical scroll bar on 'groundhogs' table in Safari */
 }
 
 .data-table.predictions:not(.predictions--has-details) {

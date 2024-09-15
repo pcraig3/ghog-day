@@ -18,10 +18,11 @@ TODO
 - TODO: years on groundhogs page
 - Also, show active groundhogs by default
 - Fix year tests
-- Fix: scroll bar in safari for groundhogs page
 
 DONE
 
+- Add Charles Winchester
+- Fix: scroll bar in safari for groundhogs page
 - Fix: Don't zoom in on inputs
 - Add Mojave Max, Elliott, Sylvia, Big Al, and Cedar
 - Get in touch with the people who didn’t update
