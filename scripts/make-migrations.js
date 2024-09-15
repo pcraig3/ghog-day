@@ -105,7 +105,9 @@ const insertPredictions = () => {
       const [slug] = filename.split('.')
       fs.createReadStream(path.resolve(__dirname, '../csv/predictions', filename))
         .pipe(csv.parse({ headers: true }))
-        .on('error', (error) => console.error(error))
+        .on('error', (error) => {
+          console.error(`Error processing file ${filename}: ${error}`)
+        })
         .on('data', (row) => {
           const insert = `INSERT INTO predictions (slug, year, shadow, details) VALUES ('${escape(
             slug,
