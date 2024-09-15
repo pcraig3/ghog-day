@@ -10,56 +10,56 @@ const {
 
 jest.useFakeTimers()
 
-describe.skip('Test getCurrentYear', () => {
+describe('Test getCurrentYear', () => {
   test('Returns current year on Feb 2', () => {
-    jest.setSystemTime(new Date('2022-02-02T12:00:00'))
-    expect(getCurrentYear()).toEqual(2022)
+    jest.setSystemTime(new Date('2024-02-02T12:00:00'))
+    expect(getCurrentYear()).toEqual(2024)
   })
 
   test('Returns current year on Dec 31', () => {
-    jest.setSystemTime(new Date('2022-12-31T12:00:00'))
-    expect(getCurrentYear()).toEqual(2022)
+    jest.setSystemTime(new Date('2024-12-31T12:00:00'))
+    expect(getCurrentYear()).toEqual(2024)
   })
 
   test('Returns previous year on Jan 1', () => {
-    jest.setSystemTime(new Date('2022-01-01T12:00:00'))
-    expect(getCurrentYear()).toEqual(2021)
+    jest.setSystemTime(new Date('2024-01-01T12:00:00'))
+    expect(getCurrentYear()).toEqual(2023)
   })
 
   test('Returns previous year on Jan 31', () => {
-    jest.setSystemTime(new Date('2022-01-31T12:00:00'))
-    expect(getCurrentYear()).toEqual(2021)
+    jest.setSystemTime(new Date('2024-01-31T12:00:00'))
+    expect(getCurrentYear()).toEqual(2023)
   })
 
   test('Returns previous year on Feb 1st', () => {
-    jest.setSystemTime(new Date('2022-02-01T12:00:00'))
-    expect(getCurrentYear()).toEqual(2021)
+    jest.setSystemTime(new Date('2024-02-01T12:00:00'))
+    expect(getCurrentYear()).toEqual(2023)
   })
 })
 
-describe.skip('Test getDaysToGroundhogDay', () => {
-  test('Returns 365 on Feb 2', () => {
-    jest.setSystemTime(new Date('2022-02-02T12:00:00'))
-    expect(getDaysToGroundhogDay()).toEqual(365)
+describe('Test getDaysToGroundhogDay', () => {
+  test('Returns 366 on Feb 2', () => {
+    jest.setSystemTime(new Date('2024-02-02T12:00:00'))
+    expect(getDaysToGroundhogDay()).toEqual(366)
   })
 
   test('Returns 1 on Feb 1', () => {
-    jest.setSystemTime(new Date('2022-02-01T12:00:00'))
+    jest.setSystemTime(new Date('2024-02-01T12:00:00'))
     expect(getDaysToGroundhogDay()).toEqual(1)
   })
 
   test('Returns 20 on Dec 31', () => {
-    jest.setSystemTime(new Date('2022-12-31T12:00:00'))
+    jest.setSystemTime(new Date('2024-12-31T12:00:00'))
     expect(getDaysToGroundhogDay()).toEqual(33)
   })
 
   test('Returns 20 on Jan 1', () => {
-    jest.setSystemTime(new Date('2022-01-01T12:00:00'))
+    jest.setSystemTime(new Date('2024-01-01T12:00:00'))
     expect(getDaysToGroundhogDay()).toEqual(32)
   })
 
-  test('Returns 20 on October 8 1', () => {
-    jest.setSystemTime(new Date('2022-10-08T12:00:00'))
+  test('Returns 20 on October 8', () => {
+    jest.setSystemTime(new Date('2024-10-08T12:00:00'))
     expect(getDaysToGroundhogDay()).toEqual(117)
   })
 })

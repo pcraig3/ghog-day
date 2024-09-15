@@ -17,10 +17,10 @@ TODO
 - Look through wikipedia
 - TODO: years on groundhogs page
 - Also, show active groundhogs by default
-- Fix year tests
 
 DONE
 
+- Fix year tests
 - Add Charles Winchester
 - Fix: scroll bar in safari for groundhogs page
 - Fix: Don't zoom in on inputs
