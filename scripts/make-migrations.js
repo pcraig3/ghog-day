@@ -92,21 +92,34 @@ const insertGroundhogs = () => {
 }
 
 const insertPredictions = () => {
-  return new Promise(function (resolve) {
+  return new Promise(function (resolve, reject) {
+    // Read directory and filter for CSV files
     const filenames = fs
       .readdirSync(path.resolve(__dirname, '../csv/predictions'))
       .filter((f) => f.endsWith('.csv'))
+      .sort() // Sort filenames to ensure a consistent order
 
     const stream = fs.createWriteStream('./migrations/001-init.sql', { flags: 'a' })
     stream.write('\n/* Insert Predictions */\n')
 
-    /* Insert predictions */
-    filenames.map((filename) => {
+    // Sequentially process each file
+    const processFile = (index) => {
+      if (index >= filenames.length) {
+        stream.end()
+        console.log('All files processed')
+        resolve()
+        return
+      }
+
+      const filename = filenames[index]
       const [slug] = filename.split('.')
+      stream.write(`\n/* Predictions for ${slug} */\n`)
+
       fs.createReadStream(path.resolve(__dirname, '../csv/predictions', filename))
         .pipe(csv.parse({ headers: true }))
         .on('error', (error) => {
           console.error(`Error processing file ${filename}: ${error}`)
+          reject(error) // Reject the promise on error
         })
         .on('data', (row) => {
           const insert = `INSERT INTO predictions (slug, year, shadow, details) VALUES ('${escape(
@@ -116,15 +129,12 @@ const insertPredictions = () => {
           stream.write(insert)
         })
         .on('end', (rowCount) => {
-          console.log(`Parsed ${rowCount} rows`)
-
-          if (filename === filenames[filenames.length - 1]) {
-            stream.end()
-            resolve()
-          }
+          console.log(`${rowCount} predictions: ${filename}`)
+          processFile(index + 1) // Process next file
         })
-    })
-    console.log(filenames)
+    }
+
+    processFile(0)
   })
 }
 

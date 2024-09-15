@@ -20,6 +20,7 @@ TODO
 
 DONE
 
+- Deterministic migrations file
 - Fix year tests
 - Add Charles Winchester
 - Fix: scroll bar in safari for groundhogs page
