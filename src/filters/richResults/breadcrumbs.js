@@ -98,6 +98,7 @@ const _getName = (path) => {
     case 'about':
     case 'contact':
     case 'groundhog-day-2024':
+    case 'groundhog-day-2025':
       // get last item in array and return Title case
       return path
         .split('-')
