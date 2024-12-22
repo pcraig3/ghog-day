@@ -1,9 +1,16 @@
 name: Run tests and deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - 'main'
+      - '**' # Run on any branch
+
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   RUN_REGION: us-central1
   SERVICE_NAME: ${{ secrets.GCP_SERVICE_NAME }}
-on: [push]
+
 jobs:
   test:
     name: Run tests
@@ -14,24 +21,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install npm dependencies
         run: npm install
+      - name: Run jest unit tests
+        run: npm run test
       - name: Run JS linter
         run: npm run lint
+
   deploy:
-    name: Deploy to Cloud Run
+    name: Build and deploy to Cloud Run
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'update-deps-actions'
     steps:
       - uses: actions/checkout@v4
 
       - id: auth
         name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v0
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY_JSON }}
 
@@ -49,6 +59,3 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{  github.sha }}
           region: ${{ env.RUN_REGION }}
-
-      - name: Use gcloud CLI
-        run: gcloud info
