@@ -14,7 +14,6 @@ TODO
 - Last updated on the page
 - Compile 5 more groundhogs
 - Add merch!
-- Look through wikipedia
 - TODO: years on groundhogs page
 - Also, show active groundhogs by default
 
