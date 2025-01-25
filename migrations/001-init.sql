@@ -192,6 +192,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('big-al', 2021, 1,
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('big-al', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('big-al', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('big-al', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('big-al', 2025, null, '');
 
 /* Predictions for boise-bill */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('boise-bill', 2007, 1, '');
@@ -274,6 +275,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('buckeye-chuck', 2
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('buckeye-chuck', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('buckeye-chuck', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('buckeye-chuck', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('buckeye-chuck', 2025, null, '');
 
 /* Predictions for buffalo-bert */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('buffalo-bert', 2013, 1, '');
@@ -431,6 +433,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('concord-charlie',
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('concord-charlie', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('concord-charlie', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('concord-charlie', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('concord-charlie', 2025, null, '');
 
 /* Predictions for dover-doug */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('dover-doug', 2011, 1, '');
@@ -545,6 +548,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('fred-la-marmotte'
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('fred-la-marmotte', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('fred-la-marmotte', 2023, null, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('fred-la-marmotte', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('fred-la-marmotte', 2025, null, '');
 
 /* Predictions for french-creek-freddie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('french-creek-freddie', 1980, 0, '');
@@ -637,6 +641,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('general-beauregar
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('general-beauregard-lee', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('general-beauregard-lee', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('general-beauregard-lee', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('general-beauregard-lee', 2025, null, '');
 
 /* Predictions for gertie-the-groundhog */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('gertie-the-groundhog', 1993, 1, '');
@@ -671,6 +676,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('gertie-the-ground
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('gertie-the-groundhog', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('gertie-the-groundhog', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('gertie-the-groundhog', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('gertie-the-groundhog', 2025, null, '');
 
 /* Predictions for gordy-the-groundhog */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('gordy-the-groundhog', 2019, 0, '');
@@ -699,6 +705,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('grover-and-sue', 
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('grover-and-sue', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('grover-and-sue', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('grover-and-sue', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('grover-and-sue', 2025, null, '');
 
 /* Predictions for harleysville-hank */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('harleysville-hank', 2016, 1, '');
@@ -710,6 +717,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('harleysville-hank
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('harleysville-hank', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('harleysville-hank', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('harleysville-hank', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('harleysville-hank', 2025, null, '');
 
 /* Predictions for heavens-wildlife-harvey */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('heavens-wildlife-harvey', 2022, 0, '');
@@ -807,6 +815,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('jimmy-the-groundh
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('jimmy-the-groundhog', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('jimmy-the-groundhog', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('jimmy-the-groundhog', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('jimmy-the-groundhog', 2025, null, '');
 
 /* Predictions for lady-edwina-of-essex */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('lady-edwina-of-essex', 2022, 0, '');
@@ -877,6 +886,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('lucy-the-lobster'
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('lucy-the-lobster', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('lucy-the-lobster', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('lucy-the-lobster', 2024, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('lucy-the-lobster', 2025, null, '');
 
 /* Predictions for malverne-mel */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('malverne-mel', 1996, 1, '');
@@ -939,6 +949,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('manitoba-merv', 2
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('manitoba-merv', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('manitoba-merv', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('manitoba-merv', 2024, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('manitoba-merv', 2025, null, '');
 
 /* Predictions for middlemiss-mike */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('middlemiss-mike', 2007, 0, '');
@@ -1135,6 +1146,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('octoraro-orphie',
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('octoraro-orphie', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('octoraro-orphie', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('octoraro-orphie', 2024, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('octoraro-orphie', 2025, null, '');
 
 /* Predictions for oil-springs-ollie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('oil-springs-ollie', 2014, 1, '');
@@ -1150,6 +1162,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('oil-springs-ollie
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('okanagan-okie', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('okanagan-okie', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('okanagan-okie', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('okanagan-okie', 2025, null, '');
 
 /* Predictions for patty-pagoda */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('patty-pagoda', 2014, 1, '');
@@ -1184,6 +1197,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('polk-county-paula
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('polk-county-paula', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('polk-county-paula', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('polk-county-paula', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('polk-county-paula', 2025, null, '');
 
 /* Predictions for poor-richard */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('poor-richard', 2001, 1, '');
@@ -1372,6 +1386,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('punxsutawney-phil
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('punxsutawney-phil', 2022, 1, 'Shadow at 7:27 AM; 27º with clear skies. A loyal crowd of thousands returned to Gobbler’s Knob.');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('punxsutawney-phil', 2023, 1, 'Shadow at 7:24 AM; 13º with clear skies. PA Governor Josh Shapiro attends. Thousands of Eagles Super Bowl LVII fans help celebrate Phil’s big day at the Knob.');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('punxsutawney-phil', 2024, 0, 'NO Shadow at 7:26 AM; 36º with overcast skies. Miranda Moore, 2023 Miss Pennsylvania was the special guest of the Inner Circle at the Knob.');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('punxsutawney-phil', 2025, null, '');
 
 /* Predictions for queen-city-charlie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('queen-city-charlie', 2022, 0, '');
@@ -1392,6 +1407,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('sand-mountain-sam
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sand-mountain-sam', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sand-mountain-sam', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sand-mountain-sam', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('sand-mountain-sam', 2025, null, '');
 
 /* Predictions for schnogadahl-sammi */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('schnogadahl-sammi', 1997, 1, '');
@@ -1422,6 +1438,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('schnogadahl-sammi
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('schnogadahl-sammi', 2022, null, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('schnogadahl-sammi', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('schnogadahl-sammi', 2024, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('schnogadahl-sammi', 2025, null, '');
 
 /* Predictions for scramble-the-duck */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('scramble-the-duck', 2015, 1, '');
@@ -1434,6 +1451,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('scramble-the-duck
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('scramble-the-duck', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('scramble-the-duck', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('scramble-the-duck', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('scramble-the-duck', 2025, null, '');
 
 /* Predictions for shubenacadie-sam */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('shubenacadie-sam', 1999, 1, 'Shadow (Long Winter)');
@@ -1462,6 +1480,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('shubenacadie-sam'
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('shubenacadie-sam', 2022, 1, 'Shadow (Long Winter)');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('shubenacadie-sam', 2023, 1, 'Shadow (Long Winter)');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('shubenacadie-sam', 2024, 0, 'No Shadow (Early Spring)');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('shubenacadie-sam', 2025, null, '');
 
 /* Predictions for sir-walter-wally */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sir-walter-wally', 2000, 1, '');
@@ -1510,6 +1529,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('snerd', 2021, 1, 
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snerd', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snerd', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snerd', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('snerd', 2025, null, '');
 
 /* Predictions for snohomish-slew */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snohomish-slew', 2006, 1, '');
@@ -1530,7 +1550,6 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('snohomish-slew', 
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snohomish-slew', 2021, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snohomish-slew', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snohomish-slew', 2023, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('snohomish-slew', 2024, null, '');
 
 /* Predictions for snowy-the-prairie-dog */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snowy-the-prairie-dog', 2015, 0, 'Snowy DID NOT see her shadow and winter was a no-show during the 2nd half of the season. Accuracy Score: Excellent');
@@ -1587,6 +1606,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('staten-island-chu
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('staten-island-chuck', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('staten-island-chuck', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('staten-island-chuck', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('staten-island-chuck', 2025, null, '');
 
 /* Predictions for stonewall-jackson */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('stonewall-jackson', 2008, 0, '');
@@ -1634,12 +1654,14 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('stumptown-fil', 2
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('stumptown-fil', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('stumptown-fil', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('stumptown-fil', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('stumptown-fil', 2025, null, '');
 
 /* Predictions for sylvia-the-armadillo */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sylvia-the-armadillo', 2021, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sylvia-the-armadillo', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sylvia-the-armadillo', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sylvia-the-armadillo', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('sylvia-the-armadillo', 2025, null, '');
 
 /* Predictions for tinicum-tim */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('tinicum-tim', 2011, 0, '');
@@ -1701,6 +1723,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('uni-the-groundhog
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('uni-the-groundhog', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('uni-the-groundhog', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('uni-the-groundhog', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('uni-the-groundhog', 2025, null, '');
 
 /* Predictions for van-island-violet */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('van-island-violet', 2017, 0, '');
@@ -1783,6 +1806,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('wiarton-willie', 
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wiarton-willie', 2022, 0, 'No Shadow, Early Spring!');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wiarton-willie', 2023, 0, 'No Shadow, Early Spring!');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wiarton-willie', 2024, 0, 'No Shadow, Early Spring!');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('wiarton-willie', 2025, null, '');
 
 /* Predictions for wildwood-willie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wildwood-willie', 2011, 0, '');

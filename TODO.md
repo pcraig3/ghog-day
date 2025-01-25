@@ -16,6 +16,7 @@ TODO
 - Add merch!
 - TODO: years on groundhogs page
 - Also, show active groundhogs by default
+- Let's add some aggregate data to the API/About pages
 
 DONE
 
