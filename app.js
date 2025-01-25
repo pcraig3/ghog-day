@@ -112,7 +112,7 @@ app.use(function (err, req, res, next) {
     message =
       'Do you get it? It is a marmot-themed pun. (Very lol. <span aria-hidden="true">🤓</span>)'
   } else if (err.status >= 400 && err.status < 500) {
-    h1 = 'Prognosis impossible'
+    h1 = 'No prognostications'
   }
 
   // render the error page

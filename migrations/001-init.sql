@@ -136,6 +136,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('balzac-billy', 20
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('balzac-billy', 2022, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('balzac-billy', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('balzac-billy', 2024, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('balzac-billy', 2025, null, '');
 
 /* Predictions for beardsley-bart */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('beardsley-bart', 2010, 0, '');

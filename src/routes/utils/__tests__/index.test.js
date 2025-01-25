@@ -1,5 +1,5 @@
 const {
-  getCurrentYear,
+  getGroundhogDayYear,
   getDaysToGroundhogDay,
   escapeHtml,
   getPercent,
@@ -10,30 +10,30 @@ const {
 
 jest.useFakeTimers()
 
-describe('Test getCurrentYear', () => {
+describe('Test getGroundhogDayYear', () => {
   test('Returns current year on Feb 2', () => {
     jest.setSystemTime(new Date('2024-02-02T12:00:00'))
-    expect(getCurrentYear()).toEqual(2024)
+    expect(getGroundhogDayYear()).toEqual(2024)
   })
 
   test('Returns current year on Dec 31', () => {
     jest.setSystemTime(new Date('2024-12-31T12:00:00'))
-    expect(getCurrentYear()).toEqual(2024)
+    expect(getGroundhogDayYear()).toEqual(2024)
   })
 
   test('Returns previous year on Jan 1', () => {
     jest.setSystemTime(new Date('2024-01-01T12:00:00'))
-    expect(getCurrentYear()).toEqual(2023)
+    expect(getGroundhogDayYear()).toEqual(2023)
   })
 
   test('Returns previous year on Jan 31', () => {
     jest.setSystemTime(new Date('2024-01-31T12:00:00'))
-    expect(getCurrentYear()).toEqual(2023)
+    expect(getGroundhogDayYear()).toEqual(2023)
   })
 
   test('Returns previous year on Feb 1st', () => {
     jest.setSystemTime(new Date('2024-02-01T12:00:00'))
-    expect(getCurrentYear()).toEqual(2023)
+    expect(getGroundhogDayYear()).toEqual(2023)
   })
 })
 

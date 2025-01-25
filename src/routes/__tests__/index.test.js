@@ -2,10 +2,10 @@ const request = require('supertest')
 const cheerio = require('cheerio')
 
 const app = require('../../../app.js')
-const { getCurrentYear } = require('../utils')
+const { getGroundhogDayYear } = require('../utils')
 
 const EARLIEST_RECORDED_PREDICTION = 1886
-const CURRENT_YEAR = getCurrentYear()
+const CURRENT_YEAR = getGroundhogDayYear()
 
 describe('Test ui responses', () => {
   describe('Test / response', () => {
@@ -298,7 +298,7 @@ describe('Test API responses', () => {
       expect(groundhog).toMatchObject(wiartonWillie)
     })
 
-    const badIDs = ['murder-suicide-marvin', 'grand-larceny-gord', 0, 100]
+    const badIDs = [0, 100]
     badIDs.map((id) => {
       test(`it should return an error message for a bad ID: ${id}`, async () => {
         const response = await request(app).get(`/api/v1/groundhogs/${id}`)
@@ -306,11 +306,24 @@ describe('Test API responses', () => {
 
         let { error } = JSON.parse(response.text)
 
-        const messageSuffix =
-          typeof id === 'string' ? 'maybe you spelled it wrong?' : 'pick a real one.'
+        expect(error).toMatchObject({
+          message: `BadRequestError: Bad groundhog identifier ('${id}'), pick a real one.`,
+          status: response.statusCode,
+          timestamp: expect.any(String),
+        })
+      })
+    })
+
+    const badSlugs = ['murder-suicide-marvin', 'grand-larceny-gord']
+    badSlugs.map((slug) => {
+      test(`it should return an error message for a bad slug: ${slug}`, async () => {
+        const response = await request(app).get(`/api/v1/groundhogs/${slug}`)
+        expect(response.statusCode).toBe(400)
+
+        let { error } = JSON.parse(response.text)
 
         expect(error).toMatchObject({
-          message: `BadRequestError: Bad groundhog identifier ('${id}'), ${messageSuffix}`,
+          message: `BadRequestError: No groundhog for ‘${slug}’. Maybe you want to <a class="underline" href="/add-groundhog">add a groundhog?</a>`,
           status: response.statusCode,
           timestamp: expect.any(String),
         })

@@ -1,8 +1,12 @@
 var { getDayOfYear } = require('date-fns/getDayOfYear')
 
+const getAbsoluteYear = () => {
+  return new Date().getFullYear()
+}
+
 // Get current _groundhog_ year
 // Until Feb 2, this should still read the past year
-const getCurrentYear = () => {
+const getGroundhogDayYear = () => {
   const date = new Date()
   const dayOfYear = getDayOfYear(date)
 
@@ -15,7 +19,7 @@ const getCurrentYear = () => {
 }
 
 const getDaysToGroundhogDay = () => {
-  const nextYear = getCurrentYear() + 1
+  const nextYear = getGroundhogDayYear() + 1
   const diffInMs = new Date(`${nextYear}-02-02T00:01:00`) - new Date()
   return Math.ceil(diffInMs / (1000 * 60 * 60 * 24))
 }
@@ -84,7 +88,8 @@ const getRandomPositiveAdjective = () => {
 }
 
 module.exports = {
-  getCurrentYear,
+  getAbsoluteYear,
+  getGroundhogDayYear,
   getDaysToGroundhogDay,
   escapeHtml,
   getPercent,

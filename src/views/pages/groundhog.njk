@@ -30,7 +30,7 @@
           <div class="icon"><span aria-hidden="true">🌼</span></div>
           <div class="message"><span>In {{ groundhog.predictions[0].year }}, {{ groundhog.shortname }} predicted an <strong>early spring</strong>.</span></div>
         </aside>
-      {% elseif groundhog.predictions[0].year == 2024 -%}
+      {% elseif groundhog.predictions[0].shadow is null and is_before_groundhog_day -%}
         <aside class="highlight highlight--none">
           <div class="icon"><span aria-hidden="true">😴</span></div>
           <div class="message"><span>{{ groundhog.shortname }} <strong>hasn’t made a prediction yet</strong> for {{ groundhog.predictions[0].year }}.</span></div>

@@ -59,10 +59,14 @@
       </li>
     </ul>
     <div class="predictions--navigation">
-      {% if years.next and years.next != 2025 %}
-        <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
-          {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> results</span></span>
-        </a>
+      {% if years.next %}
+          <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
+            {% if is_before_groundhog_day %}
+              {{ icon({ left: true }) }} <span>Groundhog Day {{ years.next }}</span>
+            {% else %}
+              {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> results</span></span>
+            {% endif %}
+          </a>
       {% endif %}
       {% if years.prev %}
         <a href="/predictions/{{ years.prev }}" class="predictions--navigation--prev-year underline link--icon">
