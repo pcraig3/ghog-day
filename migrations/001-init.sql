@@ -1233,19 +1233,19 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('poppy-the-groundh
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('poppy-the-groundhog', 2023, 1, '');
 
 /* Predictions for potomac-phil */
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2012, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2013, 0, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2014, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2015, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2016, 0, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2017, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2018, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2019, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2020, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2021, 0, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2022, 1, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2023, 0, '');
-INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2024, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2012, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2013, 0, 'Early Spring; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2014, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2015, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2016, 0, 'Early Spring; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2017, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2018, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2019, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2020, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2021, 0, 'Early Spring; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2022, 1, 'Six More Weeks of Winter; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2023, 0, 'Early Spring; 6 More Months of Political Gridlock');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('potomac-phil', 2024, 0, 'Early Spring; 6 More Months of Political Gridlock');
 
 /* Predictions for punxsutawney-phil */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('punxsutawney-phil', 1886, null, 'Groundhog Day first recognized in Punxsutawney by Weathers Wags.');
