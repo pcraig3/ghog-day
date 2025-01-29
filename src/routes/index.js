@@ -446,7 +446,7 @@ router.get('/', function (req, res) {
 
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
-    daysLeft: getDaysToGroundhogDay() - 1,
+    daysLeft: getDaysToGroundhogDay(),
     predictionResults,
     randomGroundhogs,
     totalGroundhogs: getGroundhogSlugs().length,
@@ -693,7 +693,7 @@ router.get('/groundhog-day-2025', validBackUrl, function (req, res) {
   res.render('pages/upcoming/groundhog-day-next', {
     title: `Groundhog Day ${nextYear}`,
     dateString,
-    daysLeft: getDaysToGroundhogDay() - 1,
+    daysLeft: getDaysToGroundhogDay(),
     predictionString,
     is_before_groundhog_day: BEFORE_GROUNDHOG_DAY,
     pageMeta: _getPageMeta(req, {
