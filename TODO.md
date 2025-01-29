@@ -20,6 +20,7 @@ TODO
 
 DONE
 
+- Add Allen McButterpants
 - You can click "Past predictions" now, although there is no affordance for this
 - Deterministic migrations file
 - Fix year tests
