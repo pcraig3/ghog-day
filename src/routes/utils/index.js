@@ -20,7 +20,16 @@ const getGroundhogDayYear = () => {
 
 const getDaysToGroundhogDay = () => {
   const nextYear = getGroundhogDayYear() + 1
-  const diffInMs = new Date(`${nextYear}-02-02T00:01:00`) - new Date()
+
+  // February 2nd, 00:01 UTC
+  const groundhogDay = new Date(`${nextYear}-02-02T00:01:00Z`)
+
+  // Get the current date and adjust for PST (-8 hours)
+  const now = new Date()
+  now.setHours(now.getHours() - 8)
+
+  // Calculate difference in days
+  const diffInMs = groundhogDay - now
   return Math.ceil(diffInMs / (1000 * 60 * 60 * 24))
 }
 

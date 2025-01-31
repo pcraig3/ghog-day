@@ -20,6 +20,8 @@ TODO
 
 DONE
 
+- Update "days left" sentence to account for non-plural
+- Also, flip the day at -8 PST
 - Add 1 extra day before Groundhog Day
 - Add Allen McButterpants
 - You can click "Past predictions" now, although there is no affordance for this

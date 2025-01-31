@@ -5,7 +5,7 @@
 {%- endblock %}
 
 {% block content %}
-  <h1>{{ daysLeft }} days until <a href="/predictions/2025" class="underline">Groundhog Day 2025</a>.</h1>
+  <h1>{{ daysLeft }} {% if daysLeft == 1 %}day{% else %}days{% endif %} until <a href="/predictions/2025" class="underline">Groundhog Day 2025</a>.</h1>
 
   <aside class="intro-sentence screenreader-message" tabIndex="0">
     <div>
