@@ -111,7 +111,7 @@ const getPredictionsByYear = (year) => {
 
 // TODO: due to the subquery, this call might be inefficient
 // Could fix this with 2 calls (all predictions + all groundhogs) and then loop through in code
-const _getPredictions = ({ since = 2022, until = getGroundhogDayYear() } = {}) => {
+const _getPredictions = ({ since = 2022, until = 2025 } = {}) => {
   let predictions = DB()
     .prepare(
       `
@@ -280,7 +280,7 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const currentYear = getGroundhogDayYear()
+  const currentYear = 2025 //getGroundhogDayYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -396,8 +396,8 @@ router.use((req, res, next) => {
 router.get('/', function (req, res) {
   const currentYear = getGroundhogDayYear()
   const _predictions = _getPredictions({
-    since: getGroundhogDayYear() - 2,
-    until: getGroundhogDayYear(),
+    since: 2023,
+    until: 2025,
   })
 
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
@@ -559,10 +559,6 @@ router.get('/predictions', function (req, res) {
       description: `See and compare Groundhog Day predictions by year, from ${getGroundhogDayYear()} back to ${EARLIEST_RECORDED_PREDICTION} (which was before TikTok).`,
     }),
   })
-})
-
-router.get('/predictions/2025', function (req, res) {
-  return res.redirect('/groundhog-day-2025')
 })
 
 /* GET predictions page for a year. */

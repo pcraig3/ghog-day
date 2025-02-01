@@ -35,7 +35,14 @@
 
   <div class="max-width--850">
   <p class="speakable">
-    {%- if not intro.predictionTied -%}
+    {%- if years.year == 2025 -%}
+      <strong>In 2025, Groundhog Day is on Sunday, February 2nd.</strong>
+      </p>
+      <p>
+        <a href="/about">According to tradition</a>, if a groundhog sees its shadow on February 2nd, it means six more weeks of winter. No shadow means an early spring.
+        </p>
+      <p>We don’t have all this year’s predictions in yet, but here’s what we know so far.
+    {%- elseif not intro.predictionTied -%}
       {{ intro.lead }}. Most groundhogs <span aria-hidden='true'>({{ intro.predictionPercent }}%)</span> predicted <strong>{{ intro.predictionConclusion }}</strong>.
     {%- else -%}
       {{ intro.lead }}. {{ intro.predictionConclusion }}.
@@ -78,7 +85,7 @@
   </div>
   {% if predictionTotals.total -%}
   <div class="predictions" id="sortable--year">
-    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} in {{ years.year }}</h2>
+    <h2 class="h5">{{ predictionTotals.total }} prediction{%- if predictionTotals.total != 1 -%}s{%- endif %} {% if years.year == 2025 %}(so far) {% endif %}in {{ years.year }}</h2>
     <form id="sortable--year--form">
       <label for="sortable--year--select">Sort by</label>
       <select name="year" id="sortable--year--select">
