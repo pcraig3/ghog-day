@@ -27,7 +27,7 @@ const EARLIEST_RECORDED_PREDICTION = DB()
   .get().year
 
 const BEFORE_GROUNDHOG_DAY = getAbsoluteYear() !== getGroundhogDayYear()
-const IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 365
+// TODOconst IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 365
 
 /* Request functions */
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
