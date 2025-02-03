@@ -104,6 +104,14 @@ describe('Test ui responses', () => {
     })
   })
 
+  describe('Test /groundhog-day-2024 response', () => {
+    test('it should return 302', async () => {
+      const response = await request(app).get('/groundhog-day-2023')
+      expect(response.statusCode).toBe(302)
+      expect(response.headers.location).toBe('/predictions/2023')
+    })
+  })
+
   describe('Test /map response', () => {
     test('it should return 200', async () => {
       const response = await request(app).get('/map')
@@ -231,6 +239,7 @@ describe('Test API responses', () => {
     const GROUNDHOGS_CANADA = 14
     const GROUNDHOGS_USA = 71
     const GROUNDHOGS_ALTERNATIVE = 49
+    const GROUNDHOGS_ACTIVE = 76
 
     const urls = [
       {
@@ -256,6 +265,10 @@ describe('Test API responses', () => {
       {
         path: '/api/v1/groundhogs?isGroundhog=false',
         total: GROUNDHOGS_ALTERNATIVE,
+      },
+      {
+        path: '/api/v1/groundhogs?isActive=true',
+        total: GROUNDHOGS_ACTIVE,
       },
     ]
 
