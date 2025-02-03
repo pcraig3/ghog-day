@@ -727,11 +727,11 @@ router.get(
 
     /* eslint-disable indent */
     const pageTitle = path.includes('canada')
-      ? 'All groundhogs in Canada'
+      ? 'Groundhogs in Canada'
       : path.includes('usa')
-      ? 'All groundhogs in the USA'
+      ? 'Groundhogs in the USA'
       : path.includes('alternative')
-      ? 'All alternative groundhogs'
+      ? 'Alternative groundhogs'
       : 'All groundhogs'
     const nationality = path.includes('canada')
       ? 'Canadian '

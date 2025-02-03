@@ -24,13 +24,20 @@
       <div class="max-width--850">
         {% block groundhogsIntro %}
           <p>
-            There are <strong>{{ groundhogs | length }}</strong> weather-forecasting prognosticators in <a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canada</a> or <a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">the USA</a> who made predictions in 2024 — including <a href="/alternative-groundhogs"><strong>{{ groundhogTypes.other }}</strong> ‘alternative’ groundhogs</a>.
+            There are <strong>{{ groundhogs | length }}</strong> weather-forecasting prognosticators in total. This includes:
           </p>
+          <ul class="with-bullets">
+            <li>Groundhogs who made a prediction in 2025 (69)</li>
+            <li><a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canadian groundhogs</a> (14)</li>
+            <li><a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">American groundhogs</a> (71)</li>
+            <li><a href="/alternative-groundhogs">‘Alternative’ groundhogs</a> ({{ groundhogTypes.other }})</li>
+          </ul>
           <p>
             Use the <a class="link--icon" href="/map">
               {{ icon({ map: true }) }} <span>Groundhog Map</span>
             </a> to locate your fave prognosticator.
           </p>
+          
         {% endblock %}
       </div>
       <div id="sortable--groundhogs">
