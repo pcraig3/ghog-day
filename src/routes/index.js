@@ -702,7 +702,13 @@ router.get('/groundhog-day-2025', validBackUrl, function (req, res) {
 
 /* GET all groundhogs */
 router.get(
-  ['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa', '/alternative-groundhogs'],
+  [
+    '/groundhogs',
+    '/groundhogs-in-canada',
+    '/groundhogs-in-usa',
+    '/alternative-groundhogs',
+    '/active-groundhogs',
+  ],
   function (req, res) {
     const path = req.path.replace(/\/$/, '')
     /* eslint-disable indent */
@@ -714,15 +720,22 @@ router.get(
         : undefined
     /* eslint-enable */
     const isGroundhog = path === '/alternative-groundhogs' ? false : undefined
+    const isActive = path === '/active-groundhogs' ? true : undefined
 
-    let groundhogs = getGroundhogs({ year: getGroundhogDayYear(), country, isGroundhog })
+    let groundhogs = getGroundhogs({ year: getGroundhogDayYear(), country, isGroundhog, isActive })
 
     // sort by most predictions to least predictions
     groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
 
-    const groundhogTypes = { groundhog: 0, other: 0 }
+    const groundhogCounts = { groundhog: 0, other: 0, canada: 0, usa: 0, active: 0, retired: 0 }
+
     groundhogs.forEach((g) => {
-      g.type === 'Groundhog' ? ++groundhogTypes['groundhog'] : ++groundhogTypes['other']
+      // set groundhogCounts.groundhog|groundhogCounts.other
+      g.type === 'Groundhog' ? ++groundhogCounts.groundhog : ++groundhogCounts.other
+      // set groundhogCounts.canada|groundhogCounts.usa
+      g.country === 'Canada' ? ++groundhogCounts.canada : ++groundhogCounts.usa
+      // set groundhogCounts.active|groundhogCounts.retired
+      g.active ? ++groundhogCounts.active : ++groundhogCounts.retired
     })
 
     /* eslint-disable indent */
@@ -732,22 +745,32 @@ router.get(
       ? 'Groundhogs in the USA'
       : path.includes('alternative')
       ? 'Alternative groundhogs'
+      : path.includes('active')
+      ? 'Active groundhogs'
       : 'All groundhogs'
-    const nationality = path.includes('canada')
+    const adjective = path.includes('canada')
       ? 'Canadian '
       : path.includes('usa')
       ? 'American '
       : path.includes('alternative')
       ? 'non-traditional '
+      : path.includes('alternative')
+      ? 'active '
       : ''
+
+    const pageTemplate = path.includes('alternative')
+      ? '/groundhogs-alternative'
+      : path.includes('active')
+      ? '/groundhogs-active'
+      : path
     /* eslint-enable */
 
-    res.render(`pages/${path.includes('alternative') ? '/groundhogs-alternative' : path}`, {
+    res.render(`pages/${pageTemplate}`, {
       title: pageTitle,
       groundhogs,
-      groundhogTypes,
+      groundhogCounts,
       pageMeta: _getPageMeta(req, {
-        description: `See a list of all ${groundhogs.length} ${nationality}prognosticators${
+        description: `See a list of all ${groundhogs.length} ${adjective}prognosticators${
           path.includes('alternative')
             ? ' across Canada and the USA'
             : ', whether genuine groundhogs or otherwise'

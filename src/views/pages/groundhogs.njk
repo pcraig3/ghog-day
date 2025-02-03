@@ -27,10 +27,10 @@
             There are <strong>{{ groundhogs | length }}</strong> weather-forecasting prognosticators in total. This includes:
           </p>
           <ul class="with-bullets">
-            <li>Groundhogs who made a prediction in 2025 (69)</li>
-            <li><a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canadian groundhogs</a> (14)</li>
-            <li><a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">American groundhogs</a> (71)</li>
-            <li><a href="/alternative-groundhogs">‘Alternative’ groundhogs</a> ({{ groundhogTypes.other }})</li>
+            <li><a href="/active-groundhogs" aria-label="Active groundhogs">Groundhogs who made a prediction in 2025</a> ({{ groundhogCounts.active }})</li>
+            <li><a href="/groundhogs-in-canada" aria-label="Groundhogs in Canada">Canadian groundhogs</a> ({{ groundhogCounts.canada }})</li>
+            <li><a href="/groundhogs-in-usa" aria-label="Groundhogs in the USA">American groundhogs</a> ({{ groundhogCounts.usa }})</li>
+            <li><a href="/alternative-groundhogs">‘Alternative’ groundhogs</a> ({{ groundhogCounts.other }})</li>
           </ul>
           <p>
             Use the <a class="link--icon" href="/map">
