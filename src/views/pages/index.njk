@@ -5,9 +5,16 @@
 {%- endblock %}
 
 {% block content %}
-  <h1><span aria-hidden="true" title="i know it's a beaver but it's the best i could do" style="transform: scale(-1, 1); display: inline-block;">🦫</span> Today is <a href="/predictions/2025" class="underline">Groundhog Day</a>! <span aria-hidden="true" title="¡Hola! ¡Feliz día de la marmota!">🦫</span></h1>
 
-  {# <h1>{{ daysLeft }} {% if daysLeft == 1 %}day{% else %}days{% endif %} until <a href="/predictions/2025" class="underline">Groundhog Day 2025</a>.</h1> #}
+  {% if daysLeft == 365 %}
+    <h1>
+      <span aria-hidden="true" title="i know it's a beaver but it's the best i could do" style="transform: scale(-1, 1); display: inline-block;">🦫</span>
+      Today is <a href="/predictions/2025" class="underline">Groundhog Day</a>!
+      <span aria-hidden="true" title="¡Hola! ¡Feliz día de la marmota!">🦫</span>
+    </h1>
+  {% else %}
+    <h1>{{ daysLeft }} {% if daysLeft == 1 %}day{% else %}days{% endif %} until <a href="/predictions/2025" class="underline">Groundhog Day {{ nextYear }}</a>.</h1>
+  {% endif %}
 
   <aside class="intro-sentence screenreader-message" tabIndex="0">
     <div>

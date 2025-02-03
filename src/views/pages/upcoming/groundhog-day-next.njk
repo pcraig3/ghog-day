@@ -5,17 +5,15 @@
 {%- endblock %}
 
 {% block content %}
-  {{ page_header({ h1: 'Groundhog Day 2025', backUrl: back.url, backText: back.text }) }}
+  {{ page_header({ h1: 'Groundhog Day ' ~ nextYear, backUrl: back.url, backText: back.text }) }}
 
   <div class="max-width--850">
     <p class="speakable">
-      <strong>{% if is_before_groundhog_day %}This year{% else %}In 2025{% endif %}, Groundhog Day will be on {{ dateString }}.</strong>
+      <strong>{% if is_before_groundhog_day %}This year{% else %}In {{ nextYear }}{% endif %}, Groundhog Day will be on {{ dateString }}.</strong>
     </p>
 
-    <p>Current 2025 predictions here → <a href="/predictions/2025">Groundhog Day 2025 results</a>.
-
     <p>
-      Groundhog Day 2025 is {{ daysLeft }} days away, so use the <a class="link--icon underline" href="/map">
+      Groundhog Day {{ nextYear }} is {{ daysLeft }} days away, so use the <a class="link--icon underline" href="/map">
       {{ icon({ map: true }) }} <span>Groundhog Map</span>
     </a> to find your closest groundhog before the big day! Most of them livestream their predictions online, and some even host a pancake breakfast for early risers who make it out in person.
     </p>
@@ -25,7 +23,7 @@
 
     <p>Unfortunately, Groundhog Day is <strong>not</strong> a statutory holiday in <a href="https://canada-holidays.ca" target="_blank" style="text-decoration: none;">Canada</a> or the USA.
 
-    <h2 class="h5">{% if is_before_groundhog_day %}Last year{% else %}This year{% endif %}: Groundhog Day 2024</h2>
-    <p class="mb--0">In 2024, most groundhogs predicted <strong>{{ predictionString }}</strong>. <a href="/predictions/2024">Check out 2024’s detailed results</a> to see who got it right or wrong. (Whether they were right or not depends on where you live.) Or go back even further and <a href="/predictions">see past predictions for all years</a>.</p>
+    <h2 class="h5">{% if is_before_groundhog_day %}Last year{% else %}This year{% endif %}: Groundhog Day {{ currentYear }}</h2>
+    <p class="mb--0">In {{ currentYear }}, most groundhogs predicted <strong>{{ predictionString }}</strong>. <a href="/predictions/{{currentYear}}">Check out {{currentYear}}’s detailed results</a> to see who got it right or wrong. (Whether they were right or not depends on where you live.) Or go back even further and <a href="/predictions">see past predictions for all years</a>.</p>
   </div>
 {% endblock %}

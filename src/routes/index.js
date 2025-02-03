@@ -27,6 +27,7 @@ const EARLIEST_RECORDED_PREDICTION = DB()
   .get().year
 
 const BEFORE_GROUNDHOG_DAY = getAbsoluteYear() !== getGroundhogDayYear()
+const IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 365
 
 /* Request functions */
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
@@ -447,6 +448,7 @@ router.get('/', function (req, res) {
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
     daysLeft: getDaysToGroundhogDay(),
+    nextYear: currentYear + 1,
     predictionResults,
     randomGroundhogs,
     totalGroundhogs: getGroundhogSlugs().length,
@@ -561,6 +563,10 @@ router.get('/predictions', function (req, res) {
   })
 })
 
+router.get('/predictions/2026', function (req, res) {
+  return res.redirect('/groundhog-day-2026')
+})
+
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
   const back =
@@ -655,6 +661,10 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
   })
 })
 
+router.get('/groundhog-day-2025', function (req, res) {
+  return res.redirect('/predictions/2025')
+})
+
 router.get('/groundhog-day-2024', function (req, res) {
   return res.redirect('/predictions/2024')
 })
@@ -663,8 +673,8 @@ router.get('/groundhog-day-2023', function (req, res) {
   return res.redirect('/predictions/2023')
 })
 
-/* GET 2025 (upcoming) page */
-router.get('/groundhog-day-2025', validBackUrl, function (req, res) {
+/* GET 2026 (upcoming) page */
+router.get('/groundhog-day-2026', validBackUrl, function (req, res) {
   const currentYear = getGroundhogDayYear()
   const nextYear = currentYear + 1
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
@@ -688,6 +698,8 @@ router.get('/groundhog-day-2025', validBackUrl, function (req, res) {
 
   res.render('pages/upcoming/groundhog-day-next', {
     title: `Groundhog Day ${nextYear}`,
+    currentYear,
+    nextYear,
     dateString,
     daysLeft: getDaysToGroundhogDay(),
     predictionString,
