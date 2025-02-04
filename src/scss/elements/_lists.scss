@@ -4,14 +4,16 @@
 ul {
   &.with-bullets {
     list-style-type: disc;
-    padding-left: calc(vars.$space-xs + vars.$space-md)
+    padding-left: vars.$space-md;
+    margin-left: vars.$space-xs;
   }
 }
 
 ol {
   &.with-decimals {
     list-style-type: decimal;
-    padding-left: calc(vars.$space-xs + vars.$space-md)
+    padding-left: vars.$space-md;
+    margin-left: vars.$space-xs;
   }
 }
 
