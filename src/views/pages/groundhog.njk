@@ -60,13 +60,20 @@
           </div>
         {% endif %}
         <div class="groundhog--residence">
-          {% set resides = 'Reside in' if 'hogs' in groundhog.type else 'Resides in' %}
-          <div class="subhead">{{ resides }}</div>
-          <div class="text">
-            <a class="link--icon" href="/map?groundhog={{ groundhog.slug }}">
-              {{ icon({ map: true }) }} <span>{{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}</span>
-            </a>            
-          </div>
+          {% if not groundhog.active %}
+            <div class="subhead">Resided in</div>
+            <div class="text">
+                <span>{{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}</span>
+            </div>
+          {% else %}
+            {% set resides = 'Reside in' if 'hogs' in groundhog.type else 'Resides in' %}
+            <div class="subhead">{{ resides }}</div>
+            <div class="text">
+              <a class="link--icon underline" href="/map?groundhog={{ groundhog.slug }}">
+                {{ icon({ map: true }) }} <span>{{ groundhog.city }}, {{ groundhog.region }}, {{ groundhog.country }}</span>
+              </a>
+            </div>
+          {% endif %}
         </div>
         <div class="groundhog--source">
           <a href="{{ groundhog.source }}" target="_blank" class="underline" rel="noopener">Source</a>

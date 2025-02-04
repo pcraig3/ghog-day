@@ -9,7 +9,6 @@ TODO
   - Page of the most out-there facts
 - Add RichResults
   - Dataset lol
-- Alternate, non-shadow prediction text
 - Get a better handle on upcoming groundhog day
 - Compile 2 more groundhogs
 - Add merch!
@@ -19,6 +18,7 @@ TODO
 DONE
 
 - Show active groundhogs by default
+  - Only show active groundhogs on the groundhog map
 - Update "days left" sentence to account for non-plural
 - Also, flip the day at -8 PST
 - Add 1 extra day before Groundhog Day

@@ -889,7 +889,7 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
 router.get('/map', validBackUrl, function (req, res) {
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
 
-  const groundhogs = getGroundhogs({ oldestFirst: true })
+  const groundhogs = getGroundhogs({ oldestFirst: true, isActive: true })
   const totals = {
     all: groundhogs.length,
     usa: 0,
