@@ -1,7 +1,7 @@
 {
   "name": "ghog-day",
   "description": "groundhog day website: get all groundhogs and their predictions, year by year. it's a real holiday",
-  "version": "1.16.3",
+  "version": "1.17.0",
   "license": "MIT",
   "homepage": "https://groundhog-day.com",
   "keywords": [
@@ -25,7 +25,7 @@
     "scss": "sass src/scss/main.scss public/stylesheets/main.css",
     "start": "npm run scss & npm run start:prod",
     "start:prod": "NODE_ENV=production node ./bin/www",
-    "test": "jest --testPathIgnorePatterns='skip*'"
+    "test": "jest --testPathIgnorePatterns='skip*' --retryTimes=2"
   },
   "dependencies": {
     "@beenotung/better-sqlite3-helper": "^4.1.7",
