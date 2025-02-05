@@ -140,7 +140,7 @@
         </table>
         <p class="all-predictions">
           <a href="/groundhogs/{{ groundhog.slug }}/predictions" class="underline link--icon">
-            All {{ groundhog.predictionsCount }} predictions {{ icon({ right: true }) }}
+            All {% if groundhog.predictionsCount != 1 %}{{ groundhog.predictionsCount }} {% endif%}predictions {{ icon({ right: true }) }}
           </a>
         </p>
       </div>

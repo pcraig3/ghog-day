@@ -24,9 +24,9 @@
       {% set have = 'have' if 'hogs' in groundhog.type else 'has' %}
       {% set actualPredictions = allPredictions.shadow + allPredictions.noShadow %}
       {% if groundhog.successor -%}
-        <p>{{ groundhog.name }} made <strong>{{ actualPredictions }}</strong> predictions between {{ firstYear }} and {{ groundhog.predictions[0].year }}.</p>
+        <p>{{ groundhog.name }} made <strong>{{ actualPredictions }}</strong> prediction{% if actualPredictions != 1 %}s{% endif %} between {{ firstYear }} and {{ groundhog.predictions[0].year }}.</p>
       {% else %}
-        <p>{{ groundhog.name }} {{ have }} made <strong>{{ actualPredictions }}</strong> predictions since {{ firstYear }}.</p>
+        <p>{{ groundhog.name }} {{ have }} made <strong>{{ actualPredictions }}</strong> prediction{% if actualPredictions != 1 %}s{% endif %} since {{ firstYear }}.</p>
       {% endif %}
       <ul class="with-bullets">
         <li><strong>{{ allPredictions.shadow }}</strong> prediction{% if allPredictions.shadow != 1 %}s{% endif %} ({{  allPredictions.percent.shadow }}%) of six more weeks of winter</li>
