@@ -96,19 +96,25 @@ describe('Test ui responses', () => {
     })
   })
 
-  describe('Test /groundhog-day-2023 response', () => {
-    test('it should return 302', async () => {
-      const response = await request(app).get('/groundhog-day-2023')
-      expect(response.statusCode).toBe(302)
-      expect(response.headers.location).toBe('/predictions/2023')
-    })
-  })
+  describe('Test redirects responses', () => {
+    const redirectUrls = [
+      { path: '/groundhog-day-2023', redirect: '/predictions/2023' },
+      { path: '/groundhog-day-2024', redirect: '/predictions/2024' },
+      { path: '/groundhog-day-2025', redirect: '/predictions/2025' },
+      { path: '/predictions/2026', redirect: '/groundhog-day-2026', code: 302 },
+      {
+        path: '/groundhogs/sylvia-the-armadillo',
+        redirect: '/groundhogs/sylvia-the-apex-armadillo',
+      },
+    ]
 
-  describe('Test /groundhog-day-2024 response', () => {
-    test('it should return 302', async () => {
-      const response = await request(app).get('/groundhog-day-2023')
-      expect(response.statusCode).toBe(302)
-      expect(response.headers.location).toBe('/predictions/2023')
+    redirectUrls.map((redirectUrl) => {
+      test(`it should redirect ${redirectUrl.path} to: "${redirectUrl.redirect}"`, async () => {
+        const response = await request(app).get(redirectUrl.path)
+        const expectedStatusCode = redirectUrl.code || 301
+        expect(response.statusCode).toBe(expectedStatusCode)
+        expect(response.headers.location).toBe(redirectUrl.redirect)
+      })
     })
   })
 

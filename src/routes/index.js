@@ -662,15 +662,15 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
 })
 
 router.get('/groundhog-day-2025', function (req, res) {
-  return res.redirect('/predictions/2025')
+  return res.redirect(301, '/predictions/2025')
 })
 
 router.get('/groundhog-day-2024', function (req, res) {
-  return res.redirect('/predictions/2024')
+  return res.redirect(301, '/predictions/2024')
 })
 
 router.get('/groundhog-day-2023', function (req, res) {
-  return res.redirect('/predictions/2023')
+  return res.redirect(301, '/predictions/2023')
 })
 
 /* GET 2026 (upcoming) page */
@@ -814,6 +814,11 @@ const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear
     groundhog.city
   } in ${groundhog.region}, ${groundhog.country}.${secondPhrase}`
 }
+
+/* redirect sylvia since we changed the ID */
+router.get('/groundhogs/sylvia-the-armadillo', function (req, res) {
+  return res.redirect(301, '/groundhogs/sylvia-the-apex-armadillo')
+})
 
 /* GET single groundhog */
 router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {

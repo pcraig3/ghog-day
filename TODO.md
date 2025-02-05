@@ -10,13 +10,17 @@ TODO
 - Add RichResults
   - Dataset lol
 - Get a better handle on upcoming groundhog day
-- Compile 2 more groundhogs
 - Add merch!
 - Maybe: years on groundhogs page
 - Let's add some aggregate data to the API/About pages
 
 DONE
 
+- Rename "Sylvia the armadillo" to "Sylvia the Apex Armadillo"
+- Add 3 groundhogs:
+  - Walnut the Hedgehog
+  - Cornelia the Groundhog
+  - Snack town Steve
 - Show active groundhogs by default
   - Only show active groundhogs on the groundhog map
 - Update "days left" sentence to account for non-plural
