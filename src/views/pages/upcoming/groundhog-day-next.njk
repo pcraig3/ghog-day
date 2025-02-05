@@ -9,7 +9,7 @@
 
   <div class="max-width--850">
     <p class="speakable">
-      <strong>{% if is_before_groundhog_day %}This year{% else %}In {{ nextYear }}{% endif %}, Groundhog Day will be on {{ dateString }}.</strong>
+      <strong>{% if isBeforeGroundhogDay %}This year{% else %}In {{ nextYear }}{% endif %}, Groundhog Day will be on {{ dateString }}.</strong>
     </p>
 
     <p>
@@ -23,7 +23,7 @@
 
     <p>Unfortunately, Groundhog Day is <strong>not</strong> a statutory holiday in <a href="https://canada-holidays.ca" target="_blank" style="text-decoration: none;">Canada</a> or the USA.
 
-    <h2 class="h5">{% if is_before_groundhog_day %}Last year{% else %}This year{% endif %}: Groundhog Day {{ currentYear }}</h2>
+    <h2 class="h5">{% if isBeforeGroundhogDay %}Last year{% else %}This year{% endif %}: Groundhog Day {{ currentYear }}</h2>
     <p class="mb--0">In {{ currentYear }}, most groundhogs predicted <strong>{{ predictionString }}</strong>. <a href="/predictions/{{currentYear}}">Check out {{currentYear}}’s detailed results</a> to see who got it right or wrong. (Whether they were right or not depends on where you live.) Or go back even further and <a href="/predictions">see past predictions for all years</a>.</p>
   </div>
 {% endblock %}

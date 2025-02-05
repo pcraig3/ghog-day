@@ -9,13 +9,13 @@ TODO
   - Page of the most out-there facts
 - Add RichResults
   - Dataset lol
-- Get a better handle on upcoming groundhog day
 - Add merch!
 - Maybe: years on groundhogs page
 - Let's add some aggregate data to the API/About pages
 
 DONE
 
+- Get a better handle on upcoming groundhog day
 - Rename "Sylvia the armadillo" to "Sylvia the Apex Armadillo"
 - Add 3 groundhogs:
   - Walnut the Hedgehog

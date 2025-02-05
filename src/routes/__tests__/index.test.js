@@ -52,7 +52,7 @@ describe('Test ui responses', () => {
       expect(response.statusCode).toBe(200)
     })
 
-    test.skip('it should return the h1, title, meta tag, and canonical link', async () => {
+    test('it should return the h1, title, meta tag, and canonical link', async () => {
       const response = await request(app).get('/predictions')
       const $ = cheerio.load(response.text)
 
@@ -71,7 +71,7 @@ describe('Test ui responses', () => {
   describe('Test /predictions/:years response', () => {
     const years = [
       { year: CURRENT_YEAR, status: 200 },
-      // TODO: UNSKIP { year: CURRENT_YEAR + 1, status: 302 },
+      { year: CURRENT_YEAR + 1, status: 302 },
       { year: CURRENT_YEAR + 2, status: 400 },
       { year: EARLIEST_RECORDED_PREDICTION, status: 200 },
       { year: EARLIEST_RECORDED_PREDICTION - 1, status: 400 },
@@ -379,14 +379,14 @@ describe('Test API responses', () => {
       expect(error.message).toBe('Bad Request: request/query/year must be >= 1886')
     })
 
-    test.skip(`it should return an error for a future year: "${CURRENT_YEAR + 1}`, async () => {
-      const response = await request(app).get(`/api/v1/predictions?year=${CURRENT_YEAR + 1}`)
+    test(`it should return an error for a future year: "${CURRENT_YEAR + 2}`, async () => {
+      const response = await request(app).get(`/api/v1/predictions?year=${CURRENT_YEAR + 2}`)
       expect(response.statusCode).toBe(400)
 
       let { error } = JSON.parse(response.text)
       expect(error.status).toBe(400)
       expect(error.message).toBe(
-        "BadRequestError: The 'year' must be between 1886 and 2024 (inclusive).", // eslint-disable-line quotes
+        "BadRequestError: The 'year' must be between 1886 and 2025 (inclusive).", // eslint-disable-line quotes
       )
     })
   })

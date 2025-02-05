@@ -27,7 +27,7 @@ const EARLIEST_RECORDED_PREDICTION = DB()
   .get().year
 
 const BEFORE_GROUNDHOG_DAY = getAbsoluteYear() !== getGroundhogDayYear()
-// TODOconst IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 365
+const IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 365
 
 /* Request functions */
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
@@ -112,7 +112,7 @@ const getPredictionsByYear = (year) => {
 
 // TODO: due to the subquery, this call might be inefficient
 // Could fix this with 2 calls (all predictions + all groundhogs) and then loop through in code
-const _getPredictions = ({ since = 2022, until = 2025 } = {}) => {
+const _getPredictions = ({ since = 2022, until = getGroundhogDayYear() } = {}) => {
   let predictions = DB()
     .prepare(
       `
@@ -281,7 +281,7 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const currentYear = 2025 //getGroundhogDayYear()
+  const currentYear = getGroundhogDayYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -354,7 +354,7 @@ const validBackUrl = (req, res, next) => {
   else if (url === '/groundhogs-in-canada') back = { url, text: 'Groundhogs in Canada' }
   else if (url === '/groundhogs-in-usa') back = { url, text: 'Groundhogs in the USA' }
   else if (url === '/alternative-groundhogs') back = { url, text: 'Alternative groundhogs' }
-  else if (url === '/groundhog-day-2024') back = { url, text: 'Groundhog Day 2024' }
+  else if (url === '/active-groundhogs') back = { url, text: 'Active groundhogs' }
   else if (url === '/map') {
     const _slug = _getValidGroundhogSlugFromUrl(req.session.path)
     const backTo = _slug ? `${url}?groundhog=${_slug}` : url
@@ -397,8 +397,8 @@ router.use((req, res, next) => {
 router.get('/', function (req, res) {
   const currentYear = getGroundhogDayYear()
   const _predictions = _getPredictions({
-    since: 2023,
-    until: 2025,
+    since: getGroundhogDayYear() - 2,
+    until: getGroundhogDayYear(),
   })
 
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
@@ -448,10 +448,12 @@ router.get('/', function (req, res) {
   res.render('pages/index', {
     title: 'GROUNDHOG-DAY.com',
     daysLeft: getDaysToGroundhogDay(),
+    currentYear,
     nextYear: currentYear + 1,
     predictionResults,
     randomGroundhogs,
     totalGroundhogs: getGroundhogSlugs().length,
+    isBeforeGroundhogDay: IS_GROUNDHOG_DAY || BEFORE_GROUNDHOG_DAY,
     pageMeta: _getPageMeta(req, {
       description:
         'GROUNDHOG-DAY.com is the leading Groundhog Day data source: cataloging North America’s prognosticating animals and their yearly weather predictions.',
@@ -650,7 +652,8 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
     title: `Groundhog Day ${year} results: ${predictionTitle}`,
     years,
     intro,
-    is_before_groundhog_day: year == getGroundhogDayYear() && BEFORE_GROUNDHOG_DAY,
+    isBeforeGroundhogDay:
+      year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
     predictions,
     predictionTotals,
     pageMeta: _getPageMeta(req, {
@@ -703,7 +706,7 @@ router.get('/groundhog-day-2026', validBackUrl, function (req, res) {
     dateString,
     daysLeft: getDaysToGroundhogDay(),
     predictionString,
-    is_before_groundhog_day: BEFORE_GROUNDHOG_DAY,
+    isBeforeGroundhogDay: BEFORE_GROUNDHOG_DAY,
     pageMeta: _getPageMeta(req, {
       description: `In ${nextYear}, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
       speakable: true,
@@ -836,7 +839,7 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
     title: `${groundhog.name} from ${groundhog.city}, ${groundhog.region}`,
     groundhog,
     year: getGroundhogDayYear(),
-    is_before_groundhog_day: BEFORE_GROUNDHOG_DAY,
+    isBeforeGroundhogDay: BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY,
     countPredictions,
     successor: groundhog.successor && getGroundhogBySlug(groundhog.successor),
     randomPositiveAdjective: getRandomPositiveAdjective(),

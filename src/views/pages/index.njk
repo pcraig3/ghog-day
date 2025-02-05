@@ -10,7 +10,7 @@
     {# TODO: dynamic date #}
     <h1>
       <span aria-hidden="true" title="i know it's a beaver but it's the best i could do" style="transform: scale(-1, 1); display: inline-block;">🦫</span>
-      Today is <a href="/predictions/2025" class="underline">Groundhog Day</a>!
+      Today is <a href="/predictions/{{ currentYear }}" class="underline">Groundhog Day</a>!
       <span aria-hidden="true" title="¡Hola! ¡Feliz día de la marmota!">🦫</span>
     </h1>
   {% else %}
@@ -38,11 +38,11 @@
             <span class="card--triangle"></span>
             <div class="card--heading h2">{{ result.year }}</div>
             {% if result.agree == 'winter' %}
-              <div class="card--subhead">{% if result.year == 2025 %}Looks like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
+              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == currentYear %}Looks like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
             {% else %}
-              <div class="card--subhead">{% if result.year == 2025 %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
+              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == currentYear %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
             {% endif %}
-            {% if result.year == 2025 %}
+            {% if isBeforeGroundhogDay and result.year == currentYear %}
               <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] +  result.groundhogs[result.disagree] }} groundhogs reporting in so far</div>
             {% else %}
               <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] }} groundhogs agreed, {{ result.groundhogs[result.disagree] }} did not</div>
