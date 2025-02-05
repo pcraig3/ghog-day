@@ -68,7 +68,7 @@
     <div class="predictions--navigation">
       {% if years.next %}
           <a href="/predictions/{{ years.next }}" class="predictions--navigation--next-year underline link--icon">
-            {% if isBeforeGroundhogDay %}
+            {% if nextYear == years.next  %}
               {{ icon({ left: true }) }} <span>Groundhog Day {{ years.next }}</span>
             {% else %}
               {{ icon({ left: true }) }} <span>{{ years.next }}<span class="hidden--mobile-xs"> results</span></span>

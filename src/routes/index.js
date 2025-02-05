@@ -588,7 +588,7 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
 
   const years = {
     year,
-    next: year === getAbsoluteYear() ? undefined : year + 1,
+    next: year + 1,
     prev: year === EARLIEST_RECORDED_PREDICTION ? undefined : year - 1,
   }
 
@@ -652,6 +652,7 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
     title: `Groundhog Day ${year} results: ${predictionTitle}`,
     years,
     intro,
+    nextYear: getGroundhogDayYear() + 1,
     isBeforeGroundhogDay:
       year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
     predictions,
