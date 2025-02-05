@@ -97,8 +97,7 @@ const _getName = (path) => {
     case 'predictions':
     case 'about':
     case 'contact':
-    case 'groundhog-day-2024':
-    case 'groundhog-day-2025':
+    case 'groundhog-day-2026':
       // get last item in array and return Title case
       return path
         .split('-')
@@ -118,6 +117,8 @@ const _getName = (path) => {
       return 'Groundhogs in USA'
     case 'alternative-groundhogs':
       return 'Alternative groundhogs'
+    case 'active-groundhogs':
+      return 'Active groundhogs'
     default:
       return ''
   }
