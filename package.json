@@ -29,34 +29,34 @@
   },
   "dependencies": {
     "@beenotung/better-sqlite3-helper": "^4.1.7",
-    "cheerio": "^1.0.0",
+    "cheerio": "^1.1.0",
     "compression": "^1.8.0",
     "cookie-parser": "~1.4.7",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
-    "debug": "~4.4.0",
+    "debug": "~4.4.1",
     "express": "~4.21.2",
-    "express-openapi-validator": "^5.4.3",
+    "express-openapi-validator": "^5.5.7",
     "express-session": "^1.18.1",
     "fast-csv": "^5.0.2",
-    "helmet": "^8.0.0",
+    "helmet": "^8.1.0",
     "http-errors": "~2.0.0",
-    "image-size": "^1.2.0",
+    "image-size": "^1.2.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "list.js": "github:iamrobert/list.js#patch-1",
     "morgan": "~1.10.0",
     "nunjucks": "^3.2.4",
-    "sass": "^1.85.0"
+    "sass": "^1.89.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.20.0",
-    "eslint": "^9.20.1",
-    "eslint-plugin-jest": "^28.11.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.29.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-jest": "^28.14.0",
     "globals": "^15.15.0",
     "jest": "^29.7.0",
-    "nodemon": "^3.1.9",
-    "supertest": "^7.0.0"
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.1"
   }
 }
