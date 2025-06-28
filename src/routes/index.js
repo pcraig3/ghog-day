@@ -4,7 +4,6 @@ const { format } = require('date-fns/format')
 const createError = require('http-errors')
 const aAnAre = require('../filters/aAnAre')
 const path = require('path')
-const sizeOf = require('image-size')
 
 const router = express.Router()
 const APIRouter = express.Router()
@@ -14,6 +13,7 @@ const {
   getGroundhogDayYear,
   getDaysToGroundhogDay,
   escapeHtml,
+  getImageSize,
   getPercent,
   getRandomItems,
   getRandomPositiveAdjective,
@@ -45,12 +45,13 @@ const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {})
 const _getPageMeta = (req, { description, slug, speakable } = {}) => {
   let dimensions
   if (slug) {
-    dimensions = sizeOf(path.resolve(__dirname, `../../public/images/ghogs/og-image/${slug}.jpeg`))
+    dimensions = getImageSize(slug)
   }
 
   return {
     ...(description && { description }),
-    ...(slug && { image: slug, imageWidth: dimensions.width, imageHeight: dimensions.height }),
+    ...(slug &&
+      dimensions && { image: slug, imageWidth: dimensions.width, imageHeight: dimensions.height }),
     canonical: _getUrlFromRequest(req, { trailingSlash: false }),
     baseUrl: _getUrlFromRequest(req, { withPath: false }),
     speakable,

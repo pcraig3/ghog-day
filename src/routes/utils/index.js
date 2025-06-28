@@ -1,4 +1,7 @@
-var { getDayOfYear } = require('date-fns/getDayOfYear')
+const fs = require('fs')
+const path = require('path')
+const { getDayOfYear } = require('date-fns/getDayOfYear')
+const { imageSizeFromFile } = require('image-size/fromFile')
 
 const getAbsoluteYear = () => {
   return new Date().getFullYear()
@@ -96,14 +99,34 @@ const getRandomPositiveAdjective = () => {
   return getRandomItems(adjectives, { length: 1 })[0]
 }
 
+const imageDir = path.resolve(__dirname, '../../../public/images/ghogs/og-image')
+const imageSizeCache = {}
+
+async function preloadImageSizes() {
+  const files = fs.readdirSync(imageDir)
+  for (const file of files) {
+    if (file.endsWith('.jpeg')) {
+      const slug = file.replace('.jpeg', '')
+      const dimensions = await imageSizeFromFile(path.join(imageDir, file))
+      imageSizeCache[slug] = dimensions
+    }
+  }
+}
+
+function getImageSize(slug) {
+  return imageSizeCache[slug] || null
+}
+
 module.exports = {
   getAbsoluteYear,
   getGroundhogDayYear,
   getDaysToGroundhogDay,
   escapeHtml,
+  getImageSize,
   getPercent,
   getRandomItems,
   getRandomPositiveAdjective,
   parseBoolean,
+  preloadImageSizes,
   removeTrailingSlashes,
 }
