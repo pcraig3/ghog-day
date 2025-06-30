@@ -299,11 +299,23 @@ const validYear = (req, res, next) => {
 }
 
 const validId = (req, res, next) => {
-  const id = parseInt(req.params.gId)
+  const rawId = req.params.gId
+
+  if (!/^\d{1,3}$/.test(rawId)) {
+    throw new createError(
+      400,
+      `Bad groundhog identifier ('${escapeHtml(rawId)}'), must be 1–3 digits.`,
+    )
+  }
+
+  const id = Number(rawId)
   const ids = getGroundhogIDs()
 
-  if (isNaN(id) || !ids.includes(id)) {
-    throw new createError(400, `Bad groundhog identifier ('${escapeHtml(id)}'), pick a real one.`)
+  if (!ids.includes(id)) {
+    throw new createError(
+      400,
+      `Bad groundhog identifier ('${escapeHtml(rawId)}'), pick a real one.`,
+    )
   }
 
   next()
@@ -987,7 +999,7 @@ APIRouter.get('/groundhogs', function (req, res) {
 })
 
 /* get a single groundhog as JSON by id */
-APIRouter.get('/groundhogs/:gId([0-9]{0,3})', validId, function (req, res) {
+APIRouter.get('/groundhogs/:gId', validId, function (req, res) {
   const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
   res.json({ groundhog })
 })
