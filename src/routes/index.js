@@ -1005,7 +1005,7 @@ APIRouter.get('/predictions', redirectAPIYear, validYear, function (req, res) {
 })
 
 /* API not found error responses */
-APIRouter.get('/*', (req, res) => {
+APIRouter.get('/*splat', (req, res) => {
   res.status(404)
   throw new createError(404, `Error: Could not find route “${req.path}”`)
 })
