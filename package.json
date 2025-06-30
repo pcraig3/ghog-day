@@ -35,7 +35,7 @@
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "debug": "~4.4.1",
-    "express": "~4.21.2",
+    "express": "~5.1.0",
     "express-openapi-validator": "^5.5.7",
     "express-session": "^1.18.1",
     "fast-csv": "^5.0.2",
