@@ -999,7 +999,7 @@ APIRouter.get('/groundhogs', function (req, res) {
 })
 
 /* get a single groundhog as JSON by id */
-APIRouter.get('/groundhogs/:gId', validId, function (req, res) {
+APIRouter.get('/groundhogs/id/:gId', validId, function (req, res) {
   const groundhog = getGroundhogById(req.params.gId, { oldestFirst: true })
   res.json({ groundhog })
 })

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Groundhog Day API
-  version: 1.3.1
+  version: 1.4.0
   description: This API returns all of North America's prognosticating animals and their yearly weather predictions.
   contact:
     name: Paul Craig
@@ -540,6 +540,101 @@ paths:
       description: Returns a prognosticating animal and its known predictions.
       tags:
         - groundhogs
+  '/api/v1/groundhogs/id/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Integer id of groundhog (note that this is not guaranteed to be stable)
+    get:
+      summary: Get a groundhog by id (experimental)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groundhog:
+                    $ref: '#/components/schemas/Groundhog'
+              examples:
+                /groundhogs/lucy-the-lobster:
+                  value:
+                    groundhog:
+                      id: 51
+                      slug: lucy-the-lobster
+                      shortname: Lucy
+                      name: Lucy the Lobster
+                      city: Barrington
+                      region: Nova Scotia
+                      country: Canada
+                      coordinates: '43.5623505,-65.5700017'
+                      source: 'https://twitter.com/lucylobsterns'
+                      contact: ''
+                      currentPrediction: 'https://twitter.com/CailinONeil/status/1488894511107485702'
+                      isGroundhog: 0
+                      type: Atlantic lobster
+                      active: 1
+                      description: 'Lucy the Lobster makes Groundhog Day predictions on February 2nd to kick off the Lobster Crawl festival in Barrington, Nova Scotia. The Municipality of Barrington says Lucy is the only prognosticating crustacean to make a prediction in Canada. Bill Murray was reported as being bemused by the idea of a lobster forecaster.'
+                      image: 'https://groundhog-day.com/images/ghogs/lucy-the-lobster.png'
+                      predictionsCount: 4
+                      predictions:
+                        - year: 2018
+                          shadow: 0
+                          details: ''
+                        - year: 2019
+                          shadow: 1
+                          details: ''
+                        - year: 2020
+                          shadow: 1
+                          details: ''
+                        - year: 2021
+                          shadow: null
+                          details: ''
+                        - year: 2022
+                          shadow: 1
+                          details: ''
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  example-1:
+                    error:
+                      status: 400
+                      message: 'BadRequestError: Bad groundhog identifier (''fake''), maybe you spelled it wrong?'
+                      timestamp: '2022-10-03T03:36:54.661Z'
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                      message:
+                        type: string
+                      timestamp:
+                        type: string
+                    required:
+                      - status
+                      - message
+                      - timestamp
+              examples:
+                /groundhogs/punxsutawney-paul:
+                  value:
+                    error:
+                      status: 400
+                      message: 'BadRequestError: Bad groundhog identifier (''punxsutawney-paul''), maybe you spelled it wrong?'
+                      timestamp: '2022-10-03T03:37:51.567Z'
+      operationId: groundhogId
+      description: Returns a prognosticating animal and its known predictions.
+      tags:
+        - groundhogs
+      x-internal: true
   /api/v1/predictions:
     parameters: []
     get:
