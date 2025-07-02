@@ -191,7 +191,7 @@ describe('Test API responses', () => {
       expect(response.headers['content-disposition']).toEqual(
         'attachment; filename="Groundhog-Day-API.v1.yaml"',
       )
-      expect(response.headers['content-type']).toEqual('text/yaml; charset=UTF-8')
+      expect(response.headers['content-type']).toEqual('text/yaml; charset=utf-8')
       expect(response.text).toMatch(/openapi: 3.0.0/)
     })
   })
@@ -310,7 +310,7 @@ describe('Test API responses', () => {
     })
 
     test('it should return a groundhog for a good integer ID: "3"', async () => {
-      const response = await request(app).get('/api/v1/groundhogs/3')
+      const response = await request(app).get('/api/v1/groundhogs/id/3')
       expect(response.statusCode).toBe(200)
 
       let { groundhog } = JSON.parse(response.text)
@@ -320,7 +320,7 @@ describe('Test API responses', () => {
     const badIDs = [0, 100]
     badIDs.map((id) => {
       test(`it should return an error message for a bad ID: ${id}`, async () => {
-        const response = await request(app).get(`/api/v1/groundhogs/${id}`)
+        const response = await request(app).get(`/api/v1/groundhogs/id/${id}`)
         expect(response.statusCode).toBe(400)
 
         let { error } = JSON.parse(response.text)
