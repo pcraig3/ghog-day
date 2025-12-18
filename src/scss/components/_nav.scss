@@ -3,6 +3,7 @@
 
 nav {
   z-index: 2;
+  background-color: white;
 
   ul {
     margin: 0;
@@ -26,7 +27,7 @@ nav {
 
       width: 100%;
       min-height: 30px;
-      background: white;
+      background-color: white;
       border-top: 2px solid black;
       bottom: 0px;
       z-index: 1;
