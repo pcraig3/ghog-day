@@ -1,6 +1,10 @@
 @use '../mixins';
 @use '../vars';
 
+p.speakable--md a {
+  text-decoration: underline;
+}
+
 a {
   color: currentColor;
 

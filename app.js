@@ -33,6 +33,7 @@ const nunjucksEnvironment = nunjucks.configure(path.join(__dirname, './src/views
 })
 
 nunjucksEnvironment.addFilter('aAnAre', require('./src/filters/aAnAre'))
+nunjucksEnvironment.addFilter('mdFilter', require('./src/filters/mdFilter'))
 nunjucksEnvironment.addFilter(
   'richResultsBreadcrumbs',
   require('./src/filters/richResults/breadcrumbs'),

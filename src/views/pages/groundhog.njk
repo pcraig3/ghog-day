@@ -44,7 +44,13 @@
     </div>
     <div class="description">
       <h2 class="h4">About {{ groundhog.shortname }}</h2>
-      <p class="speakable">{{ groundhog.description }}</p>
+      <p class="speakable {% if 'https' in groundhog.description %}speakable--md{% endif %}">
+        {% if 'https' in groundhog.description %}
+          {{ groundhog.description | mdFilter | safe }}
+        {% else %}
+          {{ groundhog.description }}
+        {% endif %}
+      </p>
     </div>
 
     <div class="summary">
