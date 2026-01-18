@@ -123,7 +123,7 @@
     </header>
 
     <nav>
-      <details class="nav--sm">
+      <details class="nav--sm" open>
         <summary><span> Menu</span></summary>
         {{ nav({ path: path, groundhog: groundhog }) }}
       </details>
@@ -153,7 +153,7 @@
         </div>
       </div>
     </footer>
-    {% if NODE_ENV == 'production' %}
+      {% if NODE_ENV == 'production' %}
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3SGGHMTHC"></script>
         <script>
@@ -173,6 +173,10 @@
             }
           })
         })
+        const navDetails = document.querySelector("details.nav--sm");
+        if (navDetails) {
+          navDetails.removeAttribute("open");
+        }
       </script>
       {% block footer_scripts %}{% endblock %}
   </body>
