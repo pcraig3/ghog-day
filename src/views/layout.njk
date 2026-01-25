@@ -123,7 +123,7 @@
     </header>
 
     <nav>
-      <details class="nav--sm" open>
+      <details class="nav--sm">
         <summary><span> Menu</span></summary>
         {{ nav({ path: path, groundhog: groundhog }) }}
       </details>
@@ -173,10 +173,6 @@
             }
           })
         })
-        const navDetails = document.querySelector("details.nav--sm");
-        if (navDetails) {
-          navDetails.removeAttribute("open");
-        }
       </script>
       {% block footer_scripts %}{% endblock %}
   </body>
