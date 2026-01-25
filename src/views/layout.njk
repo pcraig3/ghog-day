@@ -19,7 +19,7 @@
     {%- endif %}
 
     <meta charset="utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% if pageMeta %}
       {%- if "description" in pageMeta -%}
@@ -174,12 +174,6 @@
             }
           })
         })
-        window.addEventListener("load", () => {
-          document.documentElement.classList.add("ios26-tint-refresh");
-          requestAnimationFrame(() => {
-            document.documentElement.classList.remove("ios26-tint-refresh");
-          });
-        });
       </script>
       {% block footer_scripts %}{% endblock %}
   </body>

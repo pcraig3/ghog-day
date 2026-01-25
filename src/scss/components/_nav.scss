@@ -31,7 +31,7 @@ nav {
       border-top: 2px solid black;
       z-index: 1;
       padding: 0.8em 1.2em 0.8em 1.2em;
-      padding: 0.8em 1.2em calc(0.8em + env(safe-area-inset-bottom, 0px)) 1.2em;
+      /* padding: 0.8em 1.2em calc(0.8em + env(safe-area-inset-bottom, 0px)) 1.2em; */
       margin-left: -1.2em;
       z-index: 100;
     }
@@ -81,9 +81,4 @@ nav {
 /* Hide nav on error */
 .error nav {
   visibility: hidden;
-}
-
-/* forces a compositing/style update */
-.ios26-tint-refresh .nav--sm {
-  transform: translateZ(0);
 }
