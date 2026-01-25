@@ -111,6 +111,7 @@
   </head>
   <body class="{% block body_classes %}{% endblock %}">
     <a class="skip-link" href="#main">Skip to main content <img src="/images/logo--white.png" class="logo--img" alt="skip to main" aria-hidden="true" /></a>
+    <div class="safari-tint-sentinel" aria-hidden="true"></div>
     <header>
       <a class="logo" href="/" aria-label="Groundhog-Day.com">
         <img src="/images/logo.png" class="logo--img" alt="logo" />
@@ -173,6 +174,12 @@
             }
           })
         })
+        window.addEventListener("load", () => {
+          document.documentElement.classList.add("ios26-tint-refresh");
+          requestAnimationFrame(() => {
+            document.documentElement.classList.remove("ios26-tint-refresh");
+          });
+        });
       </script>
       {% block footer_scripts %}{% endblock %}
   </body>

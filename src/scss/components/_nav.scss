@@ -82,3 +82,8 @@ nav {
 .error nav {
   visibility: hidden;
 }
+
+/* forces a compositing/style update */
+.ios26-tint-refresh .nav--sm {
+  transform: translateZ(0);
+}

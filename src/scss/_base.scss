@@ -94,6 +94,17 @@ footer {
   }
 }
 
+.safari-tint-sentinel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: white;
+  pointer-events: none;
+  z-index: 999999;
+}
+
 /* Inner grid for product page layout */
 
 .inner-content.inner-content--with-summary {
