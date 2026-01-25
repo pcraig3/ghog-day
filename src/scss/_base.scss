@@ -4,12 +4,13 @@
 
 html,
 body {
+  background-color: white;
   min-height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 2em;
+  padding: 2em;
   display: grid;
   grid: auto-flow min-content / 1fr;
   grid-gap: 1em;
@@ -21,7 +22,7 @@ body {
     'footer ';
 
   @include mixins.mobile {
-    margin: 1.2em;
+    padding: 1.2em;
   }
 }
 
@@ -43,6 +44,20 @@ main {
 
 footer {
   grid-area: footer;
+}
+
+@include mixins.mobile {
+  /* Estimate the closed-nav height.
+     You can tune this number once and forget it. */
+  :root {
+    --mobile-nav-closed-height: 64px; // adjust to your actual closed bar height
+  }
+
+  main {
+    padding-bottom: calc(
+      var(--mobile-nav-closed-height) + env(safe-area-inset-bottom, 0px)
+    );
+  }
 }
 
 @include mixins.tablet {
