@@ -37,12 +37,17 @@
           <div class="card card--{{ result.agree }}">
             <span class="card--triangle"></span>
             <div class="card--heading h2">{{ result.year }}</div>
-            {% if result.agree == 'winter' %}
-              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == currentYear %}Looks like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
+            {% if result.total == 0 %}
+              <div class="card--subhead">Yet to be determined</div>
+            {% elif result.agree == 'winter' %}
+              {# replace '2026' with currentYear #}
+              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == 2026 %}Looks like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
             {% else %}
-              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == currentYear %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
+              {# replace '2026' with currentYear #}
+              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == 2026 %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
             {% endif %}
-            {% if isBeforeGroundhogDay and result.year == currentYear %}
+            {# replace '2026' with currentYear #}
+            {% if isBeforeGroundhogDay and result.year == 2026 %}
               <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] +  result.groundhogs[result.disagree] }} groundhogs reporting in so far</div>
             {% else %}
               <div class="card--details card--bg-change">{{ result.groundhogs[result.agree] }} groundhogs agreed, {{ result.groundhogs[result.disagree] }} did not</div>
