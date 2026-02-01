@@ -584,9 +584,9 @@ router.get('/predictions', function (req, res) {
   })
 })
 
-// router.get('/predictions/2026', function (req, res) {
-//   return res.redirect('/groundhog-day-2026')
-// })
+router.get('/predictions/2027', function (req, res) {
+  return res.redirect('/groundhog-day-2027')
+})
 
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
@@ -700,8 +700,10 @@ router.get('/groundhog-day-2023', function (req, res) {
 })
 
 /* GET 2026 (upcoming) page */
-router.get('/groundhog-day-2026', validBackUrl, function (req, res) {
-  const currentYear = getGroundhogDayYear()
+router.get('/groundhog-day-2027', validBackUrl, function (req, res) {
+  // TODO: change this back on Feb 2
+  const currentYear = 2026
+  // const currentYear = getGroundhogDayYear()
   const nextYear = currentYear + 1
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
 
@@ -722,14 +724,16 @@ router.get('/groundhog-day-2026', validBackUrl, function (req, res) {
 
   const dateString = format(new Date(`${nextYear}-02-02T00:00:00`), 'iiii, MMMM do')
 
+  // TODO: remove 365
   res.render('pages/upcoming/groundhog-day-next', {
     title: `Groundhog Day ${nextYear}`,
     currentYear,
     nextYear,
     dateString,
-    daysLeft: getDaysToGroundhogDay(),
+    daysLeft: 365 + getDaysToGroundhogDay(),
     predictionString,
-    isBeforeGroundhogDay: BEFORE_GROUNDHOG_DAY,
+    // isBeforeGroundhogDay: BEFORE_GROUNDHOG_DAY,
+    isBeforeGroundhogDay: false,
     pageMeta: _getPageMeta(req, {
       description: `In ${nextYear}, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
       speakable: true,

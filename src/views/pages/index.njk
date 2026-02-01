@@ -41,10 +41,10 @@
               <div class="card--subhead">Yet to be determined</div>
             {% elif result.agree == 'winter' %}
               {# replace '2026' with currentYear #}
-              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == 2026 %}Looks like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
+              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == 2026 %}Looking like {% endif %}<span aria-hidden="true">❄️</span> Longer winter</div>
             {% else %}
               {# replace '2026' with currentYear #}
-              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == 2026 %}Looks like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
+              <div class="card--subhead">{% if isBeforeGroundhogDay and result.year == 2026 %}Looking like {% endif %}<span aria-hidden="true">🌼</span> Early spring</div>
             {% endif %}
             {# replace '2026' with currentYear #}
             {% if isBeforeGroundhogDay and result.year == 2026 %}
