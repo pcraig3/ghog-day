@@ -79,7 +79,7 @@ INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordi
 INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (47, 'polk-county-paula', 'Paula', 'Polk County Paula', 'Des Moines', 'Iowa', 'USA', '41.5830468,-93.6206605', 'https://www.facebook.com/HighLifeLounge', 'info@thehighlifelounge.com', 'https://www.kcci.com/article/did-polk-county-paula-see-her-shadow-this-groundhog-day/63638578', 0, 'Person in a groundhog suit', '1','', 'Polk County Paula is Des Moines’ resident groundhog who regales fans with her annual prediction at the High Life Lounge’s Annual Groundhog Day Celebration. Every year on February 2nd groundhog enthusiasts line up before 5am to be first in line for FREE Miller High Life breakfast beer given out from 6-8 am. Paula’s annual prediction happens at sunrise, closely followed by regional meteorologists. Paula makes a grand entrance from her beer-case burrow, where she hibernates throughout the colder winter months!', 'https://groundhog-day.com/images/ghogs/polk-county-paula.jpeg');
 INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (48, 'scramble-the-duck', 'Scramble', 'Scramble the Duck', 'Eastford', 'Connecticut', 'USA', '41.901251,-72.0815198', 'https://scrambletheduck.org', '', 'https://scrambletheduck.org/news/2025/02/02/scramble-predicts-early-spring/', 0, 'Pekin duck', '1','', 'Scramble the Duck is a prognosticating Pekin duck from Eastford, Connecticut who makes an official prediction on “Duck Day” every February 2nd. Billed as “an accurate alternative to the groundhog,” Scramble has an impressive perfect record of weather prognostications. According to his website, “Scramble can predict the weather because he has the most superior education,” in addition to the innate fact that ducks “live above ground, [so] they know more about the weather.”', 'https://groundhog-day.com/images/ghogs/scramble-the-duck.jpeg');
 INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (49, 'snerd', 'Snerd', 'Snerd', 'Garner', 'North Carolina', 'USA', '35.6800912,-78.6279155', 'https://www.facebook.com/GarnerParksRecreationAndCulturalResources', '', 'https://www.facebook.com/reel/483919234513527', 1, 'Groundhog', '1','', 'Snerd is a groundhog prognosticator who gives an annual prediction from White Deer Park, in Garner, North Carolina. North Carolina’s roster of true groundhog prognosticators has dwindled to just Snerd — Garner’s official prognosticator since 2015 — but he is in good company with Pisgah Piper, a white squirrel, and Sylvia the armadillo. According to Snerd’s translator from wildlife rehabilitation organization CLAWS, Snerd spends weeks conferring with Mother Nature, the Farmer’s Almanac, and the Weather Channel to get precise information before making his yearly prediction.', 'https://groundhog-day.com/images/ghogs/snerd.jpeg');
-INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (50, 'tinicum-tim', 'Tim', 'Tinicum Tim', 'Philadelphia', 'Pennsylvania', 'USA', '39.8921524,-75.2572137', 'https://www.facebook.com/johnheinznwr', 'wingyi_kung@fws.gov', 'https://www.facebook.com/countdowntogroundhogday/posts/pfbid031bU3XopHCm5ikp8u2kPYKxDZRUg5gBRogvsy7THGT4x6yZrh63Dm7N49hnCPnTpHl', 0, 'Groundhog puppet', '1','', 'Tinicum Tim is a groundhog puppet who (usually) makes an annual weather prediction for the John Heinz National Wildlife Refuge in Philadelphia, Pennsylvania. Tim is the star of the shadow ceremony, but he couldn’t do it without the support of his wife, Tinicum Tina, and their children, the Tinicum twins. Other activities at the wildlife refuge during the Groundhog Day Festival include songs, crafts, and light snacks and refreshments.', 'https://groundhog-day.com/images/ghogs/tinicum-tim.jpeg');
+INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (50, 'tinicum-tim', 'Tim', 'Tinicum Tim', 'Philadelphia', 'Pennsylvania', 'USA', '39.8921524,-75.2572137', 'https://www.facebook.com/johnheinznwr', 'wingyi_kung@fws.gov', 'https://www.facebook.com/countdowntogroundhogday/posts/pfbid02LaWbxgqdqLmhfUguszGDD8agFQMFTUYBTRXnSXReMYjNjSMkMtjQBo8ZtxG6LLZWl', 0, 'Groundhog puppet', '1','', 'Tinicum Tim is a groundhog puppet who (usually) makes an annual weather prediction for the John Heinz National Wildlife Refuge in Philadelphia, Pennsylvania. Tim is the star of the shadow ceremony, but he couldn’t do it without the support of his wife, Tinicum Tina, and their children, the Tinicum twins. Other activities at the wildlife refuge during the Groundhog Day Festival include songs, crafts, and light snacks and refreshments.', 'https://groundhog-day.com/images/ghogs/tinicum-tim.jpeg');
 INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (51, 'wildwood-willie', 'Willie', 'Wildwood Willie', 'Toledo', 'Ohio', 'USA', '41.6818106,-83.6675126', 'https://www.facebook.com/MetroparksToledo', 'metroparkstoledo.com/contact', 'https://www.facebook.com/MetroparksToledo/posts/pfbid02wz7S8XdRMe63jzaT2A8PmDPCc6iFZhr4szyeVj8o1EfYD3E7RyKKYJFRK5LKjrdfl', 0, 'Taxidermied groundhog', '1','', 'Wildwood Willie is a taxidermied groundhog who hosts a “Groundhogs Day” event every year at Ohio’s Wildwood Preserve Metropark. In addition to impressing attendees with his weather-predicting powers and his cute outfits, Willie’s prediction is preceded by gleeful groundhog stories, songs, crafts, games, and a nature walk through a typical groundhog habitat. Celebrate the lore and legend of Groundhogs Day with Wildwood Willie!', 'https://groundhog-day.com/images/ghogs/wildwood-willie.jpeg');
 INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (52, 'benny-the-bass', 'Benny', 'Benny the Bass', 'Buckeye Lake', 'Ohio', 'USA', '39.9335365,-82.501816', 'https://www.facebook.com/BuckeyeLakeWinterfest', 'buckeyelakeregioncc@gmail.com', 'https://www.facebook.com/BuckeyeLakeWinterfest/posts/pfbid02aoNgrCiHyK28L9j6HSrtLioKQUgYk49whJsyz7NuxYNbNiop6NtaDjPxPfVx8mrhl', 0, 'Largemouth bass', '1','', 'Benny the Bass is a foreseeing fish whose annual weather prediction kicks off Winterfest in Buckeye Lake, Ohio. Unlike the traditional ‘shadow’ method preferred by landgoing prognosticators, Benny’s prediction is based on his breakfast. “I pour a bunch of minnows into this big tank with a live bass,” says Mike Fornataro, Chair of Winterfest, “Then people chant, Take the bait, spring can’t wait.’ The bass has three minutes to eat a minnow. If he does, it’s an early spring. If he doesn’t, it’s six more weeks of winter.”', 'https://groundhog-day.com/images/ghogs/benny-the-bass.jpeg');
 INSERT INTO groundhogs (id, slug, shortname, name, city, region, country, coordinates, source, contact, currentPrediction, isGroundhog, type, active, successor, description, image) VALUES (53, 'boise-bill', 'Bill', 'Boise Bill', 'Boise', 'Idaho', 'USA', '43.6078333,-116.2049143', 'https://zooboise.org', 'jagosta@cityofboise.org', 'https://www.facebook.com/zooboise/posts/pfbid02mzzjCbDZn9jBgZESpB9NxowgVcJcupCfNCHPjC1zEoNZdFKPEm5yhsRst9wevJ4zl', 0, 'Plush prairie dog', '0','', 'Boise Bill is a plush prairie dog from Boise, Idaho. For many years, Bill was a staple in predicting the weather in Boise, however, he is still on a several-year sabbatical. Here is his statement: “Honestly, it’s a lot of stress having the whole world depend on you to predict the weather and I needed to take a break. I’ve really been enjoying my time out of the spotlight and have been focusing on Zoo Boise’s Conservation Fund. I have a beautiful corner office in my burrow and spend most of my day helping zoo staff come up with innovative ways to raise money to help protects animals all over the world.”', 'https://groundhog-day.com/images/ghogs/boise-bill.jpeg');
@@ -228,6 +228,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('birmingham-jill',
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('birmingham-jill', 2023, null, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('birmingham-jill', 2024, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('birmingham-jill', 2025, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('birmingham-jill', 2026, null, '');
 
 /* Predictions for boise-bill */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('boise-bill', 2007, 1, '');
@@ -264,6 +265,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('bowman-bill', 202
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('bowman-bill', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('bowman-bill', 2024, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('bowman-bill', 2025, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('bowman-bill', 2026, null, '');
 
 /* Predictions for buckeye-chuck */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('buckeye-chuck', 1980, 0, '');
@@ -505,6 +507,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('dover-doug', 2022
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('dover-doug', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('dover-doug', 2024, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('dover-doug', 2025, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('dover-doug', 2026, null, '');
 
 /* Predictions for dunkirk-dave */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('dunkirk-dave', 1983, 0, '');
@@ -995,6 +998,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('malverne-mel', 20
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('malverne-mel', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('malverne-mel', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('malverne-mel', 2025, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('malverne-mel', 2026, null, '');
 
 /* Predictions for manitoba-merv */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('manitoba-merv', 1996, 1, '');
@@ -1498,6 +1502,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('queen-city-charli
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('queen-city-charlie', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('queen-city-charlie', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('queen-city-charlie', 2025, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('queen-city-charlie', 2026, null, '');
 
 /* Predictions for sand-mountain-sam */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('sand-mountain-sam', 2012, 0, '');
@@ -1630,6 +1635,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('smith-lake-jake',
 
 /* Predictions for snack-town-steve */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snack-town-steve', 2025, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('snack-town-steve', 2026, null, '');
 
 /* Predictions for snerd */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('snerd', 2015, 0, '');
@@ -1799,6 +1805,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('tinicum-tim', 202
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('tinicum-tim', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('tinicum-tim', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('tinicum-tim', 2025, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('tinicum-tim', 2026, 1, '');
 
 /* Predictions for two-rivers-tunnel */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('two-rivers-tunnel', 2010, 0, '');
@@ -1817,12 +1824,14 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('two-rivers-tunnel
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('two-rivers-tunnel', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('two-rivers-tunnel', 2024, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('two-rivers-tunnel', 2025, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('two-rivers-tunnel', 2026, null, '');
 
 /* Predictions for unadilla-billie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('unadilla-billie', 2022, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('unadilla-billie', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('unadilla-billie', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('unadilla-billie', 2025, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('unadilla-billie', 2026, null, '');
 
 /* Predictions for uni-the-groundhog */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('uni-the-groundhog', 2004, 1, '');
@@ -1865,6 +1874,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('van-island-violet
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('walnut-the-hedgehog', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('walnut-the-hedgehog', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('walnut-the-hedgehog', 2025, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('walnut-the-hedgehog', 2026, null, '');
 
 /* Predictions for wiarton-willie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wiarton-willie', 1955, 0, 'No Shadow, Early Spring!');
@@ -1956,6 +1966,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('wildwood-willie',
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wildwood-willie', 2023, 1, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wildwood-willie', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('wildwood-willie', 2025, 0, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('wildwood-willie', 2026, null, '');
 
 /* Predictions for woodstock-willie */
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('woodstock-willie', 1999, 0, '');
@@ -2023,6 +2034,7 @@ INSERT INTO predictions (slug, year, shadow, details) VALUES ('yonah-the-groundh
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('yonah-the-groundhog', 2023, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('yonah-the-groundhog', 2024, 0, '');
 INSERT INTO predictions (slug, year, shadow, details) VALUES ('yonah-the-groundhog', 2025, 1, '');
+INSERT INTO predictions (slug, year, shadow, details) VALUES ('yonah-the-groundhog', 2026, null, '');
 
 -- Down
 DROP TABLE IF EXISTS predictions;
