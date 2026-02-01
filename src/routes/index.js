@@ -282,7 +282,9 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  const currentYear = getGroundhogDayYear()
+  // TODO: remove hardcoded 2026
+  // const currentYear = getGroundhogDayYear()
+  const currentYear = 2026
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -534,7 +536,8 @@ router.get('/contact', function (req, res) {
 })
 
 router.get('/predictions', function (req, res) {
-  const _predictions = _getPredictions({ since: 1886 })
+  // TODO: remove the "2026" thing here
+  const _predictions = _getPredictions({ since: 1886, until: 2026 })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
 
@@ -581,9 +584,9 @@ router.get('/predictions', function (req, res) {
   })
 })
 
-router.get('/predictions/2026', function (req, res) {
-  return res.redirect('/groundhog-day-2026')
-})
+// router.get('/predictions/2026', function (req, res) {
+//   return res.redirect('/groundhog-day-2026')
+// })
 
 /* GET predictions page for a year. */
 router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
@@ -664,13 +667,16 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
           : 'Early spring'
   /* eslint-enable */
 
+  // TODO: change these back on Feb 2
   res.render('pages/year', {
     title: `Groundhog Day ${year} results: ${predictionTitle}`,
     years,
     intro,
-    nextYear: getGroundhogDayYear() + 1,
-    isBeforeGroundhogDay:
-      year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
+    // nextYear: getGroundhogDayYear() + 1,
+    nextYear: 2027,
+    // isBeforeGroundhogDay:
+    //   year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
+    isBeforeGroundhogDay: true,
     predictions,
     predictionTotals,
     pageMeta: _getPageMeta(req, {
