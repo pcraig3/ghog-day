@@ -2,7 +2,7 @@ const request = require('supertest')
 const cheerio = require('cheerio')
 
 const app = require('../../../app.js')
-const { getGroundhogDayYear } = require('../utils')
+// const { getGroundhogDayYear } = require('../utils')
 
 const EARLIEST_RECORDED_PREDICTION = 1886
 const CURRENT_YEAR = 2026 // getGroundhogDayYear()
