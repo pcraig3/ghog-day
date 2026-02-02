@@ -38,8 +38,8 @@ const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {})
       ? url
       : `${url}/`
     : url.endsWith('/')
-      ? url.slice(0, -1) // eslint-disable-line indent
-      : url // eslint-disable-line indent
+      ? url.slice(0, -1)
+      : url
 }
 
 const _getPageMeta = (req, { description, slug, speakable } = {}) => {
@@ -555,8 +555,8 @@ router.get('/predictions', function (req, res) {
       yearPredictions.groundhogs.winter === yearPredictions.groundhogs.spring
         ? 'tied'
         : yearPredictions.groundhogs.winter >= yearPredictions.groundhogs.spring
-          ? 'winter' // eslint-disable-line indent
-          : 'spring' // eslint-disable-line indent
+          ? 'winter'
+          : 'spring'
 
     // Get agreement percentage — if tied, there is no consensus
     if (yearPredictions.prediction !== 'tied') {
@@ -617,15 +617,15 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
     prediction['shadow'] === 1
       ? ++predictionTotals['winter'] && ++predictionTotals['total']
       : prediction['shadow'] === 0
-        ? ++predictionTotals['spring'] && ++predictionTotals['total'] // eslint-disable-line indent
-        : ++predictionTotals['null'] // eslint-disable-line indent
+        ? ++predictionTotals['spring'] && ++predictionTotals['total']
+        : ++predictionTotals['null']
 
     predictionTotals.prediction =
       predictionTotals.winter === predictionTotals.spring
         ? 'tied'
         : predictionTotals.winter >= predictionTotals.spring
-          ? 'winter' // eslint-disable-line indent
-          : 'spring' // eslint-disable-line indent
+          ? 'winter'
+          : 'spring'
   })
 
   // sort by most predictions to least predictions
@@ -633,7 +633,6 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
     return a.shadow === null ? 1 : b.shadow === null ? -1 : a.shadow - b.shadow
   })
 
-  /* eslint-disable */
   const predictionTied = predictionTotals['prediction'] === 'tied'
   const predictionPercent = predictionTied
     ? 0
@@ -661,7 +660,6 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
         : predictionTotals.prediction === 'winter'
           ? 'Longer winter'
           : 'Early spring'
-  /* eslint-enable */
 
   // TODO: the "isBeforeGroundhogDay" logic doesn't work
   res.render('pages/year', {
@@ -708,8 +706,8 @@ router.get('/groundhog-day-2027', validBackUrl, function (req, res) {
     prediction['shadow'] === 1
       ? ++predictionTotals['winter'] && ++predictionTotals['total']
       : prediction['shadow'] === 0
-        ? ++predictionTotals['spring'] && ++predictionTotals['total'] // eslint-disable-line indent
-        : ++predictionTotals['null'] // eslint-disable-line indent
+        ? ++predictionTotals['spring'] && ++predictionTotals['total']
+        : ++predictionTotals['null']
   })
 
   const predictionString =
@@ -744,14 +742,14 @@ router.get(
   ],
   function (req, res) {
     const path = req.path.replace(/\/$/, '')
-    /* eslint-disable indent */
+
     const country =
       path === '/groundhogs-in-canada'
         ? 'Canada'
         : path === '/groundhogs-in-usa'
           ? 'USA'
           : undefined
-    /* eslint-enable */
+
     const isGroundhog = path === '/alternative-groundhogs' ? false : undefined
     const isActive = path === '/active-groundhogs' ? true : undefined
 
@@ -771,7 +769,6 @@ router.get(
       g.active ? ++groundhogCounts.active : ++groundhogCounts.retired
     })
 
-    /* eslint-disable indent */
     const pageTitle = path.includes('canada')
       ? 'Groundhogs in Canada'
       : path.includes('usa')
@@ -796,7 +793,6 @@ router.get(
       : path.includes('active')
         ? '/groundhogs-active'
         : path
-    /* eslint-enable */
 
     res.render(`pages/${pageTemplate}`, {
       title: pageTitle,
@@ -825,8 +821,8 @@ const getGroundhogMetaDescription = (groundhog, { allPredictionsCount, firstYear
       groundhog.predictions[0].shadow === 0
         ? 'predicted an early spring'
         : groundhog.predictions[0].shadow === 1
-          ? 'predicted a longer winter' // eslint-disable-line indent
-          : 'did not make a prediction' // eslint-disable-line indent
+          ? 'predicted a longer winter'
+          : 'did not make a prediction'
 
     secondPhrase = ` In ${groundhog.predictions[0].year}, ${groundhog.shortname} ${prediction}.`
   }
@@ -882,8 +878,8 @@ router.get('/groundhogs/:slug/predictions', validSlug, (req, res) => {
     p.shadow === 1
       ? ++allPredictions['shadow'] && ++allPredictions['total']
       : p.shadow === 0
-        ? ++allPredictions['noShadow'] && ++allPredictions['total'] // eslint-disable-line indent
-        : ++allPredictions['null'] // eslint-disable-line indent
+        ? ++allPredictions['noShadow'] && ++allPredictions['total']
+        : ++allPredictions['null']
   })
 
   const firstYear = groundhog.predictions[groundhog.predictions.length - 1].year
@@ -986,14 +982,12 @@ APIRouter.get('/spec', function (req, res) {
 APIRouter.get('/groundhogs', function (req, res) {
   let country = undefined
   if (req.query.country) {
-    /* eslint-disable indent */
     country =
       req.query.country.toLowerCase() === 'canada'
         ? 'Canada'
         : req.query.country.toLowerCase() === 'usa'
           ? 'USA'
           : undefined
-    /* eslint-enable */
   }
 
   const isGroundhog = parseBoolean(req.query.isGroundhog)
