@@ -282,9 +282,7 @@ const getGroundhogs = ({
 
 /* Middleware */
 const validYear = (req, res, next) => {
-  // TODO: remove hardcoded 2026
-  // const currentYear = getGroundhogDayYear()
-  const currentYear = 2026
+  const currentYear = getGroundhogDayYear()
   let year = req.params.year || req.query.year
   year = parseInt(year)
 
@@ -411,10 +409,9 @@ router.use((req, res, next) => {
 /* GET home page. */
 router.get('/', function (req, res) {
   const currentYear = getGroundhogDayYear()
-  // TODO: remove "-1" and "+1", and replace with "-2"
   const _predictions = _getPredictions({
-    since: getGroundhogDayYear() - 1,
-    until: getGroundhogDayYear() + 1,
+    since: getGroundhogDayYear() - 2,
+    until: getGroundhogDayYear(),
   })
 
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
@@ -536,8 +533,7 @@ router.get('/contact', function (req, res) {
 })
 
 router.get('/predictions', function (req, res) {
-  // TODO: remove the "2026" thing here
-  const _predictions = _getPredictions({ since: 1886, until: 2026 })
+  const _predictions = _getPredictions({ since: 1886, until: getGroundhogDayYear() })
   const _years = Object.keys(_predictions).reverse() // otherwise earlier years come first
   const predictionResults = []
 
@@ -667,13 +663,12 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
           : 'Early spring'
   /* eslint-enable */
 
-  // TODO: change these back on Feb 2
+  // TODO: the "isBeforeGroundhogDay" logic doesn't work
   res.render('pages/year', {
     title: `Groundhog Day ${year} results: ${predictionTitle}`,
     years,
     intro,
-    // nextYear: getGroundhogDayYear() + 1,
-    nextYear: 2027,
+    nextYear: getGroundhogDayYear() + 1,
     // isBeforeGroundhogDay:
     //   year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
     isBeforeGroundhogDay: true,
@@ -701,9 +696,7 @@ router.get('/groundhog-day-2023', function (req, res) {
 
 /* GET 2026 (upcoming) page */
 router.get('/groundhog-day-2027', validBackUrl, function (req, res) {
-  // TODO: change this back on Feb 2
-  const currentYear = 2026
-  // const currentYear = getGroundhogDayYear()
+  const currentYear = getGroundhogDayYear()
   const nextYear = currentYear + 1
   const back = req.locals && req.locals.back ? req.locals.back : { url: '/', text: 'Home' }
 
@@ -724,16 +717,14 @@ router.get('/groundhog-day-2027', validBackUrl, function (req, res) {
 
   const dateString = format(new Date(`${nextYear}-02-02T00:00:00`), 'iiii, MMMM do')
 
-  // TODO: remove 365
   res.render('pages/upcoming/groundhog-day-next', {
     title: `Groundhog Day ${nextYear}`,
     currentYear,
     nextYear,
     dateString,
-    daysLeft: 365 + getDaysToGroundhogDay(),
+    daysLeft: getDaysToGroundhogDay(),
     predictionString,
-    // isBeforeGroundhogDay: BEFORE_GROUNDHOG_DAY,
-    isBeforeGroundhogDay: false,
+    isBeforeGroundhogDay: BEFORE_GROUNDHOG_DAY,
     pageMeta: _getPageMeta(req, {
       description: `In ${nextYear}, Groundhog Day will be on ${dateString}. Groundhog Day is not a statutory holiday in Canada or the USA.`,
       speakable: true,

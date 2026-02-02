@@ -2,10 +2,10 @@ const request = require('supertest')
 const cheerio = require('cheerio')
 
 const app = require('../../../app.js')
-// const { getGroundhogDayYear } = require('../utils')
+const { getGroundhogDayYear } = require('../utils')
 
 const EARLIEST_RECORDED_PREDICTION = 1886
-const CURRENT_YEAR = 2026 // getGroundhogDayYear()
+const CURRENT_YEAR = getGroundhogDayYear()
 
 describe('Test ui responses', () => {
   describe('Test / response', () => {
@@ -352,8 +352,7 @@ describe('Test API responses', () => {
   })
 
   describe('for /api/v1/predictions path', () => {
-    // TODO: UNSKIP
-    test.skip('it should return a redirect if there is no year', async () => {
+    test('it should return a redirect if there is no year', async () => {
       const response = await request(app).get('/api/v1/predictions')
       expect(response.headers['location']).toEqual(`/api/v1/predictions?year=${CURRENT_YEAR}`)
       expect(response.statusCode).toBe(302)

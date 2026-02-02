@@ -6,10 +6,10 @@
 
 {% block content %}
 
-  {% if daysLeft == 365 %}
+  {% if daysLeft == 365 or daysLeft == 366 %}
     {# TODO: dynamic date #}
     <h1>
-      <span aria-hidden="true" title="i know it's a beaver but it's the best i could do" style="transform: scale(-1, 1); display: inline-block;">🦫</span>
+      <span aria-hidden="true" title="Happy Groundhog Day!" style="transform: scale(-1, 1); display: inline-block;">🦫</span>
       Today is <a href="/predictions/{{ currentYear }}" class="underline">Groundhog Day</a>!
       <span aria-hidden="true" title="¡Hola! ¡Feliz día de la marmota!">🦫</span>
     </h1>
