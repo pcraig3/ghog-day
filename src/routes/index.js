@@ -27,7 +27,7 @@ const EARLIEST_RECORDED_PREDICTION = DB()
   .get().year
 
 const BEFORE_GROUNDHOG_DAY = getAbsoluteYear() !== getGroundhogDayYear()
-const IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 365
+const IS_GROUNDHOG_DAY = getDaysToGroundhogDay() === 366
 
 /* Request functions */
 const _getUrlFromRequest = (req, { withPath = true, trailingSlash = true } = {}) => {
@@ -661,15 +661,13 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
           ? 'Longer winter'
           : 'Early spring'
 
-  // TODO: the "isBeforeGroundhogDay" logic doesn't work
   res.render('pages/year', {
     title: `Groundhog Day ${year} results: ${predictionTitle}`,
     years,
     intro,
     nextYear: getGroundhogDayYear() + 1,
-    // isBeforeGroundhogDay:
-    //   year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
-    isBeforeGroundhogDay: true,
+    isBeforeGroundhogDay:
+      year == getGroundhogDayYear() && (BEFORE_GROUNDHOG_DAY || IS_GROUNDHOG_DAY),
     predictions,
     predictionTotals,
     pageMeta: _getPageMeta(req, {
