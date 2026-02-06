@@ -1,7 +1,7 @@
 {%- from "macros/_icon.njk" import icon -%}
 {% macro nav(params) %}
   <ul>
-    <li><a href="/groundhogs" {% if params.path == "/groundhogs" -%}aria-current="page"{% endif %}>Groundhogs</a></li>
+    <li><a href="/active-groundhogs" {% if params.path == "/active-groundhogs" -%}aria-current="page"{% endif %}>Groundhogs</a></li>
     <li>
       <a class="link--icon link--icon--right" href="/map" {% if params.path == "/map" -%}aria-current="page"{% endif %}>
         <span>Map</span> {{ icon({ map: true }) }}

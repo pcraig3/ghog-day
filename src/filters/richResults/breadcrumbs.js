@@ -10,14 +10,14 @@ const richResultsBreadcrumbs = (path) => {
 
   if (path === '/') return JSON.stringify(_returnBreadcrumbs(breadcrumbList), null, 2)
 
-  if (['/alternative-groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'].includes(path)) {
+  if (['/groundhogs', '/groundhogs-in-canada', '/groundhogs-in-usa'].includes(path)) {
     // the "groundhogs" route is the parent of these pages
     breadcrumbList = breadcrumbList.concat([
       {
         '@type': 'ListItem',
         position: breadcrumbList.length + 1,
-        name: 'Groundhogs',
-        item: 'https://groundhog-day.com/groundhogs',
+        name: 'Active groundhogs',
+        item: 'https://groundhog-day.com/active-groundhogs',
       },
     ])
   }
@@ -28,6 +28,7 @@ const richResultsBreadcrumbs = (path) => {
 
   if (pathArr.length >= 1) {
     page = pathArr[0]
+    page = page === 'groundhogs' ? 'active-groundhogs' : page
 
     breadcrumbList = breadcrumbList.concat([
       {
@@ -59,14 +60,12 @@ const richResultsBreadcrumbs = (path) => {
 
   // the prediction page for a groundhog
   if (pathArr.length === 3) {
-    /* eslint-disable indent */
     const shortName =
       entityName === 'Ms G'
         ? 'Ms. G'
         : ['la', 'the', 'and', 'Stormy', 'Stonewall'].some((phrase) => entityName.includes(phrase))
-        ? entityName.split(' ').shift()
-        : entityName.split(' ').pop()
-    /* eslint-enable */
+          ? entityName.split(' ').shift()
+          : entityName.split(' ').pop()
 
     breadcrumbList = breadcrumbList.concat([
       {

@@ -882,7 +882,9 @@ router.get('/groundhogs/sylvia-the-armadillo', function (req, res) {
 /* GET single groundhog */
 router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
   const back =
-    req.locals && req.locals.back ? req.locals.back : { url: '/groundhogs', text: 'All groundhogs' }
+    req.locals && req.locals.back
+      ? req.locals.back
+      : { url: '/active-groundhogs', text: 'Active groundhogs' }
 
   const groundhog = getGroundhogBySlug(req.params.slug, { oldestFirst: false })
 

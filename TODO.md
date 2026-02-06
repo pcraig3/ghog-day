@@ -12,8 +12,6 @@ TODO
 - Add merch!
 - Maybe: years on groundhogs page
 - Let's add some aggregate data to the API/About pages
-- Show active groundhogs by default
-  - for "Groundhogs" links, go to "active groundogs"
 
 DONE
 
@@ -21,6 +19,8 @@ DONE
 - Show active groundhogs by default
   - On the homepage
   - for "USA", "Canadian"
+  - for "Groundhogs" links, go to "active groundogs"
+  - Fix for the breadcrumbs links as well
 - Add 4 groundhogs:
   - Bay Beach Bernard
   - Featherstone the Flamingo
