@@ -52,8 +52,7 @@ describe('Test ui responses', () => {
       expect(response.statusCode).toBe(200)
     })
 
-    // TODO: UNSKIP
-    test.skip('it should return the h1, title, meta tag, and canonical link', async () => {
+    test('it should return the h1, title, meta tag, and canonical link', async () => {
       const response = await request(app).get('/predictions')
       const $ = cheerio.load(response.text)
 

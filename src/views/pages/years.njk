@@ -35,8 +35,8 @@
             </tr>
           </thead>
           <tbody role="presentation" class="list">
-            {# <tr onclick="window.location='/predictions/2026';" aria-hidden="true">
-                <th class="year"><a href="/predictions/2026" class="underline">2026</a></th>
+            <tr onclick="window.location='/predictions/2027';" aria-hidden="true">
+                <th class="year"><a href="/predictions/2027" class="underline">2027</a></th>
                 <td class="center--mobile">
                   —
                 </td>
@@ -49,7 +49,7 @@
                 <td class="center--mobile">
                   —
                 </td>
-              </tr> #}
+              </tr>
             {% for prediction in predictions %}
               <tr onclick="window.location='/predictions/{{ prediction.year }}';">
                 <th class="year"><a href="/predictions/{{ prediction.year}}" class="underline">{{ prediction.year }}</a></th>
