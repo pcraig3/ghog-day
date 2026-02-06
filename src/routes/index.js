@@ -59,17 +59,29 @@ const _getPageMeta = (req, { description, slug, speakable } = {}) => {
 }
 
 /* Queries */
-const getGroundhogSlugs = () =>
-  DB()
-    .prepare('SELECT slug FROM groundhogs;')
-    .all()
+const getGroundhogSlugs = ({ active = false } = {}) => {
+  const query = `
+    SELECT slug
+    FROM groundhogs
+    WHERE (? = 0 OR active = 1);
+  `
+  return DB()
+    .prepare(query)
+    .all(active ? 1 : 0)
     .map((row) => row.slug)
+}
 
-const getGroundhogIDs = () =>
-  DB()
-    .prepare('SELECT id FROM groundhogs;')
-    .all()
+const getGroundhogIDs = ({ active = false } = {}) => {
+  const query = `
+    SELECT id
+    FROM groundhogs
+    WHERE (? = 0 OR active = 1);
+  `
+  return DB()
+    .prepare(query)
+    .all(active ? 1 : 0)
     .map((row) => row.id)
+}
 
 const getPredictionsByYear = (year) => {
   let predictions = DB()
@@ -219,20 +231,18 @@ const getGroundhogBySlug = (slug, { oldestFirst = true } = {}) => {
 
 const getGroundhogs = ({
   oldestFirst = false,
-  year = false,
   country = undefined,
   isActive = undefined,
   isGroundhog = undefined,
 } = {}) => {
   const orderBy = oldestFirst ? 'ASC' : 'DESC'
-  const predictionKey = year ? 'latestPrediction' : 'predictions'
-  const yearClause = year ? `AND p.year = ${getGroundhogDayYear()}` : ''
   let whereClause = ['USA', 'Canada'].includes(country) ? `g.country = '${country}'` : '1 = 1'
   if (isGroundhog !== undefined) {
-    whereClause = `${whereClause} AND isGroundhog='${isGroundhog ? 1 : 0}'`
+    whereClause += ` AND g.isGroundhog = ${isGroundhog ? 1 : 0}`
   }
+
   if (isActive !== undefined) {
-    whereClause = `${whereClause} AND active='${isActive ? 1 : 0}'`
+    whereClause += ` AND g.active = ${isActive ? 1 : 0}`
   }
 
   let [{ groundhogs }] = DB()
@@ -257,27 +267,44 @@ const getGroundhogs = ({
         'successor', g.successor,
         'description', g.description,
         'image', g.image,
-        'predictionsCount', (SELECT json_array_length(json_group_array(id)) FROM predictions WHERE slug=g.slug AND shadow IS NOT NULL),
-        '${predictionKey}', (
-          ${year ? '' : 'SELECT json_group_array(json(o)) FROM ('}
-          SELECT json_object(
+        'predictionsCount', (
+            SELECT COUNT(*)
+            FROM predictions
+            WHERE slug = g.slug
+              AND shadow IS NOT NULL
+          ),
+        'predictions', (
+            SELECT json_group_array(
+              json_object(
                 'year', p.year,
                 'shadow', p.shadow,
                 'details', p.details
-              ) AS o
-              FROM predictions AS p
-              WHERE p.slug = g.slug ${yearClause}
-              ORDER BY p.year ${orderBy}
+              )
+            )
+            FROM predictions AS p
+            WHERE p.slug = g.slug
+            ORDER BY p.year ${orderBy}
           )
         )
-        ${year ? '' : ')'}
-      ) as groundhogs
+      ) AS groundhogs
       FROM groundhogs AS g
-      WHERE ${whereClause};`,
+      WHERE ${whereClause};
+    `,
     )
     .all()
 
-  return JSON.parse(groundhogs)
+  groundhogs = JSON.parse(groundhogs).map((g) => {
+    const predictions = g.predictions || []
+
+    g['latestPrediction'] =
+      predictions.length > 0
+        ? predictions[predictions.length - 1]
+        : { year: '', shadow: '', details: '' }
+
+    return g
+  })
+
+  return groundhogs
 }
 
 /* Middleware */
@@ -467,7 +494,7 @@ router.get('/', function (req, res) {
     nextYear: currentYear + 1,
     predictionResults,
     randomGroundhogs,
-    totalGroundhogs: getGroundhogSlugs().length,
+    activeGroundhogsCount: getGroundhogSlugs({ active: true }).length,
     isBeforeGroundhogDay: IS_GROUNDHOG_DAY || BEFORE_GROUNDHOG_DAY,
     pageMeta: _getPageMeta(req, {
       description:
@@ -739,6 +766,7 @@ router.get(
     '/active-groundhogs',
   ],
   function (req, res) {
+    const currentYear = getGroundhogDayYear()
     const path = req.path.replace(/\/$/, '')
 
     const country =
@@ -749,14 +777,23 @@ router.get(
           : undefined
 
     const isGroundhog = path === '/alternative-groundhogs' ? false : undefined
-    const isActive = path === '/active-groundhogs' ? true : undefined
+    // always "active" groundhogs unless path is "/groundhogs"
+    const isActive = path === '/groundhogs' ? undefined : true
 
-    let groundhogs = getGroundhogs({ year: getGroundhogDayYear(), country, isGroundhog, isActive })
+    let groundhogs = getGroundhogs({ country, isGroundhog, isActive })
 
     // sort by most predictions to least predictions
     groundhogs.sort((a, b) => b.predictionsCount - a.predictionsCount)
 
-    const groundhogCounts = { groundhog: 0, other: 0, canada: 0, usa: 0, active: 0, retired: 0 }
+    const groundhogCounts = {
+      all: 0,
+      groundhog: 0,
+      other: 0,
+      canada: 0,
+      usa: 0,
+      active: 0,
+      retired: 0,
+    }
 
     groundhogs.forEach((g) => {
       // set groundhogCounts.groundhog|groundhogCounts.other
@@ -765,7 +802,13 @@ router.get(
       g.country === 'Canada' ? ++groundhogCounts.canada : ++groundhogCounts.usa
       // set groundhogCounts.active|groundhogCounts.retired
       g.active ? ++groundhogCounts.active : ++groundhogCounts.retired
+      ++groundhogCounts.all
     })
+
+    // set correct number of "all" groundhogs if initial query was just for active ones
+    if (isActive) {
+      groundhogCounts.all = getGroundhogSlugs({ active: false }).length
+    }
 
     const pageTitle = path.includes('canada')
       ? 'Groundhogs in Canada'
@@ -794,6 +837,7 @@ router.get(
 
     res.render(`pages/${pageTemplate}`, {
       title: pageTitle,
+      currentYear,
       groundhogs,
       groundhogCounts,
       pageMeta: _getPageMeta(req, {

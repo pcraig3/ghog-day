@@ -12,9 +12,15 @@ TODO
 - Add merch!
 - Maybe: years on groundhogs page
 - Let's add some aggregate data to the API/About pages
+- Show active groundhogs by default
+  - for "Groundhogs" links, go to "active groundogs"
 
 DONE
 
+- Show year of last prediction on "all groundhogs" page
+- Show active groundhogs by default
+  - On the homepage
+  - for "USA", "Canadian"
 - Add 4 groundhogs:
   - Bay Beach Bernard
   - Featherstone the Flamingo
