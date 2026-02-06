@@ -15,6 +15,11 @@ TODO
 
 DONE
 
+- Add 4 groundhogs:
+  - Bay Beach Bernard
+  - Featherstone the Flamingo
+  - Portage la Prairie Larry
+  - Yahdee the Groundhog
 - Get a better handle on upcoming groundhog day
 - Rename "Sylvia the armadillo" to "Sylvia the Apex Armadillo"
 - Add 3 groundhogs:
