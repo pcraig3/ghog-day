@@ -245,7 +245,7 @@ describe('Test API responses', () => {
     const GROUNDHOGS_CANADA = 15
     const GROUNDHOGS_USA = 77
     const GROUNDHOGS_ALTERNATIVE = 54
-    const GROUNDHOGS_ACTIVE = 80
+    const GROUNDHOGS_ACTIVE = 81
 
     const urls = [
       {
