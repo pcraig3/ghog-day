@@ -655,9 +655,9 @@ router.get('/predictions/:year', validYear, validBackUrl, function (req, res) {
           : 'spring'
   })
 
-  // sort by most predictions to least predictions
+  // sort groundhogs from a-z by default
   predictions.sort((a, b) => {
-    return a.shadow === null ? 1 : b.shadow === null ? -1 : a.shadow - b.shadow
+    return a.groundhog.name > b.groundhog.name ? 1 : -1
   })
 
   const predictionTied = predictionTotals['prediction'] === 'tied'

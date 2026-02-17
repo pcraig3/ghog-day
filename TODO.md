@@ -15,6 +15,10 @@ TODO
 
 DONE
 
+- Sort groundhogs from A-Z by default on the "years" pages
+  - Otherwise it was impossible to find individual groundhogs
+- Add new groundhog: St. Thomas Sally
+- Allow Featherstone's shadow to mean the opposite of other groundhogs
 - Show year of last prediction on "all groundhogs" page
 - Show active groundhogs by default
   - On the homepage
