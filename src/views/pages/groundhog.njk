@@ -45,7 +45,7 @@
     <div class="description">
       <h2 class="h4">About {{ groundhog.shortname }}</h2>
       <p class="speakable {% if 'https' in groundhog.description %}speakable--md{% endif %}">
-        {% if 'https' in groundhog.description %}
+        {% if 'https' in groundhog.description or '\n' in groundhog.description  %}
           {{ groundhog.description | mdFilter | safe }}
         {% else %}
           {{ groundhog.description }}
@@ -121,7 +121,10 @@
               <tr>
                 <th><a href="/predictions/{{ prediction.year }}" class="underline">{{ prediction.year }}</a></th>
                 <td class="hidden--mobile-xs">
-                  {% if prediction.shadow == true -%}
+                  {# Featherstone is the opposite of every other groundhog in this regard #}
+                  {% if groundhog.slug == "featherstone-the-flamingo" and prediction.shadow == false %}
+                    Yes, saw shadow
+                  {%- elseif prediction.shadow == true -%}
                     Yes, saw shadow
                   {%- elseif prediction.shadow == false -%}
                     Nope, no shadow

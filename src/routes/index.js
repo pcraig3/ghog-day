@@ -893,6 +893,9 @@ router.get('/groundhogs/:slug', validSlug, validBackUrl, (req, res) => {
   // only 5 latest predictions
   groundhog.predictions = groundhog.predictions.slice(0, 5)
 
+  // make sure newlines show up as intended
+  groundhog.description = groundhog.description.replaceAll('\\n', '\n')
+
   res.render('pages/groundhog', {
     title: `${groundhog.name} from ${groundhog.city}, ${groundhog.region}`,
     groundhog,
