@@ -1,7 +1,7 @@
 {
   "name": "ghog-day",
   "description": "groundhog day website: get all groundhogs and their predictions, year by year. it's a real holiday",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "license": "MIT",
   "homepage": "https://groundhog-day.com",
   "keywords": [
@@ -49,16 +49,16 @@
     "morgan": "~1.10.1",
     "nunjucks": "^3.2.4",
     "nunjucks-markdown": "^2.0.1",
-    "sass": "^1.97.3"
+    "sass": "^1.99.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
-    "@eslint/js": "^9.39.2",
-    "eslint": "^9.39.2",
-    "eslint-plugin-jest": "^29.15.0",
-    "globals": "^17.3.0",
-    "jest": "^30.2.0",
-    "nodemon": "^3.1.13",
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^9.39.4",
+    "eslint": "^9.39.4",
+    "eslint-plugin-jest": "^29.15.2",
+    "globals": "^17.6.0",
+    "jest": "^30.3.0",
+    "nodemon": "^3.1.14",
     "supertest": "^7.2.2"
   }
 }
