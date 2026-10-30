@@ -19,9 +19,9 @@ jobs:
       matrix:
         node-version: [26.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install npm dependencies
@@ -37,17 +37,17 @@ jobs:
     needs: test
     if: github.ref_name == 'main'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - id: auth
         name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@v3
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY_JSON }}
 
       # Docker auth
       - name: Docker Auth
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: 'gcr.io'
           username: _json_key
@@ -62,7 +62,7 @@ jobs:
       # Deploy the container that was just pushed
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/deploy-cloudrun@v2
+        uses: google-github-actions/deploy-cloudrun@v3
         with:
           service: ${{ env.SERVICE_NAME }}
           image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
