@@ -189,7 +189,7 @@ describe('Test API responses', () => {
       const response = await request(app).get('/api/v1/spec')
       expect(response.statusCode).toBe(200)
       expect(response.headers['content-disposition']).toEqual(
-        'attachment; filename="Groundhog-Day-API.v1.yaml"',
+        'attachment; filename=Groundhog-Day-API.v1.yaml',
       )
       expect(response.headers['content-type']).toEqual('text/yaml; charset=utf-8')
       expect(response.text).toMatch(/openapi: 3.0.0/)
@@ -245,7 +245,7 @@ describe('Test API responses', () => {
     const GROUNDHOGS_CANADA = 16
     const GROUNDHOGS_USA = 77
     const GROUNDHOGS_ALTERNATIVE = 55
-    const GROUNDHOGS_ACTIVE = 82
+    const GROUNDHOGS_ACTIVE = 81
 
     const urls = [
       {
@@ -366,9 +366,7 @@ describe('Test API responses', () => {
       expect(predictions[0].year).toEqual(CURRENT_YEAR)
     })
 
-    test(`it should return an error for a too early year: "${
-      EARLIEST_RECORDED_PREDICTION - 1
-    }`, async () => {
+    test(`it should return an error for a too early year: "${EARLIEST_RECORDED_PREDICTION - 1}`, async () => {
       const response = await request(app).get(
         `/api/v1/predictions?year=${EARLIEST_RECORDED_PREDICTION - 1}`,
       )
